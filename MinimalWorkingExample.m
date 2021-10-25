@@ -1,7 +1,7 @@
 addpath('D:\SerialCommunication'); % add a path to the functions
 initSerialControl COM10 % initialise com port
 f = figure;
-power_G1 = 36; 
+power_G1 = 46; 
 %result = zeros(300,1);
 jump1 = zeros(300, 1);
 jump2 = zeros(300, 1);
@@ -14,8 +14,8 @@ while(1)
     %result(1:299) = result(2:300);
     %result(300) = measurements1;
     
-    jump1(1:299) = jump1(2:300);
-    jump1(300) = measurements1;
+    jump2(1:299) = jump2(2:300);
+    jump2(300) = measurements1;
     
     
     measurements3 = readMeasurements(3);
@@ -27,11 +27,11 @@ while(1)
 
      measurement = readMeasurements([1,5])
 
-     plot(jump1)
-     title('Wyznaczenie punktu pracy')
+     plot(jump2)
+     title("Skok jednostkowy: G1 = " + power_G1 + "; T1 = " + measurements1)
      xlabel('Temperatura [°C]')
      ylabel('Czas [s]')
-     ylim([30 36])
+     ylim([30 38])
      xlim([1 300])
      drawnow;
 
