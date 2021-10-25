@@ -27,7 +27,7 @@ while(1)
 
      measurement = readMeasurements([1,5])
 
-     plot(result)
+     plot(jump1)
      title('Wyznaczenie punktu pracy')
      xlabel('Temperatura [°C]')
      ylabel('Czas [s]')
