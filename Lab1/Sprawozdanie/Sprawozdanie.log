@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.11.1)  1 NOV 2021 19:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.11.1)  2 NOV 2021 18:46
 entering extended mode
-**"d:/Hubert/Dokumenty/Politechnika Warszawska/AIR/Semestr V/PUST/Laby/PUST-2021Z/Lab1/Sprawozdanie.tex"
-(d:/Hubert/Dokumenty/Politechnika Warszawska/AIR/Semestr V/PUST/Laby/PUST-2021Z/Lab1/Sprawozdanie.tex
+**"d:/Hubert/Dokumenty/Politechnika Warszawska/AIR/Semestr V/PUST/Laby/PUST-2021Z/Lab1/Sprawozdanie/Sprawozdanie.tex"
+(d:/Hubert/Dokumenty/Politechnika Warszawska/AIR/Semestr V/PUST/Laby/PUST-2021Z/Lab1/Sprawozdanie/Sprawozdanie.tex
 LaTeX2e <2021-06-01> patch level 1
 L3 programming layer <2021-10-18> (C:\Users\Hubert\AppData\Local\Programs\MiKTeX\tex/latex/mwcls\mwrep.cls
 Document Class: mwrep 2017/05/13 v0.75 A LaTeX document class (MW)
@@ -585,7 +585,7 @@ Package siunitx Info: Option "detect-weight" has been deprecated in this
 Package siunitx Warning: Option "binary-units" has been removed in this
 (siunitx)                release.
 
-Package translations Info: No language package found. I am going to use `english' as default language. on input line 87.
+Package translations Info: No language package found. I am going to use `english' as default language. on input line 92.
 
 LaTeX Warning: Unused global option(s):
     [twosides].
@@ -593,22 +593,22 @@ LaTeX Warning: Unused global option(s):
 (Sprawozdanie.aux)
 \openout1 = `Sprawozdanie.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for OT4/cmr/m/n on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 92.
+LaTeX Font Info:    ... okay on input line 92.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 92.
+LaTeX Font Info:    ... okay on input line 92.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 92.
+LaTeX Font Info:    ... okay on input line 92.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 92.
+LaTeX Font Info:    ... okay on input line 92.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 92.
+LaTeX Font Info:    ... okay on input line 92.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 92.
+LaTeX Font Info:    ... okay on input line 92.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 92.
+LaTeX Font Info:    ... okay on input line 92.
+LaTeX Font Info:    Checking defaults for OT4/cmr/m/n on input line 92.
+LaTeX Font Info:    ... okay on input line 92.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -665,34 +665,66 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable tick labels; missing features). Consider writing \pgfplotsset{compat=1.18} into your preamble.
- on input line 87.
+ on input line 92.
 
 \c@lstlisting=\count344
 (C:\Users\Hubert\AppData\Local\Programs\MiKTeX\tex/latex/translations/dicts\translations-basic-dictionary-english.trsl
 File: translations-basic-dictionary-english.trsl (english translation file `translations-basic-dictionary')
 )
-Package translations Info: loading dictionary `translations-basic-dictionary' for `english'. on input line 87.
+Package translations Info: loading dictionary `translations-basic-dictionary' for `english'. on input line 92.
  [1
 
-{C:/Users/Hubert/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] (Sprawozdanie.toc)
+{C:/Users/Hubert/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] (Sprawozdanie.toc
+LaTeX Font Info:    Trying to load font information for OML+plm on input line 1.
+ (C:\Users\Hubert\AppData\Local\Programs\MiKTeX\tex/latex/polski\omlplm.fd
+File: omlplm.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
+)
+LaTeX Font Info:    Trying to load font information for OMS+plsy on input line 1.
+ (C:\Users\Hubert\AppData\Local\Programs\MiKTeX\tex/latex/polski\omsplsy.fd
+File: omsplsy.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
+)
+LaTeX Font Info:    Trying to load font information for OMX+plex on input line 1.
+ (C:\Users\Hubert\AppData\Local\Programs\MiKTeX\tex/latex/polski\omxplex.fd
+File: omxplex.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
+)
+LaTeX Font Info:    External font `plex10' loaded for size
+(Font)              <10> on input line 1.
+LaTeX Font Info:    External font `plex10' loaded for size
+(Font)              <7> on input line 1.
+LaTeX Font Info:    External font `plex10' loaded for size
+(Font)              <5> on input line 1.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 1.
+ (C:\Users\Hubert\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 1.
+ (C:\Users\Hubert\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+))
 \tf@toc=\write4
 \openout4 = `Sprawozdanie.toc'.
 
+LaTeX Font Info:    External font `plex10' loaded for size
+(Font)              <10.95> on input line 146.
+LaTeX Font Info:    External font `plex10' loaded for size
+(Font)              <8> on input line 146.
+LaTeX Font Info:    External font `plex10' loaded for size
+(Font)              <6> on input line 146.
  [1
 
 ] (Sprawozdanie.aux) ) 
 Here is how much of TeX's memory you used:
- 31293 strings out of 478907
- 794632 string characters out of 2851418
- 1125991 words of memory out of 3000000
- 48691 multiletter control sequences out of 15000+600000
- 407544 words of font info for 36 fonts, out of 8000000 for 9000
+ 31398 strings out of 478907
+ 796670 string characters out of 2851418
+ 1128126 words of memory out of 3000000
+ 48759 multiletter control sequences out of 15000+600000
+ 416513 words of font info for 66 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,5n,89p,831b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
-{C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/pl/plrm.enc}<C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plbx12.pfb>
-Output written on Sprawozdanie.pdf (2 pages, 13915 bytes).
+ 84i,5n,89p,844b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
+ <C:\Users\Hubert\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk>{C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/pl/plmi.enc}{C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/pl/plrm.enc}<C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plbx10.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plbx12.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plmi10.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plr10.pfb>
+Output written on Sprawozdanie.pdf (2 pages, 37541 bytes).
 PDF statistics:
- 18 PDF objects out of 1000 (max. 8388607)
+ 39 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

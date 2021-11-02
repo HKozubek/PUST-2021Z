@@ -21,7 +21,11 @@
 \usepackage{matlab-prettifier}
 \usepackage{enumitem,amssymb}
 \definecolor{szary}{rgb}{0.95,0.95,0.95}
+\definecolor{niebieski}{rgb}{0,0.447,0.741}
+\definecolor{czerwony}{rgb}{0.85,0.325,0.098}
+
 \usepackage{siunitx}
+%\usepackage{gensymb}
 \sisetup{detect-weight,exponent-product=\cdot,output-decimal-marker={,},per-mode=symbol,binary-units=true,range-phrase={-},range-units=single}
 \SendSettingsToPgf
 %konfiguracje pakietu listings
@@ -83,6 +87,7 @@ title style={font=\small}
 \renewcommand{\topfraction}{0.95}%0.7
 \renewcommand{\bottomfraction}{0.95}%0.3
 \renewcommand{\floatpagefraction}{0.35}%0.5
+\renewcommand\thesection{\arabic{section}}
 
 \begin{document}
 \frenchspacing
@@ -124,4 +129,24 @@ Wydzia³ Elektroniki i Technik Informacyjnych}}\\
 \maketitle
 
 \tableofcontents
+
+\section{Cele projektu i laboratoriów}
+Celem niniejszego laboratorium oraz projektu by³o zaprojektowanie oraz implementacja
+algorytmów regulacji jednowymiarowego procesu na grzewczym stanowisku laboratoryjnym.
+%Stanowsko grzewcze sk³ada siê grza³ki G1, wentylatora W1 oraz czujnika temperatury T1
+
+\section{Przebieg laboratorium}
+Przez ca³y czas trakcie trwania laboratorium moc wentylatora W1 powinna byæ
+ustawiona 50\%.
+
+\subsection{Zad 1}
+W pierwszej kolejnoœci nale¿a³o odczytaæ wartoœæ temperatury odczytanej z 
+termometru T1 w wyznaczonym punkcie pracy G1 = 26. Po ustawieniu mocy grza³ki
+i odczekaniu, a¿ temperatura T1 ustabilizuje siê (rysunek), wartoœæ termometru T1 wynosi³a
+\num{31.12} °C. 
+
+\subsection{Zad 2}
+W tej czêœci laboratorium nale¿a³o przeprowadziæ eksperyment dla 3 ró¿nych wartoœci mocy grza³ki G1.
+Wartoœci G1 dla których zosta³y przeprowadzone eksperymenty to G1 = 36, G1 = 46 oraz G1 = 56. (rysunki)
+
 \end{document}
