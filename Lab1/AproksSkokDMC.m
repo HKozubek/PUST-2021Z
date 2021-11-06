@@ -5,10 +5,10 @@ function ERR = AproksSkokDMC(X)
 
     load dane1.mat 
 
-    T1=X(1);
-    T2=X(2);
-    K=X(3);
-    Td=9;
+    T1 = X(1);
+    T2 = X(2);
+    K = X(3);
+    Td = 9;
     y(1:time) = 0;
 
     alpha1 = exp(-1/T1);
@@ -22,7 +22,7 @@ function ERR = AproksSkokDMC(X)
         y(k) = b1 + b2 - a1*y(k-1) - a2*y(k-2);
     end
     
-    e = S - y;
+    e = S - y';
     
     ERR = (norm(e))^2;
 end
