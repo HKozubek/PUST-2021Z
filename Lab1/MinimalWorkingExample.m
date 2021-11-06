@@ -7,6 +7,8 @@ power_G1 = 56;
 Yzad(1:20) = 31.12;
 Yzad(21:500) = 40;
 Yzad(501:1000) = 36;
+k = 1;
+u = 0;
 
 %result = zeros(300,1);
 %jump1 = zeros(300, 1);
@@ -20,18 +22,31 @@ while(1)
     %result(1:299) = result(2:300);
     %result(300) = measurements1;
     
-    jump3(1:299) = jump3(2:300);
-    jump3(300) = measurements1;
+    %jump3(1:299) = jump3(2:300);
+    %jump3(300) = measurements1;
     
     
     measurements3 = readMeasurements(3);
     %% processing of the measurements and new control values calculation
+    
+    % PID
+    
+%     e = Yzad(k) - measurements1;
+%     u = PID(e);
+   
+    % DMC
+    
+%     u = DMC(Yzad(k), measurements1);
 
     %% sending new values of control signals
     sendControls([ 1, 2, 3, 4, 5, 6], ... send for these elements
-                 [ 50, 0, 0, 0, power_G1, 0]);  % new corresponding control values
+                 [ 50, 0, 0, 0, u, 0]);  % new corresponding control values
 
-     measurement = readMeasurements([1,5])
+     measurement = readMeasurements([1,5]);
+     
+     
+     
+     
 
 %      plot(jump1)
 %      title("Skok jednostkowy: G1: 26 -> 36")
@@ -56,6 +71,6 @@ while(1)
 
 
      %% synchronising with the control process
-
+    k=k+1;
     waitForNewIteration(); % wait for new batch of measurements to be ready
 end
