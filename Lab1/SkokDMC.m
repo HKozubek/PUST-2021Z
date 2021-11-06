@@ -1,4 +1,5 @@
 % wyznaczenie odpowiedzi skokowej dla DMC
+clear all
 load SkokJednostkowy46v2
 
 Upp = 26;
@@ -19,7 +20,6 @@ end
 
 figure('Name', 'Odpowiedź skokowa - DMC')
 plot(S)
-hold on
 ylabel('S_k')
 xlabel('k')
 title("Odpowiedź skokowa dla DMC; D = " + D)
