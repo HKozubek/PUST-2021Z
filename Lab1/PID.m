@@ -31,7 +31,7 @@ function U = PID(e)
         K = 1; 
         Ti = inf; 
         Td = 0; 
-        Tp = 0.5;
+        Tp = 1;
 
         r2 = K*Td/Tp;
         r1 = K*(Tp/(2*Ti)-2*Td/Tp - 1);

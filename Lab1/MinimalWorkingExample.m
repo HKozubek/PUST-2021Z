@@ -1,7 +1,13 @@
 addpath('D:\SerialCommunication'); % add a path to the functions
 initSerialControl COM10 % initialise com port
 f = figure;
-power_G1 = 56; 
+power_G1 = 56;
+
+% trajektoria wartości zadanej
+Yzad(1:20) = 31.12;
+Yzad(21:500) = 40;
+Yzad(501:1000) = 36;
+
 %result = zeros(300,1);
 %jump1 = zeros(300, 1);
 %jump2 = zeros(300, 1);

@@ -1,14 +1,10 @@
 % Wyznaczone parametry przy użyciu generycznego algorytmu
 clear all
-% T1 = 22.033855; 
-% T2 = 5.686611; 
-% K = 0.265247;
 
-% T1 = 60; 
-% T2 = 10; 
-% K = 0.32;
-
-T1=75.525570; T2=1.864883; K=0.322781; %w miarę ok
+% Parametry wyznaczone przy użyciu algorytmu generycznego
+T1=0.000907;
+T2=82.104622;
+K=0.330938;
 
 
 Td = 9;
@@ -34,4 +30,6 @@ hold on
 plot(y, '-')
 ylabel('S_k')
 xlabel('k')
-title("Aproksymacja odpowiedzi skokowej")
+title("Aproksymacja odpowiedzi skokowej; E = " + AproksSkokDMC([T1, T2, K]))
+
+matlab2tikz('aproksymacja.tex')
