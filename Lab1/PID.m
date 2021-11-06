@@ -52,6 +52,8 @@ function U = PID(e)
     if U < Gmin
         U = Gmin;
     end
+    
     Upop = U;
+    
 end
 
