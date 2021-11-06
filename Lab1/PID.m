@@ -22,15 +22,15 @@ function U = PID(e)
 %     Ypp = 31.12;
      
     if isempty(e0)
-        Upop = 26;          % sterowanie w punkcie pracy
+        Upop = 0;          % sterowanie w punkcie pracy
         e0=0; 
         e1=0; 
         e2=0;
 
         % Nastawy regulatora
-        K = 1; 
-        Ti = inf; 
-        Td = 0; 
+        K = 0.5 * 43; %Kk = 43, Tk = 36
+        Ti = 0.5 * 36 * 10;  %inf; 
+        Td = 0.125 * 36 * 0.4; 
         Tp = 1;
 
         r2 = K*Td/Tp;
@@ -45,13 +45,13 @@ function U = PID(e)
     
     U = r2*e2 + r1*e1 + r0*e0 + Upop;
     
-    if U > Gamx
+    if U > Gmax
         U = Gmax;
     end
     
     if U < Gmin
         U = Gmin;
     end
-    
+    Upop = U;
 end
 
