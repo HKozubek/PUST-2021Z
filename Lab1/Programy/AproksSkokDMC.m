@@ -3,7 +3,10 @@
 
 function ERR = AproksSkokDMC(X)
 
-    load dane1.mat 
+    
+    data = load('dane1.mat');
+    S = data.S;
+    time = data.time;
 
     T1 = X(1);
     T2 = X(2);

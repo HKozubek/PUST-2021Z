@@ -1,6 +1,6 @@
 % wyznaczenie odpowiedzi skokowej dla DMC
 clear all
-load SkokJednostkowy46v2
+load ../Workspace_1/SkokJednostkowy46v2
 
 Upp = 26;
 Ypp = 31.12;
@@ -24,7 +24,7 @@ ylabel('S_k')
 xlabel('k')
 title("Odpowiedź skokowa dla DMC; D = " + D)
 
-matlab2tikz('skokDMC.tex')
+matlab2tikz('../Tikz_rysunki/skokDMC.tex')
 
 save('dane1.mat', 'S', 'Upp', 'Ypp', 'D', 'time')
 

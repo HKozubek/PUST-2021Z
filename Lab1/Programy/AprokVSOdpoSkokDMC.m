@@ -34,4 +34,4 @@ ylabel('S_k')
 xlabel('k')
 title("Aproksymacja odpowiedzi skokowej; E = " + AproksSkokDMC([T1, T2, K]))
 
-matlab2tikz('aproksymacja.tex')
+matlab2tikz('../Tikz_rysunki/aproksymacja.tex')
