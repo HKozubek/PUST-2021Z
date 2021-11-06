@@ -9,7 +9,9 @@ K=0.330938;
 
 Td = 9;
 
-load dane1.mat
+data = load('dane1.mat');
+S = data.S;
+time = data.time;
 
 y(1:time) = 0;
 

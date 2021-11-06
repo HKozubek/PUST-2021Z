@@ -53,5 +53,7 @@ function U = PID(e)
         U = Gmin;
     end
     
+    Upop = U;
+    
 end
 
