@@ -27,13 +27,27 @@ while(1)
 
      measurement = readMeasurements([1,5])
 
-     plot(jump3)
-     title("Skok jednostkowy: G1 = " + power_G1 + "; T1 = " + measurements1)
-     xlabel('Temperatura [°C]')
-     ylabel('Czas [s]')
-     ylim([30 42])
-     xlim([1 300])
-     drawnow;
+%      plot(jump1)
+%      title("Skok jednostkowy: G1: 26 -> 36")
+%      xlabel('Czas [s]')
+%      ylabel('Temperatura [°C]')
+%      ylim([30 42])
+%      xlim([1 300])
+%      plot(result)
+%      title("Punkt Pracy, G1 = 26")
+%      xlabel('Czas [s]')
+%      ylabel('Temperatura [°C]')
+%      ylim([30 34])
+%      xlim([1 300])
+
+
+
+
+%      drawnow;
+
+
+
+
 
      %% synchronising with the control process
 
