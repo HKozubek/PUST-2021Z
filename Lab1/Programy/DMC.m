@@ -16,6 +16,10 @@ function U = DMC(yzad, y, D, N, Nu, lambda)
         data = load('dane1.mat');
         S = data.S;
         
+        % Odpowiedź skokowa aproksymowana
+%         data = load('Sapro.mat');
+%         S = data.Sapro;
+        
         % przedłużenie wektora S
         for i = D+1:D+N
             S(i) = S(D);
