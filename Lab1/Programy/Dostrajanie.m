@@ -6,8 +6,9 @@ yzad = 1;
 e = 0;
 for k = 20:time
     y(k) = symulacja(u,y,k);
-    e = yzad - y(k);
-    u(k) = PID(e);
+%     e = yzad - y(k);
+%     u(k) = PID(e);
+    u(k) = DMC(yzad, y(k), 300, 50, 30, 1);
 end
 figure;
 hold on;

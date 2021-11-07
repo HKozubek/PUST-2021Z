@@ -7,6 +7,7 @@ function U = DMC(yzad, y, D, N, Nu, lambda)
     persistent Mp
     persistent K
     persistent dUP
+    persistent Upop
     
     
     if isempty(init)
@@ -23,18 +24,19 @@ function U = DMC(yzad, y, D, N, Nu, lambda)
         % Inicjalizacja macierzy
         M = zeros(N, Nu);
         for i = 1:Nu
-            M(i:N,i)=s(1:N-i+1);
+            M(i:N,i)=S(1:N-i+1);
         end
         
         Mp = zeros(N, D-1);
         for i = 1:(D-1)
-            Mp(1:N,i) = s(i+1:N+i) - s(i);
+            Mp(1:N,i) = S(i+1:N+i) - S(i);
         end
         
         I = eye(Nu);
         
         K = ((M'*M + lambda*I)^(-1))*M';
         dUP = zeros(D-1,1);
+        Upop = 0;
         init = 1;
     end
     
@@ -61,7 +63,7 @@ function U = DMC(yzad, y, D, N, Nu, lambda)
    
     U = Upop + du;
     
-    if U > Gamx
+    if U > Gmax
         U = Gmax;
     end
     
@@ -69,4 +71,5 @@ function U = DMC(yzad, y, D, N, Nu, lambda)
         U = Gmin;
     end
     
+    Upop = U;
 end
