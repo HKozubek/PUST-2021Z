@@ -42,7 +42,7 @@ while(1)
 %     E = E + e;
 %     u = PID(e);
 %     PIDu(k) = u; 
-   
+% hi
     % DMC
 %     DMCy(k) = measurements1;
 %     e = Yzad(k) - measurements1;
