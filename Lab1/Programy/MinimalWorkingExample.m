@@ -9,11 +9,18 @@ Yzad(21:500) = 40;
 Yzad(501:1000) = 36;
 k = 1;
 u = 0;
+E = 0;
+time = 1000;
 
 %result = zeros(300,1);
 %jump1 = zeros(300, 1);
 %jump2 = zeros(300, 1);
 %jump3 = zeros(300, 1);
+%PIDu = zeros(time,1);
+%DMCu = zeros(time,1);
+%PIDy = zeros(time,1);
+%DMCy = zeros(time,1);
+%
 while(1)
 
     %% obtaining measurements
@@ -30,13 +37,18 @@ while(1)
     %% processing of the measurements and new control values calculation
     
     % PID
-    
+%     PIDy(k) = measurements1;
 %     e = Yzad(k) - measurements1;
+%     E = E + e;
 %     u = PID(e);
-   
+%     PIDu(k) = u; 
+% hi
     % DMC
-    
+%     DMCy(k) = measurements1;
+%     e = Yzad(k) - measurements1;
 %     u = DMC(Yzad(k), measurements1);
+%     E = E + e;
+%     DMCu(k) = u; 
 
     %% sending new values of control signals
     sendControls([ 1, 2, 3, 4, 5, 6], ... send for these elements
