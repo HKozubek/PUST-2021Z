@@ -28,7 +28,7 @@ function U = PID(e)
         e2=0;
 
         % Nastawy regulatora
-        K = 0.5 * 43; %Kk = 43, Tk = 36
+        K = 0.5 * 43 * 1.5; %Kk = 43, Tk = 36
         Ti = 0.5 * 36*2;% * 4;  %inf;    10
         Td = 0.125 * 36;% * 0.6; %    0.4
         Tp = 1;
