@@ -1,3 +1,4 @@
+clear all;
 addpath('D:\SerialCommunication'); % add a path to the functions
 initSerialControl COM10 % initialise com port
 % f = figure;
@@ -6,7 +7,7 @@ power_G1 = 26;
 % trajektoria wartości zadanej
 Yzad(1:200) = 31.12; %31.12
 Yzad(201:600) = 40;
-Yzad(601:1100) = 36;
+Yzad(601:1000) = 36;
 k = 1;
 u = 0;
 E = 0;
@@ -22,9 +23,10 @@ PIDy = zeros(time + 100,1);
 PIDe = zeros(time + 100,1);
 
 
-% DMCu = zeros(time,1);
-% DMCy = zeros(time,1);
-%
+% DMCu = zeros(time + 100,1);
+% DMCy = zeros(time + 100,1);
+% DMCe = zeros(time + 100,1);
+
 figure(1);
 figure(2);
 while(1)
@@ -55,18 +57,20 @@ while(1)
     % DMC
 %     DMCy(k) = measurements1;
 %     e = Yzad(k) - measurements1;
-%     u = DMC(Yzad(k), measurements1);
-%     E = E + e;
+%     
+%     u = DMC(Yzad(k), measurements1, 300, 50, 10, 1);
+%     E = E + e^2;
+%     DMCe(k) = e;
 %     DMCu(k) = u; 
 
     %% sending new values of control signals
     sendControls([ 1, 2, 3, 4, 5, 6], ... send for these elements
-                 [ 50, 0, 0, 0, u, 0]);  % new corresponding control values
+                 [ 70, 0, 0, 0, 26, 0]);  % new corresponding control values
 
      measurement = readMeasurements([1,5]);
      
      
-
+% 
      figure(1);
      plot(Yzad, 'r--');
      hold on;
@@ -80,7 +84,28 @@ while(1)
      plot(PIDu,'b-');
      xlim([1 time]);
      ylim([0 100]);
+     legend({'U'})
      title("Sterowanie procesu - PID");
+
+
+
+%      figure(1);
+%      plot(Yzad, 'r--');
+%      hold on;
+%      plot(DMCy,'b-');
+%      xlim([1 time]);
+%      ylim([28 42]);
+%      legend({'Y_z_a_d','Y'})
+%      title("Wyjście procesu");
+%      
+%      figure(2);
+%      plot(DMCu,'b-');
+%      xlim([1 time]);
+%      ylim([0 100]);
+%      title("Sterowanie procesu - DMC");
+
+
+
  
 %      plot(jump1)
 %      title("Skok jednostkowy: G1: 26 -> 36")
