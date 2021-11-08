@@ -1,7 +1,7 @@
 addpath('D:\SerialCommunication'); % add a path to the functions
 initSerialControl COM10 % initialise com port
 f = figure;
-power_G1 = 56; 
+power_G1 = 0; 
 %result = zeros(300,1);
 %jump1 = zeros(300, 1);
 %jump2 = zeros(300, 1);
@@ -23,7 +23,7 @@ while(1)
 
     %% sending new values of control signals
     sendControls([ 1, 2, 3, 4, 5, 6], ... send for these elements
-                 [ 50, 0, 0, 0, power_G1, 0]);  % new corresponding control values
+                 [ 0, 0, 0, 0, power_G1, 0]);  % new corresponding control values
 
      measurement = readMeasurements([1,5])
 
