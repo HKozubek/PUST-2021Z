@@ -58,14 +58,14 @@ while(1)
     DMCy(k) = measurements1;
     e = Yzad(k) - measurements1;
     
-    u = DMC(Yzad(k), measurements1, 300, 60, 20, 0.1);
+    u = DMC(Yzad(k), measurements1, 300, 50, 10, 0.2);
     E = E + e^2;
     DMCe(k) = e;
     DMCu(k) = u; 
 
     %% sending new values of control signals
     sendControls([ 1, 2, 3, 4, 5, 6], ... send for these elements
-                 [ 50, 0, 0, 0, 26, 0]);  % new corresponding control values
+                 [ 50, 0, 0, 0, u, 0]);  % new corresponding control values
 
      measurement = readMeasurements([1,5]);
      

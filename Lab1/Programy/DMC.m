@@ -40,7 +40,7 @@ function U = DMC(yzad, y, D, N, Nu, lambda)
         
         K = ((M'*M + lambda*I)^(-1))*M';
         dUP = zeros(D-1,1);
-        Upop = 0;
+        Upop = 26;
         init = 1;
     end
     
