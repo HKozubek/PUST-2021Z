@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.11.1)  12 NOV 2021 00:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.11.1)  12 NOV 2021 00:57
 entering extended mode
 **"d:/Hubert/Dokumenty/Politechnika Warszawska/AIR/Semestr V/PUST/Laby/PUST-2021Z/Lab1/Sprawozdanie/Sprawozdanie.tex"
 (d:/Hubert/Dokumenty/Politechnika Warszawska/AIR/Semestr V/PUST/Laby/PUST-2021Z/Lab1/Sprawozdanie/Sprawozdanie.tex
@@ -723,25 +723,17 @@ LaTeX Font Info:    External font `plex10' loaded for size
 (Font)              <8> on input line 173.
 LaTeX Font Info:    External font `plex10' loaded for size
 (Font)              <6> on input line 173.
- (../TikZ_rysunki/PunktPracy.tex)
-
-LaTeX Warning: Reference `skoki' on page 3 undefined on input line 187.
-
-(../TikZ_rysunki/skoki.tex) [3] [4] [5] (Sprawozdanie.aux)
-
-LaTeX Warning: There were undefined references.
-
- ) 
+ (../TikZ_rysunki/PunktPracy.tex) (../TikZ_rysunki/skoki.tex) [3] [4] [5] (Sprawozdanie.aux) ) 
 Here is how much of TeX's memory you used:
- 31913 strings out of 478907
- 811393 string characters out of 2851418
- 1291410 words of memory out of 3000000
- 49259 multiletter control sequences out of 15000+600000
+ 31912 strings out of 478907
+ 811386 string characters out of 2851418
+ 1291373 words of memory out of 3000000
+ 49258 multiletter control sequences out of 15000+600000
  418570 words of font info for 70 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,19n,89p,844b,2216s stack positions out of 5000i,500n,10000p,200000b,80000s
 {C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/pl/plms.enc}{C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/pl/plmi.enc}{C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/pl/plrm.enc} <C:\Users\Hubert\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk>{C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/pl/plit.enc}<C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plbx10.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plbx12.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plmi10.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plmi8.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plr10.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plr8.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plsy10.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plsy7.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plti10.pfb>
-Output written on Sprawozdanie.pdf (6 pages, 920175 bytes).
+Output written on Sprawozdanie.pdf (6 pages, 919966 bytes).
 PDF statistics:
  83 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
