@@ -177,9 +177,22 @@ W tej czœci laboratorium nale¿a³o przeprowadziæ eksperyment dla 3 rónych wartoœc
 Rozpoczynaj¹c eksperyment z punktu pracy G1=26, wyznaczono odpowiedzi skokowe procesu. Eksperyment by³ wykokany
 dla trzech ró¿nych zmian sygna³u steruj¹cego, G1 = 36, G1 = 46 oraz G1 = 56. % TODO: ( rysunki)
 Wykresy przedstawiaj¹ce zmiany temperatury przedstawiono odpowiednio na rys. rys. i rys. %TODO:
+\begin{figure}[H]
+\centering
+\input{../TikZ_rysunki/Skok1.tex}
+\caption{Przyk³adowy rysunek wykonany w ~ MATLABie i ~ wygenerowany skryptem \texttt{matlab2tikz}}
+\label{r_matlab2tikz}
+\end{figure}
 
 
 \subsection{Zad 3}
-
-
+Wykonanie tego zadania polega³o na przekszta³ceniu jedn¹ z odpowiedzi
+skokowych, tak aby otrzymaæ odpowiedŸ skokow¹ u¿ywan¹ w algorymie DMC.
+W tym celu wybrano drug¹ odpowiedŸ skokow¹, tj. skok G1 z mocy 26 do mocy 46.
+Do przekszta³cenia zebranej odpowiedzi skokowej, na tak¹ nadaj¹c¹ siê do algorytmu DMC wykorzystano program TODO:"SkokDMC.m".
+Program ten wylicza potrzebn¹ odpowiedŸ skokow¹ przy u¿yciu prostego wzoru.
+\begin{equation}
+	S(i)= \frac{Y(i) - Y_{\mathrm{pp}}}{U_{\mathrm{skok}} - U_{\mathrm{pp}}}
+\end{equation}
+gdzie $S(i)$ - odpowiedŸ skokowa potrzebna do algorytmu DMC, $Y(i)$ - odpowiedŸ skokowa przed przekszta³ceniem. 
 \end{document}
