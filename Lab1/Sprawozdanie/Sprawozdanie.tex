@@ -168,20 +168,43 @@ W ramach laboratorium nale¿a³o wykonaæ 5 zadañ.
 
 \subsection{Zad 1}
 W pierwszej kolejnoœci nale¿a³o sprawdziæ mo¿liwoœæ sterowania i pomiaru w komunikacji ze stanowiskiem.
-Nastêpnie  odczytaæ wartoœæ temperatury termometru T1 w wyznaczonym punkcie pracy G1 = 26.
+Nastêpnie  odczytaæ wartoœæ temperatury termometru T1 w wyznaczonym punkcie pracy G1=26.
 Po ustawieniu mocy grza³ki i odczekaniu, a¿ temperatura T1 ustabilizuje siê,
-odczytana wartoœæ termometru T1 wynosi³a \num{31.12} °C. Wykres temperatury na termometrze T1 zosta³ przedstawiony na rys. % TODO:
+odczytana wartoœæ termometru T1 wynosi³a \num{31.12} °C. Wykres temperatury na termometrze T1 zosta³ przedstawiony na rys. \ref{PunktPracy}
+
+\begin{figure}
+	\centering
+	\input{../TikZ_rysunki/PunktPracy.tex}
+	\caption{Ustalanie siê temperatury dla punktu pracy}
+	\label{PunktPracy}
+\end{figure}
+
 
 \subsection{Zad 2}
 W tej czœci laboratorium nale¿a³o przeprowadziæ eksperyment dla 3 rónych wartoœci mocy grza³ki G1.
 Rozpoczynaj¹c eksperyment z punktu pracy G1=26, wyznaczono odpowiedzi skokowe procesu. Eksperyment by³ wykokany
-dla trzech ró¿nych zmian sygna³u steruj¹cego, G1 = 36, G1 = 46 oraz G1 = 56. % TODO: ( rysunki)
-Wykresy przedstawiaj¹ce zmiany temperatury przedstawiono odpowiednio na rys. rys. i rys. %TODO:
-\begin{figure}[H]
+dla trzech ró¿nych zmian sygna³u steruj¹cego, G1=36, G1=46 oraz G1=56.
+Wykresy przedstawiaj¹ce zmiany temperatury przedstawiono odpowiednio na rys. \ref{Skok1} rys. \ref{Skok2} i rys. \ref{Skok3}
+
+\begin{figure}
 \centering
 \input{../TikZ_rysunki/Skok1.tex}
-\caption{Przyk³adowy rysunek wykonany w ~ MATLABie i ~ wygenerowany skryptem \texttt{matlab2tikz}}
-\label{r_matlab2tikz}
+\caption{OdpowiedŸ skokowa procesu dla zmiany sterowania G1 z 26 do 36}
+\label{Skok1}
+\end{figure}
+
+\begin{figure}
+\centering
+\input{../TikZ_rysunki/Skok2.tex}
+\caption{OdpowiedŸ skokowa procesu dla zmiany sterowania G1 z 26 do 46}
+\label{Skok2}
+\end{figure}
+
+\begin{figure}
+\centering
+\input{../TikZ_rysunki/Skok3.tex}
+\caption{OdpowiedŸ skokowa procesu dla zmiany sterowania G1 z 26 do 56}
+\label{Skok3}
 \end{figure}
 
 
@@ -194,5 +217,14 @@ Program ten wylicza potrzebn¹ odpowiedŸ skokow¹ przy u¿yciu prostego wzoru.
 \begin{equation}
 	S(i)= \frac{Y(i) - Y_{\mathrm{pp}}}{U_{\mathrm{skok}} - U_{\mathrm{pp}}}
 \end{equation}
-gdzie $S(i)$ - odpowiedŸ skokowa potrzebna do algorytmu DMC, $Y(i)$ - odpowiedŸ skokowa przed przekszta³ceniem. 
+gdzie:
+\begin{itemize}
+  \item $S(i)$ - odpowiedŸ skokowa potrzebna do algorytmu DMC,
+	\item $Y(i)$ - odpowiedŸ skokowa przed przekszta³ceniem,
+	\item $Y_{\mathrm{pp}}$ - wartoœæ wyjœcia w chwili k=0 (tutaj $Y_{\mathrm{pp}}$  = \num{31.12} ),
+	\item $U_{\mathrm{skok}}$ - wartoœæ sterowanie w chwili k=0 i póŸniej (Tutaj $U_{\mathrm{skok}} = 46$),
+	\item $U_{\mathrm{pp}}$ - wartoœc sterowania przed chwil¹ k=0 (Tutaj $U_{\mathrm{pp}} = 26$)
+\end{itemize}
+W ten sposób przekszta³cona odpowiedŸ skokowa zosta³a zapisana do pliku TODO: "dane1.mat"
+i wykorzystana w dalszych czêœciach laboratorów.
 \end{document}
