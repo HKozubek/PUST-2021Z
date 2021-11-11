@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.11.1)  11 NOV 2021 18:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.11.1)  11 NOV 2021 20:19
 entering extended mode
 **"d:/Hubert/Dokumenty/Politechnika Warszawska/AIR/Semestr V/PUST/Laby/PUST-2021Z/Lab1/Sprawozdanie/Sprawozdanie.tex"
 (d:/Hubert/Dokumenty/Politechnika Warszawska/AIR/Semestr V/PUST/Laby/PUST-2021Z/Lab1/Sprawozdanie/Sprawozdanie.tex
@@ -718,11 +718,11 @@ Package pdftex.def Info: ./Rysunki/Stanowisko-grzewcze-schemat.png  used on inpu
 
  <./Rysunki/Stanowisko-grzewcze.png>] [2 <./Rysunki/Stanowisko-grzewcze-schemat.png>]
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <10.95> on input line 174.
+(Font)              <10.95> on input line 173.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <8> on input line 174.
+(Font)              <8> on input line 173.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <6> on input line 174.
+(Font)              <6> on input line 173.
  [3] (Sprawozdanie.aux) ) 
 Here is how much of TeX's memory you used:
  31426 strings out of 478907
@@ -733,7 +733,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  84i,8n,89p,844b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
  <C:\Users\Hubert\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk>{C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/pl/plmi.enc}{C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/pl/plrm.enc}{C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/pl/plit.enc}<C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plbx10.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plbx12.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plmi10.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plr10.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plti10.pfb>
-Output written on Sprawozdanie.pdf (4 pages, 880996 bytes).
+Output written on Sprawozdanie.pdf (4 pages, 881837 bytes).
 PDF statistics:
  56 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

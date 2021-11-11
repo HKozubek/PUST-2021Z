@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1636653138 "d:/Hubert/Dokumenty/Politechnika Warszawska/AIR/Semestr V/PUST/Laby/PUST-2021Z/Lab1/Sprawozdanie/Sprawozdanie.tex" "Sprawozdanie.pdf" "Sprawozdanie" 1636653140
+["pdflatex"] 1636658372 "d:/Hubert/Dokumenty/Politechnika Warszawska/AIR/Semestr V/PUST/Laby/PUST-2021Z/Lab1/Sprawozdanie/Sprawozdanie.tex" "Sprawozdanie.pdf" "Sprawozdanie" 1636658374
   "C:/Users/Hubert/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1095.pk" 1635874546 12668 442e667f159b56e46ebab4659c7c2953 ""
   "C:/Users/Hubert/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1635786761 9726841 e1737733787c1ce45e45e379c6d3098d ""
   "C:/Users/Hubert/AppData/Local/MiKTeX/pdftex/config/pdftex.map" 1636042552 86553 91af261fa287312f2fb1f66a097366be ""
@@ -216,12 +216,12 @@
   "C:/Users/Hubert/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1623002060 55589 34128738f682d033422ca125f82e5d62 ""
   "Rysunki/Stanowisko-grzewcze-schemat.png" 1636651815 24355 3069e1e5d3bff21b5e84f80cb028ca80 ""
   "Rysunki/Stanowisko-grzewcze.png" 1636651835 664885 ad1c014f86ab4eb72541c66249550bff ""
-  "Sprawozdanie.aux" 1636653140 987 300fa19d4bd7fa7626d470effaa3fa0f "pdflatex"
-  "Sprawozdanie.tex" 1636653137 5617 d60bd307e4c73ea4f953a7fe43d77cb3 ""
-  "Sprawozdanie.toc" 1636653140 327 2b38b420a6cdec992c57d810e60d45f7 "pdflatex"
-  "d:/Hubert/Dokumenty/Politechnika Warszawska/AIR/Semestr V/PUST/Laby/PUST-2021Z/Lab1/Sprawozdanie/Sprawozdanie.tex" 1636653137 5617 d60bd307e4c73ea4f953a7fe43d77cb3 ""
+  "Sprawozdanie.aux" 1636658374 1103 4e1b55429f4cc7feaa339f537ff9f5a4 "pdflatex"
+  "Sprawozdanie.tex" 1636658369 5971 a2e54998f053b295b7fd7e7c473209c9 ""
+  "Sprawozdanie.toc" 1636658374 401 1e3d4b342fb435352c79d0779a31e79a "pdflatex"
+  "d:/Hubert/Dokumenty/Politechnika Warszawska/AIR/Semestr V/PUST/Laby/PUST-2021Z/Lab1/Sprawozdanie/Sprawozdanie.tex" 1636658369 5971 a2e54998f053b295b7fd7e7c473209c9 ""
   (generated)
-  "Sprawozdanie.log"
+  "Sprawozdanie.aux"
   "Sprawozdanie.toc"
   "Sprawozdanie.pdf"
-  "Sprawozdanie.aux"
+  "Sprawozdanie.log"
