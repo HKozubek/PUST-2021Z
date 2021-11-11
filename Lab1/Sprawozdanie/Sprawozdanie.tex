@@ -65,7 +65,7 @@
 	stringstyle=\color{orange},
 }
 
-%wymiar tekstu (bez ¿ywej paginy)
+%wymiar tekstu (bez ˜ywej paginy)
 \textwidth 160mm \textheight 247mm
 
 %ustawienia pakietu pgfplots
@@ -79,7 +79,7 @@ title style={font=\small}
 \def\figurename{Rys.}
 \def\tablename{Tab.}
 
-%konfiguracja liczby p³ywaj¹cych elementów
+%konfiguracja liczby p˜ywaj˜cych element˜w
 \setcounter{topnumber}{0}%2
 \setcounter{bottomnumber}{3}%1
 \setcounter{totalnumber}{5}%3
@@ -93,7 +93,7 @@ title style={font=\small}
 \frenchspacing
 \pagestyle{uheadings}
 
-%strona tytu³owa
+%strona tytu˜owa
 \title{\bf Sprawozdanie z projektu i æwiczenia laboratoryjnego nr 1, zadanie nr 1\vskip 0.1cm}
 \author{Hubert Kozubek, Przemys³aw Michalczewski}
 \date{2021}
@@ -131,22 +131,50 @@ Wydzia³ Elektroniki i Technik Informacyjnych}}\\
 \tableofcontents
 
 \section{Cele projektu i laboratoriów}
-Celem niniejszego laboratorium oraz projektu by³o zaprojektowanie oraz implementacja
-algorytmów regulacji jednowymiarowego procesu na grzewczym stanowisku laboratoryjnym.
-%Stanowsko grzewcze sk³ada siê grza³ki G1, wentylatora W1 oraz czujnika temperatury T1
+Celem niniejszego laboratorium oraz projektu by³o zaprojektowanie, implementacja,
+weryfikacja poprawnoœci dzia³ania oraz dobór parametrów algorytmów regulacji jednowymiarowego
+procesu na grzewczym stanowisku laboratoryjnym przedstawionym na rys \ref{Stanowisko grzewcze}.
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\textwidth]{ ./Rysunki/Stanowisko-grzewcze.png }
+	\caption {Stanowisko grzej¹co-ch³odz¹ce, u¿ywane w trakcie laboratoriów}
+	\label{Stanowisko grzewcze}
+\end{figure}
+
+\begin{figure}
+		\centering
+		\includegraphics[width=0.7\textwidth]{ ./Rysunki/Stanowisko-grzewcze-schemat.png }
+		\caption {Schemat stanowiska grzej¹co-ch³odz¹cego}
+		\label{Stanowisko grzewcze, schemat}
+\end{figure}
 
 \section{Przebieg laboratorium}
-Przez ca³y czas trakcie trwania laboratorium moc wentylatora W1 powinna byæ
-ustawiona 50\%.
+Rozpoczynaj¹c pracê na stanowisku laboratoryjnym nale¿a³o ustawiæ moc wentylatora W1
+na 50\%. Wentylator ten by³ traktowany jako cecha otoczenia. Dodatkowo sprawia³ on, ¿e temperatura grza³ki
+opada³a szybciej, co by³o szczególnie przydatne pomiêdzy doœwiadczeniami.
+
+W ramach laboratorium nale¿a³o wykonaæ 5 zadañ.
+
+\begin{enumerate}
+	\label{Lista-zadan}
+  \item Odczytaæ wartoœc pomiaru termometru T1 dla mocy 26 grza³ki G1.
+  \item Wyznaczyæ odpowiedŸ skokow¹ procesu dla 3 ró¿ych wartoœci G1.
+  \item Wybraæ jedn¹ z dopowiedŸi skokowych, przekszta³ciæ j¹ i wykorzystaæ w algorytmie DMC. 
+  \item Zaimplementowaæ algorytm PID i DMC, od regulacji procesu stanowiska, w jêzyku MATLAB.
+  \item Dobraæ nastawy algorytmu PID oraz parametry algorytmu DMC metod¹ eksperymentaln¹.
+\end{enumerate}
 
 \subsection{Zad 1}
 W pierwszej kolejnoœci nale¿a³o odczytaæ wartoœæ temperatury odczytanej z 
 termometru T1 w wyznaczonym punkcie pracy G1 = 26. Po ustawieniu mocy grza³ki
-i odczekaniu, a¿ temperatura T1 ustabilizuje siê (rysunek), wartoœæ termometru T1 wynosi³a
+i odczekaniu, a¿ temperatura T1 ustabilizuje siê %TODO: rysunki
+, wartoœæ termometru T1 wynosi³a
 \num{31.12} °C. 
 
 \subsection{Zad 2}
-W tej czêœci laboratorium nale¿a³o przeprowadziæ eksperyment dla 3 ró¿nych wartoœci mocy grza³ki G1.
-Wartoœci G1 dla których zosta³y przeprowadzone eksperymenty to G1 = 36, G1 = 46 oraz G1 = 56. (rysunki)
+W tej czœci laboratorium nale¿a³o przeprowadziæ eksperyment dla 3 rónych wartoœci mocy grza³ki G1.
+Wartoœci G1 dla których zosta³y przeprowadzone eksperymenty to G1 = 36, G1 = 46 oraz G1 = 56. % TODO: ( rysunki)
 
 \end{document}
