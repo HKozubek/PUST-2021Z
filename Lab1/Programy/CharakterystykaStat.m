@@ -35,9 +35,9 @@ figure('name', 'Charakterystyka statyczna')
 hold on
 plot(stat_U, stat_Y, 'o')
 plot(stat_U, stat_Y)
-xlabel('Wejście procesu (G1)')
-ylabel('Wyjście procesu (T1)')
+xlabel('Wejście procesu (moc grzałki G1) [%]')
+ylabel('Wyjście procesu (T1) [°C]')
 title("Charakterystyka statyczna; Wzmocnienie statyczne K_s_t_a_t = " + Kstat)
 
 
-matlab2tikz('../Tikz_rysunki/charakterystyka_stat.tex')
+matlab2tikz('../Tikz_rysunki/charakterystyka_stat.tex', 'showInfo', false)
