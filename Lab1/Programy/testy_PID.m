@@ -7,7 +7,7 @@ PIDy = test1.PIDy;
 E = test1.E;
 Yzad = test1.Yzad;
 
-disp("Średni błąd kwadratowy(test PID nr 2) :")
+disp("Średni błąd kwadratowy(test PID nr 1) :")
 disp(E/1000)
 
 
