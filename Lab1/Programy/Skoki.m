@@ -18,9 +18,9 @@ hold on
 plot(odp_skok1)
 plot(odp_skok2)
 plot(odp_skok3)
-xlabel('k')
-ylabel('T1')
+xlabel('Czas [s]')
+ylabel('Temperatura [°C]')
 title("Odpowiedzi skokowe z punktu pracy (G1 = 26%, T1 = 31,12°)")
 legend("dla G1 = " + moc_skok1 + "%", "dla G1 = " + moc_skok2 + "%", "dla G1 = " + moc_skok3 + "%", 'Location', 'northwest')
 
-matlab2tikz('../Tikz_rysunki/skoki.tex')
+matlab2tikz('../Tikz_rysunki/skoki.tex', 'showInfo', false)
