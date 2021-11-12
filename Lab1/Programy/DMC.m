@@ -1,3 +1,4 @@
+%implementacja DMC
 function U = DMC(yzad, y, D, N, Nu, lambda)
     
     persistent init

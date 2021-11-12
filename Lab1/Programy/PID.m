@@ -1,5 +1,4 @@
-% implemrntacja PID
-
+% implementacja PID
 function U = PID(e)
 
     persistent Upop
