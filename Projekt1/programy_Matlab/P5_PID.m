@@ -11,21 +11,21 @@ Umax = 0.7;
 du_max = 0.05;
 
 % Czas symulacji
-% time = 1500;
-time = 300;
+time = 1500;
+% time = 300;
 
 % Deklaracja wektora sterowań i wartości zadanych
 U(1:time) = Upp;
 Y(1:time) = Ypp;
 
 Yzad(1:50) = Ypp;
-% Yzad(51:200) = 4.1;
-% Yzad(201:500) = 3.85;
-% Yzad(501:800) = 4.05;
-% Yzad(801:1200)  = 4.15;
-% Yzad(1201:time) = 3.95;
-% 
-Yzad(51:time) = 4.1;        % skok wartości zadanej do regulacji PIDa
+Yzad(51:200) = 4.1;
+Yzad(201:500) = 3.85;
+Yzad(501:800) = 4.05;
+Yzad(801:1200)  = 4.15;
+Yzad(1201:time) = 3.95;
+
+% Yzad(51:time) = 4.1;        % skok wartości zadanej do regulacji PIDa
 
 y_zad = Yzad - Ypp;
 u = U - Upp;
@@ -60,7 +60,7 @@ for k = 12:time
     end
     
     if du < - du_max
-        du = du_max;
+        du = -du_max;
     end
     
     u(k) = u(k-1) + du;
