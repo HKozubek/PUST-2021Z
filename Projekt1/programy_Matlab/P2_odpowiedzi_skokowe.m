@@ -36,7 +36,7 @@ for i = 1:length(Uskok)
     
     subplot(2,1,2)
     legend_info_y{i} = ("Y_u_s_t_"+i+" = "+Y(time,:));
-    stairs(Y)
+    plot(Y)
     hold on
   
 end
@@ -55,7 +55,7 @@ ylabel('Wyjście procesu (Y)')
 legend(legend_info_y, 'Location', 'southeast')
 title("Odpowiedź skokowa")
 
-matlab2tikz('odpowiedzi_skokowe')
+matlab2tikz('../rysunki_tikz/odpowiedzi_skokowe.tex', 'showInfo', false)
 
 
 

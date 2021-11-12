@@ -35,7 +35,7 @@ end
     
 S = zeros(D, 1);
 for i = 1:D
-    S(i) = (Y(i+15) - Ypp)/Uskok;
+    S(i) = (Y(i+15) - Ypp)/(Uskok-Upp);
 end
 
 
@@ -43,10 +43,12 @@ figure('Name', 'Odpowiedź skokowa - DMC')
 plot(S, '.')
 hold on
 plot(S)
-axis([0 D 0 0.5])
+axis([0 D 0 2])
 ylabel('S')
 xlabel('k')
 title("Odpowiedź skokowa dla DMC; D = " + D)
+
+matlab2tikz('../rysunki_tikz/skok_DMC.tex','showInfo', false)
 
 save('S.mat', 'S')
 save('D.mat', 'D')

@@ -1,9 +1,5 @@
 % This file was created by matlab2tikz.
 %
-%The latest updates can be retrieved from
-%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
-%where you can also make suggestions and rate matlab2tikz.
-%
 \definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
 %
 \begin{tikzpicture}
@@ -342,7 +338,8 @@ ylabel style={font=\color{white!15!black}},
 ylabel={Wyjście procesu (Y)},
 axis background/.style={fill=white}
 ]
-\addplot[const plot, color=mycolor1, forget plot] table[row sep=crcr] {%
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
 1	4\\
 2	4\\
 3	4\\

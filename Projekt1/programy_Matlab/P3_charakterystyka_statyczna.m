@@ -46,9 +46,9 @@ figure('Name', 'Charakterystyka statyczna')
 plot(Ustat, Ystat)
 ylabel('Y')
 xlabel('U')
-title("Charakterystyka statyczna Y(U); K_w_z_m_o_c = " + round(Kwzmoc, 3))
+title("Charakterystyka statyczna Y(U); K_s_t_a_t = " + round(Kwzmoc, 3))
 
-matlab2tikz('charakterystyka_statyczna')
+matlab2tikz('../rysunki_tikz/charakterystyka_statyczna.tex', 'showInfo', false )
 
 
 

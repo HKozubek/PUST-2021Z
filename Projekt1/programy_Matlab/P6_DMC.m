@@ -26,7 +26,7 @@ Yzad(801:1200)  = 4.15;
 Yzad(1201:time) = 3.95;
 
 % Parametry
-N = 60; Nu = 20; lambda = 0.1;
+N = 60; Nu = 40; lambda = 1;
 
 U(1:time) = Upp;
 Y(1:time) = Ypp;

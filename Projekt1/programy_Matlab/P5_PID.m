@@ -60,7 +60,7 @@ for k = 12:time
     end
     
     if du < - du_max
-        du = -du_max;
+        du = - du_max;
     end
     
     u(k) = u(k-1) + du;
