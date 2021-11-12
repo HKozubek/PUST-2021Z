@@ -3,3 +3,5 @@
 \contentsline {subsection}{\numberline {2.1\relax .\enspace }Zad 1}{3}{}%
 \contentsline {subsection}{\numberline {2.2\relax .\enspace }Zad 2}{3}{}%
 \contentsline {subsection}{\numberline {2.3\relax .\enspace }Zad 3}{3}{}%
+\contentsline {subsection}{\numberline {2.4\relax .\enspace }Zad 4}{6}{}%
+\contentsline {subsection}{\numberline {2.5\relax .\enspace }Zad 5}{9}{}%

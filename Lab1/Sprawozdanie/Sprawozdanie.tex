@@ -223,9 +223,75 @@ gdzie:
   \item $S(i)$ - odpowiedŸ skokowa potrzebna do algorytmu DMC,
 	\item $Y(i)$ - odpowiedŸ skokowa przed przekszta³ceniem,
 	\item $Y_{\mathrm{pp}}$ - wartoœæ wyjœcia w chwili k=0 (tutaj $Y_{\mathrm{pp}}$  = \num{31.12} ),
-	\item $U_{\mathrm{skok}}$ - wartoœæ sterowanie w chwili k=0 i póŸniej (Tutaj $U_{\mathrm{skok}} = 46$),
-	\item $U_{\mathrm{pp}}$ - wartoœc sterowania przed chwil¹ k=0 (Tutaj $U_{\mathrm{pp}} = 26$)
+	\item $U_{\mathrm{skok}}$ - wartoœæ sterowanie w chwili k=0 i póŸniej (tutaj $U_{\mathrm{skok}} = 46$),
+	\item $U_{\mathrm{pp}}$ - wartoœc sterowania przed chwil¹ k=0 (tutaj $U_{\mathrm{pp}} = 26$)
 \end{itemize}
 W ten sposób przekszta³cona odpowiedŸ skokowa zosta³a zapisana do pliku TODO: "dane1.mat"
 i wykorzystana w dalszych czêœciach laboratorów.
+
+Poza przekszta³ceniem odpowiedzi skokowej nale¿a³o j¹ jeszcze przybli¿yæ u¿ywaj¹c w tym celu cz³onu inercyjnego
+drugiego rzêdu z opóŸnieniem.
+
+\begin{equation}
+	G(s)= \frac{K}{(sT_1 + 1)(sT_2 + 1)}e^{-T_{\mathrm{d}}s}
+\end{equation}
+Po dyskretyzacji danej transmitancji otrzymujemy
+
+\begin{equation}
+	G(z)= \frac{b_1z^{-1} + b_2z^{-2}}{1 + a_1z^{-1} + a_2z^{-2}}z^{-T_{\mathrm{d}}}
+\end{equation}
+
+gdzie
+\begin{equation}
+\begin{split}
+	& a_1 = -\alpha_1 - \alpha_2 \\
+	& a_2 = \alpha_1\alpha_2 \\
+	& \alpha_1 = e^{-\frac{1}{T_1}} \\
+	& \alpha_2 = e^{-\frac{1}{T_2}} \\
+	& b_1 = \frac{K}{T_1 - T_2}[T_1(1-\alpha_1) - T_2(1-\alpha_2)] \\
+	& b_2 = \frac{K}{T_1 - T_2}[\alpha_1T_2(1-\alpha_2) - \alpha_2T_1(1-\alpha_1)]
+\end{split}
+\end{equation}
+
+Z wykresu odpowiedzi skokowej procesu zosta³o odczytane opóŸnienie. W naszym przypadku $T_{\mathrm{d}} = 9$.
+Aby wyznaczyæ wartoœci pozosta³ych wspó³czynników u¿yto dostêpnej w matlabie funkcji ga, która minimalizuje
+wartoœæ zadanej funkcji z wykorzystaniem algorytmu generycznego. Funkcja minimalizowana, to funkcja wyliczaj¹ca sumê kwadratów b³êdów
+pomiêdzy odpowiedzi¹ skokow¹, a transmitancj¹ przybli¿aj¹c¹.
+
+\lstinputlisting{../Programy/AproksSkokDMC.m}
+
+Nastêpnie u¿ywaj¹c skryptu TODO:"Optymalizacja.m" zosta³y wyznaczone pozosta³e parametry transmitancji przybli¿aj¹cej odpowiedŸ skokow¹.
+Ostateczne wartoœci parametrów to
+
+\begin{equation}
+	\begin{split}
+		& K = 0.330938\\
+		& T_1 = 0.000907 \\
+		& T_2 = 82.104622 \\
+		& T_{\mathrm{d}} = 9 \\
+	\end{split}
+\end{equation}
+
+\begin{figure}[h]
+	\centering
+	\input{../TikZ_rysunki/aproksymacja.tex}
+	\caption{OdpowiedŸ skokowa procesu, oraz transmitancja j¹ aproksumuj¹ca}
+	\label{aproksymacja-odpowiedzi-skokowej}
+\end{figure}
+
+Wykres zarówno odpowiedzi skokowej, jak i transmitancji j¹ przybli¿aj¹cej zosta³ zamieszczony na rys. \ref{aproksymacja-odpowiedzi-skokowej}
+
+\subsection{Zad 4}
+Kolejnym podpunktem zadañ laboratoryjnych by³o zaimplementowanie algorytmu regulacji PID oraz DMC w jêzyku MATLAB.
+
+Regulator PID
+\lstinputlisting{../Programy/PID.m}
+
+Regulator DMC
+\lstinputlisting{../Programy/DMC.m}
+
+\subsection{Zad 5}
+
+Ostatnim zadaniem by³ dobór nastawów obu algorytmów regulacji.
+
 \end{document}
