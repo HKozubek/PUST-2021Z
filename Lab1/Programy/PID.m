@@ -28,9 +28,9 @@ function U = PID(e)
         e2=0;
 
         % Nastawy regulatora
-        K = 0.5 * 43 * 1.5; %Kk = 43, Tk = 36
-        Ti = 0.5 * 36*2;% * 4;  %inf;    10
-        Td = 0.125 * 36;% * 0.6; %    0.4
+        K = 0.5 * 43 * 1.5;     %Kk = 43, Tk = 36
+        Ti = 0.5 * 36*2;        % * 4;  %inf;    10
+        Td = 0.125 * 36;        % * 0.6; %    0.4
         Tp = 1;
 
         r2 = K*Td/Tp;
@@ -38,7 +38,7 @@ function U = PID(e)
         r0 = K*(1+Tp/(2*Ti) + Td/Tp);
     end
     
-    % przesunięcie uchybów
+    % przesuniecie uchybow
     e2 = e1;
     e1 = e0;
     e0 = e;
@@ -54,6 +54,5 @@ function U = PID(e)
     end
     
     Upop = U;
-    
 end
 

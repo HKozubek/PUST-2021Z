@@ -1,9 +1,7 @@
 % aproksymacja odpowiedzi skokowej
 
-
 function ERR = AproksSkokDMC(X)
-
-    
+ 
     data = load('dane1.mat');
     S = data.S;
     time = data.time;
