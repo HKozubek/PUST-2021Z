@@ -159,8 +159,8 @@ W ramach laboratorium nale¿a³o wykonaæ 5 zadañ.
 
 \begin{enumerate}
 	\label{Lista-zadan}
-  \item Odczytaæ wartoœc pomiaru termometru T1 dla mocy 26 grza³ki G1.
-  \item Wyznaczyæ odpowiedŸ skokow¹ procesu dla 3 ró¿ych wartoœci G1.
+  \item Odczytaæ wartoœc pomiaru termometru T1 dla mocy 26 grza³ki G1\%.
+  \item Wyznaczyæ odpowiedŸ skokow¹ procesu dla 3 ró¿ych wartoœci G1\%.
   \item Wybraæ jedn¹ z dopowiedŸi skokowych, przekszta³ciæ j¹ i wykorzystaæ w algorytmie DMC. 
   \item Zaimplementowaæ algorytm PID i DMC, od regulacji procesu stanowiska, w jêzyku MATLAB.
   \item Dobraæ nastawy algorytmu PID oraz parametry algorytmu DMC metod¹ eksperymentaln¹.
@@ -168,7 +168,7 @@ W ramach laboratorium nale¿a³o wykonaæ 5 zadañ.
 
 \subsection{Zad 1}
 W pierwszej kolejnoœci nale¿a³o sprawdziæ mo¿liwoœæ sterowania i pomiaru w komunikacji ze stanowiskiem.
-Nastêpnie  odczytaæ wartoœæ temperatury termometru T1 w wyznaczonym punkcie pracy G1=26.
+Nastêpnie  odczytaæ wartoœæ temperatury termometru T1 w wyznaczonym punkcie pracy G1=26\%.
 Po ustawieniu mocy grza³ki i odczekaniu, a¿ temperatura T1 ustabilizuje siê,
 odczytana wartoœæ termometru T1 wynosi³a \num{31.12} °C. Wykres temperatury na termometrze T1 zosta³ przedstawiony na rys. \ref{PunktPracy}
 
@@ -182,36 +182,37 @@ odczytana wartoœæ termometru T1 wynosi³a \num{31.12} °C. Wykres temperatury na t
 
 \subsection{Zad 2}
 W tej czœci laboratorium nale¿a³o przeprowadziæ eksperyment dla 3 rónych wartoœci mocy grza³ki G1.
-Rozpoczynaj¹c eksperyment z punktu pracy G1=26, wyznaczono odpowiedzi skokowe procesu. Eksperyment by³ wykokany
-dla trzech ró¿nych zmian sygna³u steruj¹cego, G1=36, G1=46 oraz G1=56.
-Wykresy przedstawiaj¹ce zmiany temperatury przedstawiono odpowiednio na rys. \ref{Skok1} rys. \ref{Skok2} i rys. \ref{Skok3}
+Rozpoczynaj¹c eksperyment z punktu pracy G1=26\%, wyznaczono odpowiedzi skokowe procesu. Eksperyment by³ wykokany
+dla trzech ró¿nych zmian sygna³u steruj¹cego, G1=36\%, G1=46\% oraz G1=56\%.
+Wykresy przedstawiaj¹ce zmiany temperatury przedstawiono na rys. \ref{skoki}
+
+
+% \begin{figure}
+% \centering
+% \input{../TikZ_rysunki/Skok1.tex}
+% \caption{OdpowiedŸ skokowa procesu dla zmiany sterowania G1 z 26 do 36}
+% \label{Skok1}
+% \end{figure}
+
+% \begin{figure}
+% \centering
+% \input{../TikZ_rysunki/Skok2.tex}
+% \caption{OdpowiedŸ skokowa procesu dla zmiany sterowania G1 z 26 do 46}
+% \label{Skok2}
+% \end{figure}
 
 \begin{figure}
 \centering
-\input{../TikZ_rysunki/Skok1.tex}
-\caption{OdpowiedŸ skokowa procesu dla zmiany sterowania G1 z 26 do 36}
-\label{Skok1}
-\end{figure}
-
-\begin{figure}
-\centering
-\input{../TikZ_rysunki/Skok2.tex}
-\caption{OdpowiedŸ skokowa procesu dla zmiany sterowania G1 z 26 do 46}
-\label{Skok2}
-\end{figure}
-
-\begin{figure}
-\centering
-\input{../TikZ_rysunki/Skok3.tex}
-\caption{OdpowiedŸ skokowa procesu dla zmiany sterowania G1 z 26 do 56}
-\label{Skok3}
+\input{../TikZ_rysunki/skoki.tex}
+\caption{OdpowiedŸ skokowa procesu}
+\label{skoki}
 \end{figure}
 
 
 \subsection{Zad 3}
 Wykonanie tego zadania polega³o na przekszta³ceniu jedn¹ z odpowiedzi
 skokowych, tak aby otrzymaæ odpowiedŸ skokow¹ u¿ywan¹ w algorymie DMC.
-W tym celu wybrano drug¹ odpowiedŸ skokow¹, tj. skok G1 z mocy 26 do mocy 46.
+W tym celu wybrano drug¹ odpowiedŸ skokow¹, tj. skok G1 z mocy 26\% do mocy 46\%.
 Do przekszta³cenia zebranej odpowiedzi skokowej, na tak¹ nadaj¹c¹ siê do algorytmu DMC wykorzystano program TODO:"SkokDMC.m".
 Program ten wylicza potrzebn¹ odpowiedŸ skokow¹ przy u¿yciu prostego wzoru.
 \begin{equation}
