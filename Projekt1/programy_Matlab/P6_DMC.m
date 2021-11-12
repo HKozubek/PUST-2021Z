@@ -26,7 +26,18 @@ Yzad(801:1200)  = 4.15;
 Yzad(1201:time) = 3.95;
 
 % Parametry
-N = 60; Nu = 40; lambda = 1;
+% N = 60; Nu = 40; lambda = 1; %testDMC1; E = 2.4578
+% N = 40; Nu = 20; lambda = 2; %testDMC2; E = 2.4425
+% N = 11; Nu = 1; lambda = 1; %testDMC3; E = 3.1539
+% N = 15; Nu = 1; lambda = 1; %testDMC4; E = 2.5064
+% N = 20; Nu = 1; lambda = 1; %testDMC5; E = 2.4716
+% N = 20; Nu = 3; lambda = 1.5; %testDMC6; E = 2.4444
+
+% Zwiększanie N, Nu w stosunku do testDMC6 nie daje znaczącej poprawy
+% sterowania.
+
+
+
 
 U(1:time) = Upp;
 Y(1:time) = Ypp;
@@ -129,6 +140,6 @@ hold on
 stairs(Yzad);
 xlabel('k');
 ylabel('Y');
-legend('y','y_z_a_d', 'Location', 'southeast');
+legend('Y','Y_z_a_d', 'Location', 'southeast');
 
-%matlab2tikz('../rysunki_tikz/test_DMC.tex','showInfo', false)
+% matlab2tikz('../rysunki_tikz/test_DMC6.tex','showInfo', false)
