@@ -1,11 +1,12 @@
 # Fdb version 3
-["pdflatex"] 1636729894 "d:/Hubert/Dokumenty/Politechnika Warszawska/AIR/Semestr V/PUST/Laby/PUST-2021Z/Lab1/Sprawozdanie/Sprawozdanie.tex" "Sprawozdanie.pdf" "Sprawozdanie" 1636729921
+["pdflatex"] 1636736150 "d:/Hubert/Dokumenty/Politechnika Warszawska/AIR/Semestr V/PUST/Laby/PUST-2021Z/Lab1/Sprawozdanie/Sprawozdanie.tex" "Sprawozdanie.pdf" "Sprawozdanie" 1636736155
   "../Programy/AproksSkokDMC.m" 1636649633 603 53552ad9d683b5ade9e8dc015086e338 ""
   "../Programy/DMC.m" 1636729454 1489 f2cc3063fc3741c9adcffbbd1a76c896 ""
   "../Programy/PID.m" 1636649633 1056 f396806d52e5dd2a2bcf6aa2e780ecf2 ""
   "../TikZ_rysunki/PunktPracy.tex" 1636649633 4822 b6bf6b9552a69ba6a481c1cedfe41fc6 ""
   "../TikZ_rysunki/aproksymacja.tex" 1636649633 12428 b775c6a6dbf7f31200b44d7e3c108915 ""
   "../TikZ_rysunki/skoki.tex" 1636674820 12261 40dccff0cea78ff092da7d85c90556ad ""
+  "../TikZ_rysunki/testPID1.tex" 1636736145 49597 4009c0ccd2de0cfb19864f453b2ac7c5 ""
   "C:/Users/Hubert/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1095.pk" 1635874546 12668 442e667f159b56e46ebab4659c7c2953 ""
   "C:/Users/Hubert/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1635786761 9726841 e1737733787c1ce45e45e379c6d3098d ""
   "C:/Users/Hubert/AppData/Local/MiKTeX/pdftex/config/pdftex.map" 1636042552 86553 91af261fa287312f2fb1f66a097366be ""
@@ -237,12 +238,12 @@
   "C:/Users/Hubert/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1623002060 55589 34128738f682d033422ca125f82e5d62 ""
   "Rysunki/Stanowisko-grzewcze-schemat.png" 1636651815 24355 3069e1e5d3bff21b5e84f80cb028ca80 ""
   "Rysunki/Stanowisko-grzewcze.png" 1636651835 664885 ad1c014f86ab4eb72541c66249550bff ""
-  "Sprawozdanie.aux" 1636729897 2188 a93c4858a18577aca5d4bee33399f32b "pdflatex"
-  "Sprawozdanie.tex" 1636729920 10002 53692580c4862fc03a995af3f3431193 ""
-  "Sprawozdanie.toc" 1636729897 549 457362e1eb5dc6c12318747f788f7b5e "pdflatex"
-  "d:/Hubert/Dokumenty/Politechnika Warszawska/AIR/Semestr V/PUST/Laby/PUST-2021Z/Lab1/Sprawozdanie/Sprawozdanie.tex" 1636729920 10002 53692580c4862fc03a995af3f3431193 ""
+  "Sprawozdanie.aux" 1636736154 2793 ea7435d6351102963ae5f10c2db162de "pdflatex"
+  "Sprawozdanie.tex" 1636736126 11428 3b4c23a7bc4d792599d53bc4a3aa52b0 ""
+  "Sprawozdanie.toc" 1636736154 872 e51988c15fe8cfb4b5cea16056229fd5 "pdflatex"
+  "d:/Hubert/Dokumenty/Politechnika Warszawska/AIR/Semestr V/PUST/Laby/PUST-2021Z/Lab1/Sprawozdanie/Sprawozdanie.tex" 1636736126 11428 3b4c23a7bc4d792599d53bc4a3aa52b0 ""
   (generated)
-  "Sprawozdanie.aux"
   "Sprawozdanie.log"
   "Sprawozdanie.toc"
+  "Sprawozdanie.aux"
   "Sprawozdanie.pdf"

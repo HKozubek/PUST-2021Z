@@ -883,7 +883,6 @@ INPUT .\Rysunki\Stanowisko-grzewcze-schemat.png
 INPUT .\Rysunki\Stanowisko-grzewcze-schemat.png
 INPUT .\Rysunki\Stanowisko-grzewcze-schemat.png
 INPUT .\Rysunki\Stanowisko-grzewcze-schemat.png
-INPUT C:\Users\Hubert\AppData\Local\Programs\MiKTeX\fonts\tfm\public\pl\plti10.tfm
 INPUT C:\Users\Hubert\AppData\Local\Programs\MiKTeX\fonts\tfm\public\pl\plr8.tfm
 INPUT C:\Users\Hubert\AppData\Local\Programs\MiKTeX\fonts\tfm\public\pl\plr6.tfm
 INPUT C:\Users\Hubert\AppData\Local\Programs\MiKTeX\fonts\tfm\public\pl\plmi10.tfm
@@ -904,6 +903,7 @@ INPUT ..\TikZ_rysunki\PunktPracy.tex
 INPUT ..\TikZ_rysunki\PunktPracy.tex
 INPUT ..\TikZ_rysunki\PunktPracy.tex
 INPUT C:\Users\Hubert\AppData\Local\Programs\MiKTeX\fonts\tfm\public\pl\plbx10.tfm
+INPUT C:\Users\Hubert\AppData\Local\Programs\MiKTeX\fonts\tfm\public\pl\plti10.tfm
 INPUT ..\TikZ_rysunki\skoki.tex
 INPUT ..\TikZ_rysunki\skoki.tex
 INPUT ..\TikZ_rysunki\skoki.tex
@@ -937,6 +937,10 @@ INPUT ..\Programy\DMC.m
 INPUT ..\Programy\DMC.m
 INPUT ..\Programy\DMC.m
 INPUT ..\Programy\DMC.m
+INPUT ..\TikZ_rysunki\testPID1.tex
+INPUT ..\TikZ_rysunki\testPID1.tex
+INPUT ..\TikZ_rysunki\testPID1.tex
+INPUT ..\TikZ_rysunki\testPID1.tex
 INPUT Sprawozdanie.aux
 INPUT C:\Users\Hubert\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\pl\plrm.enc
 INPUT C:\Users\Hubert\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\pl\plms.enc
