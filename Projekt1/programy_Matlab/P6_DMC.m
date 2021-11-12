@@ -39,7 +39,6 @@ for i = D+1:D+N
     S(i) = S(D);
 end
         
-% Inicjalizacja macierzy
 M = zeros(N, Nu);
 for i = 1:Nu
     M(i:N,i)=S(1:N-i+1);
@@ -51,7 +50,6 @@ for i = 1:(D-1)
 end
 
 I = eye(Nu);
-
 K = ((M'*M + lambda*I)^(-1))*M';
 
 % inicjalizacja
@@ -72,10 +70,10 @@ u_min = Umin - Upp;
 
 % liczone online
 
-for k = 15:time
+for k = 12:time
     Y(k) =  symulacja_obiektu1Y_p1(U(k-10), U(k-11), Y(k-1), Y(k-2));
     y(k) = Y(k) - Ypp;
-    e(k) = yzad(k) - y(k);
+    e(k) = (yzad(k) - y(k))^2;
     
     Yzad_DMC = yzad(k)*ones(N,1);
     Y_DMC = y(k)*ones(N,1);
@@ -89,7 +87,7 @@ for k = 15:time
     end
     
     if du < - du_max
-        du = -du_max;
+        du = - du_max;
     end
     
     for n=D-1:-1:2
@@ -110,9 +108,10 @@ for k = 15:time
     end
     
     U(k) = u(k) + Upp;
- 
-    
-
+end
+E = 0;
+for k = 12:time
+    E = E + e(k);
 end
 
 % Wykresy
@@ -125,9 +124,11 @@ ylabel('U');
 
 subplot(2,1,2);
 plot(Y);
-title('Y(k) i Y_z_a_d(k)');
+title("Y(k) i Y_z_a_d(k); E = " + E);
 hold on
 stairs(Yzad);
 xlabel('k');
 ylabel('Y');
 legend('y','y_z_a_d', 'Location', 'southeast');
+
+%matlab2tikz('../rysunki_tikz/test_DMC.tex','showInfo', false)
