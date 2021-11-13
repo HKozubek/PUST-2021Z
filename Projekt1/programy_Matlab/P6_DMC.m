@@ -33,18 +33,14 @@ Yzad(1201:time) = 3.95;
 % N = 20; Nu = 1; lambda = 1;           %testDMC5; E = 2.4716
 % N = 20; Nu = 3; lambda = 1.5;         %testDMC6; E = 2.4444
 
-N = 19; Nu = 30; lambda = 1.9185;        %wartości z optymalizacji; E = 2.4421;
+N = 19; Nu = 30; lambda = 1.9185;       %wartości z optymalizacji; E = 2.4421;
 
 % Zwiększanie N, Nu w stosunku do testDMC6 nie daje znaczącej poprawy
 % sterowania.
 
-
-
-
 U(1:time) = Upp;
 Y(1:time) = Ypp;
 e(1:time) = 0;
-
 
 % Obliczenia offline
 S = [S; zeros(N,1)];

@@ -27,9 +27,9 @@ end
 err = 10e-5;
 
 for i = 30:time
-    if abs(Y(i+1) - Y(i)) < err;
+    if abs(Y(i+1) - Y(i)) < err
         D = i;
-        break;
+        break
     end
 end
     
@@ -48,9 +48,9 @@ ylabel('S')
 xlabel('k')
 title("Odpowiedź skokowa dla DMC; D = " + D)
 
-matlab2tikz('../rysunki_tikz/skok_DMC.tex','showInfo', false)
+% matlab2tikz('../rysunki_tikz/skok_DMC.tex','showInfo', false)
 
-save('S.mat', 'S')
-save('D.mat', 'D')
+% save('S.mat', 'S')
+% save('D.mat', 'D')
 
 

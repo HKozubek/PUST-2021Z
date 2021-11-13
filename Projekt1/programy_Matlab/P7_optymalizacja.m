@@ -11,7 +11,7 @@ ub_pid = [inf inf inf];
 
 lb_dmc = [1 1 0];
 ub_dmc = [85 85 inf];
-[x_opt_DMC, Err_DMC] = ga(E_DMC, 3, [], [], [], [],  lb_dmc, ub_dmc, [], 1:2);
+[x_opt_DMC, Err_DMC] = ga(E_DMC, 3, [], [], [], [],  lb_dmc, ub_dmc, [], [1 2]);
 
 % Wyniki optymalizacji DMC N = 19, Nu =30, lambda = 1.9185; E = 2.4421
 
