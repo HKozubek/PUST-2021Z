@@ -133,15 +133,15 @@ Wydzia³ Elektroniki i Technik Informacyjnych}}\\
 \tableofcontents
 
 \section{Cele projektu i laboratoriów}
-Celem niniejszego laboratorium oraz projektu by³o zaprojektowanie, implementacja,
+Celem niniejszego laboratorium by³o zaprojektowanie, implementacja,
 weryfikacja poprawnoœci dzia³ania oraz dobór parametrów algorytmów regulacji jednowymiarowego
-procesu na grzewczym stanowisku laboratoryjnym przedstawionym na rys \ref{Stanowisko grzewcze}.
+procesu na grzej¹co-ch³odz¹cym stanowisku laboratoryjnym przedstawionym na rys \ref{Stanowisko grzewcze}.
 
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{ ./Rysunki/Stanowisko-grzewcze.png }
-	\caption {Stanowisko grzej¹co-ch³odz¹ce, u¿ywane w trakcie laboratoriów}
+	\caption {Stanowisko grzej¹co-ch³odz¹ce u¿ywane w trakcie laboratoriów}
 	\label{Stanowisko grzewcze}
 \end{figure}
 
@@ -161,18 +161,18 @@ W ramach laboratorium nale¿a³o wykonaæ 5 zadañ.
 
 \begin{enumerate}
 	\label{Lista-zadan}
-  \item Odczytaæ wartoœc pomiaru termometru T1 dla mocy 26 grza³ki G1\%.
-  \item Wyznaczyæ odpowiedŸ skokow¹ procesu dla 3 ró¿ych wartoœci G1\%.
-  \item Wybraæ jedn¹ z dopowiedŸi skokowych, przekszta³ciæ j¹ i wykorzystaæ w algorytmie DMC. 
-  \item Zaimplementowaæ algorytm PID i DMC, od regulacji procesu stanowiska, w jêzyku MATLAB.
+  \item Odczytaæ wartoœæ pomiaru temperatury dla termometru T1 dla mocy 26 \% grza³ki G1.
+  \item Wyznaczyæ odpowiedŸ skokow¹ procesu dla trzech ró¿ych wartoœci G1.
+  \item Wybraæ jedn¹ z odpowiedzi skokowych, przekszta³ciæ j¹ i wykorzystaæ w algorytmie DMC. 
+  \item Zaimplementowaæ algorytm PID i DMC do regulacji procesu stanowiska w jêzyku MATLAB.
   \item Dobraæ nastawy algorytmu PID oraz parametry algorytmu DMC metod¹ eksperymentaln¹.
 \end{enumerate}
 
 \section{Punkt pracy stanowiska}
-W pierwszej kolejnoœci nale¿a³o sprawdziæ mo¿liwoœæ sterowania i pomiaru w komunikacji ze stanowiskiem.
+W pierwszej kolejnoœci sprawdzono mo¿liwoœæ sterowania i pomiaru w komunikacji ze stanowiskiem.
 Nastêpnie  odczytaæ wartoœæ temperatury termometru T1 w wyznaczonym punkcie pracy G1=26\%.
 Po ustawieniu mocy grza³ki i odczekaniu, a¿ temperatura T1 ustabilizuje siê,
-odczytana wartoœæ termometru T1 wynosi³a \num{31.12} °C. Wykres temperatury na termometrze T1 zosta³ przedstawiony na rys. \ref{PunktPracy}
+odczytana wartoœæ termometru T1 wynosi³a \num{31.12} °C. Wykres temperatury na termometrze T1 zosta³ przedstawiony na rys. \ref{PunktPracy}.
 
 \begin{figure}[H]
 	\centering
@@ -183,10 +183,10 @@ odczytana wartoœæ termometru T1 wynosi³a \num{31.12} °C. Wykres temperatury na t
 
 
 \section{Odpowiedzi skokowe procesu}
-W tej czœci laboratorium nale¿a³o przeprowadziæ eksperyment dla 3 rónych wartoœci mocy grza³ki G1.
-Rozpoczynaj¹c eksperyment z punktu pracy G1=26\%, wyznaczono odpowiedzi skokowe procesu. Eksperyment by³ wykokany
+W tej czêœci laboratorium nale¿a³o przeprowadziæ eksperyment dla 3 ró¿nych wartoœci mocy grza³ki G1.
+Rozpoczynaj¹c eksperyment z punktu pracy G1=26\% wyznaczono odpowiedzi skokowe procesu. Eksperyment by³ wykokany
 dla trzech ró¿nych zmian sygna³u steruj¹cego, G1=36\%, G1=46\% oraz G1=56\%.
-Wykresy przedstawiaj¹ce zmiany temperatury przedstawiono na rys. \ref{skoki}
+Wykresy przedstawiaj¹ce zmiany temperatury przedstawiono na rys. \ref{skoki}.
 
 
 % \begin{figure}
@@ -210,12 +210,21 @@ Wykresy przedstawiaj¹ce zmiany temperatury przedstawiono na rys. \ref{skoki}
 \label{skoki}
 \end{figure}
 
+Patrz¹c na wykres odpowiedzi skokowych mo¿emy zauwa¿yæ, ¿e proces jest w przybli¿eniu liniowy. Na rys. \ref{charakterystyka-statyczna} zosta³a przedstawiona charakterystyka statyczna procesu.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics{../TikZ_rysunki/charakterystyka_stat.pdf}
+	\caption{Charkterystyk statyczna procesu grzej¹co-ch³odz¹cego}
+	\label{charakterystyka-statyczna}
+\end{figure}
+
 
 \section{OdpowiedŸ skokowa w algorytmie DMC}
-Wykonanie tego zadania polega³o na przekszta³ceniu jedn¹ z odpowiedzi
+Wykonanie tego zadania polega³o na przekszta³ceniu jednej z odpowiedzi
 skokowych, tak aby otrzymaæ odpowiedŸ skokow¹ u¿ywan¹ w algorymie DMC.
 W tym celu wybrano drug¹ odpowiedŸ skokow¹, tj. skok G1 z mocy 26\% do mocy 46\%.
-Do przekszta³cenia zebranej odpowiedzi skokowej, na tak¹ nadaj¹c¹ siê do algorytmu DMC wykorzystano program TODO:"SkokDMC.m".
+Do przekszta³cenia zebranej odpowiedzi skokowej, na tak¹ nadaj¹c¹ siê do algorytmu DMC wykorzystano program \emph{SkokDMC.m}.
 Program ten wylicza potrzebn¹ odpowiedŸ skokow¹ przy u¿yciu prostego wzoru.
 \begin{equation}
 	S(i)= \frac{Y(i) - Y_{\mathrm{pp}}}{U_{\mathrm{skok}} - U_{\mathrm{pp}}}
@@ -228,8 +237,8 @@ gdzie:
 	\item $U_{\mathrm{skok}}$ - wartoœæ sterowanie w chwili k=0 i póŸniej (tutaj $U_{\mathrm{skok}} = 46$),
 	\item $U_{\mathrm{pp}}$ - wartoœc sterowania przed chwil¹ k=0 (tutaj $U_{\mathrm{pp}} = 26$)
 \end{itemize}
-W ten sposób przekszta³cona odpowiedŸ skokowa zosta³a zapisana do pliku TODO: "dane1.mat"
-i wykorzystana w dalszych czêœciach laboratorów.
+W ten sposób przekszta³cona odpowiedŸ skokowa zosta³a zapisana do pliku \emph{dane1.mat}
+i wykorzystana w dalszych czêœciach laboratoriów.
 
 Poza przekszta³ceniem odpowiedzi skokowej nale¿a³o j¹ jeszcze przybli¿yæ u¿ywaj¹c w tym celu cz³onu inercyjnego
 drugiego rzêdu z opóŸnieniem.
@@ -237,7 +246,7 @@ drugiego rzêdu z opóŸnieniem.
 \begin{equation}
 	G(s)= \frac{K}{(sT_1 + 1)(sT_2 + 1)}e^{-T_{\mathrm{d}}s}
 \end{equation}
-Po dyskretyzacji danej transmitancji otrzymujemy
+Po dyskretyzacji danej transmitancji otrzymujemy:
 
 \begin{equation}
 	G(z)= \frac{b_1z^{-1} + b_2z^{-2}}{1 + a_1z^{-1} + a_2z^{-2}}z^{-T_{\mathrm{d}}}
@@ -257,13 +266,13 @@ gdzie
 
 Z wykresu odpowiedzi skokowej procesu zosta³o odczytane opóŸnienie. W naszym przypadku $T_{\mathrm{d}} = 9$.
 Aby wyznaczyæ wartoœci pozosta³ych wspó³czynników u¿yto dostêpnej w matlabie funkcji ga, która minimalizuje
-wartoœæ zadanej funkcji z wykorzystaniem algorytmu generycznego. Funkcja minimalizowana, to funkcja wyliczaj¹ca sumê kwadratów b³êdów
+wartoœæ zadanej funkcji z wykorzystaniem algorytmu generycznego. Funkcja minimalizowana to funkcja wyliczaj¹ca sumê kwadratów b³êdów
 pomiêdzy odpowiedzi¹ skokow¹, a transmitancj¹ przybli¿aj¹c¹.
 
 \lstinputlisting{../Programy/AproksSkokDMC.m}
 
-Nastêpnie u¿ywaj¹c skryptu TODO:"Optymalizacja.m" zosta³y wyznaczone pozosta³e parametry transmitancji przybli¿aj¹cej odpowiedŸ skokow¹.
-Ostateczne wartoœci parametrów to
+Nastêpnie u¿ywaj¹c skryptu \emph{Optymalizacja.m} zosta³y wyznaczone pozosta³e parametry transmitancji przybli¿aj¹cej odpowiedŸ skokow¹.
+Ostateczne wartoœci parametrów to:
 
 \begin{equation}
 	\begin{split}
@@ -277,14 +286,14 @@ Ostateczne wartoœci parametrów to
 \begin{figure}[H]
 	\centering
 	\input{../TikZ_rysunki/aproksymacja.tex}
-	\caption{OdpowiedŸ skokowa procesu, oraz transmitancja j¹ aproksumuj¹ca}
+	\caption{OdpowiedŸ skokowa procesu oraz transmitancja j¹ aproksumuj¹ca}
 	\label{aproksymacja-odpowiedzi-skokowej}
 \end{figure}
 
-Wykres zarówno odpowiedzi skokowej, jak i transmitancji j¹ przybli¿aj¹cej zosta³ zamieszczony na rys. \ref{aproksymacja-odpowiedzi-skokowej}
+Wykres zarówno odpowiedzi skokowej, jak i transmitancji j¹ przybli¿aj¹cej zosta³ zamieszczony na rys. \ref{aproksymacja-odpowiedzi-skokowej}.
 
 \section{Algorytm PID i DMC}
-Kolejnym podpunktem zadañ laboratoryjnych by³o zaimplementowanie algorytmu regulacji PID oraz DMC w jêzyku MATLAB.
+Kolejnym podpunktem zadañ laboratoryjnych by³o zaimplementowanie algorytmów regulacji PID oraz DMC w jêzyku MATLAB.
 
 \subsection{Regulator PID}
 \lstinputlisting{../Programy/PID.m}
@@ -294,7 +303,7 @@ Kolejnym podpunktem zadañ laboratoryjnych by³o zaimplementowanie algorytmu regul
 
 \section{Dostrajanie Regulatorów}
 
-Ostatnim zadaniem by³ dobór nastawów obu algorytmów regulacji. W tym celu sko¿ystano z wczœniej uzyskanej transmitancji aproksymuj¹cej skok procesu,
+Ostatnim zadaniem by³ dobór nastawów obu algorytmów regulacji. W tym celu skorzystano z wczeœniej uzyskanej transmitancji aproksymuj¹cej skok procesu,
 aby dobraæ parametry obu regulatorów. W ten sposób mo¿na by³o przeprowadziæ wiêcej eksperymentów w krótszym czasie.
 Uzyskane w ten sposób parametry zosta³y przetestowane na realnym procesie.
 
@@ -302,8 +311,8 @@ Uzyskane w ten sposób parametry zosta³y przetestowane na realnym procesie.
 
 Do strojenia regulatora PID zosta³¹ wykorzystana metoda Zieglera-Nicholsa. Parametry do niej potrzebne wyznaczono na procesie symulowanym.
 Oscylacje niegasn¹ce otrzymano dla parametrów $K_\mathrm{k} = 43$ oraz $T_\mathrm{k} = 36$.
-Na tej podstawie dobrano nastêpuj¹ce parametry regulatora PID $K = \num{21.5}; T_\mathrm{i} = 18; T_\mathrm{d} =\num{4.5}$.
-Oczywiœcie do regulacji zosta³y wykorzystane parametry PID-a dyskretnego okreœlone wzorami ($T_\mathrm{p} = 1$)
+Na tej podstawie dobrano nastêpuj¹ce parametry regulatora PID: $K = \num{21.5}; T_\mathrm{i} = 18; T_\mathrm{d} =\num{4.5}$.
+Oczywiœcie do regulacji zosta³y wykorzystane parametry PID-a dyskretnego okreœlone wzorami ($T_\mathrm{p} := 1$)
 
 \begin{equation}
 	\begin{split}
@@ -317,7 +326,7 @@ Oczywiœcie do regulacji zosta³y wykorzystane parametry PID-a dyskretnego okreœlo
 \begin{figure}[H]
 	\centering
 	\input{../TikZ_rysunki/testPID1.tex}
-	\caption{Regulacja PID, eksperyment 1}
+	\caption{Regulacja PID, eksperyment 1,$K = \num{21.5000}, T_\mathrm{i} = \num{18}, T_\mathrm{d} = \num{4.5} E = \num{11.1096}$}
 	\label{PID1}
 \end{figure}
 
@@ -326,29 +335,29 @@ Oczywiœcie do regulacji zosta³y wykorzystane parametry PID-a dyskretnego okreœlo
 % podpisaæ parametry,
 % policzyæ errory
 
-Wyniki regulacji PID dla tych parametrów przedstawiono na rys. \ref{PID1}
-W dalszej kolejnoœci sprawdzane by³y jescze inne wartoœci parametrów, w celu znalezienia jak najlepszych nastawów.
+Wyniki regulacji PID dla tych parametrów przedstawiono na rys. \ref{PID1}.
+W dalszej kolejnoœci sprawdzane by³y jeszcze inne wartoœci parametrów w celu znalezienia jak najlepszych nastawów.
 
 \begin{figure}[H]
 	\centering
 	\input{../TikZ_rysunki/testPID2.tex}
-	\caption{Regulacja PID, eksperyment 2}
+	\caption{Regulacja PID, eksperyment 2, $K = \num{32,25}, T_\mathrm{i} = \num{36}, T_\mathrm{d} = \num{4.5} E = \num{3.3641}$}
 	\label{PID2}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\input{../TikZ_rysunki/testPID3.tex}
-	\caption{Regulacja PID, eksperyment 3}
+	\caption{Regulacja PID, eksperyment 3, $K = \num{21,5}, T_\mathrm{i} = \num{72}, T_\mathrm{d} = \num{4.5} E = \num{4.3880}$}
 	\label{PID3}
 \end{figure}
 
-\begin{figure}[H]
-	\centering
-	\input{../TikZ_rysunki/testPID4.tex}
-	\caption{Regulacja PID, eksperyment 4}
-	\label{PID4}
-\end{figure}
+% \begin{figure}[H]
+% 	\centering
+% 	\input{../TikZ_rysunki/testPID4.tex}
+% 	\caption{Regulacja PID, eksperyment 4, $K = \num{32,25}, T_\mathrm{i} = \num{36}, T_\mathrm{d} = \num{4.5} E = \num{3.6891}$}
+% 	\label{PID4}
+% \end{figure}
 
 
 \begin{figure}[H]
@@ -358,8 +367,8 @@ W dalszej kolejnoœci sprawdzane by³y jescze inne wartoœci parametrów, w celu zna
 	\label{DMC1}
 \end{figure}
 
-Z wykresów mo¿na wyczytaæ, ¿e zmiana parametrów PDI poprawi³a jakoœc regulacji. Co do regulatora DMC natomiast, to dzia³a on ca³kiem dobrze,
-jednak zarówno PDI jak i DMC s¹ nara¿one na zak³ócenia które mo¿na zauwa¿yæ na wykresach.
+Z wykresów mo¿na wyczytaæ, ¿e zmiana parametrów PID poprawi³a jakoœæ regulacji. Co do regulatora DMC natomiast dzia³a on ca³kiem dobrze,
+jednak zarówno PID jak i DMC s¹ nara¿one na zak³ócenia, które mo¿na zauwa¿yæ na wykresach.
 
 
 

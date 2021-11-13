@@ -2,14 +2,14 @@
 \contentsline {section}{\numberline {2\relax .\enspace }Przebieg laboratorium}{2}{}%
 \contentsline {section}{\numberline {3\relax .\enspace }Punkt pracy stanowiska}{3}{}%
 \contentsline {section}{\numberline {4\relax .\enspace }Odpowiedzi skokowe procesu}{3}{}%
-\contentsline {section}{\numberline {5\relax .\enspace }Odpowied\'z skokowa w algorytmie DMC}{4}{}%
-\contentsline {section}{\numberline {6\relax .\enspace }Algorytm PID i DMC}{6}{}%
-\contentsline {subsection}{\numberline {6.1\relax .\enspace }Regulator PID}{6}{}%
-\contentsline {subsection}{\numberline {6.2\relax .\enspace }Regulator DMC}{8}{}%
-\contentsline {section}{\numberline {7\relax .\enspace }Dostrajanie Regulator\'ow}{9}{}%
-\contentsline {subsection}{\numberline {7.1\relax .\enspace }Strojenie PID}{9}{}%
-\contentsline {section}{\numberline {8\relax .\enspace }Projekt}{12}{}%
-\contentsline {section}{\numberline {9\relax .\enspace }Sprawdzanie poprawno\'s\'c warto\'sci $U_\mathrm {pp}, Y_\mathrm {pp}$}{12}{}%
+\contentsline {section}{\numberline {5\relax .\enspace }Odpowied\'z skokowa w algorytmie DMC}{5}{}%
+\contentsline {section}{\numberline {6\relax .\enspace }Algorytm PID i DMC}{7}{}%
+\contentsline {subsection}{\numberline {6.1\relax .\enspace }Regulator PID}{7}{}%
+\contentsline {subsection}{\numberline {6.2\relax .\enspace }Regulator DMC}{9}{}%
+\contentsline {section}{\numberline {7\relax .\enspace }Dostrajanie Regulator\'ow}{10}{}%
+\contentsline {subsection}{\numberline {7.1\relax .\enspace }Strojenie PID}{10}{}%
+\contentsline {section}{\numberline {8\relax .\enspace }Projekt}{13}{}%
+\contentsline {section}{\numberline {9\relax .\enspace }Sprawdzanie poprawno\'s\'c warto\'sci $U_\mathrm {pp}, Y_\mathrm {pp}$}{13}{}%
 \contentsline {section}{\numberline {10\relax .\enspace }Odpowiedzi skokowe procesu}{13}{}%
 \contentsline {section}{\numberline {11\relax .\enspace }Przekszta\IeC {\l }cenie odpowiedzi skokowej}{15}{}%
 \contentsline {section}{\numberline {12\relax .\enspace }Implementacja PID i DMC}{16}{}%
