@@ -14,7 +14,7 @@ function E = DMC_funkcja(X)
     Upp = 0.5;
     Ypp = 4;
 
-    % Ograniczenia wartości sygnału sterującego
+    % Ograniczenia wartosci sygnalu sterującego
     Umin = 0.3;
     Umax = 0.7;
     du_max = 0.05;

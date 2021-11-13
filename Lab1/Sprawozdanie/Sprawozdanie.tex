@@ -20,6 +20,8 @@
 \usepackage{listings}
 \usepackage{matlab-prettifier}
 \usepackage{enumitem,amssymb}
+% \usepgfplotslibrary{external} 
+% \tikzexternalize
 \definecolor{szary}{rgb}{0.95,0.95,0.95}
 \definecolor{niebieski}{rgb}{0,0.447,0.741}
 \definecolor{czerwony}{rgb}{0.85,0.325,0.098}
@@ -319,8 +321,241 @@ Oczywiœcie do regulacji zosta³y wykorzystane parametry PID-a dyskretnego okreœlo
 	\label{PID1}
 \end{figure}
 
+% TODO:
+% Opisaæ przebiegi doboru parametrów,
+% podpisaæ parametry,
+% policzyæ errory
+
 Wyniki regulacji PID dla tych parametrów przedstawiono na rys. \ref{PID1}
+W dalszej kolejnoœci sprawdzane by³y jescze inne wartoœci parametrów, w celu znalezienia jak najlepszych nastawów.
+
+\begin{figure}[H]
+	\centering
+	\input{../TikZ_rysunki/testPID2.tex}
+	\caption{Regulacja PID, eksperyment 2}
+	\label{PID2}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\input{../TikZ_rysunki/testPID3.tex}
+	\caption{Regulacja PID, eksperyment 3}
+	\label{PID3}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\input{../TikZ_rysunki/testPID4.tex}
+	\caption{Regulacja PID, eksperyment 4}
+	\label{PID4}
+\end{figure}
 
 
+\begin{figure}[H]
+	\centering
+	\input{../TikZ_rysunki/testDMC.tex}
+	\caption{Regulacja DMC, eksperyment 1}
+	\label{DMC1}
+\end{figure}
+
+Z wykresów mo¿na wyczytaæ, ¿e zmiana parametrów PDI poprawi³a jakoœc regulacji. Co do regulatora DMC natomiast, to dzia³a on ca³kiem dobrze,
+jednak zarówno PDI jak i DMC s¹ nara¿one na zak³ócenia które mo¿na zauwa¿yæ na wykresach.
+
+
+
+\section{Projekt}
+
+Zadanie projektowe wykorzystywa³o symulowany obiekt regulacji.
+Wyjœcie obiektu mo¿na wyznaczyæ przy pomocy polecenia
+
+\text{Y(k)=symulacja obiektu1y p1(U(k-10),U(k-11),Y(k-1),Y(k-2))}
+
+Wartoœci sygna³ów w wejœcia i wyjœcia procesu w punkcie pracy wynosz¹
+$U_\mathrm{pp} = \num{0,5},  Y_\mathrm{pp} = 4$, natomiast ograniczenia sterowania wynosz¹
+$U^\mathrm{min} = \num{0,3}, U^\mathrm{max} = \num{0,7}$, a okres próbkowania wynosi \num{0,5}.
+
+\section{Sprawdzanie poprawnoœæ wartoœci $U_\mathrm{pp},  Y_\mathrm{pp}$}
+
+W celu sprawdzenia poprawnoœci punktu pracy zosta³a przeprowadzona symulacja, gdzie na wejœcie podano
+$U_\mathrm{pp}$, jako poprzednie wartoœci y podano $Y_\mathrm{pp}$  i sprawdzono wartoœæ wyjœcia procesu w nastêpnych chwilach. Wyniki symulacji przedstawstawiono na rys. \ref{Punkt-pracy}
+
+\begin{figure}[H]
+	\centering
+	\input{../../Projekt1/rysunki_tikz/punkt_pracy.tex}
+	\caption{Sprawdzanie poprawoœci punktu pracy}
+	\label{Punkt-pracy}
+\end{figure}
+
+
+\section{Odpowiedzi skokowe procesu}
+
+W tej czêœci wyznaczone zosta³y odpowiedzi skokowe procesu, dla kilku zmian sygna³u steruj¹cego,
+gdzie wartoœæ pocz¹tkowa sterowania wynosi³a $U_\mathrm{pp}$. Wyniki symulacji przedstawia rys. \ref{Odpowiedzi-skokowe}
+
+\begin{figure}[H]
+	\centering
+	\input{../../Projekt1/rysunki_tikz/odpowiedzi_skokowe.tex}
+	\caption{Odpowiedzi skokowe procesu}
+	\label{Odpowiedzi-skokowe}
+\end{figure}
+
+W celu ustalenia, czy proces jest liniowy, zosta³ narysowany wykres zale¿noœci Y(U), dla dozwolonych wartoœci sterowania.
+Wykres ten zosta³ przedstawiony na rys. \ref{Charakterystyka-statyczna}. Z wykresu wynika, ¿e zale¿noœæ jest liniowa, zatem wzmocnienie statyczne mo¿na wyznaczyæ jako tg prostej.
+W naszym przypadku $K_{\mathrm{stat}} = 2$
+
+\begin{figure}[H]
+	\centering
+	\input{../../Projekt1/rysunki_tikz/charakterystyka_statyczna.tex}
+	\caption{Charakterystyka statyczna, wyznaczanie wzmocnienia}
+	\label{Charakterystyka-statyczna}
+\end{figure}
+
+
+\section{Przekszta³cenie odpowiedzi skokowej}
+
+Do przekszta³cenia zosta³a wybrana odpowiedŸ skokowa dla sterowania $U_\mathrm{skok} = \num{0.65}$
+W pierwszej kolejnoœci zebrane dane, zosta³y przesuniête w czasie, tak aby skok sterowania nastêpowa³ dla $k=0$.
+Nastêpnie wartoœci skoku zosta³y przeskalowane i przesuniête w odpowiedni sposób, tak aby odpowiedŸ da³o siê wykorzystaæ w algorytmie DMC.
+Wynikowa odpowiedŸ skokowa zosta³a przedstawiona na rys. \ref{Odpowiedz-skokowa-DMC}
+
+\begin{figure}[H]
+	\centering
+	\input{../../Projekt1/rysunki_tikz/skok_DMC.tex}
+	\caption{Przekszta³cona odpowiedŸ skokowa}
+	\label{Odpowiedz-skokowa-DMC}
+\end{figure}
+
+
+\section{Implementacja PID i DMC}
+
+\subsection{PID}
+\lstinputlisting{../../Projekt1/programy_Matlab/PID_funkcja.m}
+
+\subsection{DMC}
+\lstinputlisting{../../Projekt1/programy_Matlab/DMC_funkcja.m}
+
+
+\section{Dobór nastawów PID i DMC metod¹ eksperymentaln¹}
+
+\subsection{Nastawy PID}
+W celu doboru nastawów regulatora PID skorzystano z metody Zieglera-Nicholsa. Oscylacje niegasn¹ce otrzymano dla $K_\mathrm{kryt} = \num{1.115}$, z okresem
+$T_\mathrm{kryt} = 37$. Wyliczaj¹c wartoœci parametrów jako $K = \num{0.6}K_\mathrm{kryt}, T\mathrm{i} = \num{0.5}T_\mathrm{kryt}, T\mathrm{d} = \num{0.12}T_kryt$,
+a nastêpnie przeliczajac je na nastawy PID-u dyskretnego, rozpoczêta zosta³a regulacja, przedstawiona na rys. \ref{test-PID1}.
+
+\begin{figure}[H]
+	\centering
+	\input{../../Projekt1/rysunki_tikz/test_PID1.tex}
+	\caption{Regulator PID - test1, $K = \num{0.669}, T_\mathrm{i} = \num{18.5}, T_\mathrm{d} = \num{4.44}$ }
+	\label{test-PID1}
+\end{figure}
+
+Modyfikuj¹c parametry regulatora przeprowadzone zosta³y jeszcze 3 eksperymenty przedstawione na rys. \ref{test-PID2}, rys. \ref{test-PID3} i rys. \ref{test-PID4}
+
+\begin{figure}[H]
+	\centering
+	\input{../../Projekt1/rysunki_tikz/test_PID2.tex}
+	\caption{Regulator PID - test2, $K = \num{0.75}, T_\mathrm{i} = \num{16}, T_\mathrm{d} = \num{3}$}
+	\label{test-PID2}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\input{../../Projekt1/rysunki_tikz/test_PID3.tex}
+	\caption{Regulator PID - test3, $K = \num{0.67}, T_\mathrm{i} = \num{10}, T_\mathrm{d} = \num{0.1}$}
+	\label{test-PID3}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\input{../../Projekt1/rysunki_tikz/test_PID4.tex}
+	\caption{Regulator PID - test4, $K = \num{0.8}, T_\mathrm{i} = \num{7}, T_\mathrm{d} = \num{2}$}
+	\label{test-PID4}
+\end{figure}
+
+Zmieniaj¹c wartoœci parametrów uda³o siê poprawiæ regulacjê, zarówno zmniejszy³a siê wartoœæ b³êdu, jak i wykresy wygl¹daj¹ lepiej.
+Na tescie 3 i 4 PID dzia³a zdecydowanie szybciej, dodatkowo oscylacje w teœcie 4 s¹ zdecydowanie mniejsze.
+
+
+\subsection{Nastawy DMC}
+
+Dobór parametrów dla regulatora DMC odbywa³ siê w podobny sposób.
+W pierwszej kolejnoœci zosta³y wybrane parametry w sposób przypadkowy, nastêpnie parametry by³y lekko zmieniane.
+Patrz¹c na wyniki symulacji mo¿na by³o wybraæ najlepszy nastaw. Eksperymenty DMC zosta³y przedstawione na rys. \ref{test-DMC1} - \ref{test-DMC6}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics{../../Projekt1/rysunki_tikz/test_DMC1.pdf}
+	\caption{Regulator DMC - test1, $ N = 60, N_\mathrm{u} = 40, \lambda = 1 $}
+	\label{test-DMC1}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics{../../Projekt1/rysunki_tikz/test_DMC2.pdf}
+	\caption{Regulator DMC - test2, $ N = 40, N_\mathrm{u} = 20, \lambda = 2 $}
+	\label{test-DMC2}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics{../../Projekt1/rysunki_tikz/test_DMC3.pdf}
+	\caption{Regulator DMC - test3, $ N = 11, N_\mathrm{u} = 1, \lambda = 1 $}
+	\label{test-DMC3}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics{../../Projekt1/rysunki_tikz/test_DMC4.pdf}
+	\caption{Regulator DMC - test4, $ N = 15, N_\mathrm{u} = 1, \lambda = 1 $}
+	\label{test-DMC4}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics{../../Projekt1/rysunki_tikz/test_DMC5.pdf}
+	\caption{Regulator DMC - test5, $ N = 20, N_\mathrm{u} = 1, \lambda = 1 $}
+	\label{test-DMC5}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics{../../Projekt1/rysunki_tikz/test_DMC6.pdf}
+	\caption{Regulator DMC - test6, $ N = 20, N_\mathrm{u} = 3, \lambda = \num{1.5} $}
+	\label{test-DMC6}
+\end{figure}
+
+
+\section{Dobór parametrów PID i DMC automatycznie}
+
+
+W celu optymalizacji wskaŸnika b³êdu w zale¿noœci od parametrów obu regulatorów
+zosta³ u¿yty algorytm generyczny, którego zadaniem by³o znalezienie minimum funkcji b³êdów.
+
+Uzyskane nastawy to:
+\begin{equation}
+	\begin{split}
+		& \text{dla PID}: K = \num{0.8706}, T_\mathrm{i} = \num{5.6252}, T_\mathrm{d} = \num{2.9545}, E = \num{3.3250} \\
+		& \text{dla DMC}: N = 19, N_\mathrm{u} = 30, \lambda = \num{1.9185}, E = \num{2.4421} \\
+	\end{split}
+\end{equation}
+
+Otrzymane nastawy nie ró¿ni¹ siê znacz¹co od tych uzyskanych metod¹ eksperymentaln¹, niemniej jednak b³êdy regulacji s¹ mniejsze.
+Wykresy regulacji dla tych nastawów s¹ przedstawione na rys. \ref{PID-optymalizacja} i \ref{DMC-optymalizacja}
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics{../../Projekt1/rysunki_tikz/PID_optimal.pdf} %  = , Ti =  Td =; E = 3.3250
+	\caption{Regulator PID - parametry wyznaczone algorytmem generycznym, $ N = 19, N_\mathrm{u} = 30, \lambda = \num{ 1.9185}, E = \num{2.4421} $}
+	\label{PID-optymalizacja}
+\end{figure}
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics{../../Projekt1/rysunki_tikz/DMC_optimal.pdf} %  = , Ti =  Td =; E = 3.3250
+	\caption{Regulator DMC - parametry wyznaczone algorytmem generycznym, $K = \num{0.8706}, T_\mathrm{i} = \num{5.6252}, T_\mathrm{d} = \num{2.9545}$}
+	\label{DMC-optymalizacja}
+\end{figure}
 
 \end{document}

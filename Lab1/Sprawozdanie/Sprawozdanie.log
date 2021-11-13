@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.11.1)  12 NOV 2021 17:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.11.1)  13 NOV 2021 21:35
 entering extended mode
 **"d:/Hubert/Dokumenty/Politechnika Warszawska/AIR/Semestr V/PUST/Laby/PUST-2021Z/Lab1/Sprawozdanie/Sprawozdanie.tex"
 (d:/Hubert/Dokumenty/Politechnika Warszawska/AIR/Semestr V/PUST/Laby/PUST-2021Z/Lab1/Sprawozdanie/Sprawozdanie.tex
@@ -585,7 +585,7 @@ Package siunitx Info: Option "detect-weight" has been deprecated in this
 Package siunitx Warning: Option "binary-units" has been removed in this
 (siunitx)                release.
 
-Package translations Info: No language package found. I am going to use `english' as default language. on input line 92.
+Package translations Info: No language package found. I am going to use `english' as default language. on input line 94.
 
 LaTeX Warning: Unused global option(s):
     [twosides].
@@ -593,22 +593,22 @@ LaTeX Warning: Unused global option(s):
 (Sprawozdanie.aux)
 \openout1 = `Sprawozdanie.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
-LaTeX Font Info:    Checking defaults for OT4/cmr/m/n on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 94.
+LaTeX Font Info:    ... okay on input line 94.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 94.
+LaTeX Font Info:    ... okay on input line 94.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 94.
+LaTeX Font Info:    ... okay on input line 94.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 94.
+LaTeX Font Info:    ... okay on input line 94.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 94.
+LaTeX Font Info:    ... okay on input line 94.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 94.
+LaTeX Font Info:    ... okay on input line 94.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 94.
+LaTeX Font Info:    ... okay on input line 94.
+LaTeX Font Info:    Checking defaults for OT4/cmr/m/n on input line 94.
+LaTeX Font Info:    ... okay on input line 94.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -665,13 +665,13 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable tick labels; missing features). Consider writing \pgfplotsset{compat=1.18} into your preamble.
- on input line 92.
+ on input line 94.
 
 \c@lstlisting=\count344
 (C:\Users\Hubert\AppData\Local\Programs\MiKTeX\tex/latex/translations/dicts\translations-basic-dictionary-english.trsl
 File: translations-basic-dictionary-english.trsl (english translation file `translations-basic-dictionary')
 )
-Package translations Info: loading dictionary `translations-basic-dictionary' for `english'. on input line 92.
+Package translations Info: loading dictionary `translations-basic-dictionary' for `english'. on input line 94.
  [1
 
 {C:/Users/Hubert/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] (Sprawozdanie.toc
@@ -707,57 +707,149 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 <./Rysunki/Stanowisko-grzewcze.png, id=9, 451.6875pt x 340.8735pt>
 File: ./Rysunki/Stanowisko-grzewcze.png Graphic file (type png)
 <use ./Rysunki/Stanowisko-grzewcze.png>
-Package pdftex.def Info: ./Rysunki/Stanowisko-grzewcze.png  used on input line 141.
+Package pdftex.def Info: ./Rysunki/Stanowisko-grzewcze.png  used on input line 143.
 (pdftex.def)             Requested size: 318.66946pt x 240.50308pt.
-<./Rysunki/Stanowisko-grzewcze-schemat.png, id=11, 421.575pt x 305.34074pt>
-File: ./Rysunki/Stanowisko-grzewcze-schemat.png Graphic file (type png)
-<use ./Rysunki/Stanowisko-grzewcze-schemat.png>
-Package pdftex.def Info: ./Rysunki/Stanowisko-grzewcze-schemat.png  used on input line 148.
-(pdftex.def)             Requested size: 318.66946pt x 230.81273pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [1
 
- <./Rysunki/Stanowisko-grzewcze.png>]
+]
+<./Rysunki/Stanowisko-grzewcze-schemat.png, id=17, 421.575pt x 305.34074pt>
+File: ./Rysunki/Stanowisko-grzewcze-schemat.png Graphic file (type png)
+<use ./Rysunki/Stanowisko-grzewcze-schemat.png>
+Package pdftex.def Info: ./Rysunki/Stanowisko-grzewcze-schemat.png  used on input line 150.
+(pdftex.def)             Requested size: 318.66946pt x 230.81273pt.
+ [2 <./Rysunki/Stanowisko-grzewcze.png> <./Rysunki/Stanowisko-grzewcze-schemat.png>]
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <10.95> on input line 173.
+(Font)              <10.95> on input line 175.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <8> on input line 173.
+(Font)              <8> on input line 175.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <6> on input line 173.
- (../TikZ_rysunki/PunktPracy.tex)
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [2 <./Rysunki/Stanowisko-grzewcze-schemat.png>] (../TikZ_rysunki/skoki.tex)
-Underfull \vbox (badness 10000) has occurred while \output is active []
+(Font)              <6> on input line 175.
+ (../TikZ_rysunki/PunktPracy.tex) (../TikZ_rysunki/skoki.tex)
+Underfull \vbox (badness 6859) has occurred while \output is active []
 
  [3] [4] (../Programy/AproksSkokDMC.m) [5] (../TikZ_rysunki/aproksymacja.tex) (../Programy/PID.m [6]
-LaTeX Font Info:    Trying to load font information for OML+cmr on input line 48.
+LaTeX Font Info:    Trying to load font information for OML+cmr on input line 47.
  (C:\Users\Hubert\AppData\Local\Programs\MiKTeX\tex/latex/base\omlcmr.fd
 File: omlcmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 48.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 47.
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [7] (../Programy/DMC.m [8]) (../TikZ_rysunki/testPID1.tex)
+Underfull \vbox (badness 2197) has occurred while \output is active []
+
+ [9] (../TikZ_rysunki/testPID2.tex) (../TikZ_rysunki/testPID3.tex)
+Underfull \vbox (badness 4108) has occurred while \output is active []
+
+ [10] (../TikZ_rysunki/testPID4.tex) (../TikZ_rysunki/testDMC.tex)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [11]
+LaTeX Font Info:    External font `plex10' loaded for size
+(Font)              <12> on input line 377.
+ (../../Projekt1/rysunki_tikz/punkt_pracy.tex)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [12] (../../Projekt1/rysunki_tikz/odpowiedzi_skokowe.tex)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [13] (../../Projekt1/rysunki_tikz/charakterystyka_statyczna.tex)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [14] (../../Projekt1/rysunki_tikz/skok_DMC.tex)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [15] (../../Projekt1/programy_Matlab/PID_funkcja.m [16]
+Overfull \hbox (24.37091pt too wide) in paragraph at lines 48--49
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]  
+ []
+
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [7]) (../Programy/DMC.m [8])
-Underfull \vbox (badness 1184) has occurred while \output is active []
+ [17]) (../../Projekt1/programy_Matlab/DMC_funkcja.m [18]
+Overfull \hbox (24.37091pt too wide) in paragraph at lines 76--77
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]  
+ []
 
- [9] (../TikZ_rysunki/testPID1.tex) [10] (Sprawozdanie.aux) ) 
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [19]) (../../Projekt1/rysunki_tikz/test_PID1.tex)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [20] (../../Projekt1/rysunki_tikz/test_PID2.tex)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [21] (../../Projekt1/rysunki_tikz/test_PID3.tex) (../../Projekt1/rysunki_tikz/test_PID4.tex) [22]
+<../../Projekt1/rysunki_tikz/test_DMC1.pdf, id=100, 368.68039pt x 309.3899pt>
+File: ../../Projekt1/rysunki_tikz/test_DMC1.pdf Graphic file (type pdf)
+<use ../../Projekt1/rysunki_tikz/test_DMC1.pdf>
+Package pdftex.def Info: ../../Projekt1/rysunki_tikz/test_DMC1.pdf  used on input line 487.
+(pdftex.def)             Requested size: 368.67949pt x 309.38913pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [23]
+<../../Projekt1/rysunki_tikz/test_DMC2.pdf, id=104, 368.68039pt x 309.3899pt>
+File: ../../Projekt1/rysunki_tikz/test_DMC2.pdf Graphic file (type pdf)
+<use ../../Projekt1/rysunki_tikz/test_DMC2.pdf>
+Package pdftex.def Info: ../../Projekt1/rysunki_tikz/test_DMC2.pdf  used on input line 494.
+(pdftex.def)             Requested size: 368.67949pt x 309.38913pt.
+<../../Projekt1/rysunki_tikz/test_DMC3.pdf, id=105, 368.68039pt x 309.3899pt>
+File: ../../Projekt1/rysunki_tikz/test_DMC3.pdf Graphic file (type pdf)
+<use ../../Projekt1/rysunki_tikz/test_DMC3.pdf>
+Package pdftex.def Info: ../../Projekt1/rysunki_tikz/test_DMC3.pdf  used on input line 501.
+(pdftex.def)             Requested size: 368.67949pt x 309.38913pt.
+ [24 <../../Projekt1/rysunki_tikz/test_DMC1.pdf> <../../Projekt1/rysunki_tikz/test_DMC2.pdf>]
+<../../Projekt1/rysunki_tikz/test_DMC4.pdf, id=182, 368.68039pt x 309.3899pt>
+File: ../../Projekt1/rysunki_tikz/test_DMC4.pdf Graphic file (type pdf)
+<use ../../Projekt1/rysunki_tikz/test_DMC4.pdf>
+Package pdftex.def Info: ../../Projekt1/rysunki_tikz/test_DMC4.pdf  used on input line 508.
+(pdftex.def)             Requested size: 368.67949pt x 309.38913pt.
+<../../Projekt1/rysunki_tikz/test_DMC5.pdf, id=183, 368.68039pt x 309.3899pt>
+File: ../../Projekt1/rysunki_tikz/test_DMC5.pdf Graphic file (type pdf)
+<use ../../Projekt1/rysunki_tikz/test_DMC5.pdf>
+Package pdftex.def Info: ../../Projekt1/rysunki_tikz/test_DMC5.pdf  used on input line 515.
+(pdftex.def)             Requested size: 368.67949pt x 309.38913pt.
+ [25 <../../Projekt1/rysunki_tikz/test_DMC3.pdf> <../../Projekt1/rysunki_tikz/test_DMC4.pdf>]
+<../../Projekt1/rysunki_tikz/test_DMC6.pdf, id=245, 368.68039pt x 309.3899pt>
+File: ../../Projekt1/rysunki_tikz/test_DMC6.pdf Graphic file (type pdf)
+<use ../../Projekt1/rysunki_tikz/test_DMC6.pdf>
+Package pdftex.def Info: ../../Projekt1/rysunki_tikz/test_DMC6.pdf  used on input line 522.
+(pdftex.def)             Requested size: 368.67949pt x 309.38913pt.
+ [26 <../../Projekt1/rysunki_tikz/test_DMC5.pdf> <../../Projekt1/rysunki_tikz/test_DMC6.pdf>]
+<../../Projekt1/rysunki_tikz/PID_optimal.pdf, id=307, 368.68039pt x 309.39288pt>
+File: ../../Projekt1/rysunki_tikz/PID_optimal.pdf Graphic file (type pdf)
+<use ../../Projekt1/rysunki_tikz/PID_optimal.pdf>
+Package pdftex.def Info: ../../Projekt1/rysunki_tikz/PID_optimal.pdf  used on input line 548.
+(pdftex.def)             Requested size: 368.67949pt x 309.39212pt.
+<../../Projekt1/rysunki_tikz/DMC_optimal.pdf, id=308, 368.68039pt x 309.3899pt>
+File: ../../Projekt1/rysunki_tikz/DMC_optimal.pdf Graphic file (type pdf)
+<use ../../Projekt1/rysunki_tikz/DMC_optimal.pdf>
+Package pdftex.def Info: ../../Projekt1/rysunki_tikz/DMC_optimal.pdf  used on input line 556.
+(pdftex.def)             Requested size: 368.67949pt x 309.38913pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [27 <../../Projekt1/rysunki_tikz/PID_optimal.pdf>] [28 <../../Projekt1/rysunki_tikz/DMC_optimal.pdf>] (Sprawozdanie.aux) ) 
 Here is how much of TeX's memory you used:
- 32250 strings out of 478907
- 815468 string characters out of 2851418
- 1823817 words of memory out of 3000000
- 49575 multiletter control sequences out of 15000+600000
- 418929 words of font info for 71 fonts, out of 8000000 for 9000
+ 32607 strings out of 478907
+ 826046 string characters out of 2851418
+ 2431557 words of memory out of 3000000
+ 49876 multiletter control sequences out of 15000+600000
+ 420493 words of font info for 76 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,20n,89p,844b,2226s stack positions out of 5000i,500n,10000p,200000b,80000s
-{C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/pl/plrm.enc}{C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/pl/plms.enc}{C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/pl/plmi.enc} <C:\Users\Hubert\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk>{C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/pl/plit.enc}<C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plbx10.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plbx12.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plmi10.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plmi6.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plmi8.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plr10.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plr6.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plr7.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plr8.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plsy10.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plsy6.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plsy7.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plsy8.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plti10.pfb>
-Output written on Sprawozdanie.pdf (11 pages, 1011668 bytes).
+ 84i,21n,89p,844b,2226s stack positions out of 5000i,500n,10000p,200000b,80000s
+{C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/pl/plrm.enc}{C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/pl/plmi.enc}{C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/pl/plms.enc} <C:\Users\Hubert\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk>{C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/pl/plit.enc}<C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plbx10.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plbx12.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plbx7.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plmi10.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plmi12.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plmi6.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plmi8.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plr10.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plr6.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plr7.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plr8.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plsy10.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plsy6.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plsy7.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plsy8.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plti10.pfb>
+Output written on Sprawozdanie.pdf (29 pages, 1736198 bytes).
 PDF statistics:
- 133 PDF objects out of 1000 (max. 8388607)
+ 458 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 23 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 63 words of extra memory for PDF output out of 10000 (max. 10000000)
 
