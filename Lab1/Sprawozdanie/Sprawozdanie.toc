@@ -8,3 +8,6 @@
 \contentsline {subsection}{\numberline {6.2\relax .\enspace }Regulator DMC}{8}{}%
 \contentsline {section}{\numberline {7\relax .\enspace }Dostrajanie Regulator\'ow}{9}{}%
 \contentsline {subsection}{\numberline {7.1\relax .\enspace }Strojenie PID}{9}{}%
+\contentsline {section}{\numberline {8\relax .\enspace }Projekt}{12}{}%
+\contentsline {section}{\numberline {9\relax .\enspace }Sprawdzanie poprawno\'s\'c warto\'sci $U_\mathrm {pp}, Y_\mathrm {pp}$}{12}{}%
+\contentsline {section}{\numberline {10\relax .\enspace }Odpowiedzi skokowe procesu}{13}{}%
