@@ -319,6 +319,11 @@ Oczywiœcie do regulacji zosta³y wykorzystane parametry PID-a dyskretnego okreœlo
 	\label{PID1}
 \end{figure}
 
+% TODO:
+% Opisaæ przebiegi doboru parametrów,
+% podpisaæ parametry,
+% policzyæ errory
+
 Wyniki regulacji PID dla tych parametrów przedstawiono na rys. \ref{PID1}
 W dalszej kolejnoœci sprawdzane by³y jescze inne wartoœci parametrów, w celu znalezienia jak najlepszych nastawów.
 
@@ -387,7 +392,7 @@ gdzie wartoœæ pocz¹tkowa sterowania wynosi³a $U_\mathrm{pp}$. Wyniki symulacji p
 	\label{Odpowiedzi-skokowe}
 \end{figure}
 
-¯eby ustaliæ, czy proces jest liniowy, zosta³ narysowany wykres zale¿noœci Y(U), dla dozwolonych wartoœci sterowania.
+W celu ustalenia, czy proces jest liniowy, zosta³ narysowany wykres zale¿noœci Y(U), dla dozwolonych wartoœci sterowania.
 Wykres ten zosta³ przedstawiony na rys. \ref{Charakterystyka-statyczna}. Z wykresu wynika, ¿e zale¿noœæ jest liniowa, zatem wzmocnienie statyczne mo¿na wyznaczyæ jako tg prostej.
 W naszym przypadku $K_{\mathrm{stat}} = 2$
 
@@ -397,5 +402,74 @@ W naszym przypadku $K_{\mathrm{stat}} = 2$
 	\caption{Charakterystyka statyczna, wyznaczanie wzmocnienia}
 	\label{Charakterystyka-statyczna}
 \end{figure}
+
+
+\section{Przekszta³cenie odpowiedzi skokowej}
+
+Do przekszta³cenia zosta³a wybrana odpowiedŸ skokowa dla sterowania $U_\mathrm{skok} = \num{0.65}$
+W pierwszej kolejnoœci zebrane dane, zosta³y przesuniête w czasie, tak aby skok sterowania nastêpowa³ dla $k=0$.
+Nastêpnie wartoœci skoku zosta³y przeskalowane i przesuniête w odpowiedni sposób, tak aby odpowiedŸ da³o siê wykorzystaæ w algorytmie DMC.
+Wynikowa odpowiedŸ skokowa zosta³a przedstawiona na rys. \ref{Odpowiedz-skokowa-DMC}
+
+\begin{figure}[h]
+	\centering
+	\input{../../Projekt1/rysunki_tikz/skok_DMC.tex}
+	\caption{Przekszta³cona odpowiedŸ skokowa}
+	\label{Odpowiedz-skokowa-DMC}
+\end{figure}
+
+
+\section{Implementacja PID i DMC}
+
+\subsection{PID}
+\lstinputlisting{../../Projekt1/programy_Matlab/PID_funkcja.m}
+
+\subsection{DMC}
+\lstinputlisting{../../Projekt1/programy_Matlab/DMC_funkcja.m}
+
+
+\section{Dobór nastawów PID i DMC metod¹ eksperymentaln¹}
+
+\subsection{Nastawy PID}
+W celu doboru nastawów regulatora PID skorzystano z metody Zieglera-Nicholsa. Oscylacje niegasn¹ce otrzymano dla $K_\mathrm{kryt} = \num{1.115}$, z okresem
+$T_\mathrm{kryt} = 37$. Wyliczaj¹c wartoœci parametrów jako $K = \num{0.6}K_\mathrm{kryt}, T\mathrm{i} = \num{0.5}T_\mathrm{kryt}, T\mathrm{d} = \num{0.12}T_kryt$,
+a nastêpnie przeliczajac je na nastawy PID-u dyskretnego, rozpoczêta zosta³a regulacja, przedstawiona na rys. \ref{test-PID1}.
+
+\begin{figure}[h]
+	\centering
+	\input{../../Projekt1/rysunki_tikz/test_PID1.tex}
+	\caption{Regulator PID - test1, $K = \num{0.669}, T_\mathrm{i} = \num{18.5}, T_\mathrm{d} = \num{4.44}$ }
+	\label{test-PID1}
+\end{figure}
+
+Modyfikuj¹c parametry regulatora przeprowadzone zosta³y jeszcze 3 eksperymenty przedstawione na rys. \ref{test-PID2}, rys. \ref{test-PID3} i rys. \ref{test-PID4}
+
+\begin{figure}[h]
+	\centering
+	\input{../../Projekt1/rysunki_tikz/test_PID2.tex}
+	\caption{Regulator PID - test2, $K = \num{0.75}, T_\mathrm{i} = \num{16}, T_\mathrm{d} = \num{3}$}
+	\label{test-PID2}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\input{../../Projekt1/rysunki_tikz/test_PID3.tex}
+	\caption{Regulator PID - test3, $K = \num{0.67}, T_\mathrm{i} = \num{10}, T_\mathrm{d} = \num{0.1}$}
+	\label{test-PID3}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\input{../../Projekt1/rysunki_tikz/test_PID4.tex}
+	\caption{Regulator PID - test4, , $K = \num{0.8}, T_\mathrm{i} = \num{7}, T_\mathrm{d} = \num{2}$}
+	\label{test-PID4}
+\end{figure}
+
+Zmieniaj¹c wartoœci parametrów uda³o siê poprawiæ regulacjê, zarówno zmniejszy³a siê wartoœæ b³êdu, jak i wykresy wygl¹daj¹ lepiej.
+Na tescie 3 i 4 PID dzia³a zdecydowanie szybciej, dodatkowo oscylacje w teœcie 4 s¹ zdecydowanie mniejsze.
+
+
+\subsection{Nastawy DMC}
+
 
 \end{document}

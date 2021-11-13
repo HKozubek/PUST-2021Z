@@ -1,6 +1,6 @@
 \contentsline {section}{\numberline {1\relax .\enspace }Cele projektu i laboratori\'ow}{1}{}%
 \contentsline {section}{\numberline {2\relax .\enspace }Przebieg laboratorium}{2}{}%
-\contentsline {section}{\numberline {3\relax .\enspace }Punkt pracy stanowiska}{2}{}%
+\contentsline {section}{\numberline {3\relax .\enspace }Punkt pracy stanowiska}{3}{}%
 \contentsline {section}{\numberline {4\relax .\enspace }Odpowiedzi skokowe procesu}{3}{}%
 \contentsline {section}{\numberline {5\relax .\enspace }Odpowied\'z skokowa w algorytmie DMC}{4}{}%
 \contentsline {section}{\numberline {6\relax .\enspace }Algorytm PID i DMC}{6}{}%
@@ -11,3 +11,10 @@
 \contentsline {section}{\numberline {8\relax .\enspace }Projekt}{12}{}%
 \contentsline {section}{\numberline {9\relax .\enspace }Sprawdzanie poprawno\'s\'c warto\'sci $U_\mathrm {pp}, Y_\mathrm {pp}$}{12}{}%
 \contentsline {section}{\numberline {10\relax .\enspace }Odpowiedzi skokowe procesu}{13}{}%
+\contentsline {section}{\numberline {11\relax .\enspace }Przekszta\IeC {\l }cenie odpowiedzi skokowej}{13}{}%
+\contentsline {section}{\numberline {12\relax .\enspace }Implementacja PID i DMC}{13}{}%
+\contentsline {subsection}{\numberline {12.1\relax .\enspace }PID}{13}{}%
+\contentsline {subsection}{\numberline {12.2\relax .\enspace }DMC}{15}{}%
+\contentsline {section}{\numberline {13\relax .\enspace }Dob\'or nastaw\'ow PID i DMC metod\k a eksperymentaln\k a}{18}{}%
+\contentsline {subsection}{\numberline {13.1\relax .\enspace }Nastawy PID}{18}{}%
+\contentsline {subsection}{\numberline {13.2\relax .\enspace }Nastawy DMC}{18}{}%
