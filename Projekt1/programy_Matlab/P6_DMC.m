@@ -26,12 +26,14 @@ Yzad(801:1200)  = 4.15;
 Yzad(1201:time) = 3.95;
 
 % Parametry
-% N = 60; Nu = 40; lambda = 1; %testDMC1; E = 2.4578
-% N = 40; Nu = 20; lambda = 2; %testDMC2; E = 2.4425
-% N = 11; Nu = 1; lambda = 1; %testDMC3; E = 3.1539
-% N = 15; Nu = 1; lambda = 1; %testDMC4; E = 2.5064
-% N = 20; Nu = 1; lambda = 1; %testDMC5; E = 2.4716
-% N = 20; Nu = 3; lambda = 1.5; %testDMC6; E = 2.4444
+% N = 60; Nu = 40; lambda = 1;          %testDMC1; E = 2.4578
+% N = 40; Nu = 20; lambda = 2;          %testDMC2; E = 2.4425
+% N = 11; Nu = 1; lambda = 1;           %testDMC3; E = 3.1539
+% N = 15; Nu = 1; lambda = 1;           %testDMC4; E = 2.5064
+% N = 20; Nu = 1; lambda = 1;           %testDMC5; E = 2.4716
+% N = 20; Nu = 3; lambda = 1.5;         %testDMC6; E = 2.4444
+
+N = 19; Nu = 30; lambda = 1.9185;        %wartości z optymalizacji; E = 2.4421;
 
 % Zwiększanie N, Nu w stosunku do testDMC6 nie daje znaczącej poprawy
 % sterowania.
@@ -120,6 +122,7 @@ for k = 12:time
     
     U(k) = u(k) + Upp;
 end
+
 E = 0;
 for k = 12:time
     E = E + e(k);
@@ -142,4 +145,4 @@ xlabel('k');
 ylabel('Y');
 legend('Y','Y_z_a_d', 'Location', 'southeast');
 
-% matlab2tikz('../rysunki_tikz/test_DMC6.tex','showInfo', false)
+% matlab2tikz('../rysunki_tikz/DMC_optimal.tex','showInfo', false)
