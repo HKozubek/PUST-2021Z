@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.11.1)  13 NOV 2021 19:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.11.1)  13 NOV 2021 19:54
 entering extended mode
 **"d:/Hubert/Dokumenty/Politechnika Warszawska/AIR/Semestr V/PUST/Laby/PUST-2021Z/Lab1/Sprawozdanie/Sprawozdanie.tex"
 (d:/Hubert/Dokumenty/Politechnika Warszawska/AIR/Semestr V/PUST/Laby/PUST-2021Z/Lab1/Sprawozdanie/Sprawozdanie.tex
@@ -585,7 +585,7 @@ Package siunitx Info: Option "detect-weight" has been deprecated in this
 Package siunitx Warning: Option "binary-units" has been removed in this
 (siunitx)                release.
 
-Package translations Info: No language package found. I am going to use `english' as default language. on input line 92.
+Package translations Info: No language package found. I am going to use `english' as default language. on input line 94.
 
 LaTeX Warning: Unused global option(s):
     [twosides].
@@ -593,22 +593,22 @@ LaTeX Warning: Unused global option(s):
 (Sprawozdanie.aux)
 \openout1 = `Sprawozdanie.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
-LaTeX Font Info:    Checking defaults for OT4/cmr/m/n on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 94.
+LaTeX Font Info:    ... okay on input line 94.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 94.
+LaTeX Font Info:    ... okay on input line 94.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 94.
+LaTeX Font Info:    ... okay on input line 94.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 94.
+LaTeX Font Info:    ... okay on input line 94.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 94.
+LaTeX Font Info:    ... okay on input line 94.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 94.
+LaTeX Font Info:    ... okay on input line 94.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 94.
+LaTeX Font Info:    ... okay on input line 94.
+LaTeX Font Info:    Checking defaults for OT4/cmr/m/n on input line 94.
+LaTeX Font Info:    ... okay on input line 94.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -665,13 +665,13 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable tick labels; missing features). Consider writing \pgfplotsset{compat=1.18} into your preamble.
- on input line 92.
+ on input line 94.
 
 \c@lstlisting=\count344
 (C:\Users\Hubert\AppData\Local\Programs\MiKTeX\tex/latex/translations/dicts\translations-basic-dictionary-english.trsl
 File: translations-basic-dictionary-english.trsl (english translation file `translations-basic-dictionary')
 )
-Package translations Info: loading dictionary `translations-basic-dictionary' for `english'. on input line 92.
+Package translations Info: loading dictionary `translations-basic-dictionary' for `english'. on input line 94.
  [1
 
 {C:/Users/Hubert/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] (Sprawozdanie.toc
@@ -707,7 +707,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 <./Rysunki/Stanowisko-grzewcze.png, id=9, 451.6875pt x 340.8735pt>
 File: ./Rysunki/Stanowisko-grzewcze.png Graphic file (type png)
 <use ./Rysunki/Stanowisko-grzewcze.png>
-Package pdftex.def Info: ./Rysunki/Stanowisko-grzewcze.png  used on input line 141.
+Package pdftex.def Info: ./Rysunki/Stanowisko-grzewcze.png  used on input line 143.
 (pdftex.def)             Requested size: 318.66946pt x 240.50308pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -718,15 +718,15 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 <./Rysunki/Stanowisko-grzewcze-schemat.png, id=17, 421.575pt x 305.34074pt>
 File: ./Rysunki/Stanowisko-grzewcze-schemat.png Graphic file (type png)
 <use ./Rysunki/Stanowisko-grzewcze-schemat.png>
-Package pdftex.def Info: ./Rysunki/Stanowisko-grzewcze-schemat.png  used on input line 148.
+Package pdftex.def Info: ./Rysunki/Stanowisko-grzewcze-schemat.png  used on input line 150.
 (pdftex.def)             Requested size: 318.66946pt x 230.81273pt.
  [2 <./Rysunki/Stanowisko-grzewcze.png> <./Rysunki/Stanowisko-grzewcze-schemat.png>]
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <10.95> on input line 173.
+(Font)              <10.95> on input line 175.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <8> on input line 173.
+(Font)              <8> on input line 175.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <6> on input line 173.
+(Font)              <6> on input line 175.
  (../TikZ_rysunki/PunktPracy.tex) (../TikZ_rysunki/skoki.tex)
 Underfull \vbox (badness 6859) has occurred while \output is active []
 
@@ -751,7 +751,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [11]
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <12> on input line 370.
+(Font)              <12> on input line 372.
  (../../Projekt1/rysunki_tikz/punkt_pracy.tex)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -812,7 +812,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  84i,21n,89p,844b,2226s stack positions out of 5000i,500n,10000p,200000b,80000s
 {C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/pl/plrm.enc}{C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/pl/plmi.enc}{C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/pl/plms.enc} <C:\Users\Hubert\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk>{C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/pl/plit.enc}<C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plbx10.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plbx12.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plbx7.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plmi10.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plmi12.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plmi6.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plmi8.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plr10.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plr6.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plr7.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plr8.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plsy10.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plsy6.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plsy7.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plsy8.pfb><C:/Users/Hubert/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plti10.pfb>
-Output written on Sprawozdanie.pdf (23 pages, 1336424 bytes).
+Output written on Sprawozdanie.pdf (23 pages, 1336654 bytes).
 PDF statistics:
  180 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
