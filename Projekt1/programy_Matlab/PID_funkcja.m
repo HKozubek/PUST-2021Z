@@ -8,7 +8,7 @@ function E = PID_funkcja(X)
     Upp = 0.5;
     Ypp = 4;
 
-    % Ograniczenia wartosci sygnalu sterującego
+    % Ograniczenia wartosci sygnalu sterujacego
     Umin = 0.3;
     Umax = 0.7;
     du_max = 0.05;
@@ -30,7 +30,7 @@ function E = PID_funkcja(X)
     y_zad = Yzad - Ypp;
     u = U - Upp;
 
-    % Inicializacja wektorów
+    % Inicializacja wektorow
     e(1:time) = 0;
     y(1:time) = 0;
 
