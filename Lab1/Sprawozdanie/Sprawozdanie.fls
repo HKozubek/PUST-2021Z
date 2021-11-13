@@ -910,6 +910,13 @@ INPUT ..\TikZ_rysunki\skoki.tex
 INPUT ..\TikZ_rysunki\skoki.tex
 INPUT C:\Users\Hubert\AppData\Local\Programs\MiKTeX\fonts\tfm\public\pl\plbx7.tfm
 INPUT C:\Users\Hubert\AppData\Local\Programs\MiKTeX\fonts\tfm\public\pl\plbx5.tfm
+INPUT ..\TikZ_rysunki\charakterystyka_stat.pdf
+INPUT ..\TikZ_rysunki\charakterystyka_stat.pdf
+INPUT ..\TikZ_rysunki\charakterystyka_stat.pdf
+INPUT ..\TikZ_rysunki\charakterystyka_stat.pdf
+INPUT ..\TikZ_rysunki\charakterystyka_stat.pdf
+INPUT ..\TikZ_rysunki\charakterystyka_stat.pdf
+INPUT C:\Users\Hubert\AppData\Local\Programs\MiKTeX\fonts\tfm\public\pl\plti10.tfm
 INPUT ..\Programy\AproksSkokDMC.m
 INPUT ..\Programy\AproksSkokDMC.m
 INPUT ..\Programy\AproksSkokDMC.m
@@ -949,10 +956,6 @@ INPUT ..\TikZ_rysunki\testPID3.tex
 INPUT ..\TikZ_rysunki\testPID3.tex
 INPUT ..\TikZ_rysunki\testPID3.tex
 INPUT ..\TikZ_rysunki\testPID3.tex
-INPUT ..\TikZ_rysunki\testPID4.tex
-INPUT ..\TikZ_rysunki\testPID4.tex
-INPUT ..\TikZ_rysunki\testPID4.tex
-INPUT ..\TikZ_rysunki\testPID4.tex
 INPUT ..\TikZ_rysunki\testDMC.tex
 INPUT ..\TikZ_rysunki\testDMC.tex
 INPUT ..\TikZ_rysunki\testDMC.tex
@@ -1075,6 +1078,8 @@ INPUT C:\Users\Hubert\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\
 INPUT C:\Users\Hubert\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr10.pfb
 INPUT C:\Users\Hubert\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr8.pfb
 INPUT C:\Users\Hubert\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr8.pfb
+INPUT C:\Users\Hubert\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy7.pfb
+INPUT C:\Users\Hubert\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy7.pfb
 INPUT C:\Users\Hubert\AppData\Local\Programs\MiKTeX\fonts\type1\public\pl\plbx10.pfb
 INPUT C:\Users\Hubert\AppData\Local\Programs\MiKTeX\fonts\type1\public\pl\plbx10.pfb
 INPUT C:\Users\Hubert\AppData\Local\Programs\MiKTeX\fonts\type1\public\pl\plbx12.pfb
