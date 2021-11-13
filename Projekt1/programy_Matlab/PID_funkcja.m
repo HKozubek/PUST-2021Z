@@ -8,7 +8,7 @@ function E = PID_funkcja(X)
     Upp = 0.5;
     Ypp = 4;
 
-    % Ograniczenia wartości sygnału sterującego
+    % Ograniczenia wartosci sygnalu sterującego
     Umin = 0.3;
     Umax = 0.7;
     du_max = 0.05;
@@ -16,7 +16,7 @@ function E = PID_funkcja(X)
     % Czas symulacji
     time = 1500;
 
-    % Deklaracja wektora sterowań i wartości zadanych
+    % Deklaracja wektora sterowan i wartosci zadanych
     U(1:time) = Upp;
     Y(1:time) = Ypp;
 
