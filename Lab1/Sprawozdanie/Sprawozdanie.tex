@@ -136,14 +136,14 @@ weryfikacja poprawnoœci dzia³ania oraz dobór parametrów algorytmów regulacji jed
 procesu na grzewczym stanowisku laboratoryjnym przedstawionym na rys \ref{Stanowisko grzewcze}.
 
 
-\begin{figure}
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{ ./Rysunki/Stanowisko-grzewcze.png }
 	\caption {Stanowisko grzej¹co-ch³odz¹ce, u¿ywane w trakcie laboratoriów}
 	\label{Stanowisko grzewcze}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.7\textwidth]{ ./Rysunki/Stanowisko-grzewcze-schemat.png }
 		\caption {Schemat stanowiska grzej¹co-ch³odz¹cego}
@@ -166,13 +166,13 @@ W ramach laboratorium nale¿a³o wykonaæ 5 zadañ.
   \item Dobraæ nastawy algorytmu PID oraz parametry algorytmu DMC metod¹ eksperymentaln¹.
 \end{enumerate}
 
-\subsection{Zad 1}
+\section{Punkt pracy stanowiska}
 W pierwszej kolejnoœci nale¿a³o sprawdziæ mo¿liwoœæ sterowania i pomiaru w komunikacji ze stanowiskiem.
 Nastêpnie  odczytaæ wartoœæ temperatury termometru T1 w wyznaczonym punkcie pracy G1=26\%.
 Po ustawieniu mocy grza³ki i odczekaniu, a¿ temperatura T1 ustabilizuje siê,
 odczytana wartoœæ termometru T1 wynosi³a \num{31.12} °C. Wykres temperatury na termometrze T1 zosta³ przedstawiony na rys. \ref{PunktPracy}
 
-\begin{figure}
+\begin{figure}[H]
 	\centering
 	\input{../TikZ_rysunki/PunktPracy.tex}
 	\caption{Ustalanie siê temperatury dla punktu pracy}
@@ -180,7 +180,7 @@ odczytana wartoœæ termometru T1 wynosi³a \num{31.12} °C. Wykres temperatury na t
 \end{figure}
 
 
-\subsection{Zad 2}
+\section{Odpowiedzi skokowe procesu}
 W tej czœci laboratorium nale¿a³o przeprowadziæ eksperyment dla 3 rónych wartoœci mocy grza³ki G1.
 Rozpoczynaj¹c eksperyment z punktu pracy G1=26\%, wyznaczono odpowiedzi skokowe procesu. Eksperyment by³ wykokany
 dla trzech ró¿nych zmian sygna³u steruj¹cego, G1=36\%, G1=46\% oraz G1=56\%.
@@ -201,7 +201,7 @@ Wykresy przedstawiaj¹ce zmiany temperatury przedstawiono na rys. \ref{skoki}
 % \label{Skok2}
 % \end{figure}
 
-\begin{figure}
+\begin{figure}[H]
 \centering
 \input{../TikZ_rysunki/skoki.tex}
 \caption{OdpowiedŸ skokowa procesu}
@@ -209,7 +209,7 @@ Wykresy przedstawiaj¹ce zmiany temperatury przedstawiono na rys. \ref{skoki}
 \end{figure}
 
 
-\subsection{Zad 3}
+\section{OdpowiedŸ skokowa w algorytmie DMC}
 Wykonanie tego zadania polega³o na przekszta³ceniu jedn¹ z odpowiedzi
 skokowych, tak aby otrzymaæ odpowiedŸ skokow¹ u¿ywan¹ w algorymie DMC.
 W tym celu wybrano drug¹ odpowiedŸ skokow¹, tj. skok G1 z mocy 26\% do mocy 46\%.
@@ -272,7 +272,7 @@ Ostateczne wartoœci parametrów to
 	\end{split}
 \end{equation}
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\input{../TikZ_rysunki/aproksymacja.tex}
 	\caption{OdpowiedŸ skokowa procesu, oraz transmitancja j¹ aproksumuj¹ca}
@@ -281,17 +281,46 @@ Ostateczne wartoœci parametrów to
 
 Wykres zarówno odpowiedzi skokowej, jak i transmitancji j¹ przybli¿aj¹cej zosta³ zamieszczony na rys. \ref{aproksymacja-odpowiedzi-skokowej}
 
-\subsection{Zad 4}
+\section{Algorytm PID i DMC}
 Kolejnym podpunktem zadañ laboratoryjnych by³o zaimplementowanie algorytmu regulacji PID oraz DMC w jêzyku MATLAB.
 
-Regulator PID
+\subsection{Regulator PID}
 \lstinputlisting{../Programy/PID.m}
 
-Regulator DMC
+\subsection{Regulator DMC}
 \lstinputlisting{../Programy/DMC.m}
 
-\subsection{Zad 5}
+\section{Dostrajanie Regulatorów}
 
-Ostatnim zadaniem by³ dobór nastawów obu algorytmów regulacji.
+Ostatnim zadaniem by³ dobór nastawów obu algorytmów regulacji. W tym celu sko¿ystano z wczœniej uzyskanej transmitancji aproksymuj¹cej skok procesu,
+aby dobraæ parametry obu regulatorów. W ten sposób mo¿na by³o przeprowadziæ wiêcej eksperymentów w krótszym czasie.
+Uzyskane w ten sposób parametry zosta³y przetestowane na realnym procesie.
+
+\subsection{Strojenie PID}
+
+Do strojenia regulatora PID zosta³¹ wykorzystana metoda Zieglera-Nicholsa. Parametry do niej potrzebne wyznaczono na procesie symulowanym.
+Oscylacje niegasn¹ce otrzymano dla parametrów $K_\mathrm{k} = 43$ oraz $T_\mathrm{k} = 36$.
+Na tej podstawie dobrano nastêpuj¹ce parametry regulatora PID $K = \num{21.5}; T_\mathrm{i} = 18; T_\mathrm{d} =\num{4.5}$.
+Oczywiœcie do regulacji zosta³y wykorzystane parametry PID-a dyskretnego okreœlone wzorami ($T_\mathrm{p} = 1$)
+
+\begin{equation}
+	\begin{split}
+		& r_2 = K\frac{T_\mathrm{d}}{T_\mathrm{p}} \\
+		& r_1 = K(\frac{T_\mathrm{p}}{2T_\mathrm{i}} -2\frac{T_\mathrm{d}}{T_\mathrm{p}} - 1) \\
+		& r_0 = K(1+\frac{T_\mathrm{p}}{2T_\mathrm{i}} + \frac{T_\mathrm{d}}{T_\mathrm{p}}) \\
+	\end{split}
+\end{equation}
+
+
+\begin{figure}[H]
+	\centering
+	\input{../TikZ_rysunki/testPID1.tex}
+	\caption{Regulacja PID, eksperyment 1}
+	\label{PID1}
+\end{figure}
+
+Wyniki regulacji PID dla tych parametrów przedstawiono na rys. \ref{PID1}
+
+
 
 \end{document}

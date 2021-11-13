@@ -1,7 +1,10 @@
 \contentsline {section}{\numberline {1\relax .\enspace }Cele projektu i laboratori\'ow}{1}{}%
-\contentsline {section}{\numberline {2\relax .\enspace }Przebieg laboratorium}{1}{}%
-\contentsline {subsection}{\numberline {2.1\relax .\enspace }Zad 1}{3}{}%
-\contentsline {subsection}{\numberline {2.2\relax .\enspace }Zad 2}{3}{}%
-\contentsline {subsection}{\numberline {2.3\relax .\enspace }Zad 3}{3}{}%
-\contentsline {subsection}{\numberline {2.4\relax .\enspace }Zad 4}{6}{}%
-\contentsline {subsection}{\numberline {2.5\relax .\enspace }Zad 5}{9}{}%
+\contentsline {section}{\numberline {2\relax .\enspace }Przebieg laboratorium}{2}{}%
+\contentsline {section}{\numberline {3\relax .\enspace }Punkt pracy stanowiska}{2}{}%
+\contentsline {section}{\numberline {4\relax .\enspace }Odpowiedzi skokowe procesu}{3}{}%
+\contentsline {section}{\numberline {5\relax .\enspace }Odpowied\'z skokowa w algorytmie DMC}{4}{}%
+\contentsline {section}{\numberline {6\relax .\enspace }Algorytm PID i DMC}{6}{}%
+\contentsline {subsection}{\numberline {6.1\relax .\enspace }Regulator PID}{6}{}%
+\contentsline {subsection}{\numberline {6.2\relax .\enspace }Regulator DMC}{8}{}%
+\contentsline {section}{\numberline {7\relax .\enspace }Dostrajanie Regulator\'ow}{9}{}%
+\contentsline {subsection}{\numberline {7.1\relax .\enspace }Strojenie PID}{9}{}%
