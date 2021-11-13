@@ -48,7 +48,7 @@ ylabel('Y')
 xlabel('U')
 title("Charakterystyka statyczna Y(U); K_s_t_a_t = " + round(Kwzmoc, 3))
 
-matlab2tikz('../rysunki_tikz/charakterystyka_statyczna.tex', 'showInfo', false )
+% matlab2tikz('../rysunki_tikz/charakterystyka_statyczna.tex', 'showInfo', false )
 
 
 

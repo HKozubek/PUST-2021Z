@@ -48,15 +48,12 @@ Tp = 0.5;
 
 % Nastawy wyznaczone metodą ZN
 % K = 0.6*K_kryt; Ti = 0.5*T_kryt; Td = 0.12*T_kryt;  % testPID1
-% K = 0.669; Ti = 18.5; Td = 4.44;  % dokładne wartości testPID1 E = 6.6588
+% K = 0.669; Ti = 18.5; Td = 4.44;                    % dokładne wartości testPID1 E = 6.6588
+% K = 0.75; Ti = 16; Td = 3;                          % testPID2; E = 5.6604
+% K = 0.67; Ti = 10; Td = 0.1;                        % testPID3; E = 3.5483
+% K = 0.8; Ti = 7; Td = 2;                            % testPID4; E = 3.4721
 
-
-% K = 0.75; Ti = 16; Td = 3; % testPID2; E = 5.6604
-
-% K = 0.67; Ti = 10; Td = 0.1; % testPID3; E = 3.5483
-
-K = 0.8; Ti = 7; Td = 2; % testPID4; E = 3.4721
-
+K = 0.8706; Ti = 5.6259; Td = 2.9542;                 % PID wartości z optymalizcji; E = 3.3250
 
 r2 = K*Td/Tp;
 r1 = K*(Tp/(2*Ti)-2*Td/Tp - 1);
@@ -113,4 +110,4 @@ xlabel('k');
 ylabel('Y');
 legend('Y','Y_z_a_d', 'Location', 'southeast');
 
-% matlab2tikz('../rysunki_tikz/test_PID4.tex','showInfo', false)
+% matlab2tikz('../rysunki_tikz/PID_optimal.tex','showInfo', false)

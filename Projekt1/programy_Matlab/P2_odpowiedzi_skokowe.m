@@ -55,7 +55,7 @@ ylabel('Wyjście procesu (Y)')
 legend(legend_info_y, 'Location', 'southeast')
 title("Odpowiedź skokowa")
 
-matlab2tikz('../rysunki_tikz/odpowiedzi_skokowe.tex', 'showInfo', false)
+% matlab2tikz('../rysunki_tikz/odpowiedzi_skokowe.tex', 'showInfo', false)
 
 
 
