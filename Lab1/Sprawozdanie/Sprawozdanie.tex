@@ -358,6 +358,11 @@ W dalszej kolejnoœci sprawdzane by³y jescze inne wartoœci parametrów, w celu zna
 	\label{DMC1}
 \end{figure}
 
+Z wykresów mo¿na wyczytaæ, ¿e zmiana parametrów PDI poprawi³a jakoœc regulacji. Co do regulatora DMC natomiast, to dzia³a on ca³kiem dobrze,
+jednak zarówno PDI jak i DMC s¹ nara¿one na zak³ócenia które mo¿na zauwa¿yæ na wykresach.
+
+
+
 \section{Projekt}
 
 Zadanie projektowe wykorzystywa³o symulowany obiekt regulacji.
@@ -475,7 +480,7 @@ Na tescie 3 i 4 PID dzia³a zdecydowanie szybciej, dodatkowo oscylacje w teœcie 4
 
 Dobór parametrów dla regulatora DMC odbywa³ siê w podobny sposób.
 W pierwszej kolejnoœci zosta³y wybrane parametry w sposób przypadkowy, nastêpnie parametry by³y lekko zmieniane.
-Patrz¹c na wyniki symulacji mo¿na by³o wybraæ najlepszy nastaw. Eksperymenty DMC zosta³y przedstawione na rys.  - 
+Patrz¹c na wyniki symulacji mo¿na by³o wybraæ najlepszy nastaw. Eksperymenty DMC zosta³y przedstawione na rys. \ref{test-DMC1} - \ref{test-DMC6}
 
 % \begin{figure}[h]
 % 	\centering
@@ -519,5 +524,24 @@ Patrz¹c na wyniki symulacji mo¿na by³o wybraæ najlepszy nastaw. Eksperymenty DMC
 % 	\label{test-DMC6}
 % \end{figure}
 
+
+\section{Dobór parametrów PID i DMC automatycznie}
+
+
+W celu optymalizacji wskaŸnika b³êdu w zale¿noœci od parametrów obu regulatorów
+zosta³ u¿yty algorytm generyczny, którego zadaniem by³o znalezienie minimum funkcji b³êdów.
+
+Uzyskane nastawy to:
+\begin{equation}
+	\begin{split}
+		& \text{dla PID}: K = \num{0.8706}, T_\mathrm{i} = \num{5.6252}, T_\mathrm{d} = \num{2.9545}, E = \num{3.3250} \\
+		& \text{dla DMC}: N = 19, N_\mathrm{u} = 30, \lambda = \num{1.9185}, E = \num{2.4421} \\
+	\end{split}
+\end{equation}
+
+Otrzymane nastawy nie ró¿ni¹ siê znacz¹co od tych uzyskanych metod¹ eksperymentaln¹, niemniej jednak b³êdy regulacji s¹ mniejsze.
+Wykresy regulacji dla tych nastawów s¹ przedstawione na rys. \ref{PID-optymalizacja} i \ref{DMC-optymalizacja}
+
+%TODO: rysunek
 
 \end{document}

@@ -18,3 +18,4 @@
 \contentsline {section}{\numberline {13\relax .\enspace }Dob\'or nastaw\'ow PID i DMC metod\k a eksperymentaln\k a}{18}{}%
 \contentsline {subsection}{\numberline {13.1\relax .\enspace }Nastawy PID}{18}{}%
 \contentsline {subsection}{\numberline {13.2\relax .\enspace }Nastawy DMC}{18}{}%
+\contentsline {section}{\numberline {14\relax .\enspace }Dob\'or parametr\'ow PID i DMC automatycznie}{18}{}%
