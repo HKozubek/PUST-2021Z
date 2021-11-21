@@ -54,3 +54,5 @@ octave-workspace
 *.mtc1
 *.out
 *.synctex.gz
+
+*.tcp
