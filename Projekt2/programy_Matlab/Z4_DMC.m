@@ -40,9 +40,12 @@ N = 20; Nu = 20; lambda = 0.1;         %testDMC6; E = 6.897150803349723
 
 U(1:time) = Upp;
 Y(1:time) = Ypp;
-% Z(1:time) = Zpp; Z4
-% Z(101:time) = 1; Z5
-Z(1:time) = sin(1:time);
+Z(1:time) = Zpp; %Z4
+% Noise(1:time) = 0; 7.1, 7.2
+Noise(1:time) = wgn(1,time,0.01)*0.05; % wgn(1,time,1)*0.1, wgn(1,time,0.01)*0.05
+
+% Z(101:time) = 1; %Z5
+% Z(1:time) = sin(1:time);
 e(1:time) = 0;
 
 % Obliczenia offline
@@ -100,10 +103,11 @@ for k = 8:time
     Yzad_DMC = yzad(k)*ones(N,1);
     Y_DMC = y(k)*ones(N,1);
     
-    dZP(2:Dz) = dZP(1:Dz-1);
-    dZP(1) = Z(k) - Z(k-1);
+%     Noise(k) = (rand * 2 - 1)/50; % N1 = /10, N2 = /50;
     
-    Y0 = Y_DMC + Mp*dUP;% + Mpz * dZP;
+    dZP(2:Dz) = dZP(1:Dz-1);
+    dZP(1) = Z(k) - Z(k-1) + Noise(k);
+    Y0 = Y_DMC + Mp*dUP + Mpz * dZP;
     dU = K*(Yzad_DMC - Y0);
     du = dU(1);
     
@@ -141,11 +145,13 @@ ylabel('Y');
 legend('Y','Y_{zad}', 'Location', 'southeast');
 
 subplot(3,1,3);
-stairs(Z);
-title('Z(k)');
+stairs(Z + Noise);
+title('Z(k) + noise');
 xlabel('k');
-ylabel('Z');
+ylabel('Z + noise');
 
 % matlab2tikz('../rysunki_tikz/Z5_DMCZZakloceniami.tex','showInfo', false);
 
 % matlab2tikz('../rysunki_tikz/Z6_DMCSinBezOdsprz.tex','showInfo', false);
+
+% matlab2tikz('../rysunki_tikz/Z7_Szum4.tex','showInfo', false);
