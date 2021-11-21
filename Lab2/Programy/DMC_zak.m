@@ -51,8 +51,8 @@ function U = DMC_zak(yzad, y, D, z, Dz, N, Nu, lambda)
         
         Mzp = zeros(N, Dz);
         Mzp(1:N, 1) = S_z(1:N);
-        for i = 1:Dz
-            Mzp(1:N, i+1) = S_z(i:N+i) - S_z(i-1);
+        for i = 2:Dz
+            Mzp(1:N, i) = S_z(i:N+i-1) - S_z(i-1);
         end
         
         I = eye(Nu);
