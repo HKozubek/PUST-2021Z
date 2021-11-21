@@ -56,3 +56,5 @@ octave-workspace
 *.synctex.gz
 
 *.tcp
+*.synctex
+*.tps

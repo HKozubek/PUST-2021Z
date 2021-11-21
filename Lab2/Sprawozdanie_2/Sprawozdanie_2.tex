@@ -1,0 +1,580 @@
+\documentclass[a4paper,titlepage,11pt,twosides,floatssmall]{mwrep}
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage[OT1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{polski}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{url}
+\usepackage{tikz}
+\usetikzlibrary{arrows,calc,decorations.markings,math,arrows.meta}
+\usepackage{rotating}
+\usepackage[percent]{overpic}
+\usepackage[cp1250]{inputenc}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{pgfplots}
+\usetikzlibrary{pgfplots.groupplots}
+\usepackage{listings}
+\usepackage{matlab-prettifier}
+\usepackage{enumitem,amssymb}
+\usepackage{verbatim}							%paczka do komentarza blokowego
+
+\definecolor{szary}{rgb}{0.95,0.95,0.95}
+\definecolor{niebieski}{rgb}{0,0.447,0.741}
+\definecolor{czerwony}{rgb}{0.85,0.325,0.098}
+
+\usepackage{siunitx}
+\sisetup{detect-weight,exponent-product=\cdot,output-decimal-marker={,},per-mode=symbol,binary-units=true,range-phrase={-},range-units=single}
+\SendSettingsToPgf
+
+%konfiguracje pakietu listings
+\lstset{
+	backgroundcolor=\color{szary},
+	frame=single,
+	breaklines=true,
+}
+\lstdefinestyle{customlatex}{
+	basicstyle=\footnotesize\ttfamily,
+	%basicstyle=\small\ttfamily,
+}
+\lstdefinestyle{customc}{
+	breaklines=true,
+	frame=tb,
+	language=C,
+	xleftmargin=0pt,
+	showstringspaces=false,
+	basicstyle=\small\ttfamily,
+	keywordstyle=\bfseries\color{green!40!black},
+	commentstyle=\itshape\color{purple!40!black},
+	identifierstyle=\color{blue},
+	stringstyle=\color{orange},
+}
+\lstdefinestyle{custommatlab}{
+	captionpos=t,
+	breaklines=true,
+	frame=tb,
+	xleftmargin=0pt,
+	language=matlab,
+	showstringspaces=false,
+	basicstyle=\footnotesize\ttfamily,
+	%basicstyle=\scriptsize\ttfamily,
+	keywordstyle=\bfseries\color{green!40!black},
+	commentstyle=\itshape\color{purple!40!black},
+	identifierstyle=\color{blue},
+	stringstyle=\color{orange},
+}
+
+%wymiar tekstu (bez żywej paginy)
+\textwidth 160mm \textheight 247mm
+
+%ustawienia pakietu pgfplots
+\pgfplotsset{
+tick label style={font=\scriptsize},
+label style={font=\small},
+legend style={font=\small},
+title style={font=\small}
+}
+
+\def\figurename{Rys.}
+\def\tablename{Tab.}
+
+%konfiguracja liczby pływających elementów
+\setcounter{topnumber}{0}%2
+\setcounter{bottomnumber}{3}%1
+\setcounter{totalnumber}{5}%3
+\renewcommand{\textfraction}{0.01}%0.2
+\renewcommand{\topfraction}{0.95}%0.7
+\renewcommand{\bottomfraction}{0.95}%0.3
+\renewcommand{\floatpagefraction}{0.35}%0.5
+\renewcommand\thesection{\arabic{section}}
+
+\begin{document}
+\frenchspacing
+\pagestyle{uheadings}
+
+%strona tytułowa
+\title{\bf Sprawozdanie z projektu i ćwiczenia laboratoryjnego nr 1, zadanie nr 1\vskip 0.1cm}
+\author{Hubert Kozubek, Przemysław Michalczewski}
+\date{2021}
+
+\makeatletter
+\renewcommand{\maketitle}{\begin{titlepage}
+\begin{center}{\LARGE {\bf
+Wydział Elektroniki i Technik Informacyjnych}}\\
+\vspace{0.4cm}
+{\LARGE {\bf Politechnika Warszawska}}\\
+\vspace{0.3cm}
+\end{center}
+\vspace{5cm}
+\begin{center}
+{\bf \LARGE Projektowanie układów w sterowania\\ (projekt grupowy) \vskip 0.1cm}
+\end{center}
+\vspace{1cm}
+\begin{center}
+{\bf \LARGE \@title}
+\end{center}
+\vspace{2cm}
+\begin{center}
+{\bf \Large \@author \par}
+\end{center}
+\vspace*{\stretch{6}}
+\begin{center}
+\bf{\large{Warszawa, \@date\vskip 0.1cm}}
+\end{center}
+\end{titlepage}
+}
+\makeatother
+
+\maketitle
+
+\tableofcontents
+
+\begin{comment}
+\section{Cele projektu i laboratoriów}
+Celem niniejszego laboratorium było zaprojektowanie, implementacja,
+weryfikacja poprawności działania oraz dobór parametrów algorytmów regulacji jednowymiarowego
+procesu na grzejąco-chłodzącym stanowisku laboratoryjnym przedstawionym na rys \ref{Stanowisko grzewcze}.
+
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\textwidth]{ ./Rysunki/Stanowisko-grzewcze.png }
+	\caption {Stanowisko grzejąco-chłodzące używane w trakcie laboratoriów}
+	\label{Stanowisko grzewcze}
+\end{figure}
+
+\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\textwidth]{ ./Rysunki/Stanowisko-grzewcze-schemat.png }
+		\caption {Schemat stanowiska grzejąco-chłodzącego}
+		\label{Stanowisko grzewcze, schemat}
+\end{figure}
+
+\chapter{Laboratorium}
+
+\section{Przebieg laboratorium}
+Rozpoczynając pracę na stanowisku laboratoryjnym należało ustawić moc wentylatora W1
+na 50\%. Wentylator ten był traktowany jako cecha otoczenia. Dodatkowo sprawiał on, że temperatura grzałki
+opadała szybciej, co było szczególnie przydatne pomiędzy doświadczeniami.
+
+W ramach laboratorium należało wykonać 5 zadań.
+
+\begin{enumerate}
+	\label{Lista-zadan}
+  \item Odczytać wartość pomiaru temperatury dla termometru T1 dla mocy 26 \% grzałki G1.
+  \item Wyznaczyć odpowiedź skokową procesu dla trzech różych wartości G1.
+  \item Wybrać jedną z odpowiedzi skokowych, przekształcić ją i wykorzystać w algorytmie DMC. 
+  \item Zaimplementować algorytm PID i DMC do regulacji procesu stanowiska w języku MATLAB.
+  \item Dobrać nastawy algorytmu PID oraz parametry algorytmu DMC metodą eksperymentalną.
+\end{enumerate}
+
+\section{Punkt pracy stanowiska}
+W pierwszej kolejności sprawdzono możliwość sterowania i pomiaru w komunikacji ze stanowiskiem.
+Następnie  odczytać wartość temperatury termometru T1 w wyznaczonym punkcie pracy G1=26\%.
+Po ustawieniu mocy grzałki i odczekaniu, aż temperatura T1 ustabilizuje się,
+odczytana wartość termometru T1 wynosiła \num{31.12} °C. Wykres temperatury na termometrze T1 został przedstawiony na rys. \ref{PunktPracy}.
+
+\begin{figure}[h]
+	\centering
+	\input{../TikZ_rysunki/PunktPracy.tex}
+	\caption{Ustalanie się temperatury dla punktu pracy}
+	\label{PunktPracy}
+\end{figure}
+
+
+\section{Odpowiedzi skokowe procesu}
+W tej części laboratorium należało przeprowadzić eksperyment dla 3 różnych wartości mocy grzałki G1.
+Rozpoczynając eksperyment z punktu pracy G1=26\% wyznaczono odpowiedzi skokowe procesu. Eksperyment był wykokany
+dla trzech różnych zmian sygnału sterującego, G1=36\%, G1=46\% oraz G1=56\%.
+Wykresy przedstawiające zmiany temperatury przedstawiono na rys. \ref{skoki}.
+
+
+% \begin{figure}
+% \centering
+% \input{../TikZ_rysunki/Skok1.tex}
+% \caption{Odpowiedź skokowa procesu dla zmiany sterowania G1 z 26 do 36}
+% \label{Skok1}
+% \end{figure}
+
+% \begin{figure}
+% \centering
+% \input{../TikZ_rysunki/Skok2.tex}
+% \caption{Odpowiedź skokowa procesu dla zmiany sterowania G1 z 26 do 46}
+% \label{Skok2}
+% \end{figure}
+
+\begin{figure}[h]
+\centering
+\input{../TikZ_rysunki/skoki.tex}
+\caption{Odpowiedź skokowa procesu}
+\label{skoki}
+\end{figure}
+
+Patrząc na wykres odpowiedzi skokowych możemy zauważyć, że proces jest w przybliżeniu liniowy. Na rys. \ref{charakterystyka-statyczna} została przedstawiona charakterystyka statyczna procesu.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics{../TikZ_rysunki/charakterystyka_stat.pdf}
+	\caption{Charkterystyk statyczna procesu grzejąco-chłodzącego}
+	\label{charakterystyka-statyczna}
+\end{figure}
+
+
+\section{Odpowiedź skokowa w algorytmie DMC}
+Wykonanie tego zadania polegało na przekształceniu jednej z odpowiedzi
+skokowych, tak aby otrzymać odpowiedź skokową używaną w algorymie DMC.
+W tym celu wybrano drugą odpowiedź skokową, tj. skok G1 z mocy 26\% do mocy 46\%.
+Do przekształcenia zebranej odpowiedzi skokowej, na taką nadającą się do algorytmu DMC wykorzystano program \emph{SkokDMC.m}.
+Program ten wylicza potrzebną odpowiedź skokową przy użyciu prostego wzoru.
+\begin{equation}
+	S(i)= \frac{Y(i) - Y_{\mathrm{pp}}}{U_{\mathrm{skok}} - U_{\mathrm{pp}}}
+\end{equation}
+gdzie:
+\begin{itemize}
+  \item $S(i)$ - odpowiedź skokowa potrzebna do algorytmu DMC,
+	\item $Y(i)$ - odpowiedź skokowa przed przekształceniem,
+	\item $Y_{\mathrm{pp}}$ - wartość wyjścia w chwili k=0 (tutaj $Y_{\mathrm{pp}}$  = \num{31.12} ),
+	\item $U_{\mathrm{skok}}$ - wartość sterowanie w chwili k=0 i później (tutaj $U_{\mathrm{skok}} = 46$),
+	\item $U_{\mathrm{pp}}$ - wartośc sterowania przed chwilą k=0 (tutaj $U_{\mathrm{pp}} = 26$)
+\end{itemize}
+W ten sposób przekształcona odpowiedź skokowa została zapisana do pliku \emph{dane1.mat}
+i wykorzystana w dalszych częściach laboratoriów.
+
+Poza przekształceniem odpowiedzi skokowej należało ją jeszcze przybliżyć używając w tym celu członu inercyjnego
+drugiego rzędu z opóźnieniem.
+
+\begin{equation}
+	G(s)= \frac{K}{(sT_1 + 1)(sT_2 + 1)}e^{-T_{\mathrm{d}}s}
+\end{equation}
+Po dyskretyzacji danej transmitancji otrzymujemy:
+
+\begin{equation}
+	G(z)= \frac{b_1z^{-1} + b_2z^{-2}}{1 + a_1z^{-1} + a_2z^{-2}}z^{-T_{\mathrm{d}}}
+\end{equation}
+
+gdzie
+\begin{equation}
+\begin{split}
+	& a_1 = -\alpha_1 - \alpha_2 \\
+	& a_2 = \alpha_1\alpha_2 \\
+	& \alpha_1 = e^{-\frac{1}{T_1}} \\
+	& \alpha_2 = e^{-\frac{1}{T_2}} \\
+	& b_1 = \frac{K}{T_1 - T_2}[T_1(1-\alpha_1) - T_2(1-\alpha_2)] \\
+	& b_2 = \frac{K}{T_1 - T_2}[\alpha_1T_2(1-\alpha_2) - \alpha_2T_1(1-\alpha_1)]
+\end{split}
+\end{equation}
+
+Z wykresu odpowiedzi skokowej procesu zostało odczytane opóźnienie. W naszym przypadku $T_{\mathrm{d}} = 9$.
+Aby wyznaczyć wartości pozostałych współczynników użyto dostępnej w matlabie funkcji ga, która minimalizuje
+wartość zadanej funkcji z wykorzystaniem algorytmu generycznego. Funkcja minimalizowana to funkcja wyliczająca sumę kwadratów błędów
+pomiędzy odpowiedzią skokową, a transmitancją przybliżającą.
+
+\lstinputlisting{../Programy/AproksSkokDMC.m}
+
+Następnie używając skryptu \emph{Optymalizacja.m} zostały wyznaczone pozostałe parametry transmitancji przybliżającej odpowiedź skokową.
+Ostateczne wartości parametrów to:
+
+\begin{equation}
+	\begin{split}
+		& K = 0.330938\\
+		& T_1 = 0.000907 \\
+		& T_2 = 82.104622 \\
+		& T_{\mathrm{d}} = 9 \\
+	\end{split}
+\end{equation}
+
+\begin{figure}[h]
+	\centering
+	\input{../TikZ_rysunki/aproksymacja.tex}
+	\caption{Odpowiedź skokowa procesu oraz transmitancja ją aproksumująca}
+	\label{aproksymacja-odpowiedzi-skokowej}
+\end{figure}
+
+Wykres zarówno odpowiedzi skokowej, jak i transmitancji ją przybliżającej został zamieszczony na rys. \ref{aproksymacja-odpowiedzi-skokowej}.
+
+\section{Algorytm PID i DMC}
+Kolejnym podpunktem zadań laboratoryjnych było zaimplementowanie algorytmów regulacji PID oraz DMC w języku MATLAB.
+
+\subsection{Regulator PID}
+\lstinputlisting{../Programy/PID.m}
+
+\subsection{Regulator DMC}
+\lstinputlisting{../Programy/DMC.m}
+
+\section{Dostrajanie regulatorów}
+
+Ostatnim zadaniem był dobór nastawów obu algorytmów regulacji. W tym celu skorzystano z wcześniej uzyskanej transmitancji aproksymującej skok procesu,
+aby dobrać parametry obu regulatorów. W ten sposób można było przeprowadzić więcej eksperymentów w krótszym czasie.
+Uzyskane w ten sposób parametry zostały przetestowane na realnym procesie.
+
+\subsection{Strojenie PID}
+
+Do strojenia regulatora PID zostałą wykorzystana metoda Zieglera-Nicholsa. Parametry do niej potrzebne wyznaczono na procesie symulowanym.
+Oscylacje niegasnące otrzymano dla parametrów $K_\mathrm{k} = 43$ oraz $T_\mathrm{k} = 36$.
+Na tej podstawie dobrano następujące parametry regulatora PID: $K = \num{21.5}; T_\mathrm{i} = 18; T_\mathrm{d} =\num{4.5}$.
+Oczywiście do regulacji zostały wykorzystane parametry PID-a dyskretnego określone wzorami ($T_\mathrm{p} = 1$:)
+
+\begin{equation}
+	\begin{split}
+		& r_2 = K\frac{T_\mathrm{d}}{T_\mathrm{p}} \\
+		& r_1 = K(\frac{T_\mathrm{p}}{2T_\mathrm{i}} -2\frac{T_\mathrm{d}}{T_\mathrm{p}} - 1) \\
+		& r_0 = K(1+\frac{T_\mathrm{p}}{2T_\mathrm{i}} + \frac{T_\mathrm{d}}{T_\mathrm{p}}) \\
+	\end{split}
+\end{equation}
+
+
+\begin{figure}[h]
+	\centering
+	\input{../TikZ_rysunki/testPID1.tex}
+	\caption{Regulacja PID, eksperyment 1,$K = \num{21.5000}, T_\mathrm{i} = \num{18}, T_\mathrm{d} = \num{4.5} E = \num{11.1096}$}
+	\label{PID1}
+\end{figure}
+
+% TODO:
+% Opisać przebiegi doboru parametrów,
+% podpisać parametry,
+% policzyć errory
+
+Wyniki regulacji PID dla tych parametrów przedstawiono na rys. \ref{PID1}.
+W dalszej kolejności sprawdzane były jeszcze inne wartości parametrów w celu znalezienia jak najlepszych nastawów.
+
+\begin{figure}[h]
+	\centering
+	\input{../TikZ_rysunki/testPID2.tex}
+	\caption{Regulacja PID, eksperyment 2, $K = \num{32,25}, T_\mathrm{i} = \num{36}, T_\mathrm{d} = \num{4.5} E = \num{3.3641}$}
+	\label{PID2}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\input{../TikZ_rysunki/testPID3.tex}
+	\caption{Regulacja PID, eksperyment 3, $K = \num{21,5}, T_\mathrm{i} = \num{72}, T_\mathrm{d} = \num{4.5} E = \num{4.3880}$}
+	\label{PID3}
+\end{figure}
+
+% \begin{figure}[h]
+% 	\centering
+% 	\input{../TikZ_rysunki/testPID4.tex}
+% 	\caption{Regulacja PID, eksperyment 4, $K = \num{32,25}, T_\mathrm{i} = \num{36}, T_\mathrm{d} = \num{4.5} E = \num{3.6891}$}
+% 	\label{PID4}
+% \end{figure}
+
+\begin{figure}[h]
+	\centering
+	\input{../TikZ_rysunki/testDMC.tex}
+	\caption{Regulacja DMC, eksperyment 1 $ N = 50, N_\mathrm{u} = 10, \lambda = 1, E = \num{3.2370} $}
+	\label{DMC1}
+\end{figure}
+
+Z wykresów można wyczytać, że zmiana parametrów PID poprawiła jakość regulacji. Co do regulatora DMC natomiast działa on całkiem dobrze,
+jednak zarówno PID jak i DMC są narażone na zakłócenia, które można zauważyć na wykresach.
+Jednym z możliwych sposobów na poprawę jakości regulacji jest pomiar zakłóceń i uwzględnienie ich w sterowaniu.
+
+\chapter{Projekt}
+
+\section{Informacje wstępne}
+
+Zadanie projektowe wykorzystywało symulowany obiekt regulacji.
+Wyjście obiektu można wyznaczyć przy pomocy polecenia:
+
+\text{ Y(k)=symulacja\_obiektu1y\_p1(U(k-10),U(k-11),Y(k-1),Y(k-2)) }
+
+Wartości sygnałów wejścia i wyjścia procesu w punkcie pracy wynoszą
+$U_\mathrm{pp} = \num{0,5},  Y_\mathrm{pp} = 4$, natomiast ograniczenia sterowania wynoszą
+$U^\mathrm{min} = \num{0,3}, U^\mathrm{max} = \num{0,7}$, a okres próbkowania wynosi \num{0,5} sekundy.
+
+\section{Sprawdzanie poprawność wartości $U_\mathrm{pp},  Y_\mathrm{pp}$}
+
+W celu sprawdzenia poprawności punktu pracy została przeprowadzona symulacja, gdzie na wejście podano
+$U_\mathrm{pp}$, jako poprzednie wartości y podano $Y_\mathrm{pp}$  i sprawdzono wartość wyjścia procesu w następnych chwilach. Wyniki symulacji przedstawstawiono na rys. \ref{Punkt-pracy}
+
+\begin{figure}[h]
+	\centering
+	\input{../../Projekt1/rysunki_tikz/punkt_pracy.tex}
+	\caption{Sprawdzanie poprawości punktu pracy}
+	\label{Punkt-pracy}
+\end{figure}
+
+
+\section{Odpowiedzi skokowe procesu}
+
+W tej części wyznaczone zostały odpowiedzi skokowe procesu dla kilku zmian sygnału sterującego,
+gdzie wartość początkowa sterowania wynosiła $U_\mathrm{pp}$. Wyniki symulacji przedstawia rys. \ref{Odpowiedzi-skokowe}.
+Wykres potwierdza,że punkt pracy był wyznaczony poprawnie.
+
+\begin{figure}[h]
+	\centering
+	\input{../../Projekt1/rysunki_tikz/odpowiedzi_skokowe.tex}
+	\caption{Odpowiedzi skokowe procesu}
+	\label{Odpowiedzi-skokowe}
+\end{figure}
+
+
+
+W celu ustalenia, czy proces jest liniowy, został narysowany wykres zależności Y(U), dla dozwolonych wartości sterowania.
+Wykres ten został przedstawiony na rys. \ref{Charakterystyka-statyczna}. Z wykresu wynika, że zależność jest liniowa, zatem wzmocnienie statyczne można wyznaczyć metodą najmniejszych kwadratów.
+W naszym przypadku $K_{\mathrm{stat}} = 2$.
+
+\begin{figure}[h]
+	\centering
+	\input{../../Projekt1/rysunki_tikz/charakterystyka_statyczna.tex}
+	\caption{Charakterystyka statyczna, wyznaczanie wzmocnienia}
+	\label{Charakterystyka-statyczna}
+\end{figure}
+
+
+\section{Przekształcenie odpowiedzi skokowej}
+
+Do przekształcenia została wybrana odpowiedź skokowa dla sterowania $U_\mathrm{skok} = \num{0.65}$.
+W pierwszej kolejności zebrane dane, zostały przesunięte w czasie, tak aby skok sterowania następował dla $k=0$.
+Następnie wartości skoku zostały przeskalowane i przesunięte w odpowiedni sposób, tak aby odpowiedź dało się wykorzystać w algorytmie DMC.
+Wynikowa odpowiedź skokowa została przedstawiona na rys. \ref{Odpowiedz-skokowa-DMC}.
+
+\begin{figure}[h]
+	\centering
+	\input{../../Projekt1/rysunki_tikz/skok_DMC.tex}
+	\caption{Przekształcona odpowiedź skokowa}
+	\label{Odpowiedz-skokowa-DMC}
+\end{figure}
+
+
+\section{Implementacja PID i DMC}
+
+\subsection{PID}
+\lstinputlisting{../../Projekt1/programy_Matlab/PID_funkcja.m}
+
+\subsection{DMC}
+\lstinputlisting{../../Projekt1/programy_Matlab/DMC_funkcja.m}
+
+
+\section{Dobór nastawów PID i DMC metodą eksperymentalną}
+
+\subsection{Nastawy PID}
+W celu doboru nastawów regulatora PID skorzystano z metody Zieglera-Nicholsa. Oscylacje niegasnące otrzymano dla $K_\mathrm{kryt} = \num{1.115}$ z okresem
+$T_\mathrm{kryt} = 37$. Wyliczając wartości parametrów jako $K = \num{0.6}K_\mathrm{kryt}, T\mathrm{i} = \num{0.5}T_\mathrm{kryt}, T\mathrm{d} = \num{0.12}T_\mathrm{kryt}$,
+a następnie przeliczajac je na nastawy PID-u dyskretnego rozpoczęta została regulacja przedstawiona na rys. \ref{test-PID1}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics{../../Projekt1/rysunki_tikz/test_PID1.pdf}
+	\caption{Regulator PID - test1, $K = \num{0.669}, T_\mathrm{i} = \num{18.5}, T_\mathrm{d} = \num{4.44}$ }
+	\label{test-PID1}
+\end{figure}
+
+Modyfikując parametry regulatora przeprowadzone zostały jeszcze 3 eksperymenty przedstawione na rys. \ref{test-PID2}, rys. \ref{test-PID3} i rys. \ref{test-PID4}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics{../../Projekt1/rysunki_tikz/test_PID2.pdf}
+	\caption{Regulator PID - test2, $K = \num{0.75}, T_\mathrm{i} = \num{16}, T_\mathrm{d} = \num{3}$}
+	\label{test-PID2}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics{../../Projekt1/rysunki_tikz/test_PID3.pdf}
+	\caption{Regulator PID - test3, $K = \num{0.67}, T_\mathrm{i} = \num{10}, T_\mathrm{d} = \num{0.1}$}
+	\label{test-PID3}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics{../../Projekt1/rysunki_tikz/test_PID4.pdf}
+	\caption{Regulator PID - test4, $K = \num{0.8}, T_\mathrm{i} = \num{7}, T_\mathrm{d} = \num{2}$}
+	\label{test-PID4}
+\end{figure}
+
+Zmieniając wartości parametrów udało się poprawić regulację, zarówno zmniejszyła się wartość błędu, jak i wykresy wyglądają lepiej. Zmnniejszyły się oscylacje wyjścia procesu w momencie narastania oraz opadania sygnału do wartości zadanej. Znacząco poprawił się czas uzyskiwania wartości zadanej, nie zwiększając przy tym znacząco przesterowania.
+Na tescie 3 i 4 PID działa zdecydowanie szybciej, dodatkowo oscylacje w teście 4 są zdecydowanie mniejsze.
+
+
+\subsection{Nastawy DMC}
+
+Dobór parametrów dla regulatora DMC odbywał się w podobny sposób.
+W pierwszej kolejności zostały wybrane parametry w sposób przypadkowy, następnie parametry były lekko zmieniane.
+Patrząc na wyniki symulacji można było wybrać najlepszy nastaw. Eksperymenty DMC zostały przedstawione na rys. \ref{test-DMC1} - \ref{test-DMC6}.
+Z przeprowadzonych eksperymentów wynika, że dla parametrów: $ N = 20, N_\mathrm{u} = 3, \lambda = \num{1.5} $ wyniki regulacji są najlepsze. Dla mniejszych wartości horyzontu predykcji i sterowania wynki znacząco się pogarszają, natomiast dla większych nie jest zauważalna znacząca zmiana.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics{../../Projekt1/rysunki_tikz/test_DMC1.pdf}
+	\caption{Regulator DMC - test1, $ N = 60, N_\mathrm{u} = 40, \lambda = 1 $}
+	\label{test-DMC1}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics{../../Projekt1/rysunki_tikz/test_DMC2.pdf}
+	\caption{Regulator DMC - test2, $ N = 40, N_\mathrm{u} = 20, \lambda = 2 $}
+	\label{test-DMC2}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics{../../Projekt1/rysunki_tikz/test_DMC3.pdf}
+	\caption{Regulator DMC - test3, $ N = 11, N_\mathrm{u} = 1, \lambda = 1 $}
+	\label{test-DMC3}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics{../../Projekt1/rysunki_tikz/test_DMC4.pdf}
+	\caption{Regulator DMC - test4, $ N = 15, N_\mathrm{u} = 1, \lambda = 1 $}
+	\label{test-DMC4}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics{../../Projekt1/rysunki_tikz/test_DMC5.pdf}
+	\caption{Regulator DMC - test5, $ N = 20, N_\mathrm{u} = 1, \lambda = 1 $}
+	\label{test-DMC5}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics{../../Projekt1/rysunki_tikz/test_DMC6.pdf}
+	\caption{Regulator DMC - test6, $ N = 20, N_\mathrm{u} = 3, \lambda = \num{1.5} $}
+	\label{test-DMC6}
+\end{figure}
+
+
+\section{Dobór parametrów PID i DMC automatycznie}
+
+
+W celu optymalizacji wskaźnika błędu w zależności od parametrów obu regulatorów
+został użyty algorytm generyczny, którego zadaniem było znalezienie minimum funkcji błędów.
+
+Uzyskane nastawy to:
+\begin{equation}
+	\begin{split}
+		& \text{dla PID}: K = \num{0.8706}, T_\mathrm{i} = \num{5.6252}, T_\mathrm{d} = \num{2.9545}, E = \num{3.3250} \\
+		& \text{dla DMC}: N = 19, N_\mathrm{u} = 30, \lambda = \num{1.9185}, E = \num{2.4421} \\
+	\end{split}
+\end{equation}
+
+Otrzymane nastawy nie różnią się znacząco od tych uzyskanych metodą eksperymentalną, niemniej jednak błędy regulacji są mniejsze.
+Wykresy regulacji dla tych nastawów są przedstawione na rys. \ref{PID-optymalizacja} i \ref{DMC-optymalizacja}.
+Metoda optymalizacji jest bardziej przydatna dla regulatora PID niż DMC, ponieważ znajdując graniczne wartości N oraz $N_\mathrm{u}$ po ich dalszym zwiększaniu nie powoduje to znaczącej poprawy regulacji, zużywa jednak większe zasoby mocy obliczeniowej. Natomias dla regulatora PID znacząco oszczędza czas potrzebny na testowanie zmian nastawów metodami eksperymentalymi.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics{../../Projekt1/rysunki_tikz/PID_optimal.pdf} %  = , Ti =  Td =; E = 3.3250
+	\caption{Regulator PID - parametry wyznaczone algorytmem generycznym, $ N = 19, N_\mathrm{u} = 30, \lambda = \num{ 1.9185}, E = \num{2.4421} $}
+	\label{PID-optymalizacja}
+\end{figure}
+
+
+\begin{figure}[h]
+	\centering
+	\includegraphics{../../Projekt1/rysunki_tikz/DMC_optimal.pdf} %  = , Ti =  Td =; E = 3.3250
+	\caption{Regulator DMC - parametry wyznaczone algorytmem generycznym, $K = \num{0.8706}, T_\mathrm{i} = \num{5.6252}, T_\mathrm{d} = \num{2.9545}$}
+	\label{DMC-optymalizacja}
+\end{figure}
+\end{comment}
+
+\end{document}
+
