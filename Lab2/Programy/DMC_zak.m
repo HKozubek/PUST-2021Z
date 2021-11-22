@@ -21,11 +21,11 @@ function U = DMC_zak(yzad, y, D, z, Dz, N, Nu, lambda)
         S = data.S;
         
         % Wczytanie macierzy S_z 
-        data2 = load('S_z.mat');
-        S_z = data2.S_Z;
+%         data2 = load('S_z.mat');
+%         S_z = data2.S_z;
         
-%         data3 = load('S_z_apro.mat');
-%         S_z = data3.S_Z_apro;
+        data3 = load('S_z_apro.mat');
+        S_z = data3.S_z_apro;
         
              
         % przedluzenie wektora S

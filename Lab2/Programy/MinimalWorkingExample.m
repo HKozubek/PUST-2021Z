@@ -58,43 +58,43 @@ while(1)
     
 
     % DMC
-%     DMCy(k) = measurements1;
-%     e = Yzad(k) - measurements1;
-%     
-%     u = DMC(Yzad(k), measurements1, 300, 50, 10, 1);
-%     E = E + e^2;
-%     DMCe(k) = e;
-%     DMCu(k) = u; 
-    
-    % DMC_zak
     DMCy(k) = measurements1;
     e = Yzad(k) - measurements1;
     
-    u = DMC(Yzad(k), measurements1, 300, Zzad(k), 500, 50, 10, 1);
+    u = DMC(Yzad(k), measurements1, 300, 20, 1, 1);
     E = E + e^2;
     DMCe(k) = e;
     DMCu(k) = u; 
     
+    % DMC_zak
+%     DMCy(k) = measurements1;
+%     e = Yzad(k) - measurements1;
+%     
+%     u = DMC_zak(Yzad(k), measurements1, 300, Zzad(k), 500, 50, 10, 1);
+%     E = E + e^2;
+%     DMCe(k) = e;
+%     DMCu(k) = u; 
+%     
 
     %% sending new values of control signals
     sendControls([ 1, 2, 3, 4, 5, 6], ... send for these elements
                  [ 50, 0, 0, 0, 26, 0]);  % new corresponding control values
-    sendControlsToG1AndDisturbance(26, 0); 
+%     sendControlsToG1AndDisturbance(26, 0); 
     
-%     sendControlsToG1AndDisturbance(u, Zzad(k));
+    sendControlsToG1AndDisturbance(u, 0);
 
-    measurement = readMeasurements([1,5]);
+    measurement = readMeasurements([1,5])
     
      
 
 
-     figure(1);
+%      figure(1);
      plot(Yzad, 'r--');
      hold on;
      plot(DMCy,'b-');
      xlim([1 time]);
-     ylim([28 42]);
-     legend({'Y_z_a_d','Y'})
+     ylim([26 42]);
+     legend({'Y_{zad}','Y'})
      title("Wyjście procesu");
      
 %      figure(2);
