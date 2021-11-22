@@ -8,6 +8,6 @@ figure('name', "Punkt pracy")
 plot(Ypp_cut)
 xlabel("Czas [s]")
 ylabel("Temperatura [°C]")
-title("Punkt pracy dla G1 = " + power_G1 + "%; Ypp = " + Yppracy + "°C")
+title("Punkt pracy dla G1 = " + power_G1 + "%; T1 = " + Yppracy + "°C")
 
 % matlab2tikz('../Tikz_rysunki/punkt_pracy.tex', 'showInfo', false)

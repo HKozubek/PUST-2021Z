@@ -20,5 +20,5 @@ ylabel('S_z(k)')
 xlabel('k')
 title("Odpowiedź skokowa zakłócenia dla DMC; D_z = " + Dz)
 
-% matlab2tikz('../Tikz_rysunki/skokDMC_zak.tex')
+% matlab2tikz('../Tikz_rysunki/skok_DMC_zak.tex','showInfo', false)
 save('S_z', 'S_z')

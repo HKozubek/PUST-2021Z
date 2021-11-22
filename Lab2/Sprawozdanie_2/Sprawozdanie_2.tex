@@ -97,7 +97,7 @@ title style={font=\small}
 \pagestyle{uheadings}
 
 %strona tytułowa
-\title{\bf Sprawozdanie z projektu i ćwiczenia laboratoryjnego nr 1, zadanie nr 1\vskip 0.1cm}
+\title{\bf Sprawozdanie z projektu i ćwiczenia laboratoryjnego nr 2, zadanie nr 1\vskip 0.1cm}
 \author{Hubert Kozubek, Przemysław Michalczewski}
 \date{2021}
 
@@ -133,6 +133,122 @@ Wydział Elektroniki i Technik Informacyjnych}}\\
 
 \tableofcontents
 
+\chapter{Laboratorium}
+\section{Cel laboratorium}
+Celem niniejszego laboratorium była implementacja, weryfikacja poprawności działania i~dobór parametrów algorytmów regulacji jednowymiarowego procesu laboratoryjnego z~pomiarem zakłócenia dla stanowiska grzejąco-chłodzącego przedstawionego na rys. \ref{stanowisko_grzewcze}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{ ./Rysunki/Stanowisko-grzewcze.png }
+	\caption {Stanowisko grzejąco-chłodzące używane w trakcie laboratoriów.}
+	\label{stanowisko_grzewcze}
+\end{figure}
+
+
+\section{Przebieg laboratorium}
+Rozpoczynając pracę na stanowisku grzejąco-chłodzącym sprawdzono możliwość sterowania i~pomiaru w~komunikacji za stanowiskiem. W~szczególności sygnały sterujące wykorzystywane podczas niniejszego laboratorium W1, G1, Z oraz pomiaru T1 (elementy wykonawcze przedstawiono na rys. \ref{stanowisko_grzewcze_schemat}). Przez cały czas trwania laboratorium moc wentylatora W1 była ustawiona na 50\%, a wentylator traktowany jako cecha otoczenia. Dodatkowo sprawiał on, że temperatura grzałki
+opadała szybciej, co było szczególnie przydatne pomiędzy doświadczeniami.
+
+W ramach laboratorium należało wykonać 5 zadań:
+\begin{enumerate}
+	\label{lista_zadan}
+  \item Odczytać wartość pomiaru temperatury dla termometru T1 dla mocy 26\% grzałki G1 w~stanie ustalonym (wyznaczyć punkt pracy).
+  \item Wyznaczyć odpowiedzi skokowe toru zakłócenie-wyjście dla trzech różych zmian sygnału zakłócającego Z~rozpoczynając z~punktu pracy.
+  \item Przygotować odpowiedzi skokowe wykorzystywane w~algorytmie DMC.
+  \item Zaimplementować algorytm DMC do regulacji procesu stanowiska w języku MATLAB.
+  \item Dobrać parametr $D^{\mathrm{z}$ dla algorytmu DMC i~przeprowadzić eksperymenty. 
+\end{enumerate}
+
+
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\textwidth]{ ./Rysunki/Stanowisko-grzewcze-schemat.png }
+		\caption {Schemat stanowiska grzejąco-chłodzącego; zaznaczone elementy wykonawcze: wentylatory W1, W2, W3, W4, grzałki G1, G2, czujniki temperatury T1, T2, T3, T4, T5 (temperatura
+otoczenia), pomiar prądu P1, pomiar napięcia P2.}
+		\label{stanowisko_grzewcze_schemat}
+\end{figure}
+
+\section{Punkt pracy stanowiska}
+W celu wyznaczenia punktu pracy stanowiska dla mocy grzałki G1=26\% zadano tę wartość dla sygnału sterującego grzałką. Następnie poczekano, aż temperatura T1 ustali się. Wynik eksperymentu przedstawiono na rys. \ref{punkt_pracy}. Odczytana wartość temperatury dla termometru T1 wyniosła \num{28.12} °C.
+
+
+\begin{figure}[H]
+	\centering
+	\input{../Tikz_rysunki/punkt_pracy.tex}
+	\caption{Ustalanie się temperatury dla punktu pracy.}
+	\label{punkt_pracy}
+\end{figure}
+
+\section{Odpowiedzi skokowe toru zakłócenie-wyjście}
+Dla stanowiska pracującego w ustalonym punkcie pracy (G1=26\%; T1=\num{28.12}°C) zadano 3~różne wartości skoku zakłócenia. Eksperyment wykonano dla skoków sygnału zawsze z wartości Z=0 do kolejno wartości: Z=10, Z=20 oraz Z=30. Wyniki przedstawiono na rys. \ref{skok_zak}. Różnica w początkowych wartościach temperatury T1 dla poszczególnych skoków wynika z zakłóceń powodowanch przez zmianę temperatury w pracowni laboratoryjnej oraz nagrzewania się stanowiska grzejąco-chłodzącego.
+
+
+Na podstawie wyznaczonej charakterystyki statycznej dla toru zakłócenie-wyjście przedstawionej na rys. \ref{char_skok_zak} możemy stwierdzono, że właściwości statyczne są w~przybliżeniu liniowe. Wzmocenienie statyczne dla tego toru procesu wyznaczono metodą najmniejszych kwadratów i otrzymano wartość $K_{\mathrm{stat}}=0.1725$.
+
+\begin{figure}[H]
+	\centering
+	\input{../Tikz_rysunki/skok_zak.tex}
+	\caption{Odpowiedzi skokowe dla toru zakłócenie - wyjście.}
+	\label{skok_zak}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\input{../Tikz_rysunki/charak_stat_zak.tex}
+	\caption{Charakterystyka statyczna dla toru zakłócenie - wyjście.}
+	\label{char_skok_zak}
+\end{figure}
+
+\section{Odpowiedzi skokowe dla algorytmu DMC}
+Odpowiedź skokowa toru wejście-wyjście dla algorytmu DMC została zaczerpnięta z laboratorium nr 1, przedstawiono ją na rys. \ref{skok_DMC}.
+
+W celu wyznaczenia odpowiedzi skokowej toru zakłócenie-wyjście wybrano trzecią odpowiedź skokową przedstawioną na rys. \ref{skok_zak}, tj. skok zakłócenia do wartości Z=30. Do przekształcenia zebranej odpowiedzi skokowej skorzystano z przekształcenia:
+
+\begin{equation}
+	S(i)= \frac{Y(i) - Y_{\mathrm{pp}}}{Z_{\mathrm{skok}} - Z_{\mathrm{pp}}}
+\end{equation}
+gdzie:
+\begin{itemize}
+  \item $S(i)$ - odpowiedź skokowa potrzebna do algorytmu DMC,
+	\item $Y(i)$ - odpowiedź skokowa przed przekształceniem,
+	\item $Y_{\mathrm{pp}}$ - wartość wyjścia w chwili k=0 (tutaj $Y_{\mathrm{pp}}$  = \num{27.93}),
+	\item $Z_{\mathrm{skok}}$ - wartość sterowanie w chwili k=0 i później (tutaj $Z_{\mathrm{skok}} = 30$),
+	\item $Z_{\mathrm{pp}}$ - wartość sterowania przed chwilą k=0 (tutaj $Z_{\mathrm{pp}} = 0$)
+\end{itemize}
+
+Otrzymana odpowiedź skokowa dla toru zakłócenie wyjście została przedsawiona na rys. \ref{skok_DMC_zak}.
+
+
+\begin{figure}[H]
+	\centering
+	\input{../Tikz_rysunki/skok_DMC.tex}
+	\caption{Odpowiedź skokowa toru wejście-wyjście dla algorytmu DMC.}
+	\label{skok_DMC}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\input{../Tikz_rysunki/skok_DMC_zak.tex}
+	\caption{Odpowiedź skokowa toru zakłócenie-wyjście dla algorytmu DMC.}
+	\label{skok_DMC_zak}
+\end{figure}
+	
+	
+\begin{figure}[H]
+	\centering
+	\input{../Tikz_rysunki/skok_DMC_apro.tex}
+	\caption{Aproksymacja odpowiedzi skokowej toru wejście-wyjście dla algorytmu DMC.}
+	\label{skok_DMC_apro}
+\end{figure}
+
+
+
+
+
+
+
+
+
 \begin{comment}
 \section{Cele projektu i laboratoriów}
 Celem niniejszego laboratorium było zaprojektowanie, implementacja,
@@ -143,14 +259,15 @@ procesu na grzejąco-chłodzącym stanowisku laboratoryjnym przedstawionym na ry
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.7\textwidth]{ ./Rysunki/Stanowisko-grzewcze.png }
-	\caption {Stanowisko grzejąco-chłodzące używane w trakcie laboratoriów}
+	\caption {Stanowisko grzejąco-chłodzące używane w trakcie laboratoriów.}
 	\label{Stanowisko grzewcze}
 \end{figure}
 
 \begin{figure}[h]
 		\centering
 		\includegraphics[width=0.7\textwidth]{ ./Rysunki/Stanowisko-grzewcze-schemat.png }
-		\caption {Schemat stanowiska grzejąco-chłodzącego}
+		\caption {
+}
 		\label{Stanowisko grzewcze, schemat}
 \end{figure}
 

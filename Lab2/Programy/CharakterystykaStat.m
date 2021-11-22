@@ -2,6 +2,7 @@ zak1 = load('..\Workspace\zak1_v2.mat');
 zak2 = load('..\Workspace\zak2.mat');
 zak3 = load('..\Workspace\zak3.mat');
 
+Ypp = 28.12;
 
 skok1 = zak1.skok_zak1;
 moc_zak1 = zak1.zak;
@@ -14,8 +15,8 @@ stat1 = skok1(1000);
 stat2 = skok2(1000);
 stat3 = skok3(1000);
 
-Y_stat = [stat1, stat2, stat3];
-Z_stat = [moc_zak1, moc_zak2, moc_zak3];
+Y_stat = [Ypp, stat1, stat2, stat3];
+Z_stat = [0, moc_zak1, moc_zak2, moc_zak3];
 
 % wzmocnienie (MNK)
 
@@ -29,10 +30,13 @@ b = w(2);
 Kstat = b;
 
 figure('name', "Charakterystyka statyczna dla toru zakłócenie - wyjście")
+hold on
 plot(Z_stat, Y_stat)
+plot(Z_stat, Y_stat, 'o')
 xlabel("Zakłócenie")
 ylabel('Wyjście procesu (T1) [°C]')
-title("Charakterystyka statyczna dla toru zakłócenie - wyjście")
-subtitle("Wzmocnienie statyczne = " + Kstat)
+title("Wzmocnienie statyczne toru zakłócenie-wyjście; K_{stat} = " + Kstat)
+% title("Charakterystyka statyczna dla toru zakłócenie - wyjście")
+% subtitle("Wzmocnienie statyczne; K_{stat} = " + Kstat)
 
-% matlab2tikz('../Tikz_rysunki/charakterystyka_stat_zak.tex', 'showInfo', false)
+% matlab2tikz('../Tikz_rysunki/charak_stat_zak.tex', 'showInfo', false)

@@ -22,3 +22,5 @@ xlabel("Czas [s]")
 ylabel("Temperatura [°C]")
 legend("Z = " + moc_zak1, "Z = " + moc_zak2, "Z = " + moc_zak3, 'Location', 'southeast')
 title("Odpowiedzi skokowe dla toru zakłócenie - wyjście")
+
+% matlab2tikz('../Tikz_rysunki/skok_zak.tex', 'showInfo', false)
