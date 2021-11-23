@@ -1,4 +1,4 @@
-%implementacja DMC z pomiarem zakłócen
+%implementacja DMC z pomiarem zaklocen
 function U = DMC_zak(yzad, y, D, z, Dz, N, Nu, lambda)
     
     persistent init
@@ -15,7 +15,7 @@ function U = DMC_zak(yzad, y, D, z, Dz, N, Nu, lambda)
     
     
     if isempty(init)
-        
+        %liczone offline
         % Wczytanie macierzy S z pliku dane1.mat
         data = load('dane1.mat');
         S = data.S;
@@ -93,6 +93,7 @@ function U = DMC_zak(yzad, y, D, z, Dz, N, Nu, lambda)
     
     U = Upop + du;
     
+    % ograniczenia sterowania
     if U > Gmax
         U = Gmax;
     end

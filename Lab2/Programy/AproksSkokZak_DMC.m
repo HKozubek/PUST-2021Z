@@ -1,4 +1,4 @@
-% aproksymacja odpowiedzi skokowej zakłócenia
+% aproksymacja odpowiedzi skokowej toru zaklocenie-wyjscie
 
 function ERR = AproksSkokZak_DMC(X)
  

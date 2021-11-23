@@ -119,6 +119,10 @@ Wydział Elektroniki i Technik Informacyjnych}}\\
 \end{center}
 \vspace{2cm}
 \begin{center}
+{\bf \LARGE Zespół Z01
+\vskip 0.1cm}
+\end{center}
+\begin{center}
 {\bf \Large \@author \par}
 \end{center}
 \vspace*{\stretch{6}}
@@ -200,8 +204,6 @@ Na podstawie wyznaczonej charakterystyki statycznej dla toru zakłócenie-wyjśc
 \end{figure}
 
 \section{Odpowiedzi skokowe dla algorytmu DMC}
-Odpowiedź skokowa toru wejście-wyjście dla algorytmu DMC została zaczerpnięta z laboratorium nr 1, przedstawiono ją na rys. \ref{skok_DMC}.
-
 W celu wyznaczenia odpowiedzi skokowej toru zakłócenie-wyjście wybrano trzecią odpowiedź skokową przedstawioną na rys. \ref{skok_zak}, tj. skok zakłócenia do wartości Z=30. Do przekształcenia zebranej odpowiedzi skokowej skorzystano z przekształcenia:
 
 \begin{equation}
@@ -216,15 +218,68 @@ gdzie:
 	\item $Z_{\mathrm{pp}}$ - wartość sterowania przed chwilą k=0 (tutaj $Z_{\mathrm{pp}} = 0$)
 \end{itemize}
 
-Otrzymana odpowiedź skokowa dla toru zakłócenie wyjście została przedsawiona na rys. \ref{skok_DMC_zak}.
+Otrzymana odpowiedź skokowa dla toru zakłócenie wyjście została przedsawiona na rys. \ref{skok_DMC_zak}. Następnie dokonano aproksymacji odpowiedzi skokowej poprzez przybliżenie używając w tym celu członu inercyjnego drugiego stopnia z opóźnieniem:
 
+\begin{equation}
+	G(s)= \frac{K}{(sT_1 + 1)(sT_2 + 1)}e^{-T_{\mathrm{d}}s}
+\end{equation}
 
-\begin{figure}[H]
-	\centering
-	\input{../Tikz_rysunki/skok_DMC.tex}
-	\caption{Odpowiedź skokowa toru wejście-wyjście dla algorytmu DMC.}
-	\label{skok_DMC}
-\end{figure}
+Po dyskretyzacji danej transmitancji otrzymujemy:
+\begin{equation}
+	G(z)= \frac{b_1z^{-1} + b_2z^{-2}}{1 + a_1z^{-1} + a_2z^{-2}}z^{-T_{\mathrm{d}}}
+\end{equation}
+
+gdzie:
+\begin{equation}
+\begin{split}
+	& a_1 = -\alpha_1 - \alpha_2 \\
+	& a_2 = \alpha_1\alpha_2 \\
+	& \alpha_1 = e^{-\frac{1}{T_1}} \\
+	& \alpha_2 = e^{-\frac{1}{T_2}} \\
+	& b_1 = \frac{K}{T_1 - T_2}[T_1(1-\alpha_1) - T_2(1-\alpha_2)] \\
+	& b_2 = \frac{K}{T_1 - T_2}[\alpha_1T_2(1-\alpha_2) - \alpha_2T_1(1-\alpha_1)]
+\end{split}
+\end{equation}
+
+Dla otrzymanej w~ten sposób transmitancji w~postaci dyskretnej napisano funkcję \\\verb+AproksSkokZak_DMC(X)+, która przyjmowała parametry $T_{\mathrm{1}}$, $T_{\mathrm{2}}$ oraz $K$. Wartość parametru \\$T_{\mathrm{d}}=12$ odczytano z odpowiedzi skokwej, ponieważ jest to opóźnienie. Funkcja ta zwracała sumaryczny błąd kwadratowy pomiędzy aproksymacją otrzymaną dla zadanych parametrów a eksperymentalnie wyznaczoną odpowiedzią skokową dla toru zakłócenie-wyjście po przekształceniu dla algorytmu regulacji DMC.  Implementacja funkcji \verb+AproksSkokZak_DMC(X)+:
+
+\lstinputlisting{../Programy/AproksSkokZak_DMC.m}
+
+Do wyznaczenia współczynników transmitancji użyto funkcji \verb+ga+ dostępnej w programie MATLAB, która wykorzystuje algorytm generyczny do wyznaczenia minimum funkcji. Dla naszej funkcji jest to równoważne ze znalezieniem najlepiej dopasowanej aproksymacji odpowiedzi skokowej toru zakłócenie-wyjście.
+Paramerty związane z algorytmem generycznym to kolejno:
+
+\begin{equation}
+	\begin{split}
+		& StallGenLimit = 200 \\
+		& PopulationSize = 400 \\
+		& FunctionTolerance = $1e^{-8}$ \\
+	\end{split}
+\end{equation}
+
+gdzie:
+
+\begin{itemize}
+	\item $StallGenLimit$ oznacza maksymalną ilość iteracji algorytmu, dla których wartość różnicy między wartościami wyniku funkcji optymalizowanej jest mniejsza niż $FunctionTolerance$.
+	\item $PopulationSize$ oznacza ilość ziaren dla algorytmu generytecznego w każdej iteracji.
+	\item $FunctionTolerance$ oznacza wartość wskaźnika toleracji, który determinuje dla jakiej dokładoności algorytm uznaje, że otrzymany wynik jest ostateczy.
+\end{itemize}
+
+Wybrane wartości powyższych parametrów pozwalają na aproksymację z małym błędem, co sprawdzono poprzez kilkukrotne wywołanie algorytmu i dostrojenie eksperymentalne parametrów. Implementacja optymalizacji:
+
+\lstinputlisting{../Programy/Optymalizacja_S_z.m}
+
+Ponieważ do  minimalizacji funkcji użyto algorytmu generycznego to wyniki podczas kolejnych odtworzeń mogą się różnic. Jednak po wykonaniu testów, dla których błąd aproksymacji był bardzo zbliżony przyjęto wartości parametrów:
+
+\begin{equation}
+	\begin{split}
+		& K = 0.1772938\\
+		& T_1 = 88.311400 \\
+		& T_2 = 0.010351 \\
+		& T_{\mathrm{d}} = 12 \\
+	\end{split}
+\end{equation}
+
+Otrzymaną aproksymowaną odpowiedź skokową dla toru zakłócenie-wyjście dla algorytmu regulacji DMC przedstawiono na rys. \ref{skok_DMC_zak_apro}.
 
 \begin{figure}[H]
 	\centering
@@ -236,16 +291,35 @@ Otrzymana odpowiedź skokowa dla toru zakłócenie wyjście została przedsawion
 	
 \begin{figure}[H]
 	\centering
+	\input{../Tikz_rysunki/skok_DMC_zak_apro.tex}
+	\caption{Aproksymacja odpowiedzi skokowej toru zakłócenie-wyjście dla algorytmu DMC.}
+	\label{skok_DMC_zak_apro}
+\end{figure}
+
+Odpowiedź skokowa toru wejście-wyjście dla algorytmu DMC została zaczerpnięta z laboratorium nr 1, przedstawiono ją na rys. \ref{skok_DMC}. Analogicznie jak dla odpowiedzi skokowej toru zakłócenie-wyjście wykonano dla niej aproksymacje przedstawioną na rys. \ref{skok_DMC_apro}.
+
+\begin{figure}[H]
+	\centering
+	\input{../Tikz_rysunki/skok_DMC.tex}
+	\caption{Odpowiedź skokowa toru wejście-wyjście dla algorytmu DMC.}
+	\label{skok_DMC}
+\end{figure}
+
+	
+\begin{figure}[H]
+	\centering
 	\input{../Tikz_rysunki/skok_DMC_apro.tex}
 	\caption{Aproksymacja odpowiedzi skokowej toru wejście-wyjście dla algorytmu DMC.}
 	\label{skok_DMC_apro}
 \end{figure}
 
+\section{Algorytm DMC z pomiarem zakłóceń}
+Do sterowania procesem zaimplementowano algorytm DMC z pomiarem zakłóceń w języku MATLAB. TODO(nie wiem bardziej omawiać implementacje, czy komentarze są wystarczające, bo w poleceniu jest aby omówić program?)
+
+\lstinputlisting{../Programy/DMC_zak.m}
 
 
-
-
-
+\section{Dobór parametrów dla algorytmu DMC}
 
 
 
@@ -451,10 +525,6 @@ Oczywiście do regulacji zostały wykorzystane parametry PID-a dyskretnego okre�
 	\label{PID1}
 \end{figure}
 
-% TODO:
-% Opisać przebiegi doboru parametrów,
-% podpisać parametry,
-% policzyć errory
 
 Wyniki regulacji PID dla tych parametrów przedstawiono na rys. \ref{PID1}.
 W dalszej kolejności sprawdzane były jeszcze inne wartości parametrów w celu znalezienia jak najlepszych nastawów.
