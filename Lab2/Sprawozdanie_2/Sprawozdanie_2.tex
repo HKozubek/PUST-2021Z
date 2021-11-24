@@ -568,7 +568,6 @@ end
 
 \section{Dobór parametrów algorytmu DMC}
 
-TODO więciej wykresów do doboru parametrów
 
 \begin{figure}[H]
 	\centering
@@ -617,16 +616,18 @@ TODO więciej wykresów do doboru parametrów
 
 \section{Porównanie regulacji DMC z pomiarem zakłócenia oraz bez pomiaru}
 
+
+
 \begin{figure}[H]
 	\centering
-	\includegraphics{../../Lab2/PDF_rysunki/Z5_DMCZZakloceniami.pdf}
+	\includegraphics[scale=0.85]{../../Lab2/PDF_rysunki/Z5_DMCZZakloceniami.pdf}
 	\caption{Regulacja DMC z pomiarem zakłócenia: N=20, N_{\mathrm{u}}=20, \lambda=0.1.}
 	\label{pom_zak}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics{../../Lab2/PDF_rysunki/Z5_DMCZZakloceniamiBezOdsprz.pdf}
+	\includegraphics[scale=0.85]{../../Lab2/PDF_rysunki/Z5_DMCZZakloceniamiBezOdsprz.pdf}
 	\caption{Regulacja DMC bez pomiaru zakłócenia: N=20, N_{\mathrm{u}}=20, \lambda=0.1.}
 	\label{bez_pom_zak}
 \end{figure}
@@ -634,53 +635,53 @@ TODO więciej wykresów do doboru parametrów
 
 
 
-\section{Działanie algorytmu DMC z pomiarem zakłóceń przy zakłóceniach sinusoidalnych}
-
+\section{Działanie algorytmu DMC przy zakłóceniach sinusoidalnych}
+Można zauważyć, że stosowanie kompensacji zakłóceń w przypadku zakłóceń okresowych o dużej częstotliwości pogarsza regulację w znacznym stopniu. Jest to spowodowane tym, że regulator z kompensacją nie potrafi reagować wystarczająco szybko, przez co regulator nadawał wyższe sterowanie, pomimo że sygnał zakłócenia przestał już opadać i zaczynał się podnosić. Dla zakłóceń tego rodzaju, na obiektach z większą inercją toru wejście-wyjście niż zakłócenie-wyjście, stosowanie regulatorów bez kompensacji zakłóceń okazuję się lepszym roziązaniem. Układ jest wtedy bardziej bezwładny, dzięki czemu nie następuje wzmocnienie zakłócenia wywołane wyliczeniem sterowania z przed chwili. 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics{../../Lab2/PDF_rysunki/Z6_DMCSinZOdsprz.pdf}
+	\includegraphics[scale=0.85]{../../Lab2/PDF_rysunki/Z6_DMCSinZOdsprz.pdf}
 	\caption{Regulacja DMC z pomiarem zakłóceń przy zakłóceniach sinusoidalnych}
 	\label{sin_z_pom}
 \end{figure}
 
-\section{Działanie algorytmu DMC bez pomiaru zakłóceń przy zakłóceniach sinusoidalnych}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics{../../Lab2/PDF_rysunki/Z6_DMCSinBezOdsprz.pdf}
+	\includegraphics[scale=0.85]{../../Lab2/PDF_rysunki/Z6_DMCSinBezOdsprz.pdf}
 	\caption{Regulacja DMC bez pomiaru zakłóceń przy zakłóceniach sinusoidalnych}
 	\label{sin_bez_pom}
 \end{figure}
 
 \section{Badanie odporności algorytmu DMC na szum pomiarowy sygnału zakłócenia}
+Eksperymenty przeprowadzone dla różnych wartości błędu pomiaru zakłóceń pokazują jasno, że regulator jest odpory na szumy pomiarowe, o ile warotści szumu są w granicach rozsądku. Wartości szumów nie przekraczały 10\% wartości $Y_{\mathrm{zad}}$, dzięki czemu wyjście procesu nie odbiegało w znaczącym stopniu od wartości zadanej. Patrząc na eksperymenty nasuwa się jeszcze dodatowy wniosek zwiazany z szybkością zmian szumu. Na rys. \ref{szum3} widać, że regulator nie jest w stanie nadążyć sterowaniem za sygnałem szumu, przez co można zauważyć, żę wartość błędu jest wyższa, niż dla innych eksperymentów.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics{../../Lab2/PDF_rysunki/Z7_Szum1.pdf}
+	\includegraphics[scale=0.85]{../../Lab2/PDF_rysunki/Z7_Szum1.pdf}
 	\caption{Regulacja DMC z pomiarem zakłóceń z występujacym szumem pomiarowym(1)}
 	\label{szum1}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[h]
 	\centering
-	\includegraphics{../../Lab2/PDF_rysunki/Z7_Szum2.pdf}
+	\includegraphics[scale=0.85]{../../Lab2/PDF_rysunki/Z7_Szum2.pdf}
 	\caption{Regulacja DMC z pomiarem zakłóceń z występujacym szumem pomiarowym(2)}
 	\label{szum2}
 \end{figure}
 
 
-\begin{figure}[H]
+\begin{figure}[h]
 	\centering
-	\includegraphics{../../Lab2/PDF_rysunki/Z7_Szum3.pdf}
+	\includegraphics[scale=0.85]{../../Lab2/PDF_rysunki/Z7_Szum3.pdf}
 	\caption{Regulacja DMC z pomiarem zakłóceń z występujacym szumem pomiarowym(3)}
 	\label{szum3}
 \end{figure}
 
 
-\begin{figure}[H]
+\begin{figure}[h]
 	\centering
-	\includegraphics{../../Lab2/PDF_rysunki/Z7_Szum4.pdf}
+	\includegraphics[scale=0.85]{../../Lab2/PDF_rysunki/Z7_Szum4.pdf}
 	\caption{Regulacja DMC z pomiarem zakłóceń z występujacym szumem pomiarowym(4)}
 	\label{szum4}
 \end{figure}
