@@ -30,6 +30,11 @@ horyzontu predykcji i sterowania wynki znacząco się pogarszają, natomiast dla
 	poza tym jakoś średnio to wygląda jak na symulację, mało się poprawia imo, może trzeba
 	Dz zmienić.
 
+	Aby sprawdzić poprawnośc kompensacji zakłóceń zostały przeprowadzony eksperyment ze skokiem wartości zadanej, po której następił skok wartości zakłócenia.
+	Eksperyment został przeprowadzony dla zwykłego DMC oraz dla DMC wraz z kompensacją zakłóceń. Z wykresó można łatwo wyczytać, że DMC z kompensacją zakłóceń radzi sobie lepiej dla takiego sygnału zakłóceń.
+	Jest to głównie spowodowane szybkością z jaką DMC reguje na zmiane wartości zakłócenia. Algorytmu z kompensacją reguje w tej samej iteracji, w której nastąpiła zmiana zakłócenia, przez co proces szybciej powraca do wartości zadanej,
+	Z koleji algorytm DMC w najprostrzej wersji analitycznej musi poczekać, aż zakłócenie to przepropaguje się na wartośc wyjściową sygnału, ponieważ dopiero wtedy jest w stanie "zauważyć" zmianę zakłócenia i na nią zareagować. 
+
 	7. ZAD6 wyniki chyba bardzo słabe (chyba, że takie powinny być, bo nie wiem),
 	bo dla pomiary zakłóceń większy błąd, imo to za mały okres tej funkcji jak na
 	takie opóźnienie procesu, bo wtedy chyba lepsze wyniki wy wyszły.
