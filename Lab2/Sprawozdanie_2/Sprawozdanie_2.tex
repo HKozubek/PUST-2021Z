@@ -622,6 +622,9 @@ Dobór parametrów dla regulatora DMC odbywał się w następujący sposób. W p
 
 \section{Porównanie regulacji DMC z pomiarem zakłócenia oraz bez pomiaru}
 
+Aby sprawdzić poprawność kompensacji zakłóceń został przeprowadzony eksperyment ze skokiem wartości zadanej, po której następił skok wartości zakłócenia (po uprzednim ustaleniu się wartości zadanej). Eksperyment został przeprowadzony dla zwykłego DMC oraz dla DMC wraz z kompensacją zakłóceń. Z wykresów (\ref{pom_zak}, \ref{bez_pom_zak})  można łatwo wyczytać, że DMC z kompensacją zakłóceń radzi sobie lepiej dla takiego sygnału zakłóceń. Jest to głównie spowodowane szybkością z jaką DMC reaguje na zmianę wartości zakłócenia. Algorytm z kompensacją reaguje w tej samej iteracji, w której nastąpiła zmiana zakłócenia, przez co proces szybciej powraca do wartości zadanej. Z koleji algorytm DMC w najprostrzej wersji analitycznej musi poczekać, aż zakłócenie to przepropaguje się na wartość wyjściową sygnału, ponieważ dopiero wtedy jest w stanie "zauważyć" zmianę zakłócenia i na nią zareagować. 
+
+
 
 
 \begin{figure}[H]
