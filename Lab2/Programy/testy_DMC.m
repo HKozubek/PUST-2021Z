@@ -18,6 +18,7 @@ plot(DMCy)
 xlabel('Czas [s]')
 ylabel('Y [°C]')
 xlim([0, 1000])
+ylim([27, 37])
 legend('Y_{zad}', 'Y', 'Location', 'southeast')
 
 subplot(3,1,2)
@@ -33,7 +34,7 @@ ylim([0, 35])
 xlabel('Czas [s]')
 ylabel('Z_{zad}(k)')
 
-sgtitle("Test DMC bez kompenscaji zakłóceń nr 1; E = " + E)
+sgtitle("Test DMC bez kompensacji zakłóceń nr 1; E = " + E)
 
 
 % matlab2tikz('../Tikz_rysunki/bez_kom_1.tex', 'showInfo', false)
@@ -56,6 +57,7 @@ plot(DMCy)
 xlabel('Czas [s]')
 ylabel('Y [°C]')
 xlim([0, 1000])
+ylim([27, 37])
 legend('Y_{zad}', 'Y', 'Location', 'southeast')
 
 subplot(3,1,2)
@@ -71,7 +73,7 @@ ylim([0, 35])
 xlabel('Czas [s]')
 ylabel('Z_{zad}(k)')
 
-sgtitle("Test DMC bez kompenscaji zakłóceń nr 2; E = " + E)
+sgtitle("Test DMC bez kompensacji zakłóceń nr 2; E = " + E)
 
 % matlab2tikz('../Tikz_rysunki/bez_kom_2.tex', 'showInfo', false)
 
@@ -94,6 +96,7 @@ plot(DMCy)
 xlabel('Czas [s]')
 ylabel('Y [°C]')
 xlim([0, 1000])
+ylim([27, 37])
 legend('Y_{zad}', 'Y', 'Location', 'southeast')
 
 subplot(3,1,2)
@@ -109,7 +112,7 @@ ylim([0, 35])
 xlabel('Czas [s]')
 ylabel('Z_{zad}(k)')
 
-sgtitle("Test DMC z kompenscają zakłóceń; E = " + E)
+sgtitle("Test DMC z kompensacją zakłóceń; E = " + E)
 
 % matlab2tikz('../Tikz_rysunki/kom_s_eksp.tex', 'showInfo', false)
 
@@ -131,6 +134,7 @@ plot(DMCy)
 xlabel('Czas [s]')
 ylabel('Y [°C]')
 xlim([0, 1000])
+ylim([27, 37])
 legend('Y_{zad}', 'Y', 'Location', 'southeast')
 
 subplot(3,1,2)
@@ -146,7 +150,7 @@ ylim([0, 35])
 xlabel('Czas [s]')
 ylabel('Z_{zad}(k)')
 
-sgtitle("Test DMC z kompenscają zakłóceń; E = " + E)
+sgtitle("Test DMC z kompensacją zakłóceń; E = " + E)
 
 % matlab2tikz('../Tikz_rysunki/kom_s_apro.tex', 'showInfo', false)
 

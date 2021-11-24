@@ -5,16 +5,11 @@ E = skok1.E;
 Yzad = skok1.Yzad;
 Zzad = skok1.Zzad;
 
-%????? brakuje danych
-% skok2 = load('..\Workspace\dmc_test_nastawy_2.mat');
-% skok3 = load('..\Workspace\dmc_test_nastawy_3.mat');
-
 figure('Name', 'Test sterowania DMC z pomiarem zakłóceń');
 
 subplot(2,1,1)
-title("Dobór parametrów DMC: N=20; Nu=1, lambda=1")
-hold on
 stairs(Yzad, '--')
+hold on
 plot(DMCy)
 xlabel('Czas [s]')
 ylabel('Y [°C]')
@@ -26,4 +21,11 @@ stairs(DMCu)
 xlim([0, 800])
 xlabel('Czas [s]')
 ylabel('U [%]')
+
+sgtitle("Dobór parametrów DMC: N=20, Nu=1, lambda=1; (Err = " + round(E) + ")")
+
+% matlab2tikz('../Tikz_rysunki/dobor_param_DMC1.tex', 'showInfo', false)
+
+
+
 

@@ -76,7 +76,8 @@
 tick label style={font=\scriptsize},
 label style={font=\small},
 legend style={font=\small},
-title style={font=\small}
+title style={font=\small},
+compat=newest										%chyba dobry dodatek, dla subplota xlabel nie nachodzi na inne wykresy
 }
 
 \def\figurename{Rys.}
@@ -320,6 +321,75 @@ Do sterowania procesem zaimplementowano algorytm DMC z pomiarem zakłóceń w j�
 
 
 \section{Dobór parametrów dla algorytmu DMC}
+
+\begin{figure}[H]
+	\centering
+	\input{../Tikz_rysunki/dobor_param_DMC1.tex}
+	\caption{Dobór parametrów dla algorytmu DMC: D=300, N=10, N_{\mathrm{u}}=1, \lambda=1.\\ Wskaźnik jakości regulacji E=2808.}
+	\label{dobor_param_DMC1}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\input{../Tikz_rysunki/dobor_param_DMC2.tex}
+	\caption{Dobór parametrów dla algorytmu DMC: D=300, N=50, N_{\mathrm{u}}=10, \lambda=1.\\ Wskaźnik jakości regulacji E=1467.}
+	\label{dobor_param_DMC2}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\input{../Tikz_rysunki/bez_kom_1.tex}
+	\caption{Regulacja z wykorzystaniem algorytmu DMC bez pomiaru zakłóceń. \\Użyte parametry DMC: D_{\mathrm{z}}=500, D=300, N=50, N_{\mathrm{u}}=10, \lambda=1.\\ Wskaźnik jakości regulacji E=1750.}
+	\label{bez_kom_1}
+\end{figure}
+
+
+\begin{figure}[H]
+	\centering
+	\input{../Tikz_rysunki/kom_s_eksp.tex}
+	\caption{Regulacja z wykorzystaniem algorytmu DMC z pomiarem zakłóceń, odpowiedź skokowa toru zakłócenie-wyjście wyznaczona eksperymentalnie. \\Użyte parametry DMC: D_{\mathrm{z}}=500, D=300, N=50, N_{\mathrm{u}}=10, \lambda=1.\\ Wskaźnik jakości regulacji E=1391.}
+	\label{kom_s_eksp}
+\end{figure}
+
+
+\begin{figure}[H]
+	\centering
+	\input{../Tikz_rysunki/kom_s_apro.tex}
+	\caption{Regulacja z wykorzystaniem algorytmu DMC z pomiarem zakłóceń, odpowiedź skokowa toru zakłócenie-wyjście wyznaczona aproksymacyjnie. \\Użyte parametry DMC: D_{\mathrm{z}}=500, D=300, N=50, N_{\mathrm{u}}=10, \lambda=1.\\ Wskaźnik jakości regulacji E=1477.}
+	\label{kom_s_apro}
+\end{figure}
+
+
+
+\chapter{Projekt}
+\section{Informacje wstępne}
+
+Zadanie projektowe wykorzystywało symulowany obiekt regulacji. Wyjście obiektu można wyznaczyć przy pomocy polecenia:
+
+$y(k)=symulacja\_obiektu1y\_p2(u(k-6),u(k-7),z(k-2),z(k-3),y(k-1),y(k-2))$
+
+Wartości sygnałów wejścia, wyjścia i zakłócenia procesu w punkcie pracy wynoszą $u = y = z = 0$; okres próbkowania wynosi \num{0,5} sekundy.
+
+
+\section{Sprawdzenie poprawności punktu pracy}
+
+W celu sprawdzenia poprawności punktu pracy została przeprowadzona symulacja, gdzie na wejście podano sterowanie $u = 0$, jako poprzednie wartości wyjścia podano $y = 0$, wartość zakłócenia podano $z = 0$ i sprawdzono wartość wyjścia procesu w następnych chwilach. Wyniki symulacji przedstawstawiono na rys. \ref{punkt_pracy}. Wartość sygnału wyjściowego pozostała bez zmian, co potwierdza poprawność podanego punktu pracy.
+
+\begin{figure}[H]
+	\centering
+	\input{../../Projekt2/rysunki_tikz/Z1_PunktPracy.tex}
+	\caption{Sprawdzenie poprawności punktu pracy}
+	\label{punkt_pracy}
+\end{figure}
+
+
+
+
+
+
+
+
+
 
 
 
