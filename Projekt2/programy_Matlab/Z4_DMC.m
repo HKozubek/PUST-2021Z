@@ -151,10 +151,10 @@ xlabel('k');
 ylabel('Z + noise');
 
 
-path = '../rysunki_tikz/' ;
-fname = sprintf('Z4_DMCParametryN_%d_Nu_%d_lam_%d', N,Nu,lambda);
-str = append(path,fname);
-matlab2tikz(str,'showInfo', false)
+% path = '../rysunki_tikz/' ;
+% fname = sprintf('Z4_DMCParametryN_%d_Nu_%d_lam_%d', N,Nu,lambda);
+% str = append(path,fname);
+% matlab2tikz(str,'showInfo', false)
 
 % matlab2tikz('../rysunki_tikz/Z5_DMCZZakloceniami.tex','showInfo', false);
 
