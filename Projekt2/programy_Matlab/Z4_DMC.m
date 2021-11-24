@@ -41,8 +41,8 @@ N = 20; Nu = 20; lambda = 0.1;         %testDMC6; E = 6.897150803349723
 U(1:time) = Upp;
 Y(1:time) = Ypp;
 Z(1:time) = Zpp; %Z4
-% Noise(1:time) = 0; 7.1, 7.2
-Noise(1:time) = wgn(1,time,0.01)*0.05; % wgn(1,time,1)*0.1, wgn(1,time,0.01)*0.05
+Noise(1:time) = 0; %7.1, 7.2
+% Noise(1:time) = wgn(1,time,0.01)*0.05; % wgn(1,time,1)*0.1, wgn(1,time,0.01)*0.05
 
 % Z(101:time) = 1; %Z5
 % Z(1:time) = sin(1:time);
@@ -149,6 +149,12 @@ stairs(Z + Noise);
 title('Z(k) + noise');
 xlabel('k');
 ylabel('Z + noise');
+
+
+path = '../rysunki_tikz/' ;
+fname = sprintf('Z4_DMCParametryN_%d_Nu_%d_lam_%d', N,Nu,lambda);
+str = append(path,fname);
+matlab2tikz(str,'showInfo', false)
 
 % matlab2tikz('../rysunki_tikz/Z5_DMCZZakloceniami.tex','showInfo', false);
 
