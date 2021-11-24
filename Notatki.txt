@@ -19,6 +19,12 @@ Rzeczy do poprawy PUST lab i projekt nr 2:
 	min 3 i nie wiem jakie parametry dla tego wykresu dawałeś. Bo trzeba zrobić
 	porównanie jakościowe i ilościowe.
 
+Dobór parametrów dla regulatora DMC odbywał się w następujący sposób. W pierwszej kolejności zostały wybrane parametry duże wartości dla parametrów N i Nu, natomiast dla parametru λ przyjęto standardowo wartość 1, następnie parametry były najczęściej zmniejszane, ale równiż modyfikowane w sposób przypadkowy.
+Patrząc na wyniki symulacji można było wybrać najlepszy nastaw. Z przeprowadzonych eksperymentów wynika, że
+dla parametrów: N = 20, Nu = 20, λ = 0.1 wyniki regulacji są najlepsze. Dla mniejszych wartości
+horyzontu predykcji i sterowania wynki znacząco się pogarszają, natomiast dla większych nie jest zauważalna znacząca zmiana.
+
+
 	6. ZAD5 nie wiem czy zmiana Dz wpływa na to, ale z polecenia rozumiem, że 
 	należało by dać wykres dla więcej niż jednego Dz. (jest, zeby dobrać parametr Dz)
 	poza tym jakoś średnio to wygląda jak na symulację, mało się poprawia imo, może trzeba
