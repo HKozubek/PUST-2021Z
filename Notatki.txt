@@ -29,6 +29,14 @@ Rzeczy do poprawy PUST lab i projekt nr 2:
 	takie opóźnienie procesu, bo wtedy chyba lepsze wyniki wy wyszły.
 	Można ten przykład też dać, ale fajnie by było jakby zrobić jakiś dla którego 
 	po pomiarze widać poprawę.
+
+	Można zauważyc, że stosowanie kompensacji zakłóceń w przypadku zakłóceń okresowych o małym okresie regulacja pogarsza się w znacznym stopniu.
+	Jest to spowodowane tym, że regulator z kompensacją nie potrafi reagować wystarczająco szybko, przez co regulator nadawał wyższe sterowanie, pomimo że sygnał zakłócenia przestał już opadać i zaczynał się podnosić.
+	Dla zakłóceń tego rodzaju, na obiektach z większą inercją toru wejście-wyjście niż zakłócenie-wyjście, stosowanie rególatorów bez kompensacji zakłóceń okazuję się lepszym roziązaniem. Układ jest wtedy bardziej bezwładny, dzięki czemu nie następuje wzmocnienie zakłócenia wywołane wyliczeniem sterowania z przed chwili. 
  
 	8. trochę nie wiem co napisać przy tych szumach, wiesz jakie są wnioski
 	z tych eksperymentów, które przeprowadziłeś?
+
+	Eksperymenty przeprowadzone dla różnych wartości błędu pomiaru zakłóceń pokazują jasno, że regulator jest odpory na szumy pomiarowe, o ile są warotści szumu są w granicach rozsądku.
+	Wartości szumów nie przekraczały 10% wartości Y_{zad}, dzięki czemu wyjście procesu nie odbiegało w znaczącym stopniu od wartości zadanej. Patrząc na eksperymenty nasuwa się jeszcze dodatowy wniosek zwiazany z szybkością zmian szumu.
+	Na rys 2.11 widać, że regulator nie jest w stanie nadążyć sterowaniem za sygnałem szumu, przez co można wartość błędu jest wyższa, niż dla innych eksperymentów.
