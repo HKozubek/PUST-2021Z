@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.11.9)  24 NOV 2021 05:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.11.9)  24 NOV 2021 22:07
 entering extended mode
 **./zapis.tex
 (zapis.tex
@@ -572,7 +572,7 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 Package pgfplots notification 'compat/show suggested version=true': document ha
 s been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
 
-(../Projekt2/rysunki_tikz/Z7_Szum4.tex
+(../Projekt2/rysunki_tikz/Z4_DMCParametryN_60_Nu_40_lam_1.tex
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 427.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -606,10 +606,10 @@ and I'll forget about whatever was undefined.
 
 {C:/Users/przem/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] (zapis.aux) ) 
 Here is how much of TeX's memory you used:
- 22498 strings out of 478907
- 605154 string characters out of 2851892
- 1212020 words of memory out of 3000000
- 40038 multiletter control sequences out of 15000+600000
+ 22493 strings out of 478907
+ 605124 string characters out of 2851892
+ 1188527 words of memory out of 3000000
+ 40033 multiletter control sequences out of 15000+600000
  405561 words of font info for 34 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,18n,103p,704b,2128s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -621,7 +621,7 @@ s/cm/cmmi6.pfb><C:/Users/przem/AppData/Local/Programs/MiKTeX/fonts/type1/public
 1/public/amsfonts/cm/cmr10.pfb><C:/Users/przem/AppData/Local/Programs/MiKTeX/fo
 nts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/przem/AppData/Local/Programs/Mi
 KTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on zapis.pdf (1 page, 79542 bytes).
+Output written on zapis.pdf (1 page, 75007 bytes).
 PDF statistics:
  39 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

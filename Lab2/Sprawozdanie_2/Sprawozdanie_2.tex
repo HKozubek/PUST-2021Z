@@ -151,7 +151,7 @@ Celem niniejszego laboratorium była implementacja, weryfikacja poprawności dzi
 
 
 \section{Przebieg laboratorium}
-Rozpoczynając pracę na stanowisku grzejąco-chłodzącym sprawdzono możliwość sterowania i~pomiaru w~komunikacji za stanowiskiem. W~szczególności sygnały sterujące wykorzystywane podczas niniejszego laboratorium W1, G1, Z oraz pomiaru T1 (elementy wykonawcze przedstawiono na rys. \ref{stanowisko_grzewcze_schemat}). Przez cały czas trwania laboratorium moc wentylatora W1 była ustawiona na 50\%, a wentylator traktowany jako cecha otoczenia. Dodatkowo sprawiał on, że temperatura grzałki
+Rozpoczynając pracę na stanowisku grzejąco-chłodzącym sprawdzono możliwość sterowania i~pomiaru w~komunikacji za stanowiskiem. W~szczególności sygnały sterujące wykorzystywane podczas niniejszego laboratorium W1, G1, Z oraz pomiaru T1 (elementy wykonawcze przedstawiono na rys. \ref{stanowisko_grzewcze_schemat}). Przez cały czas trwania laboratorium moc wentylatora W1 była ustawiona na 50\%, a wentylator był traktowany jako cecha otoczenia. Dodatkowo sprawiał on, że temperatura grzałki
 opadała szybciej, co było szczególnie przydatne pomiędzy doświadczeniami.
 
 W ramach laboratorium należało wykonać 5 zadań:
@@ -182,7 +182,7 @@ W celu wyznaczenia punktu pracy stanowiska dla mocy grzałki G1=26\% zadano tę 
 Dla stanowiska pracującego w ustalonym punkcie pracy (G1=26\%; T1=\num{28.12}°C) zadano 3~różne wartości skoku zakłócenia. Eksperyment wykonano dla skoków sygnału zawsze z wartości Z=0 do kolejno wartości: Z=10, Z=20 oraz Z=30. Wyniki przedstawiono na rys. \ref{skok_zak}. Różnica w początkowych wartościach temperatury T1 dla poszczególnych skoków wynika z zakłóceń powodowanch przez zmianę temperatury w pracowni laboratoryjnej oraz nagrzewania się stanowiska grzejąco-chłodzącego.
 
 
-Na podstawie wyznaczonej charakterystyki statycznej dla toru zakłócenie-wyjście przedstawionej na rys. \ref{char_skok_zak} możemy stwierdzono, że właściwości statyczne są w~przybliżeniu liniowe. Wzmocenienie statyczne dla tego toru procesu wyznaczono metodą najmniejszych kwadratów i otrzymano wartość $K_{\mathrm{stat}}=0.1725$.
+Na podstawie wyznaczonej charakterystyki statycznej dla toru zakłócenie-wyjście przedstawionej na rys. \ref{char_skok_zak} można stwierdzić, że właściwości statyczne są w~przybliżeniu liniowe. Wzmocenienie statyczne dla tego toru procesu wyznaczono metodą najmniejszych kwadratów i otrzymano wartość $K_{\mathrm{stat}}=0.1725$.
 
 \begin{figure}[H]
 	\centering
@@ -420,7 +420,24 @@ Wyznaczone zostały odpowiedzi skokowe dla kilku skoków zakłócenia mierzonego
 
 
 \section{Charakterystyka statyczna procesu}
-TODO
+Na podstawie odpowiedzi skokowych wyznaczono charakterystyki statyczne dla toru\\ wejście-wyjście (rys. \ref{char_stat_wej}) oraz toru zakłócenie-wyjście (rys. \ref{char_stat_zak}) korzystając z ustalonych wartości wyjścia dla zadawanych sygnałów, odpowiednio wejścia i zakłócenia. Z wykresów widać, że właściwości procesu są w przybliżeniu liniowe. Metodą najmniejszych kwadratów wyznaczono wzmocnienia statyczne tych procesów. Dla toru wejście-wyjście otrzymano $K_{\mathrm{stat}}=2.2957}$, zaś dla toru zakłócenie-wyjście otrzymano $K_{\mathrm{stat}}=1.4973}$.
+
+\begin{figure}[H]
+	\centering
+	\input{../../Projekt2/rysunki_tikz/Z2_CharakterystykaStatycznaWejscie.tex}
+	\caption{Charakterystyka statyczna dla toru wejście-wyjście}
+	\label{char_stat_wej}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\input{../../Projekt2/rysunki_tikz/Z2_CharakterystykaStatycznaZaklocenie.tex}
+	\caption{Charakterystyka statyczna dla toru zakłócenie-wyjście}
+	\label{char_stat_zak}
+\end{figure}
+
+
+
 
 \section{Wyznaczenie odpowiedzi skokowych wykorzystywanych w algorytmie DMC}
 
@@ -552,27 +569,65 @@ end
 \section{Dobór parametrów algorytmu DMC}
 
 TODO więciej wykresów do doboru parametrów
+
 \begin{figure}[H]
 	\centering
-	\includegraphics{../../Lab2/PDF_rysunki/Z4_DMCBezZaklocen.pdf}
-	\caption{Regulator DMC dla parametrów: ??????}
+	\includegraphics[scale=0.85]{../../Lab2/PDF_rysunki/Z4_DMCParametryN_11_Nu_1_lam_1.pdf}
+	\caption{Regulator DMC dla parametrów: N=11, N_{\mathrm{u}}=1, \lambda=1.}
 	\label{dobor_param1}
 \end{figure}
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Lab2/PDF_rysunki/Z4_DMCParametryN_15_Nu_1_lam_1.pdf}
+	\caption{Regulator DMC dla parametrów: N=15, N_{\mathrm{u}}=1, \lambda=1.}
+	\label{dobor_param2}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Lab2/PDF_rysunki/Z4_DMCParametryN_20_Nu_1_lam_1.pdf}
+	\caption{Regulator DMC dla parametrów: N=20, N_{\mathrm{u}}=1, \lambda=1.}
+	\label{dobor_param3}
+\end{figure}
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Lab2/PDF_rysunki/Z4_DMCBezZaklocen.pdf}
+	\caption{Regulator DMC dla parametrów: N=20, N_{\mathrm{u}}=20, \lambda=0.1.}
+	\label{dobor_param4}
+\end{figure}
+
+
+ 
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Lab2/PDF_rysunki/Z4_DMCParametryN_40_Nu_20_lam_2.pdf}
+	\caption{Regulator DMC dla parametrów: N=40, N_{\mathrm{u}}=20, \lambda=2.}
+	\label{dobor_param5}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Lab2/PDF_rysunki/Z4_DMCParametryN_60_Nu_40_lam_1.pdf}
+	\caption{Regulator DMC dla parametrów: N=60, N_{\mathrm{u}}=40, \lambda=1.}
+	\label{dobor_param6}
+\end{figure}
 
 \section{Porównanie regulacji DMC z pomiarem zakłócenia oraz bez pomiaru}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics{../../Lab2/PDF_rysunki/Z5_DMCZZakloceniami.pdf}
-	\caption{Regulacja DMC z pomiarem zakłócenia : ??????}
+	\caption{Regulacja DMC z pomiarem zakłócenia: N=20, N_{\mathrm{u}}=20, \lambda=0.1.}
 	\label{pom_zak}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics{../../Lab2/PDF_rysunki/Z5_DMCZZakloceniamiBezOdsprz.pdf}
-	\caption{Regulacja DMC bez pomiaru zakłócenia: ??????}
+	\caption{Regulacja DMC bez pomiaru zakłócenia: N=20, N_{\mathrm{u}}=20, \lambda=0.1.}
 	\label{bez_pom_zak}
 \end{figure}
 
