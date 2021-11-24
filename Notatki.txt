@@ -1,0 +1,34 @@
+Rzeczy do poprawy PUST lab i projekt nr 2:
+	1. Sprawdzić część laboratoryjną czy nie ma błędów.
+	Nie zwracać uwagi na duże odstępy pomiędzy tekstem a rysunkami.
+	Jest to intencjonalne, żeby wszystko było po koleii w celu zwiększenia wygody
+	podczas pracy nad sprawozdaniem. Na koniec poprawię to dla całości.
+
+	2. TODO w sprawku możesz sprawdzić, bo to miejsca gdzie coś nie wiedziałem.
+	
+	3. Do projektu ZAD2 nie ma charakterystyki statycznej procesu y(u,z).
+	Czy właściwości statyczne i dynamiczne procesu są (w przybliżeniu) liniowe?
+	Jeżeli tak, określić wzmocnienie statyczne obu torów procesu.
+
+	4. ZAD3 skok nie był jednostkowy, niby prawie na to samo wychodzi,
+	bo było przeliczane na odpowiedznie dla DMC, ale zmieniłem kod na poprawny
+	i wygenerowałem nowe, trochę zmieniły się D i Dz. Reszta niby na tym bazuje
+	ale to bez różnicy, bo zbliżone i tak wyszły.
+
+	5. ZAD4 jest tylko jeden wykres dla doboru parametrów, chyba przydałoby się
+	min 3 i nie wiem jakie parametry dla tego wykresu dawałeś. Bo trzeba zrobić
+	porównanie jakościowe i ilościowe.
+
+	6. ZAD5 nie wiem czy zmiana Dz wpływa na to, ale z polecenia rozumiem, że 
+	należało by dać wykres dla więcej niż jednego Dz. (jest, zeby dobrać parametr Dz)
+	poza tym jakoś średnio to wygląda jak na symulację, mało się poprawia imo, może trzeba
+	Dz zmienić.
+
+	7. ZAD6 wyniki chyba bardzo słabe (chyba, że takie powinny być, bo nie wiem),
+	bo dla pomiary zakłóceń większy błąd, imo to za mały okres tej funkcji jak na
+	takie opóźnienie procesu, bo wtedy chyba lepsze wyniki wy wyszły.
+	Można ten przykład też dać, ale fajnie by było jakby zrobić jakiś dla którego 
+	po pomiarze widać poprawę.
+ 
+	8. trochę nie wiem co napisać przy tych szumach, wiesz jakie są wnioski
+	z tych eksperymentów, które przeprowadziłeś?

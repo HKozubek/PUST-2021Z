@@ -9,7 +9,9 @@ Ypp = 0;
 time = 300;
 
 % Wartość sterowania po skoku
-Uskok = 0.2;
+% Uskok = 0.2;
+Uskok = 1;
+
 
 % Skok wartości sterowania dla k = 15
 U = zeros(time, 1);
@@ -34,21 +36,25 @@ for i = 30:time
 end
     
 S = zeros(D, 1);
+% for i = 1:D
+%     S(i) = (Y(i+15) - Ypp)/(Uskok-Upp);
+% end
+
 for i = 1:D
-    S(i) = (Y(i+15) - Ypp)/(Uskok-Upp);
+    S(i) = Y(i+15);
 end
 
 
-figure('Name', 'Odpowiedź skokowa wejście-wyjście - DMC')
+figure('Name', 'Odpowiedź skokowa toru wejście-wyjście - DMC')
 plot(S, '.')
 hold on
 plot(S)
 axis([0 D 0 2.5])
 ylabel('S')
 xlabel('k')
-title("Odpowiedź skokowa wejście-wyjście dla DMC; D = " + D)
+title("Odpowiedź skokowa toru wejście-wyjście dla DMC; D = " + D)
 
-matlab2tikz('../rysunki_tikz/Z3_SkokDMCSterowanie.tex','showInfo', false)
+% matlab2tikz('../rysunki_tikz/Z3_SkokDMCSterowanie.tex','showInfo', false)
 
 save('S.mat', 'S', 'D')
 % save('D.mat', 'D')

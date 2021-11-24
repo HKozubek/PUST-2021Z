@@ -321,6 +321,7 @@ Do sterowania procesem zaimplementowano algorytm DMC z pomiarem zakłóceń w j�
 
 
 \section{Dobór parametrów dla algorytmu DMC}
+W celu doboru parametrów algorytmu DMC zadawano skokową wartość sygnału temperatury zadanej z punktu pracy G1=26, T1=\num{28.12}°C do temperatury zadanej \num{35}°C. Eksperymenty dla wybranych parametrów przedstawiono na rys. \ref{dobor_param_DMC1} i \ref{dobor_param_DMC2}. Można zauważyć, że parametry są dobrane znacznie lepiej dla ekperymentu drugiego (rys. \ref{dobor_param_DMC2}). Ilościowa jakość regulacji jest znacząco lepsza, błąd jest prawie 2-krotnie mniejszy. Porównując jakościowo regulację zauważalne jest znacznie mniejsze przesterowanie od wartości zadanej temperatury. W porównaniu do pierwszego eksperymentu dla drugiego praktycznie niezauważalne są oscylacjie sygnału wyjściowego. W dalszej części laboratorium przyjęto właśnie te parametry algorytmu DMC: D=300, N=50, N_{\mathrm{u}}=10, \lambda=1. 
 
 \begin{figure}[H]
 	\centering
@@ -336,6 +337,9 @@ Do sterowania procesem zaimplementowano algorytm DMC z pomiarem zakłóceń w j�
 	\label{dobor_param_DMC2}
 \end{figure}
 
+\section{Regulacja procesu bez pomiaru zakłócenia}
+Do regulacji przyjęto parametr D_{\mathrm{z}}=500, ponieważ dla tej ilości iteracji ustalała się odpowiedź skokowa toru zakłócenie-wyjście. Regulację z wykorzystaniem algorytmu DMC bez pomiaru zakłócenia przedstawiono na rys. \ref{bez_kom_1}. Na wykresie wartości wyjściowej procesu można zauważyć znaczące odchylenia od wartości zadanej w momentach skoków zakłócenia, tj. 300[s] oraz 700[s].
+
 \begin{figure}[H]
 	\centering
 	\input{../Tikz_rysunki/bez_kom_1.tex}
@@ -343,6 +347,9 @@ Do sterowania procesem zaimplementowano algorytm DMC z pomiarem zakłóceń w j�
 	\label{bez_kom_1}
 \end{figure}
 
+\section{Regulacja procesu z pomiarem zakłócenia}
+
+Regulację z wykorzystaniem algorytmu DMC z eksperymentalnie wyznaczoną odpowiedzią skokową toru zakłócenie-wyjście z pomiarem zakłócenia przedstawiono na rys. \ref{kom_s_eksp}. Można zauważyć znaczącą poprawę jakości regulacji względem regulacji bez pomiaru zakłócenia. Widoczna jest poprawa wskaźnika jakości regulacji oraz zauważalnie mniejsze odchylenia od wartości zadanej podczas występowania skoków zakłóceń.
 
 \begin{figure}[H]
 	\centering
@@ -351,6 +358,7 @@ Do sterowania procesem zaimplementowano algorytm DMC z pomiarem zakłóceń w j�
 	\label{kom_s_eksp}
 \end{figure}
 
+W celu eksperymentalnym wykonano regulację z wykorzystaniem algorytmu DMC z aproksymowaną odpowiedzią skokową toru zakłócenie-wyjście z pomiarem zakłócenia. Wyniki przedstawione są na rys. \ref{kom_s_apro}. Jakość regulacji jest porównywalna do otrzymanej z wykorzystaniem eksperyentalnie uzyskanej odpowiedzi skokowej toru zakłócenie-wyjście. Zarówno jakościowa jak i ilościowa analiza tych regulacji nie pozwala jednoznacznie stwierdzić, który wybór odpowiedzi skokowej jest lepszy. Niewielkie różnice w jakości regulacji mogą wynikać z innych niemierzonych zakłóceń, takich jak przepływ powietrza w pracowni laboratoryjnej.
 
 \begin{figure}[H]
 	\centering
@@ -383,9 +391,239 @@ W celu sprawdzenia poprawności punktu pracy została przeprowadzona symulacja, 
 \end{figure}
 
 
+\section{Odpowiedzi skokowe toru wejście-wyjście}
+Wyznaczone zostały odpowiedzi skokowe dla kilku skoków wartości sygnału sterującego, gdzie wartość początkowa sterowania wynosiła u=0. Wyniki symulacji przedstawiono na rys. \ref{odp_skok_wej}.
+
+\begin{figure}[H]
+	\centering
+	\input{../../Projekt2/rysunki_tikz/Z2_OdpowiedziSkokoweWejscie.tex}
+	\caption{Odpowiedzi skokowe toru wejście-wyjście.}
+	\label{odp_skok_wej}
+\end{figure}
 
 
 
+\section{Odpowiedzi skokowe toru zakłócenie-wyjście}
+Wyznaczone zostały odpowiedzi skokowe dla kilku skoków zakłócenia mierzonego, gdzie wartość początkowa zakłócenia wynosiła z=0. Wyniki symulacji przedstawiono na rys. \ref{odp_skok_zak}.
+
+\begin{figure}[H]
+	\centering
+	\input{../../Projekt2/rysunki_tikz/Z2_OdpowiedziSkokoweZaklocenie.tex}
+	\caption{Odpowiedzi skokowe toru zakłócenie-wyjście.}
+	\label{odp_skok_zak}
+\end{figure}
+
+
+\section{Charakterystyka statyczna procesu}
+TODO
+
+\section{Wyznaczenie odpowiedzi skokowych wykorzystywanych w algorytmie DMC}
+
+W celu wyznaczenia odpowiedzi skokowej dla algorytmu DMC toru wejście-wyjście dla symulowanego procesu wykonano skok wartości sterowania od 0 do 1 w chwili k=0. Odpowiedź skokowa dla tego toru znajduje się na rys. \ref{skok_DMC_ster}.
+
+W celu wyznaczenia odpowiedzi skokowej dla algorytmu DMC toru zakłócenie-wyjście dla symulowanego procesu wykonano skok wartości zakłócenia od 0 do 1 w chwili k=0. Odpowiedź skokowa dla tego toru znajduje się na rys. \ref{skok_DMC_zak}.
+
+\begin{figure}[H]
+	\centering
+	\input{../../Projekt2/rysunki_tikz/Z3_SkokDMCSterowanie.tex}
+	\caption{Odpowiedź skokowa toru wejście-wyjście dla algorytmu DMC.}
+	\label{skok_DMC_ster}
+\end{figure}
+
+
+\begin{figure}[H]
+	\centering
+	\input{../../Projekt2/rysunki_tikz/Z3_SkokDMCZaklocenie.tex}
+	\caption{Odpowiedź skokowa toru zakłócenie-wyjście dla algorytmu DMC.}
+	\label{skok_DMC_zak}
+\end{figure}
+
+\section{Implementacja algorytmu regulacji DMC dla procesu symulowanego}
+
+\begin{lstlisting}[style=customlatex,frame=single,]
+% maierz S i Sz tworzone sa plikach skokDMCSterowanie.m i skokDMCZaklocenie.m
+load S
+load Sz
+
+% Punkt pracy
+Upp = 0;
+Ypp = 0;
+Zpp = 0;
+
+% Czas symulacji
+time = 400;
+
+Yzad(time,1) = 0;
+Yzad(1:50) = Ypp;
+Yzad(51:time) = 1;
+
+% Parametry
+N = 20; Nu = 20; lambda = 0.1;     
+
+U(1:time) = Upp;
+Y(1:time) = Ypp;
+Z(1:time) = Zpp; 
+
+Noise(1:time) = wgn(1,time,0.01)*0.05;
+
+e(1:time) = 0;
+
+% ----------------------------ALGORYTM DMC--------------------------
+% Obliczenia offline
+S = [S; zeros(N,1)];
+for i = D+1:D+N
+    S(i) = S(D);
+end
+        
+M = zeros(N, Nu);
+for i = 1:Nu
+    M(i:N,i)=S(1:N-i+1);
+end
+       
+Mp = zeros(N, D-1);
+for i = 1:(D-1)
+    Mp(1:N,i) = S(i+1:N+i) - S(i);
+end
+
+Sz = [Sz; zeros(N,1)];
+for i = Dz+1:Dz+N
+    Sz(i) = Sz(Dz);
+end
+
+Mpz = zeros(N, Dz);
+for i = 1:(Dz)
+    Mpz(1:N,i) = Sz(i+1:N+i) - Sz(i);
+end
+
+I = eye(Nu);
+K = ((M'*M + lambda*I)^(-1))*M';
+
+% inicjalizacja
+dUP = zeros(D-1,1);
+dZP = zeros(Dz, 1);
+Y0 = zeros(N,1);
+dU = zeros(Nu,1);
+Yzad_DMC = zeros(N,1);
+Y_DMC = zeros(N,1);
+
+u = U - Upp;
+yzad = Yzad - Ypp;
+
+y(1:time) = 0;
+u(1:time) = 0;
+
+% liczone online
+
+for k = 8:time
+    Y(k) =  symulacja_obiektu1y_p2(U(k-6),U(k-7),Z(k-2),Z(k-3),Y(k-1),Y(k-2));
+    y(k) = Y(k) - Ypp;
+    e(k) = (yzad(k) - y(k))^2;
+    
+    Yzad_DMC = yzad(k)*ones(N,1);
+    Y_DMC = y(k)*ones(N,1);
+    
+    dZP(2:Dz) = dZP(1:Dz-1);
+    dZP(1) = Z(k) - Z(k-1) + Noise(k);
+    Y0 = Y_DMC + Mp*dUP + Mpz*dZP;
+    dU = K*(Yzad_DMC - Y0);
+    du = dU(1);
+        
+    for n=D-1:-1:2
+      dUP(n,1) = dUP(n-1,1);
+    end
+    dUP(1) = du;
+   
+    u(k) = u(k-1) + du;
+    
+    U(k) = u(k) + Upp;
+end
+
+E = 0;
+for k = 8:time
+    E = E + e(k);
+end
+\end{lstlisting}
+
+\section{Dobór parametrów algorytmu DMC}
+
+TODO więciej wykresów do doboru parametrów
+\begin{figure}[H]
+	\centering
+	\includegraphics{../../Lab2/PDF_rysunki/Z4_DMCBezZaklocen.pdf}
+	\caption{Regulator DMC dla parametrów: ??????}
+	\label{dobor_param1}
+\end{figure}
+
+
+\section{Porównanie regulacji DMC z pomiarem zakłócenia oraz bez pomiaru}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics{../../Lab2/PDF_rysunki/Z5_DMCZZakloceniami.pdf}
+	\caption{Regulacja DMC z pomiarem zakłócenia : ??????}
+	\label{pom_zak}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics{../../Lab2/PDF_rysunki/Z5_DMCZZakloceniamiBezOdsprz.pdf}
+	\caption{Regulacja DMC bez pomiaru zakłócenia: ??????}
+	\label{bez_pom_zak}
+\end{figure}
+
+
+
+
+\section{Działanie algorytmu DMC z pomiarem zakłóceń przy zakłóceniach sinusoidalnych}
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics{../../Lab2/PDF_rysunki/Z6_DMCSinZOdsprz.pdf}
+	\caption{Regulacja DMC z pomiarem zakłóceń przy zakłóceniach sinusoidalnych}
+	\label{sin_z_pom}
+\end{figure}
+
+\section{Działanie algorytmu DMC bez pomiaru zakłóceń przy zakłóceniach sinusoidalnych}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics{../../Lab2/PDF_rysunki/Z6_DMCSinBezOdsprz.pdf}
+	\caption{Regulacja DMC bez pomiaru zakłóceń przy zakłóceniach sinusoidalnych}
+	\label{sin_bez_pom}
+\end{figure}
+
+\section{Badanie odporności algorytmu DMC na szum pomiarowy sygnału zakłócenia}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics{../../Lab2/PDF_rysunki/Z7_Szum1.pdf}
+	\caption{Regulacja DMC z pomiarem zakłóceń z występujacym szumem pomiarowym(1)}
+	\label{szum1}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics{../../Lab2/PDF_rysunki/Z7_Szum2.pdf}
+	\caption{Regulacja DMC z pomiarem zakłóceń z występujacym szumem pomiarowym(2)}
+	\label{szum2}
+\end{figure}
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics{../../Lab2/PDF_rysunki/Z7_Szum3.pdf}
+	\caption{Regulacja DMC z pomiarem zakłóceń z występujacym szumem pomiarowym(3)}
+	\label{szum3}
+\end{figure}
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics{../../Lab2/PDF_rysunki/Z7_Szum4.pdf}
+	\caption{Regulacja DMC z pomiarem zakłóceń z występujacym szumem pomiarowym(4)}
+	\label{szum4}
+\end{figure}
 
 
 
@@ -394,6 +632,10 @@ W celu sprawdzenia poprawności punktu pracy została przeprowadzona symulacja, 
 
 
 \begin{comment}
+\begin{lstlisting}[style=customlatex,frame=single,] 
+roslaunch stero_mobile_init tiago_simple.launch world:=empty
+\end{lstlisting}
+
 \section{Cele projektu i laboratoriów}
 Celem niniejszego laboratorium było zaprojektowanie, implementacja,
 weryfikacja poprawności działania oraz dobór parametrów algorytmów regulacji jednowymiarowego

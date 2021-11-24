@@ -59,7 +59,7 @@ axis([ 0 time -0.2 0.4])
 xlabel('k')
 ylabel('Wyjście procesu (Y)')
 legend(legend_info_yu, 'Location', 'southeast')
-title("Odpowiedź skokowa wejście-wyjście")
+title("Odpowiedź skokowa toru wejście-wyjście")
 
 matlab2tikz('../rysunki_tikz/Z2_OdpowiedziSkokoweWejscie.tex', 'showInfo', false)
 
@@ -99,7 +99,7 @@ axis([ 0 time -0.2 0.4])
 xlabel('k')
 ylabel('Wyjście procesu (Y)')
 legend(legend_info_yz, 'Location', 'southeast')
-title("Odpowiedź skokowa zakłócenie-wyjście")
+title("Odpowiedź skokowa toru zakłócenie-wyjście")
 
 matlab2tikz('../rysunki_tikz/Z2_OdpowiedziSkokoweZaklocenie.tex', 'showInfo', false)
 
