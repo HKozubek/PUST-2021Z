@@ -177,12 +177,6 @@ otoczenia), pomiar prądu P1, pomiar napięcia P2.}
 W celu wyznaczenia punktu pracy stanowiska dla mocy grzałki G1=26\% zadano tę wartość dla sygnału sterującego grzałką. Następnie poczekano, aż temperatura T1 ustali się. Wynik eksperymentu przedstawiono na rys. \ref{punkt_pracy}. Odczytana wartość temperatury dla termometru T1 wyniosła \num{28.12} °C.
 
 
-\begin{figure}[H]
-	\centering
-	\input{../Tikz_rysunki/punkt_pracy.tex}
-	\caption{Ustalanie się temperatury dla punktu pracy.}
-	\label{punkt_pracy}
-\end{figure}
 
 \section{Odpowiedzi skokowe toru zakłócenie-wyjście}
 Dla stanowiska pracującego w ustalonym punkcie pracy (G1=26\%; T1=\num{28.12}°C) zadano 3~różne wartości skoku zakłócenia. Eksperyment wykonano dla skoków sygnału zawsze z wartości Z=0 do kolejno wartości: Z=10, Z=20 oraz Z=30. Wyniki przedstawiono na rys. \ref{skok_zak}. Różnica w początkowych wartościach temperatury T1 dla poszczególnych skoków wynika z zakłóceń powodowanch przez zmianę temperatury w pracowni laboratoryjnej oraz nagrzewania się stanowiska grzejąco-chłodzącego.
@@ -192,10 +186,11 @@ Na podstawie wyznaczonej charakterystyki statycznej dla toru zakłócenie-wyjśc
 
 \begin{figure}[H]
 	\centering
-	\input{../Tikz_rysunki/skok_zak.tex}
-	\caption{Odpowiedzi skokowe dla toru zakłócenie - wyjście.}
-	\label{skok_zak}
+	\input{../Tikz_rysunki/punkt_pracy.tex}
+	\caption{Ustalanie się temperatury dla punktu pracy.}
+	\label{punkt_pracy}
 \end{figure}
+
 
 \begin{figure}[H]
 	\centering
@@ -203,6 +198,15 @@ Na podstawie wyznaczonej charakterystyki statycznej dla toru zakłócenie-wyjśc
 	\caption{Charakterystyka statyczna dla toru zakłócenie - wyjście.}
 	\label{char_skok_zak}
 \end{figure}
+
+
+\begin{figure}[H]
+	\centering
+	\input{../Tikz_rysunki/skok_zak.tex}
+	\caption{Odpowiedzi skokowe dla toru zakłócenie - wyjście.}
+	\label{skok_zak}
+\end{figure}
+
 
 \section{Odpowiedzi skokowe dla algorytmu DMC}
 W celu wyznaczenia odpowiedzi skokowej toru zakłócenie-wyjście wybrano trzecią odpowiedź skokową przedstawioną na rys. \ref{skok_zak}, tj. skok zakłócenia do wartości Z=30. Do przekształcenia zebranej odpowiedzi skokowej skorzystano z przekształcenia:
@@ -280,7 +284,8 @@ Ponieważ do  minimalizacji funkcji użyto algorytmu generycznego to wyniki podc
 	\end{split}
 \end{equation}
 
-Otrzymaną aproksymowaną odpowiedź skokową dla toru zakłócenie-wyjście dla algorytmu regulacji DMC przedstawiono na rys. \ref{skok_DMC_zak_apro}.
+Otrzymaną aproksymowaną odpowiedź skokową dla toru zakłócenie-wyjście dla algorytmu regulacji DMC przedstawiono na rys. \ref{skok_DMC_zak_apro}. Odpowiedź skokowa toru wejście-wyjście dla algorytmu DMC została zaczerpnięta z laboratorium nr 1, przedstawiono ją na rys. \ref{skok_DMC}. Analogicznie jak dla odpowiedzi skokowej toru zakłócenie-wyjście wykonano dla niej aproksymacje przedstawioną na rys. \ref{skok_DMC_apro}.
+
 
 \begin{figure}[H]
 	\centering
@@ -297,7 +302,7 @@ Otrzymaną aproksymowaną odpowiedź skokową dla toru zakłócenie-wyjście dla
 	\label{skok_DMC_zak_apro}
 \end{figure}
 
-Odpowiedź skokowa toru wejście-wyjście dla algorytmu DMC została zaczerpnięta z laboratorium nr 1, przedstawiono ją na rys. \ref{skok_DMC}. Analogicznie jak dla odpowiedzi skokowej toru zakłócenie-wyjście wykonano dla niej aproksymacje przedstawioną na rys. \ref{skok_DMC_apro}.
+
 
 \begin{figure}[H]
 	\centering
@@ -315,7 +320,7 @@ Odpowiedź skokowa toru wejście-wyjście dla algorytmu DMC została zaczerpnię
 \end{figure}
 
 \section{Algorytm DMC z pomiarem zakłóceń}
-Do sterowania procesem zaimplementowano algorytm DMC z pomiarem zakłóceń w języku MATLAB. TODO(nie wiem bardziej omawiać implementacje, czy komentarze są wystarczające, bo w poleceniu jest aby omówić program?)
+Do sterowania procesem zaimplementowano algorytm DMC z pomiarem zakłóceń w języku MATLAB.
 
 \lstinputlisting{../Programy/DMC_zak.m}
 
@@ -340,7 +345,7 @@ W celu doboru parametrów algorytmu DMC zadawano skokową wartość sygnału tem
 \section{Regulacja procesu bez pomiaru zakłócenia}
 Do regulacji przyjęto parametr $D_{\mathrm{z}}=500$, ponieważ dla tej ilości iteracji ustalała się odpowiedź skokowa toru zakłócenie-wyjście. Regulację z wykorzystaniem algorytmu DMC bez pomiaru zakłócenia przedstawiono na rys. \ref{bez_kom_1}. Na wykresie wartości wyjściowej procesu można zauważyć znaczące odchylenia od wartości zadanej w momentach skoków zakłócenia, tj. 300[s] oraz 700[s].
 
-\begin{figure}[H]
+\begin{figure}[htb]
 	\centering
 	\input{../Tikz_rysunki/bez_kom_1.tex}
 	\caption{Regulacja z wykorzystaniem algorytmu DMC bez pomiaru zakłóceń. \\Użyte parametry DMC: D_{\mathrm{z}}=500, D=300, N=50, N_{\mathrm{u}}=10, \lambda=1.\\ Wskaźnik jakości regulacji E=1750.}
@@ -351,7 +356,7 @@ Do regulacji przyjęto parametr $D_{\mathrm{z}}=500$, ponieważ dla tej ilości 
 
 Regulację z wykorzystaniem algorytmu DMC z eksperymentalnie wyznaczoną odpowiedzią skokową toru zakłócenie-wyjście z pomiarem zakłócenia przedstawiono na rys. \ref{kom_s_eksp}. Można zauważyć znaczącą poprawę jakości regulacji względem regulacji bez pomiaru zakłócenia. Widoczna jest poprawa wskaźnika jakości regulacji oraz zauważalnie mniejsze odchylenia od wartości zadanej podczas występowania skoków zakłóceń.
 
-\begin{figure}[H]
+\begin{figure}[htb]
 	\centering
 	\input{../Tikz_rysunki/kom_s_eksp.tex}
 	\caption{Regulacja z wykorzystaniem algorytmu DMC z pomiarem zakłóceń, odpowiedź skokowa toru zakłócenie-wyjście wyznaczona eksperymentalnie. \\Użyte parametry DMC: D_{\mathrm{z}}=500, D=300, N=50, N_{\mathrm{u}}=10, \lambda=1.\\ Wskaźnik jakości regulacji E=1391.}
@@ -360,7 +365,7 @@ Regulację z wykorzystaniem algorytmu DMC z eksperymentalnie wyznaczoną odpowie
 
 W celu eksperymentalnym wykonano regulację z wykorzystaniem algorytmu DMC z aproksymowaną odpowiedzią skokową toru zakłócenie-wyjście z pomiarem zakłócenia. Wyniki przedstawione są na rys. \ref{kom_s_apro}. Jakość regulacji jest porównywalna do otrzymanej z wykorzystaniem eksperyentalnie uzyskanej odpowiedzi skokowej toru zakłócenie-wyjście. Zarówno jakościowa jak i ilościowa analiza tych regulacji nie pozwala jednoznacznie stwierdzić, który wybór odpowiedzi skokowej jest lepszy. Niewielkie różnice w jakości regulacji mogą wynikać z innych niemierzonych zakłóceń, takich jak przepływ powietrza w pracowni laboratoryjnej.
 
-\begin{figure}[H]
+\begin{figure}[htb]
 	\centering
 	\input{../Tikz_rysunki/kom_s_apro.tex}
 	\caption{Regulacja z wykorzystaniem algorytmu DMC z pomiarem zakłóceń, odpowiedź skokowa toru zakłócenie-wyjście wyznaczona aproksymacyjnie. \\Użyte parametry DMC: D_{\mathrm{z}}=500, D=300, N=50, N_{\mathrm{u}}=10, \lambda=1.\\ Wskaźnik jakości regulacji E=1477.}
