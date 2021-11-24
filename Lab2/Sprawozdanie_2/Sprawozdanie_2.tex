@@ -419,7 +419,7 @@ Wyznaczone zostały odpowiedzi skokowe dla kilku skoków zakłócenia mierzonego
 \end{figure}
 
 
-\section{Charakterystyka statyczna procesu}
+\section{Charakterystyki statyczne torów procesu}
 Na podstawie odpowiedzi skokowych wyznaczono charakterystyki statyczne dla toru\\ wejście-wyjście (rys. \ref{char_stat_wej}) oraz toru zakłócenie-wyjście (rys. \ref{char_stat_zak}) korzystając z ustalonych wartości wyjścia dla zadawanych sygnałów, odpowiednio wejścia i zakłócenia. Z wykresów widać, że właściwości procesu są w przybliżeniu liniowe. Metodą najmniejszych kwadratów wyznaczono wzmocnienia statyczne tych procesów. Dla toru wejście-wyjście otrzymano $K_{\mathrm{stat}}=2.2957}$, zaś dla toru zakłócenie-wyjście otrzymano $K_{\mathrm{stat}}=1.4973}$.
 
 \begin{figure}[H]
@@ -567,20 +567,31 @@ end
 \end{lstlisting}
 
 \section{Dobór parametrów algorytmu DMC}
+Dobór parametrów dla regulatora DMC odbywał się w następujący sposób. W pierwszej kolejności zostały wybrane duże wartości parametrów $N$ i $N_{\mathrm{u}}$, natomiast dla parametru $\lambda$ przyjęto standardowo wartość 1. Następnie parametry były najczęściej zmniejszane, ale również modyfikowane według intuicji inżynierskiej. Patrząc na wyniki symulacji można było wybrać najlepszy nastaw. Z przeprowadzonych eksperymentów wynika, że dla parametrów: $N=20, N_{\mathrm{u}}=20, \lambda=0.1$ wyniki regulacji są najlepsze. Dla mniejszych wartości horyzontu predykcji i sterowania wyniki znacząco się pogarszają, natomiast dla większych nie jest zauważalna znacząca zmiana. Wybrane eksperymenty zostały pokazane na rys. \ref{dobor_param6}, \ref{dobor_param5}, \ref{dobor_param4}, \ref{dobor_param3}, \ref{dobor_param2}, \ref{dobor_param1}.
 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.85]{../../Lab2/PDF_rysunki/Z4_DMCParametryN_11_Nu_1_lam_1.pdf}
-	\caption{Regulator DMC dla parametrów: N=11, N_{\mathrm{u}}=1, \lambda=1.}
-	\label{dobor_param1}
+	\includegraphics[scale=0.85]{../../Lab2/PDF_rysunki/Z4_DMCParametryN_60_Nu_40_lam_1.pdf}
+	\caption{Regulator DMC dla parametrów: N=60, N_{\mathrm{u}}=40, \lambda=1.}
+	\label{dobor_param6}
 \end{figure}
 
+ 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.85]{../../Lab2/PDF_rysunki/Z4_DMCParametryN_15_Nu_1_lam_1.pdf}
-	\caption{Regulator DMC dla parametrów: N=15, N_{\mathrm{u}}=1, \lambda=1.}
-	\label{dobor_param2}
+	\includegraphics[scale=0.85]{../../Lab2/PDF_rysunki/Z4_DMCParametryN_40_Nu_20_lam_2.pdf}
+	\caption{Regulator DMC dla parametrów: N=40, N_{\mathrm{u}}=20, \lambda=2.}
+	\label{dobor_param5}
+\end{figure}
+
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Lab2/PDF_rysunki/Z4_DMCBezZaklocen.pdf}
+	\caption{Regulator DMC dla parametrów: N=20, N_{\mathrm{u}}=20, \lambda=0.1.}
+	\label{dobor_param4}
 \end{figure}
 
 \begin{figure}[H]
@@ -591,28 +602,23 @@ end
 \end{figure}
 
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.85]{../../Lab2/PDF_rysunki/Z4_DMCBezZaklocen.pdf}
-	\caption{Regulator DMC dla parametrów: N=20, N_{\mathrm{u}}=20, \lambda=0.1.}
-	\label{dobor_param4}
-\end{figure}
-
-
- 
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.85]{../../Lab2/PDF_rysunki/Z4_DMCParametryN_40_Nu_20_lam_2.pdf}
-	\caption{Regulator DMC dla parametrów: N=40, N_{\mathrm{u}}=20, \lambda=2.}
-	\label{dobor_param5}
-\end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.85]{../../Lab2/PDF_rysunki/Z4_DMCParametryN_60_Nu_40_lam_1.pdf}
-	\caption{Regulator DMC dla parametrów: N=60, N_{\mathrm{u}}=40, \lambda=1.}
-	\label{dobor_param6}
+	\includegraphics[scale=0.85]{../../Lab2/PDF_rysunki/Z4_DMCParametryN_15_Nu_1_lam_1.pdf}
+	\caption{Regulator DMC dla parametrów: N=15, N_{\mathrm{u}}=1, \lambda=1.}
+	\label{dobor_param2}
 \end{figure}
+
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Lab2/PDF_rysunki/Z4_DMCParametryN_11_Nu_1_lam_1.pdf}
+	\caption{Regulator DMC dla parametrów: N=11, N_{\mathrm{u}}=1, \lambda=1.}
+	\label{dobor_param1}
+\end{figure}
+
 
 \section{Porównanie regulacji DMC z pomiarem zakłócenia oraz bez pomiaru}
 
