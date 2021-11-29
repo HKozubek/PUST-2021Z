@@ -78,10 +78,10 @@ while(1)
 
     %% sending new values of control signals
     sendControls([ 1, 2, 3, 4, 5, 6], ... send for these elements
-                 [ 50, 0, 0, 0, 0, 0]);  % new corresponding control values
+                 [ 0, 0, 0, 0, 0, 0]);  % new corresponding control values
 %     sendControlsToG1AndDisturbance(26, 0); 
     
-    sendControlsToG1AndDisturbance(u, 0);
+%     sendControlsToG1AndDisturbance(u, 0);
 
     measurement = readMeasurements([1,5])
     
