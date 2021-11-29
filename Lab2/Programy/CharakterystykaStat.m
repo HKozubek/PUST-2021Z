@@ -29,14 +29,19 @@ b = w(2);
 
 Kstat = b;
 
+x = linspace(0, 30);
+fun = @(x) a + b*x; 
+
+
 figure('name', "Charakterystyka statyczna dla toru zakłócenie - wyjście")
 hold on
 plot(Z_stat, Y_stat)
 plot(Z_stat, Y_stat, 'o')
+plot(x, fun(x),'--')
+xlim([0,30])
 xlabel("Zakłócenie")
 ylabel('Wyjście procesu (T1) [°C]')
-title("Wzmocnienie statyczne toru zakłócenie-wyjście; K_{stat} = " + Kstat)
-% title("Charakterystyka statyczna dla toru zakłócenie - wyjście")
-% subtitle("Wzmocnienie statyczne; K_{stat} = " + Kstat)
+legend('charakterystyka statyczna', 'punkty równowagi', 'prosta dopasowania (MNK)', 'location', 'northwest')
+title("Charakterystyka statyczna toru zakłócenie-wyjście; K_{stat} = " + Kstat)
 
 % matlab2tikz('../Tikz_rysunki/charak_stat_zak.tex', 'showInfo', false)

@@ -31,19 +31,20 @@ end
 Sapro = y';
 save('Sapro.mat', 'Sapro')
 
-% figure('Name', 'Aproksymacja odpowiedzi skokowej')
-% plot(S)
-% hold on
-% plot(y)
-% ylabel('S_k')
-% xlabel('k')
-% title("Aproksymacja odpowiedzi skokowej; E = " + AproksSkokDMC([T1, T2, K]))
-
-figure('Name', 'Odpowiedź skokowa')
+figure('Name', 'Aproksymacja odpowiedzi skokowej')
 plot(S)
+hold on
+plot(y)
 ylabel('S_k')
 xlabel('k')
-title("Odpowiedź skokowa dla DMC; D = 300")
+legend('model na podstawie pomiarów', 'model na podstawie aproksymacji', 'location', 'southeast')
+title("Aproksymacja odpowiedzi skokowej toru wejście-wyjście")
 
-% matlab2tikz('../TikZ_rysunki/skok_DMC.tex', 'showInfo', false)
+% figure('Name', 'Odpowiedź skokowa')
+% plot(S)
+% ylabel('S_k')
+% xlabel('k')
+% title("Odpowiedź skokowa dla DMC; D = 300")
+
+% matlab2tikz('../TikZ_rysunki/skok_DMC_apro.tex', 'showInfo', false)
 % matlab2tikz('../Tikz_rysunki/aproksymacja.tex')

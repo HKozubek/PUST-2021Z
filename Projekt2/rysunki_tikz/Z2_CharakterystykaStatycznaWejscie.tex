@@ -1,0 +1,62 @@
+% This file was created by matlab2tikz.
+%
+\definecolor{mycolor1}{rgb}{0.85000,0.32500,0.09800}%
+\definecolor{mycolor2}{rgb}{0.00000,0.44700,0.74100}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=4.521in,
+height=3.566in,
+at={(0.758in,0.481in)},
+scale only axis,
+xmin=-0.05,
+xmax=0.15,
+xlabel style={font=\color{white!15!black}},
+xlabel={Starowanie (U)},
+ymin=-0.15,
+ymax=0.35,
+ylabel style={font=\color{white!15!black}},
+ylabel={Wyjście procesu (Y)},
+axis background/.style={fill=white},
+title style={font=\bfseries},
+title={$\text{Charakterystyka statyczna, K}_{\text{stat}}\text{ = 2.2957}$},
+legend style={at={(0.97,0.03)}, anchor=south east, legend cell align=left, align=left, draw=white!15!black}
+]
+\addplot [color=mycolor1, only marks, mark=o, mark options={solid, mycolor1}]
+  table[row sep=crcr]{%
+0.05	0.114786601728389\\
+0.1	0.229573203456778\\
+0.15	0.344359805185173\\
+-0.05	-0.114786601728389\\
+};
+\addlegendentry{Dane eksperymentalne}
+
+\addplot [color=mycolor2]
+  table[row sep=crcr]{%
+-0.05	-0.11478660172839\\
+-0.04	-0.0918292813827121\\
+-0.03	-0.0688719610370341\\
+-0.02	-0.0459146406913561\\
+-0.01	-0.022957320345678\\
+0	0\\
+0.01	0.022957320345678\\
+0.02	0.0459146406913561\\
+0.03	0.0688719610370341\\
+0.04	0.0918292813827121\\
+0.05	0.11478660172839\\
+0.06	0.137743922074068\\
+0.07	0.160701242419746\\
+0.08	0.183658562765424\\
+0.09	0.206615883111102\\
+0.1	0.22957320345678\\
+0.11	0.252530523802458\\
+0.12	0.275487844148136\\
+0.13	0.298445164493814\\
+0.14	0.321402484839492\\
+0.15	0.34435980518517\\
+};
+\addlegendentry{Prosta dopasowania}
+
+\end{axis}
+\end{tikzpicture}%

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.11.9)  21 NOV 2021 23:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.11.9)  24 NOV 2021 22:07
 entering extended mode
 **./zapis.tex
 (zapis.tex
@@ -529,20 +529,20 @@ File: l3backend-pdftex.def 2021-10-18 L3 backend support: PDF output (pdfTeX)
 ) (zapis.aux)
 \openout1 = `zapis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
 
 (C:\Users\przem\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
 ii
@@ -569,27 +569,22 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 fg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
+Package pgfplots notification 'compat/show suggested version=true': document ha
+s been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
 
-Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
-ick labels; missing features). Consider writing \pgfplotsset{compat=1.18} into 
-your preamble.
- on input line 12.
-
-(../Lab2/Tikz_rysunki/punkt_pracy.tex
+(../Projekt2/rysunki_tikz/Z4_DMCParametryN_60_Nu_40_lam_1.tex
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 527.
+(Font)              <8> on input line 427.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 527.
+(Font)              <6> on input line 427.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 527.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 527.
+(Font)              <5> on input line 427.
 
 ! Undefined control sequence.
 <recently read> \text 
                       
-l.527 \end{axis}
-                
+l.1256 \end{axis}
+                 
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -597,32 +592,10 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-\pgfplots@label@ ...t {Temperatura [}^\circ \text 
-                                                  {C]}$
-l.527 \end{axis}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \text 
-                      
-l.527 \end{axis}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<argument> ... G1 = 26\%; T1 = 28.12}^\circ \text 
-                                                  {C}$
-l.527 \end{axis}
-                
+\pgfplots@already@computed@legend@node ..._{\text 
+                                                  {zad}}$};\\};
+l.1256 \end{axis}
+                 
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -633,23 +606,24 @@ and I'll forget about whatever was undefined.
 
 {C:/Users/przem/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] (zapis.aux) ) 
 Here is how much of TeX's memory you used:
- 22459 strings out of 478907
- 604273 string characters out of 2851892
- 1087275 words of memory out of 3000000
- 39999 multiletter control sequences out of 15000+600000
+ 22493 strings out of 478907
+ 605124 string characters out of 2851892
+ 1188527 words of memory out of 3000000
+ 40033 multiletter control sequences out of 15000+600000
  405561 words of font info for 34 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,10n,103p,704b,1905s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 99i,18n,103p,704b,2128s stack positions out of 5000i,500n,10000p,200000b,80000s
 <C
-:/Users/przem/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi
+:/Users/przem/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx
 10.pfb><C:/Users/przem/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
-s/cm/cmmi8.pfb><C:/Users/przem/AppData/Local/Programs/MiKTeX/fonts/type1/public
-/amsfonts/cm/cmr10.pfb><C:/Users/przem/AppData/Local/Programs/MiKTeX/fonts/type
-1/public/amsfonts/cm/cmr8.pfb><C:/Users/przem/AppData/Local/Programs/MiKTeX/fon
-ts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on zapis.pdf (1 page, 57822 bytes).
+s/cm/cmmi6.pfb><C:/Users/przem/AppData/Local/Programs/MiKTeX/fonts/type1/public
+/amsfonts/cm/cmmi8.pfb><C:/Users/przem/AppData/Local/Programs/MiKTeX/fonts/type
+1/public/amsfonts/cm/cmr10.pfb><C:/Users/przem/AppData/Local/Programs/MiKTeX/fo
+nts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/przem/AppData/Local/Programs/Mi
+KTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on zapis.pdf (1 page, 75007 bytes).
 PDF statistics:
- 34 PDF objects out of 1000 (max. 8388607)
+ 39 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

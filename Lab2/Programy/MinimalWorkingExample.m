@@ -61,7 +61,10 @@ while(1)
     DMCy(k) = measurements1;
     e = Yzad(k) - measurements1;
     
-    u = DMC(Yzad(k), measurements1, 300, 30, 5, 1); %N=20, Nu=1; N=50, Nu=10;
+
+
+    u = DMC(Yzad(k), measurements1, 300, Zzad(k), 500, 50, 10, 1); %N=20, Nu=1; N=50, Nu=10; 30, 5
+
     E = E + e^2;
     DMCe(k) = e;
     DMCu(k) = u; 

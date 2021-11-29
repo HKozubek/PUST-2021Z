@@ -11,6 +11,8 @@ time = 300;
 % Wybrane skoki wartości wejścia
 Uskok = [0.05; 0.1; 0.15; -0.05];
 Zskok = [0.05; 0.1; 0.15; -0.05];
+Y_U = [0;0;0;0];
+Y_Z = [0;0;0;0];
 
 % Deklaracja macierz wejścia i wyjścia; incializacji danych początkowych
 U = zeros(time, 1);
@@ -44,6 +46,9 @@ for i = 1:length(Uskok)
     legend_info_yu{i} = ("Y_{ust"+i+"} = "+Yu(time,:));
     plot(Yu)
     hold on
+    
+    Y_U(i) = Yu(time);
+    
   
 end
 
@@ -59,10 +64,20 @@ axis([ 0 time -0.2 0.4])
 xlabel('k')
 ylabel('Wyjście procesu (Y)')
 legend(legend_info_yu, 'Location', 'southeast')
-title("Odpowiedź skokowa wejście-wyjście")
+title("Odpowiedź skokowa toru wejście-wyjście")
 
-matlab2tikz('../rysunki_tikz/Z2_OdpowiedziSkokoweWejscie.tex', 'showInfo', false)
+% matlab2tikz('../rysunki_tikz/Z2_OdpowiedziSkokoweWejscie.tex', 'showInfo', false)
 
+figure('Name', 'Charakterystyka statyczne wejście-wyjście')
+plot(Uskok, Y_U,'o', 'Color', [0.85 ,0.325 ,0.098]);
+hold on;
+x = lsqr(Uskok, Y_U);
+plot(-0.05:0.01:0.15,(-0.05:0.01:0.15)*x,'Color', [0 0.447 0.741]);
+legend('Dane eksperymentalne','Prosta dopasowania', 'Location', 'southeast')
+xlabel('Starowanie (U)')
+ylabel('Wyjście procesu (Y)')
+title('Charakterystyka statyczna, K_{stat} = 2.2957')
+% matlab2tikz('../rysunki_tikz/Z2_CharakterystykaStatycznaWejscie.tex', 'showInfo', false))
 
 figure('Name', 'Odpowiedzi skokowe zakłócenie-wyjście')
 legend_info_z{length(Zskok)} = ('');
@@ -84,6 +99,7 @@ for i = 1:length(Uskok)
     legend_info_yz{i} = ("Y_{ust"+i+"} = "+Yz(time,:));
     plot(Yz)
     hold on
+    Y_Z(i) = Yz(time);
   
 end
 
@@ -99,7 +115,18 @@ axis([ 0 time -0.2 0.4])
 xlabel('k')
 ylabel('Wyjście procesu (Y)')
 legend(legend_info_yz, 'Location', 'southeast')
-title("Odpowiedź skokowa zakłócenie-wyjście")
+title("Odpowiedź skokowa toru zakłócenie-wyjście")
 
-matlab2tikz('../rysunki_tikz/Z2_OdpowiedziSkokoweZaklocenie.tex', 'showInfo', false)
+% matlab2tikz('../rysunki_tikz/Z2_OdpowiedziSkokoweZaklocenie.tex', 'showInfo', false)
+
+figure('Name', 'Charakterystyka statyczne zakłócenie-wyjście')
+plot(Zskok, Y_Z,'o', 'Color', [0.85 ,0.325 ,0.098]);
+hold on;
+x = lsqr(Zskok, Y_Z);
+plot(-0.05:0.01:0.15,(-0.05:0.01:0.15)*x,'Color', [0 0.447 0.741]);
+legend('Dane eksperymentalne','Prosta dopasowania', 'Location', 'southeast')
+xlabel('Pomiar zakłócenia (Z)')
+ylabel('Wyjście procesu (Y)')
+title('Charakterystyka statyczna, K_{stat} = 1.4973')
+% matlab2tikz('../rysunki_tikz/Z2_CharakterystykaStatycznaZaklocenie.tex', 'showInfo', false)
 

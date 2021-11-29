@@ -76,7 +76,8 @@
 tick label style={font=\scriptsize},
 label style={font=\small},
 legend style={font=\small},
-title style={font=\small}
+title style={font=\small},
+compat=newest										%chyba dobry dodatek, dla subplota xlabel nie nachodzi na inne wykresy
 }
 
 \def\figurename{Rys.}
@@ -119,6 +120,10 @@ Wydział Elektroniki i Technik Informacyjnych}}\\
 \end{center}
 \vspace{2cm}
 \begin{center}
+{\bf \LARGE Zespół Z01
+\vskip 0.1cm}
+\end{center}
+\begin{center}
 {\bf \Large \@author \par}
 \end{center}
 \vspace*{\stretch{6}}
@@ -146,7 +151,7 @@ Celem niniejszego laboratorium była implementacja, weryfikacja poprawności dzi
 
 
 \section{Przebieg laboratorium}
-Rozpoczynając pracę na stanowisku grzejąco-chłodzącym sprawdzono możliwość sterowania i~pomiaru w~komunikacji za stanowiskiem. W~szczególności sygnały sterujące wykorzystywane podczas niniejszego laboratorium W1, G1, Z oraz pomiaru T1 (elementy wykonawcze przedstawiono na rys. \ref{stanowisko_grzewcze_schemat}). Przez cały czas trwania laboratorium moc wentylatora W1 była ustawiona na 50\%, a wentylator traktowany jako cecha otoczenia. Dodatkowo sprawiał on, że temperatura grzałki
+Rozpoczynając pracę na stanowisku grzejąco-chłodzącym sprawdzono możliwość sterowania i~pomiaru w~komunikacji za stanowiskiem. W~szczególności sygnały sterujące wykorzystywane podczas niniejszego laboratorium W1, G1, Z oraz pomiaru T1 (elementy wykonawcze przedstawiono na rys. \ref{stanowisko_grzewcze_schemat}). Przez cały czas trwania laboratorium moc wentylatora W1 była ustawiona na 50\%, a wentylator był traktowany jako cecha otoczenia. Dodatkowo sprawiał on, że temperatura grzałki
 opadała szybciej, co było szczególnie przydatne pomiędzy doświadczeniami.
 
 W ramach laboratorium należało wykonać 5 zadań:
@@ -172,6 +177,13 @@ otoczenia), pomiar prądu P1, pomiar napięcia P2.}
 W celu wyznaczenia punktu pracy stanowiska dla mocy grzałki G1=26\% zadano tę wartość dla sygnału sterującego grzałką. Następnie poczekano, aż temperatura T1 ustali się. Wynik eksperymentu przedstawiono na rys. \ref{punkt_pracy}. Odczytana wartość temperatury dla termometru T1 wyniosła \num{28.12} °C.
 
 
+
+\section{Odpowiedzi skokowe toru zakłócenie-wyjście}
+Dla stanowiska pracującego w ustalonym punkcie pracy (G1=26\%; T1=\num{28.12}°C) zadano 3~różne wartości skoku zakłócenia. Eksperyment wykonano dla skoków sygnału zawsze z wartości Z=0 do kolejno wartości: Z=10, Z=20 oraz Z=30. Wyniki przedstawiono na rys. \ref{skok_zak}. Różnica w początkowych wartościach temperatury T1 dla poszczególnych skoków wynika z zakłóceń powodowanch przez zmianę temperatury w pracowni laboratoryjnej oraz nagrzewania się stanowiska grzejąco-chłodzącego.
+
+
+Na podstawie wyznaczonej charakterystyki statycznej dla toru zakłócenie-wyjście przedstawionej na rys. \ref{char_skok_zak} można stwierdzić, że właściwości statyczne są w~przybliżeniu liniowe. Wzmocenienie statyczne dla tego toru procesu wyznaczono metodą najmniejszych kwadratów i otrzymano wartość $K_{\mathrm{stat}}=0.1725$.
+
 \begin{figure}[H]
 	\centering
 	\input{../Tikz_rysunki/punkt_pracy.tex}
@@ -179,18 +191,6 @@ W celu wyznaczenia punktu pracy stanowiska dla mocy grzałki G1=26\% zadano tę 
 	\label{punkt_pracy}
 \end{figure}
 
-\section{Odpowiedzi skokowe toru zakłócenie-wyjście}
-Dla stanowiska pracującego w ustalonym punkcie pracy (G1=26\%; T1=\num{28.12}°C) zadano 3~różne wartości skoku zakłócenia. Eksperyment wykonano dla skoków sygnału zawsze z wartości Z=0 do kolejno wartości: Z=10, Z=20 oraz Z=30. Wyniki przedstawiono na rys. \ref{skok_zak}. Różnica w początkowych wartościach temperatury T1 dla poszczególnych skoków wynika z zakłóceń powodowanch przez zmianę temperatury w pracowni laboratoryjnej oraz nagrzewania się stanowiska grzejąco-chłodzącego.
-
-
-Na podstawie wyznaczonej charakterystyki statycznej dla toru zakłócenie-wyjście przedstawionej na rys. \ref{char_skok_zak} możemy stwierdzono, że właściwości statyczne są w~przybliżeniu liniowe. Wzmocenienie statyczne dla tego toru procesu wyznaczono metodą najmniejszych kwadratów i otrzymano wartość $K_{\mathrm{stat}}=0.1725$.
-
-\begin{figure}[H]
-	\centering
-	\input{../Tikz_rysunki/skok_zak.tex}
-	\caption{Odpowiedzi skokowe dla toru zakłócenie - wyjście.}
-	\label{skok_zak}
-\end{figure}
 
 \begin{figure}[H]
 	\centering
@@ -199,9 +199,16 @@ Na podstawie wyznaczonej charakterystyki statycznej dla toru zakłócenie-wyjśc
 	\label{char_skok_zak}
 \end{figure}
 
-\section{Odpowiedzi skokowe dla algorytmu DMC}
-Odpowiedź skokowa toru wejście-wyjście dla algorytmu DMC została zaczerpnięta z laboratorium nr 1, przedstawiono ją na rys. \ref{skok_DMC}.
 
+\begin{figure}[H]
+	\centering
+	\input{../Tikz_rysunki/skok_zak.tex}
+	\caption{Odpowiedzi skokowe dla toru zakłócenie - wyjście.}
+	\label{skok_zak}
+\end{figure}
+
+
+\section{Odpowiedzi skokowe dla algorytmu DMC}
 W celu wyznaczenia odpowiedzi skokowej toru zakłócenie-wyjście wybrano trzecią odpowiedź skokową przedstawioną na rys. \ref{skok_zak}, tj. skok zakłócenia do wartości Z=30. Do przekształcenia zebranej odpowiedzi skokowej skorzystano z przekształcenia:
 
 \begin{equation}
@@ -216,164 +223,18 @@ gdzie:
 	\item $Z_{\mathrm{pp}}$ - wartość sterowania przed chwilą k=0 (tutaj $Z_{\mathrm{pp}} = 0$)
 \end{itemize}
 
-Otrzymana odpowiedź skokowa dla toru zakłócenie wyjście została przedsawiona na rys. \ref{skok_DMC_zak}.
-
-
-\begin{figure}[H]
-	\centering
-	\input{../Tikz_rysunki/skok_DMC.tex}
-	\caption{Odpowiedź skokowa toru wejście-wyjście dla algorytmu DMC.}
-	\label{skok_DMC}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\input{../Tikz_rysunki/skok_DMC_zak.tex}
-	\caption{Odpowiedź skokowa toru zakłócenie-wyjście dla algorytmu DMC.}
-	\label{skok_DMC_zak}
-\end{figure}
-	
-	
-\begin{figure}[H]
-	\centering
-	\input{../Tikz_rysunki/skok_DMC_apro.tex}
-	\caption{Aproksymacja odpowiedzi skokowej toru wejście-wyjście dla algorytmu DMC.}
-	\label{skok_DMC_apro}
-\end{figure}
-
-
-
-
-
-
-
-
-
-\begin{comment}
-\section{Cele projektu i laboratoriów}
-Celem niniejszego laboratorium było zaprojektowanie, implementacja,
-weryfikacja poprawności działania oraz dobór parametrów algorytmów regulacji jednowymiarowego
-procesu na grzejąco-chłodzącym stanowisku laboratoryjnym przedstawionym na rys \ref{Stanowisko grzewcze}.
-
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.7\textwidth]{ ./Rysunki/Stanowisko-grzewcze.png }
-	\caption {Stanowisko grzejąco-chłodzące używane w trakcie laboratoriów.}
-	\label{Stanowisko grzewcze}
-\end{figure}
-
-\begin{figure}[h]
-		\centering
-		\includegraphics[width=0.7\textwidth]{ ./Rysunki/Stanowisko-grzewcze-schemat.png }
-		\caption {
-}
-		\label{Stanowisko grzewcze, schemat}
-\end{figure}
-
-\chapter{Laboratorium}
-
-\section{Przebieg laboratorium}
-Rozpoczynając pracę na stanowisku laboratoryjnym należało ustawić moc wentylatora W1
-na 50\%. Wentylator ten był traktowany jako cecha otoczenia. Dodatkowo sprawiał on, że temperatura grzałki
-opadała szybciej, co było szczególnie przydatne pomiędzy doświadczeniami.
-
-W ramach laboratorium należało wykonać 5 zadań.
-
-\begin{enumerate}
-	\label{Lista-zadan}
-  \item Odczytać wartość pomiaru temperatury dla termometru T1 dla mocy 26 \% grzałki G1.
-  \item Wyznaczyć odpowiedź skokową procesu dla trzech różych wartości G1.
-  \item Wybrać jedną z odpowiedzi skokowych, przekształcić ją i wykorzystać w algorytmie DMC. 
-  \item Zaimplementować algorytm PID i DMC do regulacji procesu stanowiska w języku MATLAB.
-  \item Dobrać nastawy algorytmu PID oraz parametry algorytmu DMC metodą eksperymentalną.
-\end{enumerate}
-
-\section{Punkt pracy stanowiska}
-W pierwszej kolejności sprawdzono możliwość sterowania i pomiaru w komunikacji ze stanowiskiem.
-Następnie  odczytać wartość temperatury termometru T1 w wyznaczonym punkcie pracy G1=26\%.
-Po ustawieniu mocy grzałki i odczekaniu, aż temperatura T1 ustabilizuje się,
-odczytana wartość termometru T1 wynosiła \num{31.12} °C. Wykres temperatury na termometrze T1 został przedstawiony na rys. \ref{PunktPracy}.
-
-\begin{figure}[h]
-	\centering
-	\input{../TikZ_rysunki/PunktPracy.tex}
-	\caption{Ustalanie się temperatury dla punktu pracy}
-	\label{PunktPracy}
-\end{figure}
-
-
-\section{Odpowiedzi skokowe procesu}
-W tej części laboratorium należało przeprowadzić eksperyment dla 3 różnych wartości mocy grzałki G1.
-Rozpoczynając eksperyment z punktu pracy G1=26\% wyznaczono odpowiedzi skokowe procesu. Eksperyment był wykokany
-dla trzech różnych zmian sygnału sterującego, G1=36\%, G1=46\% oraz G1=56\%.
-Wykresy przedstawiające zmiany temperatury przedstawiono na rys. \ref{skoki}.
-
-
-% \begin{figure}
-% \centering
-% \input{../TikZ_rysunki/Skok1.tex}
-% \caption{Odpowiedź skokowa procesu dla zmiany sterowania G1 z 26 do 36}
-% \label{Skok1}
-% \end{figure}
-
-% \begin{figure}
-% \centering
-% \input{../TikZ_rysunki/Skok2.tex}
-% \caption{Odpowiedź skokowa procesu dla zmiany sterowania G1 z 26 do 46}
-% \label{Skok2}
-% \end{figure}
-
-\begin{figure}[h]
-\centering
-\input{../TikZ_rysunki/skoki.tex}
-\caption{Odpowiedź skokowa procesu}
-\label{skoki}
-\end{figure}
-
-Patrząc na wykres odpowiedzi skokowych możemy zauważyć, że proces jest w przybliżeniu liniowy. Na rys. \ref{charakterystyka-statyczna} została przedstawiona charakterystyka statyczna procesu.
-
-\begin{figure}[h]
-	\centering
-	\includegraphics{../TikZ_rysunki/charakterystyka_stat.pdf}
-	\caption{Charkterystyk statyczna procesu grzejąco-chłodzącego}
-	\label{charakterystyka-statyczna}
-\end{figure}
-
-
-\section{Odpowiedź skokowa w algorytmie DMC}
-Wykonanie tego zadania polegało na przekształceniu jednej z odpowiedzi
-skokowych, tak aby otrzymać odpowiedź skokową używaną w algorymie DMC.
-W tym celu wybrano drugą odpowiedź skokową, tj. skok G1 z mocy 26\% do mocy 46\%.
-Do przekształcenia zebranej odpowiedzi skokowej, na taką nadającą się do algorytmu DMC wykorzystano program \emph{SkokDMC.m}.
-Program ten wylicza potrzebną odpowiedź skokową przy użyciu prostego wzoru.
-\begin{equation}
-	S(i)= \frac{Y(i) - Y_{\mathrm{pp}}}{U_{\mathrm{skok}} - U_{\mathrm{pp}}}
-\end{equation}
-gdzie:
-\begin{itemize}
-  \item $S(i)$ - odpowiedź skokowa potrzebna do algorytmu DMC,
-	\item $Y(i)$ - odpowiedź skokowa przed przekształceniem,
-	\item $Y_{\mathrm{pp}}$ - wartość wyjścia w chwili k=0 (tutaj $Y_{\mathrm{pp}}$  = \num{31.12} ),
-	\item $U_{\mathrm{skok}}$ - wartość sterowanie w chwili k=0 i później (tutaj $U_{\mathrm{skok}} = 46$),
-	\item $U_{\mathrm{pp}}$ - wartośc sterowania przed chwilą k=0 (tutaj $U_{\mathrm{pp}} = 26$)
-\end{itemize}
-W ten sposób przekształcona odpowiedź skokowa została zapisana do pliku \emph{dane1.mat}
-i wykorzystana w dalszych częściach laboratoriów.
-
-Poza przekształceniem odpowiedzi skokowej należało ją jeszcze przybliżyć używając w tym celu członu inercyjnego
-drugiego rzędu z opóźnieniem.
+Otrzymana odpowiedź skokowa dla toru zakłócenie wyjście została przedsawiona na rys. \ref{skok_DMC_zak}. Następnie dokonano aproksymacji odpowiedzi skokowej poprzez przybliżenie używając w tym celu członu inercyjnego drugiego stopnia z opóźnieniem:
 
 \begin{equation}
 	G(s)= \frac{K}{(sT_1 + 1)(sT_2 + 1)}e^{-T_{\mathrm{d}}s}
 \end{equation}
-Po dyskretyzacji danej transmitancji otrzymujemy:
 
+Po dyskretyzacji danej transmitancji otrzymujemy:
 \begin{equation}
 	G(z)= \frac{b_1z^{-1} + b_2z^{-2}}{1 + a_1z^{-1} + a_2z^{-2}}z^{-T_{\mathrm{d}}}
 \end{equation}
 
-gdzie
+gdzie:
 \begin{equation}
 \begin{split}
 	& a_1 = -\alpha_1 - \alpha_2 \\
@@ -385,313 +246,455 @@ gdzie
 \end{split}
 \end{equation}
 
-Z wykresu odpowiedzi skokowej procesu zostało odczytane opóźnienie. W naszym przypadku $T_{\mathrm{d}} = 9$.
-Aby wyznaczyć wartości pozostałych współczynników użyto dostępnej w matlabie funkcji ga, która minimalizuje
-wartość zadanej funkcji z wykorzystaniem algorytmu generycznego. Funkcja minimalizowana to funkcja wyliczająca sumę kwadratów błędów
-pomiędzy odpowiedzią skokową, a transmitancją przybliżającą.
+Dla otrzymanej w~ten sposób transmitancji w~postaci dyskretnej napisano funkcję \\\verb+AproksSkokZak_DMC(X)+, która przyjmowała parametry $T_{\mathrm{1}}$, $T_{\mathrm{2}}$ oraz $K$. Wartość parametru \\$T_{\mathrm{d}}=12$ odczytano z odpowiedzi skokwej, ponieważ jest to opóźnienie. Funkcja ta zwraca sumaryczny błąd kwadratowy pomiędzy aproksymacją otrzymaną dla zadanych parametrów a eksperymentalnie wyznaczoną odpowiedzią skokową dla toru zakłócenie-wyjście. Implementacja funkcji \verb+AproksSkokZak_DMC(X)+:
 
-\lstinputlisting{../Programy/AproksSkokDMC.m}
+\lstinputlisting{../Programy/AproksSkokZak_DMC.m}
 
-Następnie używając skryptu \emph{Optymalizacja.m} zostały wyznaczone pozostałe parametry transmitancji przybliżającej odpowiedź skokową.
-Ostateczne wartości parametrów to:
+Do wyznaczenia współczynników transmitancji użyto funkcji \verb+ga+ dostępnej w programie MATLAB, która wykorzystuje algorytm generyczny do wyznaczenia minimum funkcji. Dla naszej funkcji jest to równoważne ze znalezieniem najlepiej dopasowanej aproksymacji odpowiedzi skokowej toru zakłócenie-wyjście.
+Paramerty związane z algorytmem generycznym to kolejno:
 
 \begin{equation}
 	\begin{split}
-		& K = 0.330938\\
-		& T_1 = 0.000907 \\
-		& T_2 = 82.104622 \\
-		& T_{\mathrm{d}} = 9 \\
+		& StallGenLimit = 200 \\
+		& PopulationSize = 400 \\
+		& FunctionTolerance = $1e^{-8}$ \\
 	\end{split}
 \end{equation}
 
-\begin{figure}[h]
-	\centering
-	\input{../TikZ_rysunki/aproksymacja.tex}
-	\caption{Odpowiedź skokowa procesu oraz transmitancja ją aproksumująca}
-	\label{aproksymacja-odpowiedzi-skokowej}
-\end{figure}
+gdzie:
 
-Wykres zarówno odpowiedzi skokowej, jak i transmitancji ją przybliżającej został zamieszczony na rys. \ref{aproksymacja-odpowiedzi-skokowej}.
+\begin{itemize}
+	\item $StallGenLimit$ oznacza maksymalną ilość iteracji algorytmu, dla których wartość różnicy między wartościami wyniku funkcji optymalizowanej jest mniejsza niż $FunctionTolerance$.
+	\item $PopulationSize$ oznacza ilość ziaren dla algorytmu generytecznego w każdej iteracji.
+	\item $FunctionTolerance$ oznacza wartość wskaźnika toleracji, który determinuje dla jakiej dokładoności algorytm uznaje, że otrzymany wynik jest ostateczy.
+\end{itemize}
 
-\section{Algorytm PID i DMC}
-Kolejnym podpunktem zadań laboratoryjnych było zaimplementowanie algorytmów regulacji PID oraz DMC w języku MATLAB.
+Wybrane wartości powyższych parametrów pozwalają na aproksymację z małym błędem, co sprawdzono poprzez kilkukrotne wywołanie algorytmu i dostrojenie eksperymentalne parametrów. Implementacja optymalizacji:
 
-\subsection{Regulator PID}
-\lstinputlisting{../Programy/PID.m}
+\lstinputlisting{../Programy/Optymalizacja_S_z.m}
 
-\subsection{Regulator DMC}
-\lstinputlisting{../Programy/DMC.m}
-
-\section{Dostrajanie regulatorów}
-
-Ostatnim zadaniem był dobór nastawów obu algorytmów regulacji. W tym celu skorzystano z wcześniej uzyskanej transmitancji aproksymującej skok procesu,
-aby dobrać parametry obu regulatorów. W ten sposób można było przeprowadzić więcej eksperymentów w krótszym czasie.
-Uzyskane w ten sposób parametry zostały przetestowane na realnym procesie.
-
-\subsection{Strojenie PID}
-
-Do strojenia regulatora PID zostałą wykorzystana metoda Zieglera-Nicholsa. Parametry do niej potrzebne wyznaczono na procesie symulowanym.
-Oscylacje niegasnące otrzymano dla parametrów $K_\mathrm{k} = 43$ oraz $T_\mathrm{k} = 36$.
-Na tej podstawie dobrano następujące parametry regulatora PID: $K = \num{21.5}; T_\mathrm{i} = 18; T_\mathrm{d} =\num{4.5}$.
-Oczywiście do regulacji zostały wykorzystane parametry PID-a dyskretnego określone wzorami ($T_\mathrm{p} = 1$:)
+Ponieważ do  minimalizacji funkcji użyto algorytmu generycznego to wyniki podczas kolejnych odtworzeń mogą się różnic. Jednak po wykonaniu testów, dla których błąd aproksymacji był bardzo zbliżony przyjęto wartości parametrów:
 
 \begin{equation}
 	\begin{split}
-		& r_2 = K\frac{T_\mathrm{d}}{T_\mathrm{p}} \\
-		& r_1 = K(\frac{T_\mathrm{p}}{2T_\mathrm{i}} -2\frac{T_\mathrm{d}}{T_\mathrm{p}} - 1) \\
-		& r_0 = K(1+\frac{T_\mathrm{p}}{2T_\mathrm{i}} + \frac{T_\mathrm{d}}{T_\mathrm{p}}) \\
+		& K = 0.1772938\\
+		& T_1 = 88.311400 \\
+		& T_2 = 0.010351 \\
+		& T_{\mathrm{d}} = 12 \\
 	\end{split}
 \end{equation}
 
+Otrzymaną aproksymowaną odpowiedź skokową dla toru zakłócenie-wyjście dla algorytmu regulacji DMC przedstawiono na rys. \ref{skok_DMC_zak_apro}. Odpowiedź skokowa toru wejście-wyjście dla algorytmu DMC została zaczerpnięta z laboratorium nr 1, przedstawiono ją na rys. \ref{skok_DMC}. Analogicznie jak dla odpowiedzi skokowej toru zakłócenie-wyjście wykonano dla niej aproksymacje przedstawioną na rys. \ref{skok_DMC_apro}.
 
-\begin{figure}[h]
+
+\begin{figure}[H]
 	\centering
-	\input{../TikZ_rysunki/testPID1.tex}
-	\caption{Regulacja PID, eksperyment 1,$K = \num{21.5000}, T_\mathrm{i} = \num{18}, T_\mathrm{d} = \num{4.5} E = \num{11.1096}$}
-	\label{PID1}
+	\input{../Tikz_rysunki/skok_DMC_zak.tex}
+	\caption{Odpowiedź skokowa toru zakłócenie-wyjście dla algorytmu DMC.}
+	\label{skok_DMC_zak}
+\end{figure}
+	
+	
+\begin{figure}[H]
+	\centering
+	\input{../Tikz_rysunki/skok_DMC_zak_apro.tex}
+	\caption{Aproksymacja odpowiedzi skokowej toru zakłócenie-wyjście dla algorytmu DMC.}
+	\label{skok_DMC_zak_apro}
 \end{figure}
 
-% TODO:
-% Opisać przebiegi doboru parametrów,
-% podpisać parametry,
-% policzyć errory
 
-Wyniki regulacji PID dla tych parametrów przedstawiono na rys. \ref{PID1}.
-W dalszej kolejności sprawdzane były jeszcze inne wartości parametrów w celu znalezienia jak najlepszych nastawów.
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
-	\input{../TikZ_rysunki/testPID2.tex}
-	\caption{Regulacja PID, eksperyment 2, $K = \num{32,25}, T_\mathrm{i} = \num{36}, T_\mathrm{d} = \num{4.5} E = \num{3.3641}$}
-	\label{PID2}
+	\input{../Tikz_rysunki/skok_DMC.tex}
+	\caption{Odpowiedź skokowa toru wejście-wyjście dla algorytmu DMC.}
+	\label{skok_DMC}
 \end{figure}
 
-\begin{figure}[h]
+	
+\begin{figure}[H]
 	\centering
-	\input{../TikZ_rysunki/testPID3.tex}
-	\caption{Regulacja PID, eksperyment 3, $K = \num{21,5}, T_\mathrm{i} = \num{72}, T_\mathrm{d} = \num{4.5} E = \num{4.3880}$}
-	\label{PID3}
+	\input{../Tikz_rysunki/skok_DMC_apro.tex}
+	\caption{Aproksymacja odpowiedzi skokowej toru wejście-wyjście dla algorytmu DMC.}
+	\label{skok_DMC_apro}
 \end{figure}
 
-% \begin{figure}[h]
-% 	\centering
-% 	\input{../TikZ_rysunki/testPID4.tex}
-% 	\caption{Regulacja PID, eksperyment 4, $K = \num{32,25}, T_\mathrm{i} = \num{36}, T_\mathrm{d} = \num{4.5} E = \num{3.6891}$}
-% 	\label{PID4}
-% \end{figure}
+\section{Algorytm DMC z pomiarem zakłóceń}
+Do sterowania procesem zaimplementowano algorytm DMC z pomiarem zakłóceń w języku MATLAB.
 
-\begin{figure}[h]
+\lstinputlisting{../Programy/DMC_zak.m}
+
+
+\section{Dobór parametrów dla algorytmu DMC}
+W celu doboru parametrów algorytmu DMC zadawano skokową wartość sygnału temperatury zadanej z punktu pracy G1=26, T1=\num{28.12}°C do temperatury zadanej \num{35}°C. Eksperymenty dla wybranych parametrów przedstawiono na rys. \ref{dobor_param_DMC1} i \ref{dobor_param_DMC2}. Można zauważyć, że parametry są dobrane znacznie lepiej dla ekperymentu drugiego (rys. \ref{dobor_param_DMC2}). Ilościowa jakość regulacji jest znacząco lepsza, błąd jest prawie 2-krotnie mniejszy. Porównując jakościowo regulację zauważalne jest znacznie mniejsze przesterowanie od wartości zadanej temperatury. W porównaniu do pierwszego eksperymentu dla drugiego praktycznie niezauważalne są oscylacjie sygnału wyjściowego. W dalszej części laboratorium przyjęto właśnie te parametry algorytmu DMC: $D=300$, $N=50$, $N_{\mathrm{u}}=10$, $\lambda=1$. 
+
+\begin{figure}[H]
 	\centering
-	\input{../TikZ_rysunki/testDMC.tex}
-	\caption{Regulacja DMC, eksperyment 1 $ N = 50, N_\mathrm{u} = 10, \lambda = 1, E = \num{3.2370} $}
-	\label{DMC1}
+	\input{../Tikz_rysunki/dobor_param_DMC1.tex}
+	\caption{Dobór parametrów dla algorytmu DMC: D=300, N=10, N_{\mathrm{u}}=1, \lambda=1.\\ Wskaźnik jakości regulacji E=2808.}
+	\label{dobor_param_DMC1}
 \end{figure}
 
-Z wykresów można wyczytać, że zmiana parametrów PID poprawiła jakość regulacji. Co do regulatora DMC natomiast działa on całkiem dobrze,
-jednak zarówno PID jak i DMC są narażone na zakłócenia, które można zauważyć na wykresach.
-Jednym z możliwych sposobów na poprawę jakości regulacji jest pomiar zakłóceń i uwzględnienie ich w sterowaniu.
+\begin{figure}[H]
+	\centering
+	\input{../Tikz_rysunki/dobor_param_DMC2.tex}
+	\caption{Dobór parametrów dla algorytmu DMC: D=300, N=50, N_{\mathrm{u}}=10, \lambda=1.\\ Wskaźnik jakości regulacji E=1467.}
+	\label{dobor_param_DMC2}
+\end{figure}
+
+\section{Regulacja procesu bez pomiaru zakłócenia}
+Do regulacji przyjęto parametr $D_{\mathrm{z}}=500$, ponieważ dla tej ilości iteracji ustalała się odpowiedź skokowa toru zakłócenie-wyjście. Regulację z wykorzystaniem algorytmu DMC bez pomiaru zakłócenia przedstawiono na rys. \ref{bez_kom_1}. Na wykresie wartości wyjściowej procesu można zauważyć znaczące odchylenia od wartości zadanej w momentach skoków zakłócenia, tj. 300[s] oraz 700[s].
+
+\begin{figure}[htb]
+	\centering
+	\input{../Tikz_rysunki/bez_kom_1.tex}
+	\caption{Regulacja z wykorzystaniem algorytmu DMC bez pomiaru zakłóceń. \\Użyte parametry DMC: D_{\mathrm{z}}=500, D=300, N=50, N_{\mathrm{u}}=10, \lambda=1.\\ Wskaźnik jakości regulacji E=1750.}
+	\label{bez_kom_1}
+\end{figure}
+
+\section{Regulacja procesu z pomiarem zakłócenia}
+
+Regulację z wykorzystaniem algorytmu DMC z eksperymentalnie wyznaczoną odpowiedzią skokową toru zakłócenie-wyjście z pomiarem zakłócenia przedstawiono na rys. \ref{kom_s_eksp}. Można zauważyć znaczącą poprawę jakości regulacji względem regulacji bez pomiaru zakłócenia. Widoczna jest poprawa wskaźnika jakości regulacji oraz zauważalnie mniejsze odchylenia od wartości zadanej podczas występowania skoków zakłóceń.
+
+\begin{figure}[htb]
+	\centering
+	\input{../Tikz_rysunki/kom_s_eksp.tex}
+	\caption{Regulacja z wykorzystaniem algorytmu DMC z pomiarem zakłóceń, odpowiedź skokowa toru zakłócenie-wyjście wyznaczona eksperymentalnie. \\Użyte parametry DMC: D_{\mathrm{z}}=500, D=300, N=50, N_{\mathrm{u}}=10, \lambda=1.\\ Wskaźnik jakości regulacji E=1391.}
+	\label{kom_s_eksp}
+\end{figure}
+
+W celu eksperymentalnym wykonano regulację z wykorzystaniem algorytmu DMC z aproksymowaną odpowiedzią skokową toru zakłócenie-wyjście z pomiarem zakłócenia. Wyniki przedstawione są na rys. \ref{kom_s_apro}. Jakość regulacji jest porównywalna do otrzymanej z wykorzystaniem eksperyentalnie uzyskanej odpowiedzi skokowej toru zakłócenie-wyjście. Zarówno jakościowa jak i ilościowa analiza tych regulacji nie pozwala jednoznacznie stwierdzić, który wybór odpowiedzi skokowej jest lepszy. Niewielkie różnice w jakości regulacji mogą wynikać z innych niemierzonych zakłóceń, takich jak przepływ powietrza w pracowni laboratoryjnej.
+
+\begin{figure}[htb]
+	\centering
+	\input{../Tikz_rysunki/kom_s_apro.tex}
+	\caption{Regulacja z wykorzystaniem algorytmu DMC z pomiarem zakłóceń, odpowiedź skokowa toru zakłócenie-wyjście wyznaczona aproksymacyjnie. \\Użyte parametry DMC: D_{\mathrm{z}}=500, D=300, N=50, N_{\mathrm{u}}=10, \lambda=1.\\ Wskaźnik jakości regulacji E=1477.}
+	\label{kom_s_apro}
+\end{figure}
+
+
 
 \chapter{Projekt}
-
 \section{Informacje wstępne}
 
-Zadanie projektowe wykorzystywało symulowany obiekt regulacji.
-Wyjście obiektu można wyznaczyć przy pomocy polecenia:
+Zadanie projektowe wykorzystywało symulowany obiekt regulacji. Wyjście obiektu można wyznaczyć przy pomocy polecenia:
 
-\text{ Y(k)=symulacja\_obiektu1y\_p1(U(k-10),U(k-11),Y(k-1),Y(k-2)) }
+$y(k)=symulacja\_obiektu1y\_p2(u(k-6),u(k-7),z(k-2),z(k-3),y(k-1),y(k-2))$
 
-Wartości sygnałów wejścia i wyjścia procesu w punkcie pracy wynoszą
-$U_\mathrm{pp} = \num{0,5},  Y_\mathrm{pp} = 4$, natomiast ograniczenia sterowania wynoszą
-$U^\mathrm{min} = \num{0,3}, U^\mathrm{max} = \num{0,7}$, a okres próbkowania wynosi \num{0,5} sekundy.
+Wartości sygnałów wejścia, wyjścia i zakłócenia procesu w punkcie pracy wynoszą $u = y = z = 0$; okres próbkowania wynosi \num{0,5} sekundy.
 
-\section{Sprawdzanie poprawność wartości $U_\mathrm{pp},  Y_\mathrm{pp}$}
 
-W celu sprawdzenia poprawności punktu pracy została przeprowadzona symulacja, gdzie na wejście podano
-$U_\mathrm{pp}$, jako poprzednie wartości y podano $Y_\mathrm{pp}$  i sprawdzono wartość wyjścia procesu w następnych chwilach. Wyniki symulacji przedstawstawiono na rys. \ref{Punkt-pracy}
+\section{Sprawdzenie poprawności punktu pracy}
 
-\begin{figure}[h]
+W celu sprawdzenia poprawności punktu pracy została przeprowadzona symulacja, gdzie na wejście podano sterowanie $u = 0$, jako poprzednie wartości wyjścia podano $y = 0$, wartość zakłócenia podano $z = 0$ i sprawdzono wartość wyjścia procesu w następnych chwilach. Wyniki symulacji przedstawstawiono na rys. \ref{punkt_pracy}. Wartość sygnału wyjściowego pozostała bez zmian, co potwierdza poprawność podanego punktu pracy.
+
+\begin{figure}[H]
 	\centering
-	\input{../../Projekt1/rysunki_tikz/punkt_pracy.tex}
-	\caption{Sprawdzanie poprawości punktu pracy}
-	\label{Punkt-pracy}
+	\input{../../Projekt2/rysunki_tikz/Z1_PunktPracy.tex}
+	\caption{Sprawdzenie poprawności punktu pracy}
+	\label{punkt_pracy}
 \end{figure}
 
 
-\section{Odpowiedzi skokowe procesu}
+\section{Odpowiedzi skokowe toru wejście-wyjście}
+Wyznaczone zostały odpowiedzi skokowe dla kilku skoków wartości sygnału sterującego, gdzie wartość początkowa sterowania wynosiła u=0. Wyniki symulacji przedstawiono na rys. \ref{odp_skok_wej}.
 
-W tej części wyznaczone zostały odpowiedzi skokowe procesu dla kilku zmian sygnału sterującego,
-gdzie wartość początkowa sterowania wynosiła $U_\mathrm{pp}$. Wyniki symulacji przedstawia rys. \ref{Odpowiedzi-skokowe}.
-Wykres potwierdza,że punkt pracy był wyznaczony poprawnie.
-
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
-	\input{../../Projekt1/rysunki_tikz/odpowiedzi_skokowe.tex}
-	\caption{Odpowiedzi skokowe procesu}
-	\label{Odpowiedzi-skokowe}
+	\input{../../Projekt2/rysunki_tikz/Z2_OdpowiedziSkokoweWejscie.tex}
+	\caption{Odpowiedzi skokowe toru wejście-wyjście.}
+	\label{odp_skok_wej}
 \end{figure}
 
 
 
-W celu ustalenia, czy proces jest liniowy, został narysowany wykres zależności Y(U), dla dozwolonych wartości sterowania.
-Wykres ten został przedstawiony na rys. \ref{Charakterystyka-statyczna}. Z wykresu wynika, że zależność jest liniowa, zatem wzmocnienie statyczne można wyznaczyć metodą najmniejszych kwadratów.
-W naszym przypadku $K_{\mathrm{stat}} = 2$.
+\section{Odpowiedzi skokowe toru zakłócenie-wyjście}
+Wyznaczone zostały odpowiedzi skokowe dla kilku skoków zakłócenia mierzonego, gdzie wartość początkowa zakłócenia wynosiła z=0. Wyniki symulacji przedstawiono na rys. \ref{odp_skok_zak}.
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
-	\input{../../Projekt1/rysunki_tikz/charakterystyka_statyczna.tex}
-	\caption{Charakterystyka statyczna, wyznaczanie wzmocnienia}
-	\label{Charakterystyka-statyczna}
+	\input{../../Projekt2/rysunki_tikz/Z2_OdpowiedziSkokoweZaklocenie.tex}
+	\caption{Odpowiedzi skokowe toru zakłócenie-wyjście.}
+	\label{odp_skok_zak}
 \end{figure}
 
 
-\section{Przekształcenie odpowiedzi skokowej}
+\section{Charakterystyki statyczne torów procesu}
+Na podstawie odpowiedzi skokowych wyznaczono charakterystyki statyczne dla toru\\ wejście-wyjście (rys. \ref{char_stat_wej}) oraz toru zakłócenie-wyjście (rys. \ref{char_stat_zak}) korzystając z ustalonych wartości wyjścia dla zadawanych sygnałów, odpowiednio wejścia i zakłócenia. Z wykresów widać, że właściwości procesu są w przybliżeniu liniowe. Metodą najmniejszych kwadratów wyznaczono wzmocnienia statyczne tych procesów. Dla toru wejście-wyjście otrzymano $K_{\mathrm{stat}}=2.2957}$, zaś dla toru zakłócenie-wyjście otrzymano $K_{\mathrm{stat}}=1.4973}$.
 
-Do przekształcenia została wybrana odpowiedź skokowa dla sterowania $U_\mathrm{skok} = \num{0.65}$.
-W pierwszej kolejności zebrane dane, zostały przesunięte w czasie, tak aby skok sterowania następował dla $k=0$.
-Następnie wartości skoku zostały przeskalowane i przesunięte w odpowiedni sposób, tak aby odpowiedź dało się wykorzystać w algorytmie DMC.
-Wynikowa odpowiedź skokowa została przedstawiona na rys. \ref{Odpowiedz-skokowa-DMC}.
-
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
-	\input{../../Projekt1/rysunki_tikz/skok_DMC.tex}
-	\caption{Przekształcona odpowiedź skokowa}
-	\label{Odpowiedz-skokowa-DMC}
+	\input{../../Projekt2/rysunki_tikz/Z2_CharakterystykaStatycznaWejscie.tex}
+	\caption{Charakterystyka statyczna dla toru wejście-wyjście}
+	\label{char_stat_wej}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\input{../../Projekt2/rysunki_tikz/Z2_CharakterystykaStatycznaZaklocenie.tex}
+	\caption{Charakterystyka statyczna dla toru zakłócenie-wyjście}
+	\label{char_stat_zak}
 \end{figure}
 
 
-\section{Implementacja PID i DMC}
-
-\subsection{PID}
-\lstinputlisting{../../Projekt1/programy_Matlab/PID_funkcja.m}
-
-\subsection{DMC}
-\lstinputlisting{../../Projekt1/programy_Matlab/DMC_funkcja.m}
 
 
-\section{Dobór nastawów PID i DMC metodą eksperymentalną}
+\section{Wyznaczenie odpowiedzi skokowych wykorzystywanych w algorytmie DMC}
 
-\subsection{Nastawy PID}
-W celu doboru nastawów regulatora PID skorzystano z metody Zieglera-Nicholsa. Oscylacje niegasnące otrzymano dla $K_\mathrm{kryt} = \num{1.115}$ z okresem
-$T_\mathrm{kryt} = 37$. Wyliczając wartości parametrów jako $K = \num{0.6}K_\mathrm{kryt}, T\mathrm{i} = \num{0.5}T_\mathrm{kryt}, T\mathrm{d} = \num{0.12}T_\mathrm{kryt}$,
-a następnie przeliczajac je na nastawy PID-u dyskretnego rozpoczęta została regulacja przedstawiona na rys. \ref{test-PID1}.
+W celu wyznaczenia odpowiedzi skokowej dla algorytmu DMC toru wejście-wyjście dla symulowanego procesu wykonano skok wartości sterowania od 0 do 1 w chwili k=0. Odpowiedź skokowa dla tego toru znajduje się na rys. \ref{skok_DMC_ster}.
 
-\begin{figure}[h]
+W celu wyznaczenia odpowiedzi skokowej dla algorytmu DMC toru zakłócenie-wyjście dla symulowanego procesu wykonano skok wartości zakłócenia od 0 do 1 w chwili k=0. Odpowiedź skokowa dla tego toru znajduje się na rys. \ref{skok_DMC_zak}.
+
+\begin{figure}[H]
 	\centering
-	\includegraphics{../../Projekt1/rysunki_tikz/test_PID1.pdf}
-	\caption{Regulator PID - test1, $K = \num{0.669}, T_\mathrm{i} = \num{18.5}, T_\mathrm{d} = \num{4.44}$ }
-	\label{test-PID1}
-\end{figure}
-
-Modyfikując parametry regulatora przeprowadzone zostały jeszcze 3 eksperymenty przedstawione na rys. \ref{test-PID2}, rys. \ref{test-PID3} i rys. \ref{test-PID4}.
-
-\begin{figure}[h]
-	\centering
-	\includegraphics{../../Projekt1/rysunki_tikz/test_PID2.pdf}
-	\caption{Regulator PID - test2, $K = \num{0.75}, T_\mathrm{i} = \num{16}, T_\mathrm{d} = \num{3}$}
-	\label{test-PID2}
-\end{figure}
-
-\begin{figure}[h]
-	\centering
-	\includegraphics{../../Projekt1/rysunki_tikz/test_PID3.pdf}
-	\caption{Regulator PID - test3, $K = \num{0.67}, T_\mathrm{i} = \num{10}, T_\mathrm{d} = \num{0.1}$}
-	\label{test-PID3}
-\end{figure}
-
-\begin{figure}[h]
-	\centering
-	\includegraphics{../../Projekt1/rysunki_tikz/test_PID4.pdf}
-	\caption{Regulator PID - test4, $K = \num{0.8}, T_\mathrm{i} = \num{7}, T_\mathrm{d} = \num{2}$}
-	\label{test-PID4}
-\end{figure}
-
-Zmieniając wartości parametrów udało się poprawić regulację, zarówno zmniejszyła się wartość błędu, jak i wykresy wyglądają lepiej. Zmnniejszyły się oscylacje wyjścia procesu w momencie narastania oraz opadania sygnału do wartości zadanej. Znacząco poprawił się czas uzyskiwania wartości zadanej, nie zwiększając przy tym znacząco przesterowania.
-Na tescie 3 i 4 PID działa zdecydowanie szybciej, dodatkowo oscylacje w teście 4 są zdecydowanie mniejsze.
-
-
-\subsection{Nastawy DMC}
-
-Dobór parametrów dla regulatora DMC odbywał się w podobny sposób.
-W pierwszej kolejności zostały wybrane parametry w sposób przypadkowy, następnie parametry były lekko zmieniane.
-Patrząc na wyniki symulacji można było wybrać najlepszy nastaw. Eksperymenty DMC zostały przedstawione na rys. \ref{test-DMC1} - \ref{test-DMC6}.
-Z przeprowadzonych eksperymentów wynika, że dla parametrów: $ N = 20, N_\mathrm{u} = 3, \lambda = \num{1.5} $ wyniki regulacji są najlepsze. Dla mniejszych wartości horyzontu predykcji i sterowania wynki znacząco się pogarszają, natomiast dla większych nie jest zauważalna znacząca zmiana.
-
-\begin{figure}[h]
-	\centering
-	\includegraphics{../../Projekt1/rysunki_tikz/test_DMC1.pdf}
-	\caption{Regulator DMC - test1, $ N = 60, N_\mathrm{u} = 40, \lambda = 1 $}
-	\label{test-DMC1}
-\end{figure}
-
-\begin{figure}[h]
-	\centering
-	\includegraphics{../../Projekt1/rysunki_tikz/test_DMC2.pdf}
-	\caption{Regulator DMC - test2, $ N = 40, N_\mathrm{u} = 20, \lambda = 2 $}
-	\label{test-DMC2}
-\end{figure}
-
-\begin{figure}[h]
-	\centering
-	\includegraphics{../../Projekt1/rysunki_tikz/test_DMC3.pdf}
-	\caption{Regulator DMC - test3, $ N = 11, N_\mathrm{u} = 1, \lambda = 1 $}
-	\label{test-DMC3}
-\end{figure}
-
-\begin{figure}[h]
-	\centering
-	\includegraphics{../../Projekt1/rysunki_tikz/test_DMC4.pdf}
-	\caption{Regulator DMC - test4, $ N = 15, N_\mathrm{u} = 1, \lambda = 1 $}
-	\label{test-DMC4}
-\end{figure}
-
-\begin{figure}[h]
-	\centering
-	\includegraphics{../../Projekt1/rysunki_tikz/test_DMC5.pdf}
-	\caption{Regulator DMC - test5, $ N = 20, N_\mathrm{u} = 1, \lambda = 1 $}
-	\label{test-DMC5}
-\end{figure}
-
-\begin{figure}[h]
-	\centering
-	\includegraphics{../../Projekt1/rysunki_tikz/test_DMC6.pdf}
-	\caption{Regulator DMC - test6, $ N = 20, N_\mathrm{u} = 3, \lambda = \num{1.5} $}
-	\label{test-DMC6}
+	\input{../../Projekt2/rysunki_tikz/Z3_SkokDMCSterowanie.tex}
+	\caption{Odpowiedź skokowa toru wejście-wyjście dla algorytmu DMC.}
+	\label{skok_DMC_ster}
 \end{figure}
 
 
-\section{Dobór parametrów PID i DMC automatycznie}
+\begin{figure}[H]
+	\centering
+	\input{../../Projekt2/rysunki_tikz/Z3_SkokDMCZaklocenie.tex}
+	\caption{Odpowiedź skokowa toru zakłócenie-wyjście dla algorytmu DMC.}
+	\label{skok_DMC_zak}
+\end{figure}
+
+\section{Implementacja algorytmu regulacji DMC dla procesu symulowanego}
+
+\begin{lstlisting}[style=customlatex,frame=single,]
+% maierz S i Sz tworzone sa plikach skokDMCSterowanie.m i skokDMCZaklocenie.m
+load S
+load Sz
+
+% Punkt pracy
+Upp = 0;
+Ypp = 0;
+Zpp = 0;
+
+% Czas symulacji
+time = 400;
+
+Yzad(time,1) = 0;
+Yzad(1:50) = Ypp;
+Yzad(51:time) = 1;
+
+% Parametry
+N = 20; Nu = 20; lambda = 0.1;     
+
+U(1:time) = Upp;
+Y(1:time) = Ypp;
+Z(1:time) = Zpp; 
+
+Noise(1:time) = wgn(1,time,0.01)*0.05;
+
+e(1:time) = 0;
+
+% ----------------------------ALGORYTM DMC--------------------------
+% Obliczenia offline
+S = [S; zeros(N,1)];
+for i = D+1:D+N
+    S(i) = S(D);
+end
+        
+M = zeros(N, Nu);
+for i = 1:Nu
+    M(i:N,i)=S(1:N-i+1);
+end
+       
+Mp = zeros(N, D-1);
+for i = 1:(D-1)
+    Mp(1:N,i) = S(i+1:N+i) - S(i);
+end
+
+Sz = [Sz; zeros(N,1)];
+for i = Dz+1:Dz+N
+    Sz(i) = Sz(Dz);
+end
+
+Mpz = zeros(N, Dz);
+for i = 1:(Dz)
+    Mpz(1:N,i) = Sz(i+1:N+i) - Sz(i);
+end
+
+I = eye(Nu);
+K = ((M'*M + lambda*I)^(-1))*M';
+
+% inicjalizacja
+dUP = zeros(D-1,1);
+dZP = zeros(Dz, 1);
+Y0 = zeros(N,1);
+dU = zeros(Nu,1);
+Yzad_DMC = zeros(N,1);
+Y_DMC = zeros(N,1);
+
+u = U - Upp;
+yzad = Yzad - Ypp;
+
+y(1:time) = 0;
+u(1:time) = 0;
+
+% liczone online
+
+for k = 8:time
+    Y(k) =  symulacja_obiektu1y_p2(U(k-6),U(k-7),Z(k-2),Z(k-3),Y(k-1),Y(k-2));
+    y(k) = Y(k) - Ypp;
+    e(k) = (yzad(k) - y(k))^2;
+    
+    Yzad_DMC = yzad(k)*ones(N,1);
+    Y_DMC = y(k)*ones(N,1);
+    
+    dZP(2:Dz) = dZP(1:Dz-1);
+    dZP(1) = Z(k) - Z(k-1) + Noise(k);
+    Y0 = Y_DMC + Mp*dUP + Mpz*dZP;
+    dU = K*(Yzad_DMC - Y0);
+    du = dU(1);
+        
+    for n=D-1:-1:2
+      dUP(n,1) = dUP(n-1,1);
+    end
+    dUP(1) = du;
+   
+    u(k) = u(k-1) + du;
+    
+    U(k) = u(k) + Upp;
+end
+
+E = 0;
+for k = 8:time
+    E = E + e(k);
+end
+\end{lstlisting}
+
+\section{Dobór parametrów algorytmu DMC}
+Dobór parametrów dla regulatora DMC odbywał się w następujący sposób. W pierwszej kolejności zostały wybrane duże wartości parametrów $N$ i $N_{\mathrm{u}}$, natomiast dla parametru $\lambda$ przyjęto standardowo wartość 1. Następnie parametry były najczęściej zmniejszane, ale również modyfikowane według intuicji inżynierskiej. Patrząc na wyniki symulacji można było wybrać najlepszy nastaw. Z przeprowadzonych eksperymentów wynika, że dla parametrów: $N=20, N_{\mathrm{u}}=20, \lambda=0.1$ wyniki regulacji są najlepsze. Dla mniejszych wartości horyzontu predykcji i sterowania wyniki znacząco się pogarszają, natomiast dla większych nie jest zauważalna znacząca zmiana. Wybrane eksperymenty zostały pokazane na rys. \ref{dobor_param6}, \ref{dobor_param5}, \ref{dobor_param4}, \ref{dobor_param3}, \ref{dobor_param2}, \ref{dobor_param1}.
 
 
-W celu optymalizacji wskaźnika błędu w zależności od parametrów obu regulatorów
-został użyty algorytm generyczny, którego zadaniem było znalezienie minimum funkcji błędów.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Lab2/PDF_rysunki/Z4_DMCParametryN_60_Nu_40_lam_1.pdf}
+	\caption{Regulator DMC dla parametrów: N=60, N_{\mathrm{u}}=40, \lambda=1.}
+	\label{dobor_param6}
+\end{figure}
 
-Uzyskane nastawy to:
-\begin{equation}
-	\begin{split}
-		& \text{dla PID}: K = \num{0.8706}, T_\mathrm{i} = \num{5.6252}, T_\mathrm{d} = \num{2.9545}, E = \num{3.3250} \\
-		& \text{dla DMC}: N = 19, N_\mathrm{u} = 30, \lambda = \num{1.9185}, E = \num{2.4421} \\
-	\end{split}
-\end{equation}
+ 
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Lab2/PDF_rysunki/Z4_DMCParametryN_40_Nu_20_lam_2.pdf}
+	\caption{Regulator DMC dla parametrów: N=40, N_{\mathrm{u}}=20, \lambda=2.}
+	\label{dobor_param5}
+\end{figure}
 
-Otrzymane nastawy nie różnią się znacząco od tych uzyskanych metodą eksperymentalną, niemniej jednak błędy regulacji są mniejsze.
-Wykresy regulacji dla tych nastawów są przedstawione na rys. \ref{PID-optymalizacja} i \ref{DMC-optymalizacja}.
-Metoda optymalizacji jest bardziej przydatna dla regulatora PID niż DMC, ponieważ znajdując graniczne wartości N oraz $N_\mathrm{u}$ po ich dalszym zwiększaniu nie powoduje to znaczącej poprawy regulacji, zużywa jednak większe zasoby mocy obliczeniowej. Natomias dla regulatora PID znacząco oszczędza czas potrzebny na testowanie zmian nastawów metodami eksperymentalymi.
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Lab2/PDF_rysunki/Z4_DMCBezZaklocen.pdf}
+	\caption{Regulator DMC dla parametrów: N=20, N_{\mathrm{u}}=20, \lambda=0.1.}
+	\label{dobor_param4}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Lab2/PDF_rysunki/Z4_DMCParametryN_20_Nu_1_lam_1.pdf}
+	\caption{Regulator DMC dla parametrów: N=20, N_{\mathrm{u}}=1, \lambda=1.}
+	\label{dobor_param3}
+\end{figure}
+
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Lab2/PDF_rysunki/Z4_DMCParametryN_15_Nu_1_lam_1.pdf}
+	\caption{Regulator DMC dla parametrów: N=15, N_{\mathrm{u}}=1, \lambda=1.}
+	\label{dobor_param2}
+\end{figure}
+
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Lab2/PDF_rysunki/Z4_DMCParametryN_11_Nu_1_lam_1.pdf}
+	\caption{Regulator DMC dla parametrów: N=11, N_{\mathrm{u}}=1, \lambda=1.}
+	\label{dobor_param1}
+\end{figure}
+
+
+\section{Porównanie regulacji DMC z pomiarem zakłócenia oraz bez pomiaru}
+
+Aby sprawdzić poprawność kompensacji zakłóceń został przeprowadzony eksperyment ze skokiem wartości zadanej, po której następił skok wartości zakłócenia (po uprzednim ustaleniu się wartości zadanej). Eksperyment został przeprowadzony dla zwykłego DMC oraz dla DMC wraz z kompensacją zakłóceń. Z wykresów (\ref{pom_zak}, \ref{bez_pom_zak})  można łatwo wyczytać, że DMC z kompensacją zakłóceń radzi sobie lepiej dla takiego sygnału zakłóceń. Jest to głównie spowodowane szybkością z jaką DMC reaguje na zmianę wartości zakłócenia. Algorytm z kompensacją reaguje w tej samej iteracji, w której nastąpiła zmiana zakłócenia, przez co proces szybciej powraca do wartości zadanej. Z koleji algorytm DMC w najprostrzej wersji analitycznej musi poczekać, aż zakłócenie to przepropaguje się na wartość wyjściową sygnału, ponieważ dopiero wtedy jest w stanie "zauważyć" zmianę zakłócenia i na nią zareagować. 
+
+
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Lab2/PDF_rysunki/Z5_DMCZZakloceniami.pdf}
+	\caption{Regulacja DMC z pomiarem zakłócenia: N=20, N_{\mathrm{u}}=20, \lambda=0.1.}
+	\label{pom_zak}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Lab2/PDF_rysunki/Z5_DMCZZakloceniamiBezOdsprz.pdf}
+	\caption{Regulacja DMC bez pomiaru zakłócenia: N=20, N_{\mathrm{u}}=20, \lambda=0.1.}
+	\label{bez_pom_zak}
+\end{figure}
+
+
+
+
+\section{Działanie algorytmu DMC przy zakłóceniach sinusoidalnych}
+Można zauważyć, że stosowanie kompensacji zakłóceń w przypadku zakłóceń okresowych o dużej częstotliwości pogarsza regulację w znacznym stopniu. Jest to spowodowane tym, że regulator z kompensacją nie potrafi reagować wystarczająco szybko, przez co regulator nadawał wyższe sterowanie, pomimo że sygnał zakłócenia przestał już opadać i zaczynał się podnosić. Dla zakłóceń tego rodzaju, na obiektach z większą inercją toru wejście-wyjście niż zakłócenie-wyjście, stosowanie regulatorów bez kompensacji zakłóceń okazuję się lepszym roziązaniem. Układ jest wtedy bardziej bezwładny, dzięki czemu nie następuje wzmocnienie zakłócenia wywołane wyliczeniem sterowania z przed chwili. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Lab2/PDF_rysunki/Z6_DMCSinZOdsprz.pdf}
+	\caption{Regulacja DMC z pomiarem zakłóceń przy zakłóceniach sinusoidalnych}
+	\label{sin_z_pom}
+\end{figure}
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Lab2/PDF_rysunki/Z6_DMCSinBezOdsprz.pdf}
+	\caption{Regulacja DMC bez pomiaru zakłóceń przy zakłóceniach sinusoidalnych}
+	\label{sin_bez_pom}
+\end{figure}
+
+\section{Badanie odporności algorytmu DMC na szum pomiarowy sygnału zakłócenia}
+Eksperymenty przeprowadzone dla różnych wartości błędu pomiaru zakłóceń pokazują jasno, że regulator jest odpory na szumy pomiarowe, o ile warotści szumu są w granicach rozsądku. Wartości szumów nie przekraczały 10\% wartości $Y_{\mathrm{zad}}$, dzięki czemu wyjście procesu nie odbiegało w znaczącym stopniu od wartości zadanej. Patrząc na eksperymenty nasuwa się jeszcze dodatowy wniosek zwiazany z szybkością zmian szumu. Na rys. \ref{szum3} widać, że regulator nie jest w stanie nadążyć sterowaniem za sygnałem szumu, przez co można zauważyć, żę wartość błędu jest wyższa, niż dla innych eksperymentów.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Lab2/PDF_rysunki/Z7_Szum1.pdf}
+	\caption{Regulacja DMC z pomiarem zakłóceń z występujacym szumem pomiarowym(1)}
+	\label{szum1}
+\end{figure}
 
 \begin{figure}[h]
 	\centering
-	\includegraphics{../../Projekt1/rysunki_tikz/PID_optimal.pdf} %  = , Ti =  Td =; E = 3.3250
-	\caption{Regulator PID - parametry wyznaczone algorytmem generycznym, $ N = 19, N_\mathrm{u} = 30, \lambda = \num{ 1.9185}, E = \num{2.4421} $}
-	\label{PID-optymalizacja}
+	\includegraphics[scale=0.85]{../../Lab2/PDF_rysunki/Z7_Szum2.pdf}
+	\caption{Regulacja DMC z pomiarem zakłóceń z występujacym szumem pomiarowym(2)}
+	\label{szum2}
 \end{figure}
 
 
 \begin{figure}[h]
 	\centering
-	\includegraphics{../../Projekt1/rysunki_tikz/DMC_optimal.pdf} %  = , Ti =  Td =; E = 3.3250
-	\caption{Regulator DMC - parametry wyznaczone algorytmem generycznym, $K = \num{0.8706}, T_\mathrm{i} = \num{5.6252}, T_\mathrm{d} = \num{2.9545}$}
-	\label{DMC-optymalizacja}
+	\includegraphics[scale=0.85]{../../Lab2/PDF_rysunki/Z7_Szum3.pdf}
+	\caption{Regulacja DMC z pomiarem zakłóceń z występujacym szumem pomiarowym(3)}
+	\label{szum3}
 \end{figure}
-\end{comment}
+
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.85]{../../Lab2/PDF_rysunki/Z7_Szum4.pdf}
+	\caption{Regulacja DMC z pomiarem zakłóceń z występujacym szumem pomiarowym(4)}
+	\label{szum4}
+\end{figure}
+
 
 \end{document}
 
