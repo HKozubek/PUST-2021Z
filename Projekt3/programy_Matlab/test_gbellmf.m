@@ -1,6 +1,6 @@
 % testowanie funkcji dzwonowych na przedziale
-Ymin = -0.32;
-Ymax = 11.84;
+% Ymin = -0.32;
+% Ymax = 11.84;
 
 Ymin = -1;
 Ymax = 1;
@@ -14,7 +14,6 @@ center = zeros(num, 1);
 
 figure('name', "Funkcje przynależności")
 hold on
-
 
 interval = (Ymax - Ymin)/(num - 1);
 
