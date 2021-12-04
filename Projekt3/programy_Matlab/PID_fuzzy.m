@@ -19,7 +19,7 @@ function U = PID_fuzzy(e, num, y, K, Ti, Td, Tp, Umin, Umax)
 %   Upop is value of last iteration controll signal
 %   in init it should have value of current work point
 %
-% See also PID, DMC, DMC_fuzzy, gbellmf.
+% See also PID, DMC_fuzzy, DMC, gbellmf.
 
     persistent Upop
     persistent e0
@@ -80,7 +80,7 @@ function U = PID_fuzzy(e, num, y, K, Ti, Td, Tp, Umin, Umax)
     for i = 1:num
         u_fuzzy(i,1) = Upop + r2(i)*e2 + r1(i)*e1 + r0(i)*e0;
         w(i) = gbellmf(y, [a b center(i)]);
-        U = U + w(i)*u_fuzzy(i);
+        U = U + w(i)*u_fuzzy(i,1);
     end
     U = U/sum(w);
     

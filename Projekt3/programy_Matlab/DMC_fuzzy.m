@@ -1,15 +1,17 @@
-function U = DMC_fuzzy(S, yzad, y, D, N, Nu, lambda, Umin, Umax)
-% DMC controller
-%   U = DMC(S, yzad, y, D, N, Nu, lambda, Umin, Umax) gives control signal for DMC controller.
+function U = DMC_fuzzy(S_fuzzy, u, num, yzad, y, D, N, Nu, lambda, Umin, Umax)
+% DMC fuzzy controller
+%   U = DMC_fuzzy(S_fuzzy, u, num, yzad, y, D, N, Nu, lambda, Umin, Umax) gives control signal for DMC fuzzy controller.
 %   
 %   Arguments:
-%   S - step answer for DMC controller (matrix)
+%   S_fuzzy - step answers for local DMC controllers {[matrix],[matrix],...]
+%   u - value of process controll
+%   num - number of local DMC controllers
 %   yzad - set point value
 %   y - controlled variable
 %   D - dynamic horizon
 %   N - prediction horizon
 %   Nu - controll horizon
-%   lambda - penatly factor
+%   lambda[num, 1] - penatly factor
 %   Umin - lower limit of U;
 %   Umax - upper limit of U;
 %
@@ -17,15 +19,38 @@ function U = DMC_fuzzy(S, yzad, y, D, N, Nu, lambda, Umin, Umax)
 %   Upop is value of last iteration controll signal
 %   in init it should have value of current work point
 %   
-% See also DMC, PID, PID_fuzzy, gbellmf.
+% See also DMC, PID_fuzzy, PID, gbellmf.
+
     persistent init
-    persistent M
-    persistent Mp
-    persistent K
-    persistent dUP
     persistent Upop
+    persistent dUP
+    persistent a
+    persistent b
+    persistent center
     
     if isempty(init)
+        init = 1;
+        Upop = 0;
+        dUP = zeros(D-1,1);
+        
+        % kształt funkcji dzwonowej
+        interval = (Umax - Umin)/(num - 1);
+        a = 0.3;                                  % przedział wartości maksymalnej
+        b = 1.2;                                   % kształt zboczy funkcji
+        center = zeros(num, 1);
+        
+        for k = 0:(num-1)
+            center(k+1) = Umin + interval*k;
+        end
+    end
+   
+    U = 0;
+    u_fuzzy = zeros(num, 1);
+    w = zeros(num, 1);
+    
+    for j = 1:num
+        S = S_fuzzy{j};
+        
         % przedluzenie wektora S
         for i = D+1:D+N
             S(i) = S(D);
@@ -44,27 +69,28 @@ function U = DMC_fuzzy(S, yzad, y, D, N, Nu, lambda, Umin, Umax)
         
         I = eye(Nu);
         
-        K = ((M'*M + lambda*I)^(-1))*M';
-        dUP = zeros(D-1,1);
-        Upop = 0;
-        init = 1;
+        K = ((M'*M + lambda(j)*I)^(-1))*M';        %to trzeba online
+        
+        Yzad = yzad*ones(N,1);
+        Y = y*ones(N,1);
+
+        Y0 = Y + Mp*dUP;
+        dU = K*(Yzad - Y0);
+        du = dU(1); 
+      
+        u_fuzzy(i,1) = Upop + du;
+      
+        % wnioskowanie rozmyte
+        w(j) = gbellmf(u, [a b center(j)]);
+        U = U + w(j)*u_fuzzy(i,1);
     end
-    
-    % liczone online
-    Yzad = yzad*ones(N,1);
-    Y = y*ones(N,1);
-    
-    Y0 = Y + Mp*dUP;
-    dU = K*(Yzad - Y0);
-    du = dU(1);
-    
+    U = U/sum(w);
+  
     for n=D-1:-1:2
-      dUP(n) = dUP(n-1);
+        dUP(n) = dUP(n-1);
     end
-    dUP(1) = du;
-   
-    U = Upop + du;
-    
+        dUP(1) = du;
+      
     if U > Umax
         U = Umax;
     end
