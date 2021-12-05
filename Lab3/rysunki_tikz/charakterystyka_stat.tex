@@ -1,0 +1,48 @@
+% This file was created by matlab2tikz.
+%
+\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
+\definecolor{mycolor2}{rgb}{0.85000,0.32500,0.09800}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=4.521in,
+height=3.566in,
+at={(0.758in,0.481in)},
+scale only axis,
+xmin=20,
+xmax=80,
+xlabel style={font=\color{white!15!black}},
+xlabel={Sterowanie (U)},
+ymin=25,
+ymax=50,
+ylabel style={font=\color{white!15!black}},
+ylabel={Wyjście procesu (Y)},
+axis background/.style={fill=white},
+title style={font=\bfseries},
+title={Charakterystyka statyczna},
+axis x line*=bottom,
+axis y line*=left
+]
+\addplot [color=mycolor1, only marks, mark=*, mark options={solid, mycolor1}, forget plot]
+  table[row sep=crcr]{%
+20	29.06\\
+30	32.87\\
+40	37.43\\
+50	41.5\\
+60	44.12\\
+70	46.12\\
+80	48.37\\
+};
+\addplot [color=mycolor2, forget plot]
+  table[row sep=crcr]{%
+20	29.06\\
+30	32.87\\
+40	37.43\\
+50	41.5\\
+60	44.12\\
+70	46.12\\
+80	48.37\\
+};
+\end{axis}
+\end{tikzpicture}%

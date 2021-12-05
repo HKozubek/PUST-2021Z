@@ -1,0 +1,5 @@
+Do przygotowania przed labami:
+
+
+Do zrobienia podczas labów:
+ - eksperyment przy użyciu PID dla liniowego procesu
