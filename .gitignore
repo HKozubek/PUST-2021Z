@@ -58,3 +58,5 @@ octave-workspace
 *.tcp
 *.synctex
 *.tps
+*.fls
+*.fdb_latexmk
