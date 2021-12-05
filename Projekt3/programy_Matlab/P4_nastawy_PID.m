@@ -53,7 +53,7 @@ K = 0.10; Ti = 3.4; Td = 0.7;                         % test4 E=233.64
 % E = 2939.43
 
 for k = 7:time
-    Y(k) =  symulacja_obiektu1y_p3(U(k-5), U(k-6), Y(k-1), Y(k-2));
+    Y(k) = symulacja_obiektu1y_p3(U(k-5), U(k-6), Y(k-1), Y(k-2));
     e(k) = Yzad(k) - Y(k);
    
     U(k) = PID(e(k), K, Ti, Td, Tp, Umin, Umax);

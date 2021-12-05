@@ -35,6 +35,18 @@ y(1:time) = 0;
 % Dla rozmytego TODO porobić eksperymenty (może jeszcze raz wyznaczyć
 % skoki)
 
+
+% test
+num = 3;
+K(1,1) = 0.02; Ti(1,1) = 2; Td(1,1)= 0.5;
+K(2,1) = 0.10; Ti(2,1) = 8; Td(2,1)= 0.4;
+K(3,1) = 0.15; Ti(3,1) = 3; Td(3,1)= 0.7;
+% wnioski - wygląda na to, że regulator działa
+% TODO - nastroić dla różnych ilości regulatory (jak najlepiej?)
+% imo dostrajanie regulatorów dla skoków w różnych punktach pracy
+
+
+% chyba średni pomysł metoda ZN
 % Nastawy regulatorów lokalnych kolejno:
 % num = 2;
 % K_kryt = 0.20; T_kryt = 18.7*Tp;
@@ -72,7 +84,7 @@ y(1:time) = 0;
 
 
 for k = 7:time
-    Y(k) =  symulacja_obiektu1y_p3(U(k-5), U(k-6), Y(k-1), Y(k-2));
+    Y(k) = symulacja_obiektu1y_p3(U(k-5), U(k-6), Y(k-1), Y(k-2));
     e(k) = Yzad(k) - Y(k);
    
     U(k) = PID_fuzzy(e(k), num, Y(k), K, Ti, Td, Tp, Umin, Umax);

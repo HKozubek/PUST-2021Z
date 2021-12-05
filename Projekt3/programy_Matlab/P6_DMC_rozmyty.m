@@ -32,18 +32,22 @@ e(1:time) = 0;
 y(1:time) = 0;
 
 % Wczytanie i wybranie odpowiedzi skokowych dla DMC
-num = 4;
+num = 40;
 data = load('S_fuzzy');
 S_fuzzy = data.S_fuzzy;
-S = {S_fuzzy{1}, S_fuzzy{13}, S_fuzzy{26}, S_fuzzy{40}};
+% 
+% data = load('S');
+% S = data.S;
+S = S_fuzzy;
+
 
 % Nastawy dla DMC
 D = 82;
-N = 20;
-Nu = 20;
+N = 82;
+Nu = 82;
 lambda = zeros(num,1);
 for i = 1:num
-  lambda(i) = 1;
+  lambda(i) = 50;
 end
 
 

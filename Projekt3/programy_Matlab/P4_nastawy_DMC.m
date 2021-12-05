@@ -23,10 +23,11 @@ Y(1:time) = Ypp;
 % Trajektoria zmian sygnału zadanego
 Yzad(1:50) = Ypp;
 Yzad(51:300) = 7;
-Yzad(301:600) = -0.2;
+Yzad(301:600) = -0.31;
 Yzad(601:800) = 3;
 Yzad(801:1100)  = 11;
 Yzad(1101:time) = 1;
+
 
 % Yzad(51:time)= 5;        % skok wartości zadanej do regulacji DMC
 
@@ -45,7 +46,13 @@ D = data.D;
 % N = 20; Nu = 1; lambda = 1;             %test3; E = 257.06
 % N = 40; Nu = 1; lambda = 1;             %test4; E = 305.64
 % N = 20; Nu = 5; lambda = 1;             %test5; E = 510.27
-N = 20; Nu = 20; lambda = 50;            %test6; E = 212.71
+N = 20; Nu = 20; lambda = 50;           %test6; E = 212.71
+
+% N = 82; Nu = 60; lambda = 50;
+
+
+% dla trajektorii docelowej
+%E = 2559.45
 
 for k = 12:time
     Y(k) =  symulacja_obiektu1y_p3(U(k-5), U(k-6), Y(k-1), Y(k-2));

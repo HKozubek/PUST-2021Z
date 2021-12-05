@@ -1,8 +1,24 @@
-%implementacja DMC
-function U = DMC(yzad, y, D, N, Nu, lambda)
-    
+function U = DMC(S, yzad, y, D, N, Nu, lambda, Umin, Umax)
+% DMC controller
+%   U = DMC(S, yzad, y, D, N, Nu, lambda, Umin, Umax) gives control signal for DMC controller.
+%   
+%   Arguments:
+%   S - step answer for DMC controller (matrix)
+%   yzad - set point value
+%   y - controlled variable
+%   D - dynamic horizon
+%   N - prediction horizon
+%   Nu - controll horizon
+%   lambda - penatly factor
+%   Umin - lower limit of U;
+%   Umax - upper limit of U;
+%
+%   Warning!
+%   Upop is value of last iteration controll signal
+%   in init it should have value of current work point
+%   
+% See also DMC_fuzzy, PID, PID_fuzzy.
     persistent init
-    persistent S
     persistent M
     persistent Mp
     persistent K
@@ -10,11 +26,6 @@ function U = DMC(yzad, y, D, N, Nu, lambda)
     persistent Upop
     
     if isempty(init)
-        
-        % Wczytanie macierzy S z pliku dane1.mat
-        data = load('dane1.mat');
-        S = data.S;
-             
         % przedluzenie wektora S
         for i = D+1:D+N
             S(i) = S(D);
@@ -35,16 +46,9 @@ function U = DMC(yzad, y, D, N, Nu, lambda)
         
         K = ((M'*M + lambda*I)^(-1))*M';
         dUP = zeros(D-1,1);
-        Upop = 26;
+        Upop = 0;
         init = 1;
     end
-    
-    % Ograniczenia sterowania
-    Gmax = 100;
-    Gmin = 0;
-    
-    Y0 = zeros(N,1);
-    dU = zeros(Nu,1);
     
     % liczone online
     Yzad = yzad*ones(N,1);
@@ -54,7 +58,6 @@ function U = DMC(yzad, y, D, N, Nu, lambda)
     dU = K*(Yzad - Y0);
     du = dU(1);
     
-  
     for n=D-1:-1:2
       dUP(n) = dUP(n-1);
     end
@@ -62,12 +65,12 @@ function U = DMC(yzad, y, D, N, Nu, lambda)
    
     U = Upop + du;
     
-    if U > Gmax
-        U = Gmax;
+    if U > Umax
+        U = Umax;
     end
     
-    if U < Gmin
-        U = Gmin;
+    if U < Umin
+        U = Umin;
     end
     
     Upop = U;
