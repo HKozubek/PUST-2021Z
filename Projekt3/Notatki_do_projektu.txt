@@ -1,2 +1,31 @@
 Tu opiszę co jak działa, jak dokończę robić projekt,
 bo będę chciał wyjaśnić co, jak i dlaczego zrobiłem.
+
+Nastawy regulatorów:
+
+Dla regulatorów nie rozmytych:
+Zad4_6_test_normal_DMC
+%E = 2620.07   D = 82; N = 20; Nu = 20; lambda = 50; 
+
+Zad4_3_test_PID_normal
+% E = 2939.43   K = 0.10; Ti = 3.4; Td = 0.7;  
+  
+Dla lambda = 1, regulator nie działa poprawnie.
+Jakbyś mógł w tabeli jakoś porównać błąd ilościowy pid i dmc dla rosnącej liczby
+regulatorów to byłoby git. Chyba wszystkie rysunki już w pdfie są.
+
+W zad 7 chyba chodziło, żeby osobno dobierać lambde, ale nie przeczytałem na początku
+i nie chciało mi się poprawiać. Mam nadzieje, że coś wyrzeźbisz z tych marnych
+materiałów, które zrobiłem XD
+
+
+Do zadania 5:
+"Jako zmienną, na podstawie której dokonywane jest rozmywanie wybrano sterowanie "U".
+Zminna ta została wybrana na podstawie otrzymanej charakterystyki statycznej. Można 
+zauważyć, że dla sterowania przedziały, w których proces jest w przybliżeniu liniowy
+są podobej długości. W porównaniu dla zmiennej wyjścia proces charakteryzuje się bardzo
+małym wzmocnieniem tylko dla Y ∈ <-0.32 0>, natomiast dużym dla reszty wyjść(Y ∈ <0, 12>).
+Utrudniłoby to wybór funkcji wyznaczającej współczynnik przynależności lub wymusiło zastosowanie
+wielu regulatorów lokalnych w celu uzyskania poprawy wyniku regulacji w porównaniu do
+jednego regulatora."
+

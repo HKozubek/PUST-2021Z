@@ -50,7 +50,7 @@ T_kryt = 17.6*Tp;
 K = 0.10; Ti = 3.4; Td = 0.7;                         % test4 E=233.64
 
 % dla trajektorii docelowej
-% E = 2939.43
+% E = 2939.43   K = 0.10; Ti = 3.4; Td = 0.7;    
 
 for k = 7:time
     Y(k) = symulacja_obiektu1y_p3(U(k-5), U(k-6), Y(k-1), Y(k-2));
@@ -79,6 +79,7 @@ title("Wyjście procesu i wartość zadana; E = " + round(E, 2));
 % title("Wyjście procesu i wartość zadana");
 hold on
 stairs(Yzad, '--');
+ylim([-1 12])
 hold off
 xlabel('k');
 ylabel('Y(k)');

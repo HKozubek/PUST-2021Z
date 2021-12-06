@@ -42,11 +42,22 @@ function U = DMC_fuzzy(S_fuzzy, u, num, yzad, y, D, N, Nu, lambda, Umin, Umax)
         
         % kształt funkcji dzwonowej
         interval = (Umax - Umin)/(num - 1);
+        
+%       Dla num = 2:
+%         a = 0.7;                                % przedział wartości maksymalnej
+%         b = 3;                                  % kształt zboczy funkcji
+        
+        %dla num = 3:
+%         a = 0.5;                                % przedział wartości maksymalnej
+%         b = 1.5;                                  % kształt zboczy funkcji
+        
+%         %dla num = 4:
 %         a = 0.3;                                  % przedział wartości maksymalnej
 %         b = 1.2;                                  % kształt zboczy funkcji
-        a = 0.05;                                 
-        b = 5;
-        %TODO a, b powinno zależeć od num
+        
+        %dla num = 5:
+        a = 0.1;                                  % przedział wartości maksymalnej
+        b = 1.5;                                  % kształt zboczy funkcji
 
         center = zeros(num, 1);
         

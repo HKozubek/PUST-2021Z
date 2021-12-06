@@ -5,11 +5,11 @@
 Ymin = -1;
 Ymax = 1;
 
-num = 40;
+num = 5;
 
 % kształt funkcji dzwonowej
-a = 0.05;                                  % przedział wartości maksymalnej
-b = 5;                                  % kształt zboczy funkcji
+a = 0.1;                                  % przedział wartości maksymalnej
+b = 1.5;                                  % kształt zboczy funkcji
 center = zeros(num, 1);
 
 figure('name', "Funkcje przynależności")
@@ -22,8 +22,12 @@ for i = 0:(num-1)
     x = Ymin:0.01:Ymax;
     y = gbellmf(x, [a b center(i+1)]);
     plot(x,y)
+    xlabel('U')
+    ylabel('w(i)')
 end
-
+% title("Funkcja przynależności dla 3 regulatorów lokalnych")
+% legend('i = 1', 'i = 2', 'i = 3')
+% matlab2tikz('../rysunki_tikz/Zad5_przyk_fun_przynal.tex','showInfo', false)
 
 
 % chyba to będzie działało

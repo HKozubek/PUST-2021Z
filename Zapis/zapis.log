@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.11.9)  3 DEC 2021 21:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.11.9)  7 DEC 2021 00:32
 entering extended mode
 **./zapis.tex
 (zapis.tex
@@ -845,7 +845,7 @@ Package pgfplots notification 'compat/show suggested version=true': document ha
 s been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
 
 \c@lstlisting=\count331
-(../Projekt3/rysunki_tikz/Zad4_6_test_normal_DMC.tex
+(../Projekt3/rysunki_tikz/Zad5_test_PID_num_5.tex
 LaTeX Font Info:    Trying to load font information for OML+plm on input line 1
 527.
 
@@ -881,18 +881,32 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 152
 
 (C:\Users\przem\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-))
-[1
+)
+! Double subscript.
+\pgfplots@already@computed@legend@node ...ext {z}_
+                                                  \text {a}_\text {d}$};\\};
+l.4556 \end{axis}
+                 
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+\pgfplots@already@computed@legend@node ...ext {a}_
+                                                  \text {d}$};\\};
+l.4556 \end{axis}
+                 
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+) [1
 
 {C:/Users/przem/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] (zapis.aux) ) 
 Here is how much of TeX's memory you used:
- 27298 strings out of 478907
- 689297 string characters out of 2851892
- 1772089 words of memory out of 3000000
- 44704 multiletter control sequences out of 15000+600000
+ 27297 strings out of 478907
+ 689265 string characters out of 2851892
+ 1775551 words of memory out of 3000000
+ 44703 multiletter control sequences out of 15000+600000
  409342 words of font info for 45 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,20n,89p,740b,2151s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 84i,19n,89p,740b,2151s stack positions out of 5000i,500n,10000p,200000b,80000s
 {C
 :/Users/przem/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/pl/plrm.enc}{C:/Use
 rs/przem/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/pl/plmi.enc}{C:/Users/pr
@@ -903,7 +917,7 @@ pData/Local/Programs/MiKTeX/fonts/type1/public/pl/plr10.pfb><C:/Users/przem/App
 Data/Local/Programs/MiKTeX/fonts/type1/public/pl/plr6.pfb><C:/Users/przem/AppDa
 ta/Local/Programs/MiKTeX/fonts/type1/public/pl/plr8.pfb><C:/Users/przem/AppData
 /Local/Programs/MiKTeX/fonts/type1/public/pl/plsy8.pfb>
-Output written on zapis.pdf (1 page, 66463 bytes).
+Output written on zapis.pdf (1 page, 64829 bytes).
 PDF statistics:
  42 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

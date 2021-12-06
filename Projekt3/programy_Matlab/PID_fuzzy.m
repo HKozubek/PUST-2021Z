@@ -1,4 +1,4 @@
-function U = PID_fuzzy(e, num, y, K, Ti, Td, Tp, Umin, Umax)
+function U = PID_fuzzy(e, num, u, K, Ti, Td, Tp, Umin, Umax)
 % PID controller in fuzzy version
 %   U = PID_fuzzy(e, num, K, Ti, Td, Tp, Umin, Umax) gives control signal
 %   for fuzzy PID controller. It uses process output (y) as selection
@@ -7,7 +7,7 @@ function U = PID_fuzzy(e, num, y, K, Ti, Td, Tp, Umin, Umax)
 %   Arguments:
 %   e - error value (e = y_zad - y);
 %   num - number of local linaer PID controllers (2, 3, 4,...)
-%   y - value of process output
+%   u - value of process input
 %   K [num, 1] - gain factor;
 %   Ti [num, 1] - integration time constant (Ti ~= 0);
 %   Td [num, 1] - differentiation time constant;
@@ -48,18 +48,31 @@ function U = PID_fuzzy(e, num, y, K, Ti, Td, Tp, Umin, Umax)
         end
         
         % wyznaczenie funkcji przynależności (gbellmf)
-        Ymin = -0.32;
-        Ymax =  11.84;
         
-        interval = (Ymax - Ymin)/(num - 1);
+        interval = (Umax - Umin)/(num - 1);
         
         % kształt funkcji dzwonowej
-        a = 1.5;                                % przedział wartości maksymalnej
-        b = 2;                                  % kształt zboczy funkcji
+        %dla num =2:
+%         a = 0.7;                                % przedział wartości maksymalnej
+%         b = 3;                                  % kształt zboczy funkcji
+        
+        %dla num = 3:
+%         a = 0.5;                                  % przedział wartości maksymalnej
+%         b = 1.5; 
+%         
+                
+        %dla num = 4:
+%         a = 0.3;                                  % przedział wartości maksymalnej
+%         b = 1.2;                                  % kształt zboczy funkcji
+%         
+        %dla num = 5:
+        a = 0.1;                                  % przedział wartości maksymalnej
+        b = 1.5;                                  % kształt zboczy funkcji
+        
         center = zeros(num, 1);
         
         for i = 0:(num-1)
-            center(i+1) = Ymin + interval*i;
+            center(i+1) = Umin + interval*i;
         end
     end
     
@@ -78,7 +91,7 @@ function U = PID_fuzzy(e, num, y, K, Ti, Td, Tp, Umin, Umax)
    
     for i = 1:num
         u_fuzzy = Upop + r2(i)*e2 + r1(i)*e1 + r0(i)*e0;
-        w(i) = gbellmf(y, [a b center(i)]);
+        w(i) = gbellmf(u, [a b center(i)]);
         U = U + w(i)*u_fuzzy;
     end
     U = U/sum(w);

@@ -22,7 +22,7 @@ Y(1:time) = Ypp;
 % Trajektoria zmian sygnału zadanego
 Yzad(1:50) = Ypp;
 Yzad(51:300) = 7;
-Yzad(301:600) = -0.2;
+Yzad(301:600) = -0.31;
 Yzad(601:800) = 3;
 Yzad(801:1100)  = 11;
 Yzad(1101:time) = 1;
@@ -31,56 +31,37 @@ Yzad(1101:time) = 1;
 e(1:time) = 0;
 y(1:time) = 0;
 
+% K = 0.10; Ti = 3.4; Td = 0.7;   orginalne nastawy
+% E = 2939.43 - dla jednego regulatora
 
 % Dla rozmytego TODO porobić eksperymenty (może jeszcze raz wyznaczyć
 % skoki)
 
 
-% test
-num = 3;
-K(1,1) = 0.02; Ti(1,1) = 2; Td(1,1)= 0.5;
-K(2,1) = 0.10; Ti(2,1) = 8; Td(2,1)= 0.4;
-K(3,1) = 0.15; Ti(3,1) = 3; Td(3,1)= 0.7;
-% wnioski - wygląda na to, że regulator działa
-% TODO - nastroić dla różnych ilości regulatory (jak najlepiej?)
-% imo dostrajanie regulatorów dla skoków w różnych punktach pracy
+% num = 2; %E = 2899.98
+% K(1,1) = 0.09; Ti(1,1) = 3.8; Td(1,1)= 0.6;
+% K(2,1) = 0.10; Ti(2,1) = 3.4; Td(2,1)= 0.7;
+
+% num = 3; %E = 2741.51
+% K(1,1) = 0.04; Ti(1,1) = 6; Td(1,1)= 0.2;
+% K(2,1) = 0.09; Ti(2,1) = 3.4; Td(2,1)= 0.6;
+% K(3,1) = 0.10; Ti(3,1) = 3.4; Td(3,1)= 0.7;
+
+% num = 4; %E = 2730.29
+% K(1,1) = 0.02; Ti(1,1) = 6; Td(1,1)= 0.2;
+% K(2,1) = 0.07; Ti(2,1) = 3.4; Td(2,1)= 0.3;
+% K(3,1) = 0.10; Ti(3,1) = 3.4; Td(3,1)= 0.7;
+% K(4,1) = 0.12; Ti(4,1) = 3.4; Td(4,1)= 0.7;
+
+num = 5; %E = 2841.1
+K(1,1) = 0.01; Ti(1,1) = 7; Td(1,1)= 0.2;
+K(2,1) = 0.03; Ti(2,1) = 6; Td(2,1)= 0.2;
+K(3,1) = 0.10; Ti(3,1) = 4; Td(3,1)= 0.5;
+K(4,1) = 0.10; Ti(4,1) = 3; Td(4,1)= 0.7;
+K(5,1) = 0.12; Ti(5,1) = 3; Td(5,1)= 0.8;
 
 
-% chyba średni pomysł metoda ZN
-% Nastawy regulatorów lokalnych kolejno:
-% num = 2;
-% K_kryt = 0.20; T_kryt = 18.7*Tp;
-% K(1,:) = 0.6*K_kryt; Ti(1,:) = 0.5*T_kryt; Td(1,:) = 0.12*T_kryt;
-% 
-% K_kryt = 0.175; T_kryt = 19.4*Tp;
-% K(2,:) = 0.6*K_kryt; Ti(2,:) = 0.5*T_kryt; Td(2,:) = 0.12*T_kryt;
-% E = 4620.92;
 
-% =================
-% num = 3;
-% K_kryt = 1.19; T_kryt = 15.9*Tp;
-% K(1,:) = 0.6*K_kryt; Ti(1,:) = 0.5*T_kryt; Td(1,:) = 0.12*T_kryt;
-% 
-% K_kryt = 0.187; T_kryt = 18.7*Tp;
-% K(2,:) = 0.6*K_kryt; Ti(2,:) = 0.5*T_kryt; Td(2,:) = 0.12*T_kryt;
-% 
-% K_kryt = 0.175; T_kryt = 19.4*Tp;
-% K(3,:) = 0.6*K_kryt; Ti(3,:) = 0.5*T_kryt; Td(3,:) = 0.12*T_kryt;
-% E = 4420.82;
-
-% =================
-% num = 4;
-% K_kryt = 0.23; T_kryt = 17.7*Tp;
-% K(1,:) = 0.6*K_kryt; Ti(1,:) = 0.5*T_kryt; Td(1,:) = 0.12*T_kryt;
-% 
-% K_kryt = 0.187; T_kryt = 18.7*Tp;
-% K(2,:) = 0.6*K_kryt; Ti(2,:) = 0.5*T_kryt; Td(2,:) = 0.12*T_kryt;
-% 
-% K_kryt = 0.176; T_kryt = 19.4*Tp;
-% K(3,:) = 0.6*K_kryt; Ti(3,:) = 0.5*T_kryt; Td(3,:) = 0.12*T_kryt;
-% 
-% K_kryt = 0.176; T_kryt = 19.4*Tp;
-% K(4,:) = 0.6*K_kryt; Ti(4,:) = 0.5*T_kryt; Td(4,:) = 0.12*T_kryt;% E = 
 
 
 for k = 7:time
@@ -107,9 +88,10 @@ plot(Y);
 title("Wyjście procesu i wartość zadana; E = " + round(E, 2));
 hold on
 stairs(Yzad, '--');
+ylim([-1 12])
 hold off
 xlabel('k');
 ylabel('Y(k)');
 legend('Y','Y_z_a_d', 'Location', 'northeast');
 
-% matlab2tikz('../rysunki_tikz/Zad4_3_test_PID_normal.tex','showInfo', false)
+% matlab2tikz('../rysunki_tikz/Zad5_test_PID_num_5.tex','showInfo', false)
