@@ -37,23 +37,28 @@ function U = DMC_fuzzy(S_fuzzy, u, num, yzad, y, D, N, Nu, lambda, Umin, Umax)
     
     if isempty(init)
         init = 1;
-        Upop = 0;
+        Upop = 26;
         dUP = zeros(D-1,1);
         
         % kształt funkcji dzwonowej
-        interval = (Umax - Umin)/(num - 1);
+%         interval = (Umax - Umin)/(num - 1);
 %         a = 0.3;                                  % przedział wartości maksymalnej
 %         b = 1.2;                                  % kształt zboczy funkcji
-        a = 0.05;                                 
-        b = 5;
+        a = 3;                                 %a=2;b=15
+        b = 0.8;
         %TODO a, b powinno zależeć od num
 
-        center = zeros(num, 1);
+%         center = zeros(num, 1);
         
-        for k = 0:(num-1)
-            center(k+1) = Umin + interval*k;
-        end
-        
+%         for k = 0:(num-1)
+%             center(k+1) = Umin + interval*k;
+%         end
+        center = [31; 36; 46];
+%         interval = 30;
+%         for k = 0:(num-1)
+%             center(k+1) = 20 + interval*k;
+%         end
+% %         
         S = cell(num);
         M = cell(num);
         Mp = cell(num);

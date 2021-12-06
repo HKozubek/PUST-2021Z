@@ -18,7 +18,7 @@ Yzad(901:time) = Tpp;
 % Zzad(401:700) = 30;
 % Zzad(701:1000) = 5;
 
-k = 1;
+k = 2;
 u = 0;
 E = 0;
 
@@ -35,10 +35,23 @@ E = 0;
 % skok_zak2 = zeros(time,1);
 % skok_zak3 = zeros(time,1);
 
+% 
+% DMCu = zeros(time + 100,1);
+% DMCy = zeros(time + 100,1);
+% DMCe = zeros(time + 100,1);
 
-DMCu = zeros(time + 100,1);
-DMCy = zeros(time + 100,1);
-DMCe = zeros(time + 100,1);
+PIDu = zeros(time + 100,1);
+PIDy = zeros(time + 100,1);
+PIDe = zeros(time + 100,1);
+
+
+% data = load('S_fuzzy.mat', 'S_fuzzy');
+% S = data.S_fuzzy;
+% S_DMC{1} = S{1};
+% S_DMC{2} = S{2};
+% S_DMC{3} = S{5};
+
+
 
 % figure(1);
 % figure(2);
@@ -65,14 +78,14 @@ while(1)
     
 
     % DMC
-    DMCy(k) = measurements1;
-    e = Yzad(k) - measurements1;
-    
-    u = DMC(Yzad(k), measurements1, 300, 50, 10, 1); %N=20, Nu=1; N=50, Nu=10; 30, 5
-
-    E = E + e^2;
-    DMCe(k) = e;
-    DMCu(k) = u; 
+%     DMCy(k) = measurements1;
+%     e = Yzad(k) - measurements1;
+%     
+%     u = DMC(Yzad(k), measurements1, 300, 50, 10, 1); %N=20, Nu=1; N=50, Nu=10; 30, 5
+% 
+%     E = E + e^2;
+%     DMCe(k) = e;
+%     DMCu(k) = u; 
     
     % DMC_zak
 %     DMCy(k) = measurements1;
@@ -81,14 +94,33 @@ while(1)
 %     u = DMC_zak(Yzad(k), measurements1, 300, Zzad(k), 500, 50, 10, 1);
 %     E = E + e^2;
 %     DMCe(k) = e;
-%     DMCu(k) = u; 
+%     DMCu(k) = u;
+
+% 
+%     DMCy(k) = measurements1;
+%     e = Yzad(k) - measurements1;
 %     
+%     u = DMC_fuzzy(S_DMC, DMCy(k), 3, Yzad(k),  DMCy(k), 320, 320, 320, [1; 1; 1], 0, 100);
+%     E = E + e^2;
+%     DMCe(k) = e;
+%     DMCu(k) = u;
+
+
+    
+    PIDy(k) = measurements1;
+    e = Yzad(k) - measurements1;
+    u = PID_fuzzy(e, 3, PIDy(k), [21.5; 21.5*1.25; 21.5*1.5], [72; 72/1.5; 72/2], [4.5; 4.5; 4.5], 1, 0, 100);
+%     u = PID(e, 21.5, 72, 4.5, 1, 0, 100);
+    
+    E = E + e^2;
+    PIDe(k) = e;
+    PIDu(k) = u;
 
     %% sending new values of control signals
     sendControls([ 1, 2, 3, 4, 5, 6], ... send for these elements
-                 [ 50, 0, 0, 0, 26, 0]);  % new corresponding control values
+                 [ 0, 0, 0, 0, 0, 0]);  % new corresponding control values
 
-    sendNonlinearControls(u);
+%     sendNonlinearControls(0);
     
     measurement = readMeasurements([1,5])
     
@@ -98,7 +130,7 @@ while(1)
 %      figure(1);
      plot(Yzad, 'r--');
      hold on;
-     plot(DMCy,'b-');
+     plot(PIDy,'b-');
      xlim([1 time]);
      ylim([28 50]);
      legend({'Y_{zad}','Y'})

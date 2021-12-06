@@ -33,7 +33,7 @@ function U = PID_fuzzy(e, num, y, K, Ti, Td, Tp, Umin, Umax)
     persistent center
     
     if isempty(e0)
-        Upop = 0;          % sterowanie w punkcie pracy
+        Upop = 26;          % sterowanie w punkcie pracy
         e0=0; 
         e1=0; 
         
@@ -48,19 +48,21 @@ function U = PID_fuzzy(e, num, y, K, Ti, Td, Tp, Umin, Umax)
         end
         
         % wyznaczenie funkcji przynależności (gbellmf)
-        Ymin = -0.32;
-        Ymax =  11.84;
+%         Ymin = 0;
+%         Ymax =  100;
         
-        interval = (Ymax - Ymin)/(num - 1);
-        
+%         interval = (Ymax - Ymin)/(num - 1);
+%         interval = 30;
         % kształt funkcji dzwonowej
-        a = 1.5;                                % przedział wartości maksymalnej
-        b = 2;                                  % kształt zboczy funkcji
-        center = zeros(num, 1);
-        
-        for i = 0:(num-1)
-            center(i+1) = Ymin + interval*i;
-        end
+%         a = 1.5;                                % przedział wartości maksymalnej
+%         b = 2;                                  % kształt zboczy funkcji
+        a = 3;                                 %a=15, b=2
+        b = 0.8;
+%         center = zeros(num, 1);
+        center =[31; 36; 46];
+%         for i = 0:(num-1)
+%             center(i+1) = 20 + interval*i;
+%         end
     end
     
     % przesuniecie uchybow
