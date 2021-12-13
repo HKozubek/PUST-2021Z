@@ -20,6 +20,7 @@ yz2 = [];
 
 figure(1);
 while (length(y1) < 100)
+%     disp("works")
     if (t.BytesAvailable ~= 0)
         temp = fscanf(t);
         %disp(temp);
