@@ -68,7 +68,7 @@
 	stringstyle=\color{orange},
 }
 
-%wymiar tekstu (bez ˜ywej paginy)
+%wymiar tekstu (bez ¿ywej paginy)
 \textwidth 160mm \textheight 247mm
 
 %ustawienia pakietu pgfplots
@@ -83,7 +83,7 @@ compat=newest										%chyba dobry dodatek, dla subplota xlabel nie nachodzi na
 \def\figurename{Rys.}
 \def\tablename{Tab.}
 
-%konfiguracja liczby p˜ywaj˜cych element˜w
+%konfiguracja liczby p³ywaj¹cych elementów
 \setcounter{topnumber}{0}%2
 \setcounter{bottomnumber}{3}%1
 \setcounter{totalnumber}{5}%3
@@ -97,7 +97,7 @@ compat=newest										%chyba dobry dodatek, dla subplota xlabel nie nachodzi na
 \frenchspacing
 \pagestyle{uheadings}
 
-%strona tytu˜owa
+%strona tytuóowa
 \title{\bf Sprawozdanie z projektu i æwiczenia laboratoryjnego nr 3, zadanie nr 1\vskip 0.1cm}
 \author{Hubert Kozubek, Przemys³aw Michalczewski}
 \date{2021}
@@ -140,18 +140,18 @@ Wydzia³ Elektroniki i Technik Informacyjnych}}\\
 
 \chapter{Laboratorium}
 \section{Cel laboratorium}
-Celem niniejszego laboratorium by³a implementacja, weryfikacja poprawnoœci dzia³ania i~dobór parametrów algorytmów regulacji jednowymiarowego nieliniowego procesu laboratoryjnego dla stanowiska grzej¹co-ch³odz³cego przedstawionego na rys. \ref{stanowisko_grzewcze}.
+Celem niniejszego laboratorium by³a implementacja, weryfikacja poprawnoœci dzia³ania i~dobór parametrów algorytmów regulacji jednowymiarowego nieliniowego procesu laboratoryjnego dla stanowiska grzej¹co-ch³odz¹cego przedstawionego na rys. \ref{stanowisko_grzewcze}.
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.7\textwidth]{ ./Rysunki/Stanowisko-grzewcze.png }
-	\caption {Stanowisko grzej¹co-ch¹odz¹ce u¿ywane w trakcie laboratoriów.}
+	\caption {Stanowisko grzej¹co-ch³odz¹ce u¿ywane w trakcie laboratoriów.}
 	\label{stanowisko_grzewcze}
 \end{figure}
 
 
 \section{Przebieg laboratorium}
-Rozpoczynaj¹c pracê na stanowisku grzej¹co-ch³odz¹cym sprawdzono mo¿liwoœæ sterowania i~pomiaru w~komunikacji za stanowiskiem. W~szczeg¿lnoœci sygna³y steruj¹ce wykorzystywane podczas niniejszego laboratorium W1, G1, Z oraz pomiaru T1 (elementy wykonawcze przedstawiono na rys. \ref{stanowisko_grzewcze_schemat}). Przez ca³y czas trwania laboratorium moc wentylatora W1 by³a ustawiona na 50\%, a wentylator by³ traktowany jako cecha otoczenia. Dodatkowo sprawia³ on, ¿e temperatura grza³ki
+Rozpoczynaj¹c pracê na stanowisku grzej¹co-ch³odz¹cym sprawdzono mo¿liwoœæ sterowania i~pomiaru w~komunikacji za stanowiskiem. W~szczególnoœci sygna³y steruj¹ce wykorzystywane podczas niniejszego laboratorium W1, G1, Z oraz pomiaru T1 (elementy wykonawcze przedstawiono na rys. \ref{stanowisko_grzewcze_schemat}). Przez ca³y czas trwania laboratorium moc wentylatora W1 by³a ustawiona na 50\%, a wentylator by³ traktowany jako cecha otoczenia. Dodatkowo sprawia³ on, ¿e temperatura grza³ki
 opada³a szybciej, co by³o szczególnie przydatne pomiêdzy doœwiadczeniami.
 
 W ramach laboratorium nale¿a³o wykonaæ 6 zadañ:
@@ -168,7 +168,7 @@ W ramach laboratorium nale¿a³o wykonaæ 6 zadañ:
 \end{enumerate}
 
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 		\centering
 		\includegraphics[width=0.7\textwidth]{ ./Rysunki/Stanowisko-grzewcze-schemat.png }
 		\caption {Schemat stanowiska grzej¹co-ch³odz¹cego; zaznaczone elementy wykonawcze: wentylatory W1, W2, W3, W4, grza³ki G1, G2, czujniki temperatury T1, T2, T3, T4, T5 (temperatura
@@ -181,7 +181,7 @@ otoczenia), pomiar pr¹du P1, pomiar napiêcia P2.}
 \section{Punkt pracy stanowiska}
 W celu wyznaczenia punktu pracy stanowiska dla mocy grza³ki G1=26\% zadano tê wartoœæ dla sygna³u steruj¹cego grza³k¹ za pomoc¹ polecenia sendNonlinearControls(u). Nastêpnie poczekano, a¿ temperatura T1 ustali siê. Wynik eksperymentu przedstawiono na rys. \ref{punkt_pracy}. Odczytana wartoœæ temperatury dla termometru T1 wynios³a \num{31.06} °C.
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 	\centering
 	\input{../rysunki_tikz/punkt_pracy.tex}
 	\caption{Ustalanie siê temperatury dla punktu pracy.}
@@ -193,7 +193,7 @@ W celu wyznaczenia punktu pracy stanowiska dla mocy grza³ki G1=26\% zadano tê wa
 \section{Wzmocnienie w funkcji sterowania}
 
 W celu wyznaczenia wzmocnienia w funkcji sterowania na stanowisku zadawano kolejne wartoœci sterowania, a nastêpnie czekano a¿ wyjœcie siê ustabilizuje. W taki sposób przeprowadzono 6 eksperymentów zadaj¹c kolejno wartoœci sterowania: 20, 30, $\cdot$, 80. Wyniki eksperymentów przedstawiono na rys. \ref{odp_skok}
-\begin{figure}[!h]
+\begin{figure}[!ht]
 	\centering
 	\input{../rysunki_tikz/odpowiedzi_skokowe.tex}
 	\caption{Odpowiedzi stanowiska dla kolejnych wartoœci sterowania}
@@ -204,7 +204,7 @@ Na podstawie przeprowadzonych eksperymentów sporz¹dzono wykres punktowy pokazuj¹
 
 TODO: Regresja liniowa + Kstat
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 	\centering
 	\input{../rysunki_tikz/charakterystyka_stat.tex}
 	\caption{Charakterystyka statyczna procesu}
@@ -232,6 +232,47 @@ Dla tak przygotowanych regulatorów wybrano najprostsze parametry $D = N = N_\mat
 
 \section{Dobór parametrów $\lambda$}
 TODO:
+
+\chapter{Projekt}
+\section{Informacje wstêpne}
+
+Zadanie projektowe wykorzystywa³o symulowany obiekt regulacji. Wyjœcie obiektu mo¿na wyznaczyæ przy pomocy polecenia:
+$$y(k)=symulacja\_obiektu\_1y\_p3(u(k-5),u(k-6),y(k-1),y(k-2))$$
+
+Wartoœci sygna³ów wejœcia, wyjœcia i zak³ócenia procesu w punkcie pracy wynosz¹ $u = y = z = 0$; okres próbkowania wynosi \num{0,5} sekundy.
+
+\section{Sprawdzenie poprawnoœci punktu pracy}
+
+W celu sprawdzenia poprawnoœci punktu pracy zosta³a przeprowadzona symulacja, gdzie na wejœcie podano sterowanie $u = 0$, jako poprzednie wartoœci wyjœcia podano $y = 0$ i sprawdzono wartoœæ wyjœcia procesu w nastêpnych chwilach. Wyniki symulacji przedstawiono na rys. \ref{punkt_pracy_projekt}. Wartoœæ sygna³u wyjœciowego pozosta³a bez zmian, co potwierdza poprawnoœæ podanego punktu pracy.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad1_punkt_pracy.pdf}
+	\caption{Sprawdzanie poprawnoœci punktu pracy}
+	\label{punkt_pracy_projekt}
+\end{figure}
+
+\section{Odpowiedzi skokowe procesu}
+
+Wyznaczone zosta³y odpowiedzi skokowe dla kilku skoków wartoœci sygna³u steruj¹cego, gdzie wartoœæ pocz¹tkowa sterowania wynosi³a u=0. Wyniki symulacji przedstawiono na rys. \ref{odp_skok_wej}.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad2_1_odpowiedzi_skokowe.pdf}
+	\caption{Odpowiedzi skokowe procesu}
+	\label{odp_skok_wej}
+\end{figure}
+
+Na podstawie odpowiedzi skokowych wyznaczono charakterystykê statyczn¹ procesu. Charakterystyka jest widoczna na rys. \ref{char_stat}. Z wykresu mo¿emy ³atwo stwierdziæ, ¿e charakterystyka statyczna tego procesu nie jest liniowa.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad2_2_charakterystyka_statyczna.pdf}
+	\caption{Charakterystyka statyczna procesu}
+	\label{char_stat}
+\end{figure}
+
+
 
 \end{document}
 
