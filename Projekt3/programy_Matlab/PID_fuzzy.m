@@ -47,27 +47,27 @@ function U = PID_fuzzy(e, num, u, K, Ti, Td, Tp, Umin, Umax)
             r0(i) = K(i)*(1+Tp/(2*Ti(i)) + Td(i)/Tp);
         end
         
-        % wyznaczenie funkcji przynale≈ºno≈õci (gbellmf)
+        % wyznaczenie funkcji przynaleønoúci (gbellmf)
         
         interval = (Umax - Umin)/(num - 1);
         
-        % kszta≈Çt funkcji dzwonowej
+        % kszta≥t funkcji dzwonowej
         %dla num =2:
-%         a = 0.7;                                % przedzia≈Ç warto≈õci maksymalnej
-%         b = 3;                                  % kszta≈Çt zboczy funkcji
+%         a = 0.7;                                % przedzia≥ wartoúci maksymalnej
+%         b = 3;                                  % kszta≥t zboczy funkcji
         
         %dla num = 3:
-%         a = 0.5;                                  % przedzia≈Ç warto≈õci maksymalnej
+%         a = 0.5;                                  % przedzia≥ wartoúci maksymalnej
 %         b = 1.5; 
 %         
                 
         %dla num = 4:
-%         a = 0.3;                                  % przedzia≈Ç warto≈õci maksymalnej
-%         b = 1.2;                                  % kszta≈Çt zboczy funkcji
+%         a = 0.3;                                  % przedzia≥ wartoúci maksymalnej
+%         b = 1.2;                                  % kszta≥t zboczy funkcji
 %         
         %dla num = 5:
-        a = 0.1;                                  % przedzia≈Ç warto≈õci maksymalnej
-        b = 1.5;                                  % kszta≈Çt zboczy funkcji
+        a = 0.1;                                  % przedzia≥ wartoúci maksymalnej
+        b = 1.5;                                  % kszta≥t zboczy funkcji
         
         center = zeros(num, 1);
         
@@ -81,9 +81,9 @@ function U = PID_fuzzy(e, num, u, K, Ti, Td, Tp, Umin, Umax)
     e1 = e0;
     e0 = e;
     
-    % Kolejno dla ka≈ºdego regulatora lokalnego:
-    %   wyznaczenie sterowa≈Ñ dla poszczeg√≥lnych 'num' regulator√≥w
-    %   wyznaczenie wsp√≥≈Çczynnik√≥w przynale≈ºno≈õci
+    % Kolejno dla kaødego regulatora lokalnego:
+    %   wyznaczenie sterowaÒ dla poszczegÛlnych 'num' regulatorÛw
+    %   wyznaczenie wspÛ≥czynnikÛw przynaleønoúci
     %   wnioskowanie rozmyte
     
     w = zeros(num, 1);

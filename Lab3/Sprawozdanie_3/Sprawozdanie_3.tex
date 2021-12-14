@@ -97,7 +97,7 @@ compat=newest										%chyba dobry dodatek, dla subplota xlabel nie nachodzi na
 \frenchspacing
 \pagestyle{uheadings}
 
-%strona tytuóowa
+%strona tytu³owa
 \title{\bf Sprawozdanie z projektu i æwiczenia laboratoryjnego nr 3, zadanie nr 1\vskip 0.1cm}
 \author{Hubert Kozubek, Przemys³aw Michalczewski}
 \date{2021}
@@ -271,6 +271,118 @@ Na podstawie odpowiedzi skokowych wyznaczono charakterystykê statyczn¹ procesu. 
 	\caption{Charakterystyka statyczna procesu}
 	\label{char_stat}
 \end{figure}
+
+\section{Regulatory cyfrowe}
+W celu regulacji danego procesu zosta³y zaimplementowany prosty cyfrowy regulator PID oraz analityczny regulator DMC.
+
+Regulator PID:
+\lstinputlisting{../../Projekt3/programy_Matlab/PID.m}
+Dla podanego regulatora dobrano nastawy w sposób eksperymentalny. W pierwszej kolejnoœci skorzystano z metody Zieglera-Nicholsa, do wyznaczenia pocz¹tkowego wartoœci parametrów. Matoda Zieglera-Nicholsa zosta³a przedstawiona na rys. \ref{ZN}.
+Nastêpnie wartoœci parametrów w niewielkim stopniu modyfikowano i testowano dla tej samej trajektorii wartoœci zadanej.
+Eksperymenty wykonywane podczas dobierania parametrów regulatora PID przedstawiono na rys. \ref{PID_nastawy_1}, rys. \ref{PID_nastawy_2}, rys. \ref{PID_nastawy_3} i rys. \ref{PID_nastawy_4}.
+Przebieg regulatora PID z ostatecznymi nastawami zosta³ przedstawiony na rys. \ref{PID_normalny}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad4_1_PID_oscylacje_ZN.pdf}
+	\caption{Metoda Zieglera-Nicholsa, $K_\mathrm{kryt} = \num{0.24}, T_\mathrm{kryt} = \num{8.8}$ }
+	\label{ZN}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad4_2_dobor_nast_PID_test1.pdf}
+	\caption{Regulator PID,$K =\num{0.144} , T_\mathrm{i} = \num{4.4} , T_\mathrm{d} = \num{1.056}$  }
+	\label{PID_nastawy_1}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad4_2_dobor_nast_PID_test2.pdf}
+	\caption{Regulator PID, $K =\num{0.1} , T_\mathrm{i} = \num{4.4} , T_\mathrm{d} = \num{1.056}$ }
+	\label{PID_nastawy_2}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad4_2_dobor_nast_PID_test3.pdf}
+	\caption{Regulator PID, $K =\num{0.1} , T_\mathrm{i} = \num{3.4} , T_\mathrm{d} = \num{1.056}$ }
+	\label{PID_nastawy_3}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad4_2_dobor_nast_PID_test4.pdf}
+	\caption{Regulator PID, $K =\num{0.1} , T_\mathrm{i} = \num{3.4} , T_\mathrm{d} = \num{0.7}$ }
+	\label{PID_nastawy_4}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad4_3_test_PID_normal.pdf}
+	\caption{Trajektoria docelowa, regulator PID, $K =\num{0.1} , T_\mathrm{i} = \num{3.4} , T_\mathrm{d} = \num{0.7}$ }
+	\label{PID_normalny}
+\end{figure}
+
+Regulator DMC:
+\lstinputlisting{../../Projekt3/programy_Matlab/DMC.m}
+Równie¿ dla regulatora DMC wartoœci parametrów by³y dobierane w sposób eksperymentalny. Wartoœci parametrów by³y modyfikowane i porównywane w celu znalezienia najlepszego nastawu.
+Eksperymenty wykonywane podczas dobierania parametrów regulatora DMC przedstawiono na rys. \ref{DMC_nastawy_1} - rys. \ref{DMC_nastawy_6}.
+Ostateczny sposób dzia³ania regulatora DMC przedstawiono na rys. \ref{}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad4_5_dobor_nast_test1.pdf}
+	\caption{Regulator DMC, $N = 7 , N_\mathrm{u} = 1, \lambda = 1$ }
+	\label{DMC_nastawy_1}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad4_5_dobor_nast_test2.pdf}
+	\caption{Regulator DMC, $N = 10 , N_\mathrm{u} = 1, \lambda = 1$ }
+	\label{DMC_nastawy_2}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad4_5_dobor_nast_test3.pdf}
+	\caption{Regulator DMC, $N = 20 , N_\mathrm{u} = 1, \lambda = 1$ }
+	\label{DMC_nastawy_3}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad4_5_dobor_nast_test4.pdf}
+	\caption{Regulator DMC, $N = 40 , N_\mathrm{u} = 1, \lambda = 1$ }
+	\label{DMC_nastawy_4}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad4_5_dobor_nast_test5.pdf}
+	\caption{Regulator DMC, $N = 20 , N_\mathrm{u} = 5, \lambda = 1$ }
+	\label{DMC_nastawy_5}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad4_5_dobor_nast_test6.pdf}
+	\caption{Regulator DMC, $N = 20 , N_\mathrm{u} = 20, \lambda = 50$ }
+	\label{DMC_nastawy_6}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad4_6_test_normal_DMC.pdf}
+	\caption{Trajektoria docelowa, regulator DMC, $N = 20 , N_\mathrm{u} = 20, \lambda = 50$ }
+	\label{DMC_normalny}
+\end{figure}
+
+\section{Regulatory rozmyte}
+
+Regulator rozmyty PID:
+\lstinputlisting{../../Projekt3/programy_Matlab/PID_fuzzy.m}
 
 
 
