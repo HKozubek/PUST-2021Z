@@ -328,7 +328,7 @@ Regulator DMC:
 \lstinputlisting{../../Projekt3/programy_Matlab/DMC.m}
 Równie¿ dla regulatora DMC wartoœci parametrów by³y dobierane w sposób eksperymentalny. Wartoœci parametrów by³y modyfikowane i porównywane w celu znalezienia najlepszego nastawu.
 Eksperymenty wykonywane podczas dobierania parametrów regulatora DMC przedstawiono na rys. \ref{DMC_nastawy_1} - rys. \ref{DMC_nastawy_6}.
-Ostateczny sposób dzia³ania regulatora DMC przedstawiono na rys. \ref{}.
+Ostateczny sposób dzia³ania regulatora DMC przedstawiono na rys. \ref{DMC_normalny}.
 
 \begin{figure}[H]
 	\centering
@@ -384,6 +384,71 @@ Ostateczny sposób dzia³ania regulatora DMC przedstawiono na rys. \ref{}.
 Regulator rozmyty PID:
 \lstinputlisting{../../Projekt3/programy_Matlab/PID_fuzzy.m}
 
+Regulator rozmyty DMC:
+\lstinputlisting{../../Projekt3/programy_Matlab/DMC_fuzzy.m}
+
+% TODO: Uzasadnienie zmiennej rozmyci i funkcji
+
+\section{Liczba regulatorów lokalnych}
+Nastawy regulatorów lokalnych lokalnych wybrano metod¹ eksperymentaln¹, w taki sposób aby uzyskaæ jak najlepsz¹ jakoœæ regulacji wokó³ punktu pracy danego regulatora. Na rys. \ref{PID_rozmyty_2} - rys. \ref{PID_rozmyty_5} pokazano jak dzia³a rozmyty regulator PID w zale¿noœci od liczby regulatorów lokalnych (od 2 do 5).
+Na rys. \ref{DMC_rozmyty_2} - rys. \ref{DMC_rozmyty_5}, pokazano natomiast dzia³anie rozmytego regulatora DMC w zale¿noœci od liczby lokalnych regulatorów (od 2 do 5).
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad5_test_PID_num_2.pdf}
+	\caption{Rozmyty regulator PID z 2 regulatorami lokalnymi}
+	\label{PID_rozmyty_2}
+\end{figure}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad5_test_PID_num_3.pdf}
+	\caption{Rozmyty regulator PID z 3 regulatorami lokalnymi}
+	\label{PID_rozmyty_3}
+\end{figure}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad5_test_PID_num_4.pdf}
+	\caption{Rozmyty regulator PID z 4 regulatorami lokalnymi}
+	\label{PID_rozmyty_4}
+\end{figure}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad5_test_PID_num_5.pdf}
+	\caption{Rozmyty regulator PID z 5 regulatorami lokalnymi}
+	\label{PID_rozmyty_5}
+\end{figure}
+
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad5_test_DMC_num_2_lambda1.pdf}
+	\caption{Rozmyty regulator DMC z 2 regulatorami lokalnymi}
+	\label{DMC_rozmyty_2}
+\end{figure}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad5_test_DMC_num_3_lambda1.pdf}
+	\caption{Rozmyty regulator DMC z 3 regulatorami lokalnymi}
+	\label{DMC_rozmyty_3}
+\end{figure}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad5_test_DMC_num_4_lambda1.pdf}
+	\caption{Rozmyty regulator DMC z 4 regulatorami lokalnymi}
+	\label{DMC_rozmyty_4}
+\end{figure}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad5_test_DMC_num_5_lambda1.pdf}
+	\caption{Rozmyty regulator DMC z 5 regulatorami lokalnymi}
+	\label{DMC_rozmyty_5}
+\end{figure}
 
 
 \end{document}
