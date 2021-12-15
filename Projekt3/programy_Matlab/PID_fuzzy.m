@@ -48,7 +48,7 @@ function U = PID_fuzzy(e, num, y, K, Ti, Td, Tp, Umin, Umax)
             r0(i) = K(i)*(1+Tp/(2*Ti(i)) + Td(i)/Tp);
         end
         
-        % parametry funkcji przynależności (wyznaczone manualnie)
+        % parametry funkcji przynaleznosci (wyznaczone manualnie)
         if num == 2
             a = [0.3; 2];                                 
             b = [1.5; 1];                                 
@@ -80,9 +80,9 @@ function U = PID_fuzzy(e, num, y, K, Ti, Td, Tp, Umin, Umax)
     e1 = e0;
     e0 = e;
     
-    % Kolejno dla każdego regulatora lokalnego:
-    %   wyznaczenie sterowań dla poszczególnych 'num' regulatorów
-    %   wyznaczenie współczynników przynależności
+    % Kolejno dla kazdego regulatora lokalnego:
+    %   wyznaczenie sterowan dla poszczegolnych 'num' regulatorow
+    %   wyznaczenie wspoczynnikow przynaleznosci
     %   wnioskowanie rozmyte
     
     w = zeros(num, 1);

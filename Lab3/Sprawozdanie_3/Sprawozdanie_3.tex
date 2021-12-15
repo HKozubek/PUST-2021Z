@@ -68,7 +68,7 @@
 	stringstyle=\color{orange},
 }
 
-%wymiar tekstu (bez ˜ywej paginy)
+%wymiar tekstu (bez ¿ywej paginy)
 \textwidth 160mm \textheight 247mm
 
 %ustawienia pakietu pgfplots
@@ -83,7 +83,7 @@ compat=newest										%chyba dobry dodatek, dla subplota xlabel nie nachodzi na
 \def\figurename{Rys.}
 \def\tablename{Tab.}
 
-%konfiguracja liczby p˜ywaj˜cych element˜w
+%konfiguracja liczby p³ywaj¹cych elementów
 \setcounter{topnumber}{0}%2
 \setcounter{bottomnumber}{3}%1
 \setcounter{totalnumber}{5}%3
@@ -97,7 +97,7 @@ compat=newest										%chyba dobry dodatek, dla subplota xlabel nie nachodzi na
 \frenchspacing
 \pagestyle{uheadings}
 
-%strona tytu˜owa
+%strona tytu³owa
 \title{\bf Sprawozdanie z projektu i æwiczenia laboratoryjnego nr 3, zadanie nr 1\vskip 0.1cm}
 \author{Hubert Kozubek, Przemys³aw Michalczewski}
 \date{2021}
@@ -140,18 +140,18 @@ Wydzia³ Elektroniki i Technik Informacyjnych}}\\
 
 \chapter{Laboratorium}
 \section{Cel laboratorium}
-Celem niniejszego laboratorium by³a implementacja, weryfikacja poprawnoœci dzia³ania i~dobór parametrów algorytmów regulacji jednowymiarowego nieliniowego procesu laboratoryjnego dla stanowiska grzej¹co-ch³odz³cego przedstawionego na rys. \ref{stanowisko_grzewcze}.
+Celem niniejszego laboratorium by³a implementacja, weryfikacja poprawnoœci dzia³ania i~dobór parametrów algorytmów regulacji jednowymiarowego nieliniowego procesu laboratoryjnego dla stanowiska grzej¹co-ch³odz¹cego przedstawionego na rys. \ref{stanowisko_grzewcze}.
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.7\textwidth]{ ./Rysunki/Stanowisko-grzewcze.png }
-	\caption {Stanowisko grzej¹co-ch¹odz¹ce u¿ywane w trakcie laboratoriów.}
+	\caption {Stanowisko grzej¹co-ch³odz¹ce u¿ywane w trakcie laboratoriów.}
 	\label{stanowisko_grzewcze}
 \end{figure}
 
 
 \section{Przebieg laboratorium}
-Rozpoczynaj¹c pracê na stanowisku grzej¹co-ch³odz¹cym sprawdzono mo¿liwoœæ sterowania i~pomiaru w~komunikacji za stanowiskiem. W~szczeg¿lnoœci sygna³y steruj¹ce wykorzystywane podczas niniejszego laboratorium W1, G1, Z oraz pomiaru T1 (elementy wykonawcze przedstawiono na rys. \ref{stanowisko_grzewcze_schemat}). Przez ca³y czas trwania laboratorium moc wentylatora W1 by³a ustawiona na 50\%, a wentylator by³ traktowany jako cecha otoczenia. Dodatkowo sprawia³ on, ¿e temperatura grza³ki
+Rozpoczynaj¹c pracê na stanowisku grzej¹co-ch³odz¹cym sprawdzono mo¿liwoœæ sterowania i~pomiaru w~komunikacji za stanowiskiem. W~szczególnoœci sygna³y steruj¹ce wykorzystywane podczas niniejszego laboratorium W1, G1, Z oraz pomiaru T1 (elementy wykonawcze przedstawiono na rys. \ref{stanowisko_grzewcze_schemat}). Przez ca³y czas trwania laboratorium moc wentylatora W1 by³a ustawiona na 50\%, a wentylator by³ traktowany jako cecha otoczenia. Dodatkowo sprawia³ on, ¿e temperatura grza³ki
 opada³a szybciej, co by³o szczególnie przydatne pomiêdzy doœwiadczeniami.
 
 W ramach laboratorium nale¿a³o wykonaæ 6 zadañ:
@@ -168,7 +168,7 @@ W ramach laboratorium nale¿a³o wykonaæ 6 zadañ:
 \end{enumerate}
 
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 		\centering
 		\includegraphics[width=0.7\textwidth]{ ./Rysunki/Stanowisko-grzewcze-schemat.png }
 		\caption {Schemat stanowiska grzej¹co-ch³odz¹cego; zaznaczone elementy wykonawcze: wentylatory W1, W2, W3, W4, grza³ki G1, G2, czujniki temperatury T1, T2, T3, T4, T5 (temperatura
@@ -181,7 +181,7 @@ otoczenia), pomiar pr¹du P1, pomiar napiêcia P2.}
 \section{Punkt pracy stanowiska}
 W celu wyznaczenia punktu pracy stanowiska dla mocy grza³ki G1=26\% zadano tê wartoœæ dla sygna³u steruj¹cego grza³k¹ za pomoc¹ polecenia sendNonlinearControls(u). Nastêpnie poczekano, a¿ temperatura T1 ustali siê. Wynik eksperymentu przedstawiono na rys. \ref{punkt_pracy}. Odczytana wartoœæ temperatury dla termometru T1 wynios³a \num{31.06} °C.
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 	\centering
 	\input{../rysunki_tikz/punkt_pracy.tex}
 	\caption{Ustalanie siê temperatury dla punktu pracy.}
@@ -193,7 +193,7 @@ W celu wyznaczenia punktu pracy stanowiska dla mocy grza³ki G1=26\% zadano tê wa
 \section{Wzmocnienie w funkcji sterowania}
 
 W celu wyznaczenia wzmocnienia w funkcji sterowania na stanowisku zadawano kolejne wartoœci sterowania, a nastêpnie czekano a¿ wyjœcie siê ustabilizuje. W taki sposób przeprowadzono 6 eksperymentów zadaj¹c kolejno wartoœci sterowania: 20, 30, $\cdot$, 80. Wyniki eksperymentów przedstawiono na rys. \ref{odp_skok}
-\begin{figure}[!h]
+\begin{figure}[!ht]
 	\centering
 	\input{../rysunki_tikz/odpowiedzi_skokowe.tex}
 	\caption{Odpowiedzi stanowiska dla kolejnych wartoœci sterowania}
@@ -202,9 +202,8 @@ W celu wyznaczenia wzmocnienia w funkcji sterowania na stanowisku zadawano kolej
 
 Na podstawie przeprowadzonych eksperymentów sporz¹dzono wykres punktowy pokazuj¹cy charakterystykê statyczn¹ procesu. Wykres ten jest przedstawiony na rys. \ref{char_stat}
 
-TODO: Regresja liniowa + Kstat
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 	\centering
 	\input{../rysunki_tikz/charakterystyka_stat.tex}
 	\caption{Charakterystyka statyczna procesu}
@@ -218,20 +217,284 @@ Dla przybli¿onej liniowo charakterystyki $K_\mathrm{stat} = $
 \section{Regulatory dla obiektu liniowego}
 Wykorzystuj¹c regulatory zaimplementowane na laboratorium 1 zosta³ przeprowadzony eksperyment, którego celem by³o sprawdziæ jak regulatory przeznaczone do regulacji obiektów liniowych poradz¹ sobie z obiektem nieliniowym.
 W tym celu jako trajektoriê wartoœci zadanej przyjêto 3 skoki: z \num{31.06} do \num{36.06}, z \num{36.06} do \num{46.06} i z \num{46.06} do \num{31.06}. Nastêpnie dla danej trajektorii uruchomiono regulator PID, a nastêpnie powtórzono eksperyment dla regulatora DMC.
-Wyniki eksperymentu przedstawiono odpowiednio na rys. TODO: PID liniowy i rys. TODO: DMC Liniowy.
+Wyniki eksperymentu przedstawiono odpowiednio na rys. \ref{PID_lin} PID liniowy i rys. \ref{DMC_lin} DMC Liniowy.
+
+\begin{figure}[!ht]
+	\centering
+	\input{../rysunki_tikz/PID_lin.tex}
+	\caption{Regulator liniowy PID dla obiektu nieliniowego}
+	\label{PID_lin}
+\end{figure}
+
+\begin{figure}[!ht]
+	\centering
+	\input{../rysunki_tikz/DMC_lin.tex}
+	\caption{Regulator liniowy DMC dla obiektu nieliniowego}
+	\label{DMC_lin}
+\end{figure}
 
 \section{Rozmyty PID}
 W celu lepszej regulacji obiektu nieliniowego zosta³ zaimplementowany regulator rozmyty PID. W tym celu utworzono funkcje dzwonow¹, która decydowa³a który regulator i w jakim stopniu ma wp³yw na wyjœcie. %TODO: mo¿e, dzwon
 Odpalanie siê regulatorów PID zale¿a³o od aktualnej wartoœci wyjœcia obiektu. Regulator zosta³ podzielony na 3 regulatory lokalne, ka¿dy z nich zosta³ dostrojony metod¹ eksperymentaln¹, gdzie wartoœci startowe wziêto z regulatora PID z 1 laboratorium.
 Dziêki charakterystyce statycznej mo¿na by³o np. stwierdziæ ¿e regulator dla wy¿szych wartoœci wyjœcia powinien mieæ wiêkszy parametr proporcjonalny, ni¿ regulator lokalny dla mniejszych wartoœci wyjœcia, z racji ¿e wzmocnieni statyczne roœnie wolniej dla wy¿szych wartoœci wyjœcia, ni¿ dla ni¿szych.   
-Dzia³anie regulatora rozmytego przedstawiono na rys. TODO: fuzzy PID.
+Dzia³anie regulatora rozmytego przedstawiono na rys. \ref{PID_roz_lab}.
+
+\begin{figure}[!ht]
+	\centering
+	\input{../rysunki_tikz/PID_roz.tex}
+	\caption{Regulator rozmyty PID}
+	\label{PID_roz_lab}
+\end{figure}
 
 \section{Rozmyty DMC}
 Równie¿ dla regulatora DMC skorzystano z 3 regulatorów lokalnych, tak¿e sterowanych wartoœciami wyjœcia obiektu. Dla regulatorów lokalnych wybrano odpowiednio odpowiedŸ skokow¹ dla sterowañ z 20 do 30, z 40 do 50 i z 60 do 70.
 Dla tak przygotowanych regulatorów wybrano najprostsze parametry $D = N = N_\mathrm{u} = 320$ i $\lambda = 1$. Nastêpnie rozmyty regulator DMC zosta³ przetestowany dla tej samej trajektoria co w sekcji 5. 
+Wyniki eksperymentu przedstawiono na rys. \ref{DMC_roz_lab}.
+
+\begin{figure}[!ht]
+	\centering
+	\input{../rysunki_tikz/DMC_roz.tex}
+	\caption{Regulator rozmyty DMC}
+	\label{DMC_roz_lab}
+\end{figure}
 
 \section{Dobór parametrów $\lambda$}
-TODO:
+Parametry $\lambda$ regulatorów lokalnych zosta³y dobrane eksperymentalnie. Najlepszy nastaw zosta³ przedstawiony na rys. \ref{DMC_roz_lambda}.
+
+\begin{figure}[!ht]
+	\centering
+	\input{../rysunki_tikz/DMC_roz_zmianaL.tex}
+	\caption{Regulator rozmyty DMC, $\lambda = [1; \num{0.9}; \num{0.5}]$}
+	\label{DMC_roz_lambda}
+\end{figure}
+
+\chapter{Projekt}
+\section{Informacje wstêpne}
+
+Zadanie projektowe wykorzystywa³o symulowany obiekt regulacji. Wyjœcie obiektu mo¿na wyznaczyæ przy pomocy polecenia:
+$$y(k)=symulacja\_obiektu\_1y\_p3(u(k-5),u(k-6),y(k-1),y(k-2))$$
+
+Wartoœci sygna³ów wejœcia, wyjœcia i zak³ócenia procesu w punkcie pracy wynosz¹ $u = y = z = 0$; okres próbkowania wynosi \num{0,5} sekundy.
+
+\section{Sprawdzenie poprawnoœci punktu pracy}
+
+W celu sprawdzenia poprawnoœci punktu pracy zosta³a przeprowadzona symulacja, gdzie na wejœcie podano sterowanie $u = 0$, jako poprzednie wartoœci wyjœcia podano $y = 0$ i sprawdzono wartoœæ wyjœcia procesu w nastêpnych chwilach. Wyniki symulacji przedstawiono na rys. \ref{punkt_pracy_projekt}. Wartoœæ sygna³u wyjœciowego pozosta³a bez zmian, co potwierdza poprawnoœæ podanego punktu pracy.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad1_punkt_pracy.pdf}
+	\caption{Sprawdzanie poprawnoœci punktu pracy}
+	\label{punkt_pracy_projekt}
+\end{figure}
+
+\section{Odpowiedzi skokowe procesu}
+
+Wyznaczone zosta³y odpowiedzi skokowe dla kilku skoków wartoœci sygna³u steruj¹cego, gdzie wartoœæ pocz¹tkowa sterowania wynosi³a u=0. Wyniki symulacji przedstawiono na rys. \ref{odp_skok_wej}.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad2_1_odpowiedzi_skokowe.pdf}
+	\caption{Odpowiedzi skokowe procesu}
+	\label{odp_skok_wej}
+\end{figure}
+
+Na podstawie odpowiedzi skokowych wyznaczono charakterystykê statyczn¹ procesu. Charakterystyka jest widoczna na rys. \ref{charakterystyka_stat}. Z wykresu mo¿emy ³atwo stwierdziæ, ¿e charakterystyka statyczna tego procesu nie jest liniowa.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad2_2_charakterystyka_statyczna.pdf}
+	\caption{Charakterystyka statyczna procesu}
+	\label{charakterystyka_stat}
+\end{figure}
+
+\section{Regulatory cyfrowe}
+W celu regulacji danego procesu zosta³y zaimplementowany prosty cyfrowy regulator PID oraz analityczny regulator DMC.
+
+Regulator PID:
+\lstinputlisting{../../Projekt3/programy_Matlab/PID.m}
+Dla podanego regulatora dobrano nastawy w sposób eksperymentalny. W pierwszej kolejnoœci skorzystano z metody Zieglera-Nicholsa, do wyznaczenia pocz¹tkowego wartoœci parametrów. Matoda Zieglera-Nicholsa zosta³a przedstawiona na rys. \ref{ZN}.
+Nastêpnie wartoœci parametrów w niewielkim stopniu modyfikowano i testowano dla tej samej trajektorii wartoœci zadanej.
+Eksperymenty wykonywane podczas dobierania parametrów regulatora PID przedstawiono na rys. \ref{PID_nastawy_1}, rys. \ref{PID_nastawy_2}, rys. \ref{PID_nastawy_3} i rys. \ref{PID_nastawy_4}.
+Przebieg regulatora PID z ostatecznymi nastawami zosta³ przedstawiony na rys. \ref{PID_normalny}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad4_1_PID_oscylacje_ZN.pdf}
+	\caption{Metoda Zieglera-Nicholsa, $K_\mathrm{kryt} = \num{0.24}, T_\mathrm{kryt} = \num{8.8}$ }
+	\label{ZN}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad4_2_dobor_nast_PID_test1.pdf}
+	\caption{Regulator PID,$K =\num{0.144} , T_\mathrm{i} = \num{4.4} , T_\mathrm{d} = \num{1.056}$  }
+	\label{PID_nastawy_1}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad4_2_dobor_nast_PID_test2.pdf}
+	\caption{Regulator PID, $K =\num{0.1} , T_\mathrm{i} = \num{4.4} , T_\mathrm{d} = \num{1.056}$ }
+	\label{PID_nastawy_2}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad4_2_dobor_nast_PID_test3.pdf}
+	\caption{Regulator PID, $K =\num{0.1} , T_\mathrm{i} = \num{3.4} , T_\mathrm{d} = \num{1.056}$ }
+	\label{PID_nastawy_3}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad4_2_dobor_nast_PID_test4.pdf}
+	\caption{Regulator PID, $K =\num{0.1} , T_\mathrm{i} = \num{3.4} , T_\mathrm{d} = \num{0.7}$ }
+	\label{PID_nastawy_4}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad4_3_test_PID_normal.pdf}
+	\caption{Trajektoria docelowa, regulator PID, $K =\num{0.1} , T_\mathrm{i} = \num{3.4} , T_\mathrm{d} = \num{0.7}$ }
+	\label{PID_normalny}
+\end{figure}
+
+Regulator DMC:
+\lstinputlisting{../../Projekt3/programy_Matlab/DMC.m}
+Równie¿ dla regulatora DMC wartoœci parametrów by³y dobierane w sposób eksperymentalny. Wartoœci parametrów by³y modyfikowane i porównywane w celu znalezienia najlepszego nastawu.
+Eksperymenty wykonywane podczas dobierania parametrów regulatora DMC przedstawiono na rys. \ref{DMC_nastawy_1} - rys. \ref{DMC_nastawy_6}.
+Ostateczny sposób dzia³ania regulatora DMC przedstawiono na rys. \ref{DMC_normalny}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad4_5_dobor_nast_test1.pdf}
+	\caption{Regulator DMC, $N = 7 , N_\mathrm{u} = 1, \lambda = 1$ }
+	\label{DMC_nastawy_1}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad4_5_dobor_nast_test2.pdf}
+	\caption{Regulator DMC, $N = 10 , N_\mathrm{u} = 1, \lambda = 1$ }
+	\label{DMC_nastawy_2}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad4_5_dobor_nast_test3.pdf}
+	\caption{Regulator DMC, $N = 20 , N_\mathrm{u} = 1, \lambda = 1$ }
+	\label{DMC_nastawy_3}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad4_5_dobor_nast_test4.pdf}
+	\caption{Regulator DMC, $N = 40 , N_\mathrm{u} = 1, \lambda = 1$ }
+	\label{DMC_nastawy_4}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad4_5_dobor_nast_test5.pdf}
+	\caption{Regulator DMC, $N = 20 , N_\mathrm{u} = 5, \lambda = 1$ }
+	\label{DMC_nastawy_5}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad4_5_dobor_nast_test6.pdf}
+	\caption{Regulator DMC, $N = 20 , N_\mathrm{u} = 20, \lambda = 50$ }
+	\label{DMC_nastawy_6}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad4_6_test_normal_DMC.pdf}
+	\caption{Trajektoria docelowa, regulator DMC, $N = 20 , N_\mathrm{u} = 20, \lambda = 50$ }
+	\label{DMC_normalny}
+\end{figure}
+
+\section{Regulatory rozmyte}
+
+Regulator rozmyty PID:
+\lstinputlisting{../../Projekt3/programy_Matlab/PID_fuzzy.m}
+
+Regulator rozmyty DMC:
+\lstinputlisting{../../Projekt3/programy_Matlab/DMC_fuzzy.m}
+
+Jako zmienn¹, na podstawie której dokonywane jest rozmywanie wybrano sterowanie "U".
+Zmienna ta zosta³a wybrana na podstawie otrzymanej charakterystyki statycznej. Mo¿na 
+zauwa¿yæ, ¿e dla sterowania przedzia³y, w których proces jest w przybli¿eniu liniowy
+s¹ podobnej d³ugoœci. W porównaniu dla zmiennej wyjœcia proces charakteryzuje siê bardzo
+ma³ym wzmocnieniem tylko dla $Y \in  <-0.32 0>$, natomiast du¿ym dla reszty wyjœæ($Y \in <0, 12>$).
+Utrudni³oby to wybór funkcji wyznaczaj¹cej wspó³czynnik przynale¿noœci lub wymusi³o zastosowanie
+wielu regulatorów lokalnych w celu uzyskania poprawy wyniku regulacji w porównaniu do
+jednego regulatora.
+
+\section{Liczba regulatorów lokalnych}
+Nastawy regulatorów lokalnych lokalnych wybrano metod¹ eksperymentaln¹, w taki sposób aby uzyskaæ jak najlepsz¹ jakoœæ regulacji wokó³ punktu pracy danego regulatora. Na rys. \ref{PID_rozmyty_2} - rys. \ref{PID_rozmyty_5} pokazano jak dzia³a rozmyty regulator PID w zale¿noœci od liczby regulatorów lokalnych (od 2 do 5).
+Na rys. \ref{DMC_rozmyty_2} - rys. \ref{DMC_rozmyty_5}, pokazano natomiast dzia³anie rozmytego regulatora DMC w zale¿noœci od liczby lokalnych regulatorów (od 2 do 5).
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad5_test_PID_num_2.pdf}
+	\caption{Rozmyty regulator PID z 2 regulatorami lokalnymi}
+	\label{PID_rozmyty_2}
+\end{figure}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad5_test_PID_num_3.pdf}
+	\caption{Rozmyty regulator PID z 3 regulatorami lokalnymi}
+	\label{PID_rozmyty_3}
+\end{figure}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad5_test_PID_num_4.pdf}
+	\caption{Rozmyty regulator PID z 4 regulatorami lokalnymi}
+	\label{PID_rozmyty_4}
+\end{figure}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad5_test_PID_num_5.pdf}
+	\caption{Rozmyty regulator PID z 5 regulatorami lokalnymi}
+	\label{PID_rozmyty_5}
+\end{figure}
+
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad5_test_DMC_num_2_lambda50.pdf}
+	\caption{Rozmyty regulator DMC z 2 regulatorami lokalnymi}
+	\label{DMC_rozmyty_2}
+\end{figure}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad5_test_DMC_num_3_lambda50.pdf}
+	\caption{Rozmyty regulator DMC z 3 regulatorami lokalnymi}
+	\label{DMC_rozmyty_3}
+\end{figure}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad5_test_DMC_num_4_lambda50.pdf}
+	\caption{Rozmyty regulator DMC z 4 regulatorami lokalnymi}
+	\label{DMC_rozmyty_4}
+\end{figure}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad5_test_DMC_num_5_lambda50.pdf}
+	\caption{Rozmyty regulator DMC z 5 regulatorami lokalnymi}
+	\label{DMC_rozmyty_5}
+\end{figure}
+
+\section{Dobór parametrów $\lambda$ regulatorów lokalnych}
+
+
 
 \end{document}
 

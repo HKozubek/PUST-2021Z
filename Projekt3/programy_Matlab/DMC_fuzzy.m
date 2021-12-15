@@ -42,7 +42,7 @@ function U = DMC_fuzzy(S_fuzzy, num, yzad, y, D, N, Nu, lambda, Umin, Umax)
         Upop = 0;
         dUP = zeros(D-1,1);
         
-       % parametry funkcji przynależności (wyznaczone manualnie)
+       % parametry funkcji przynaleznosci (wyznaczone manualnie)
         if num == 2
             a = [0.3; 2];                                 
             b = [1.5; 1];                                 
@@ -104,7 +104,7 @@ function U = DMC_fuzzy(S_fuzzy, num, yzad, y, D, N, Nu, lambda, Umin, Umax)
     Y = y*ones(N,1);
     
     for j = 1:num
-        % tu już online
+        % tu juz online
         Y0 = Y + Mp{j}*dUP;
         dU = K{j}*(Yzad - Y0);
         du = dU(1); 
@@ -117,7 +117,7 @@ function U = DMC_fuzzy(S_fuzzy, num, yzad, y, D, N, Nu, lambda, Umin, Umax)
     end
     U = U/sum(w);
   
-    du = U - Upop;                      %ważne, żeby jeszcze raz wyliczyć
+    du = U - Upop;                 
     for n=D-1:-1:2
         dUP(n) = dUP(n-1);
     end
