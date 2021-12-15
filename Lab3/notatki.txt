@@ -1,6 +1,0 @@
-Do przygotowania przed labami:
-- sprawdzić czy rozmyte regulatory PID i DMC są zaimplementowane poprawnie
-
-
-Do zrobienia podczas labów:
- - eksperyment przy użyciu PID dla liniowego procesu
