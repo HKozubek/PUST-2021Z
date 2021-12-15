@@ -409,10 +409,15 @@ Ostateczny sposób dzia³ania regulatora DMC przedstawiono na rys. \ref{DMC_normal
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad4_6_test_normal_DMC.pdf}
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/v2_Zad4_6_test_normal_DMC.pdf}
 	\caption{Trajektoria docelowa, regulator DMC, $N = 20 , N_\mathrm{u} = 20, \lambda = 50$ }
 	\label{DMC_normalny}
 \end{figure}
+
+Pomimo ¿e obiekt jest nieliniowy regulatory z laboratorium 1 dobrze sobie radz¹ z zadaniem regulacji.
+Wynika to z tego, ¿e znacz¹ca czêœæ charakterystyki statycznej jest liniowa. Jedynie dla wartoœci wyjœcia $Y \in (-\num{0.3}; 1)$ obiekt jest zdecydowanie nieliniowy.
+Z tego powodu regulacja dla wartoœci zadanych $Y_\mathrm{zad} \in (1 ;\num{11.84})$ przebiega bardzo dobrze. Ze wzglêdu na w¹ski przedzia³, który znacz¹co ró¿ni siê zachowaniem wzmocnieniem od reszty procesu, jego wp³yw na sumaryczny b³¹d kwadratowy (wskaŸnik jakoœci) jest niewielki.
+Na rys. \ref{PID_normalny} i rys. \ref{DMC_normalny} mo¿emy zauwa¿yæ, ¿e dla wartoœci zadanej $Y_\mathrm{zad} = -\num{0.31}$ oba regulatory bardzo s³abo sobie radz¹ z wysterowaniem obiektu do wartoœci zadanej.
 
 \section{Regulatory rozmyte}
 
@@ -422,43 +427,49 @@ Regulator rozmyty PID:
 Regulator rozmyty DMC:
 \lstinputlisting{../../Projekt3/programy_Matlab/DMC_fuzzy.m}
 
-Jako zmienn¹, na podstawie której dokonywane jest rozmywanie wybrano sterowanie "U".
-Zmienna ta zosta³a wybrana na podstawie otrzymanej charakterystyki statycznej. Mo¿na 
-zauwa¿yæ, ¿e dla sterowania przedzia³y, w których proces jest w przybli¿eniu liniowy
-s¹ podobnej d³ugoœci. W porównaniu dla zmiennej wyjœcia proces charakteryzuje siê bardzo
-ma³ym wzmocnieniem tylko dla $Y \in  <-0.32 0>$, natomiast du¿ym dla reszty wyjœæ($Y \in <0, 12>$).
-Utrudni³oby to wybór funkcji wyznaczaj¹cej wspó³czynnik przynale¿noœci lub wymusi³o zastosowanie
-wielu regulatorów lokalnych w celu uzyskania poprawy wyniku regulacji w porównaniu do
-jednego regulatora.
+Jako zmienn¹, na podstawie której dokonywane jest rozmywanie wybrano wyjœcie procesu "Y".
+Zmienna ta zosta³a wybrana na podstawie otrzymanej charakterystyki statycznej. Wynika to z tego, ¿e jest ona dobr¹ reprezentacj¹ w jakim stanie obecnie znajduje siê symulowany obiekt
+(w jakim punkcie pracuje). Zmienna sterowania w przeciwieñstwie do zmiennej wyjœciowej
+waha siê znacz¹co niezale¿nie od obecnego wyjœcia dla skoków wartoœci zadanej. 
+
+Jako rodzaj funkcji przynale¿noœci wybrano funkcje dzwonowe, poniewa¿ w ³atwy sposób
+mo¿na dostosowywaæ jej kszta³t do potrzeb rozmywania. Wa¿nym atutem funkcji dzwonowej jest fakt, ¿e kilka regulatorów mo¿e  dzia³aæ jednoczeœnie i wp³ywaæ w pewnym stopniu na wartoœæ sterowania.
+Jest to rozwi¹zanie lepsze od przyk³adu w którym ka¿dy regulator lokalny dzia³a niezale¿nie od innych, tylko dla swojego przedzia³u pracy. 
+Kszta³t funkcji przynale¿noœci jest uzale¿niony od otrzymanej charakterystyki statycznej.
+Poniewa¿ dla zmiennej wyjœciowej nieliniowoœæ procesu jest silna dla wartoœci w w¹skim przedziale $(-\num{0.31}; 1)$,
+zaœ proces jest stosunkowo liniowy dla wartoœci w szerokim przedziale $(1 ;\num{11.84})$ to dobierano funkcje przynale¿noœci,
+tak aby zawiera³y one w przybli¿eniu liniowe fragmenty charakterystyki. Dziêki takiemu zabiegowi ju¿ dla
+niewielkiej iloœci regulatorów lokalnych mo¿na by³o uzyskaæ zadowalaj¹ce wyniki regulacji.
+
 
 \section{Liczba regulatorów lokalnych}
 Nastawy regulatorów lokalnych lokalnych wybrano metod¹ eksperymentaln¹, w taki sposób aby uzyskaæ jak najlepsz¹ jakoœæ regulacji wokó³ punktu pracy danego regulatora. Na rys. \ref{PID_rozmyty_2} - rys. \ref{PID_rozmyty_5} pokazano jak dzia³a rozmyty regulator PID w zale¿noœci od liczby regulatorów lokalnych (od 2 do 5).
-Na rys. \ref{DMC_rozmyty_2} - rys. \ref{DMC_rozmyty_5}, pokazano natomiast dzia³anie rozmytego regulatora DMC w zale¿noœci od liczby lokalnych regulatorów (od 2 do 5).
+Na rys. \ref{DMC_rozmyty_2} - rys. \ref{DMC_rozmyty_5}, pokazano natomiast dzia³anie rozmytego regulatora DMC w zale¿noœci od liczby lokalnych regulatorów (od 2 do 5). Z racji, ¿e $\lambda$ dla najlepszego nastawu regulatora liniowego DMC wynosi³a 50, to ka¿dy regulator lokalny domyœlnie startowa³ z tak¹ wartoœci¹ $\lambda$.
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad5_test_PID_num_2.pdf}
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/v2_Zad5_test_PID_num_2.pdf}
 	\caption{Rozmyty regulator PID z 2 regulatorami lokalnymi}
 	\label{PID_rozmyty_2}
 \end{figure}
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad5_test_PID_num_3.pdf}
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/v2_Zad5_test_PID_num_3.pdf}
 	\caption{Rozmyty regulator PID z 3 regulatorami lokalnymi}
 	\label{PID_rozmyty_3}
 \end{figure}
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad5_test_PID_num_4.pdf}
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/v2_Zad5_test_PID_num_4.pdf}
 	\caption{Rozmyty regulator PID z 4 regulatorami lokalnymi}
 	\label{PID_rozmyty_4}
 \end{figure}
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad5_test_PID_num_5.pdf}
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/v2_Zad5_test_PID_num_5.pdf}
 	\caption{Rozmyty regulator PID z 5 regulatorami lokalnymi}
 	\label{PID_rozmyty_5}
 \end{figure}
@@ -466,34 +477,35 @@ Na rys. \ref{DMC_rozmyty_2} - rys. \ref{DMC_rozmyty_5}, pokazano natomiast dzia³
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad5_test_DMC_num_2_lambda50.pdf}
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/v2_Zad5_test_DMC_num_2_lambda50.pdf}
 	\caption{Rozmyty regulator DMC z 2 regulatorami lokalnymi}
 	\label{DMC_rozmyty_2}
 \end{figure}
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad5_test_DMC_num_3_lambda50.pdf}
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/v2_Zad5_test_DMC_num_3_lambda50.pdf}
 	\caption{Rozmyty regulator DMC z 3 regulatorami lokalnymi}
 	\label{DMC_rozmyty_3}
 \end{figure}
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad5_test_DMC_num_4_lambda50.pdf}
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/v2_Zad5_test_DMC_num_4_lambda50.pdf}
 	\caption{Rozmyty regulator DMC z 4 regulatorami lokalnymi}
 	\label{DMC_rozmyty_4}
 \end{figure}
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad5_test_DMC_num_5_lambda50.pdf}
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/v2_Zad5_test_DMC_num_5_lambda50.pdf}
 	\caption{Rozmyty regulator DMC z 5 regulatorami lokalnymi}
 	\label{DMC_rozmyty_5}
 \end{figure}
 
 \section{Dobór parametrów $\lambda$ regulatorów lokalnych}
-
+Wykonuj¹c eksperymenty dla ró¿nych wartoœci $\lambda$ mo¿na by³o wywnioskowaæ, ¿e jakoœæ regulacji nie zmienia siê w znacz¹cy sposób.
+Z tego powodu ostateczne wartoœci nie ró¿ni³y siê w znacz¹cy sposób od siebie
 
 
 \end{document}

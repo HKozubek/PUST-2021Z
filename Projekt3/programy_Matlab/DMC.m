@@ -28,7 +28,7 @@ function U = DMC(S, yzad, y, D, N, Nu, lambda, Umin, Umax)
     persistent Upop
     
     if isempty(init)
-        % przed≈Çu≈ºenie wektora S
+        % przed≥uøenie wektora S
         for i = D+1:D+N
             S(i) = S(D);
         end
