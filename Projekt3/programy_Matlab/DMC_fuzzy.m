@@ -1,25 +1,27 @@
-function U = DMC_fuzzy(S_fuzzy, u, num, yzad, y, D, N, Nu, lambda, Umin, Umax)
-% DMC fuzzy controller
-%   U = DMC_fuzzy(S_fuzzy, u, num, yzad, y, D, N, Nu, lambda, Umin, Umax) gives control signal for DMC fuzzy controller.
+function U = DMC_fuzzy(S_fuzzy, num, yzad, y, D, N, Nu, lambda, Umin, Umax)
+% DMC (Dynamic Matrix Control) fuzzy controller
+%   U = DMC_fuzzy(S_fuzzy, num, yzad, y, D, N, Nu, lambda, Umin, Umax)
+%       gives control signal for DMC fuzzy controller.
 %   
 %   Arguments:
-%   S_fuzzy - step answers for local DMC controllers {[matrix],[matrix],...]
-%   u - value of process controll
-%   num - number of local DMC controllers
-%   yzad - set point value
-%   y - controlled variable
-%   D - dynamic horizon
-%   N - prediction horizon
-%   Nu - controll horizon
-%   lambda[num, 1] - penatly factor
+%   S_fuzzy {num} - step answers for local DMC controllers
+%               {[matrix],[matrix],...};
+%   num - number of local DMC controllers;
+%   yzad - set point value;
+%   y - controlled variable;
+%   D - dynamic horizon;
+%   N - prediction horizon;
+%   Nu - controll horizon;
+%   lambda[num, 1] - penatly factor;
 %   Umin - lower limit of U;
-%   Umax - upper limit of U;
+%   Umax - upper limit of U.
 %
 %   Warning!
-%   Upop is value of last iteration controll signal
-%   in init it should have value of current work point
+%   Upop is value of last iteration controll signal.
+%   In init it should have value of current operating point.
 %   
 % See also DMC, PID_fuzzy, PID, gbellmf.
+
 
     persistent init
     
@@ -40,29 +42,29 @@ function U = DMC_fuzzy(S_fuzzy, u, num, yzad, y, D, N, Nu, lambda, Umin, Umax)
         Upop = 0;
         dUP = zeros(D-1,1);
         
-        % kształt funkcji dzwonowej
-        interval = (Umax - Umin)/(num - 1);
+       % parametry funkcji przynależności (wyznaczone manualnie)
+        if num == 2
+            a = [0.3; 2];                                 
+            b = [1.5; 1];                                 
+            center = [-0.3; 6];
+        end
         
-%       Dla num = 2:
-%         a = 0.7;                                % przedział wartości maksymalnej
-%         b = 3;                                  % kształt zboczy funkcji
+        if num == 3
+            a = [0.1; 0.3; 3];                                 
+            b = [1.5; 1.5; 4];                                 
+            center = [-0.3; 0.2; 6];
+        end
         
-        %dla num = 3:
-%         a = 0.5;                                % przedział wartości maksymalnej
-%         b = 1.5;                                  % kształt zboczy funkcji
+        if num == 4
+            a = [0.1; 0.2; 0.5; 3];                                 
+            b = [1.5; 1.5; 1.2; 4];                                 
+            center = [-0.3; 0; 1.5; 7];
+        end
         
-%         %dla num = 4:
-%         a = 0.3;                                  % przedział wartości maksymalnej
-%         b = 1.2;                                  % kształt zboczy funkcji
-        
-        %dla num = 5:
-        a = 0.1;                                  % przedział wartości maksymalnej
-        b = 1.5;                                  % kształt zboczy funkcji
-
-        center = zeros(num, 1);
-        
-        for k = 0:(num-1)
-            center(k+1) = Umin + interval*k;
+        if num == 5
+            a = [0.1; 0.1; 0.5; 2; 2];                                 
+            b = [1.5; 2; 2; 3; 3];                                 
+            center = [-0.3; 0; 1.5; 5; 8];
         end
         
         S = cell(num);
@@ -110,7 +112,7 @@ function U = DMC_fuzzy(S_fuzzy, u, num, yzad, y, D, N, Nu, lambda, Umin, Umax)
         u_fuzzy = Upop + du;
       
         % wnioskowanie rozmyte
-        w(j) = gbellmf(u, [a b center(j)]);
+        w(j) = gbellmf(y, [a(j) b(j) center(j)]);
         U = U + w(j)*u_fuzzy;
     end
     U = U/sum(w);

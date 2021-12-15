@@ -1,6 +1,7 @@
 function U = PID(e, K, Ti, Td, Tp, Umin, Umax)
-% PID controller
-%   U = PID(e, K, Ti, Td, Tp, Gmin, Gmax) gives control signal for PID controller.
+% PID (Proportional Integral Derivative) controller
+%   U = PID(e, K, Ti, Td, Tp, Gmin, Gmax) 
+%           gives control signal for PID controller.
 %   
 %   Arguments:
 %   e - error value (e = y_zad - y);
@@ -9,11 +10,11 @@ function U = PID(e, K, Ti, Td, Tp, Umin, Umax)
 %   Td - differentiation time constant;
 %   Tp - sampling period (Tp > 0);
 %   Umin - lower limit of U;
-%   Umax - upper limit of U;
+%   Umax - upper limit of U.
 %
 %   Warning!
-%   Upop is value of last iteration controll signal
-%   in init it should have value of current work point
+%   Upop is value of last iteration controll signal.
+%   In init it should have value of current operating point.
 %
 % See also PID_fuzzy, DMC, DMC_fuzzy.
 
@@ -35,7 +36,7 @@ function U = PID(e, K, Ti, Td, Tp, Umin, Umax)
         r0 = K*(1+Tp/(2*Ti) + Td/Tp);
     end
     
-    % przesuniecie uchybow
+    % przesunięcie uchybów
     e2 = e1;
     e1 = e0;
     e0 = e;

@@ -46,13 +46,14 @@ D = data.D;
 % N = 20; Nu = 1; lambda = 1;             %test3; E = 257.06
 % N = 40; Nu = 1; lambda = 1;             %test4; E = 305.64
 % N = 20; Nu = 5; lambda = 1;             %test5; E = 510.27
-N = 20; Nu = 20; lambda = 50;           %test6; E = 212.71
+% N = 20; Nu = 20; lambda = 50;           %test6; E = 212.71
 
 % N = 82; Nu = 60; lambda = 50;
 
 
 % dla trajektorii docelowej
 %E = 2620.07   N = 20; Nu = 20; lambda = 50; 
+N = 20; Nu = 20; lambda = 1;            %E = 5676.84
 
 for k = 12:time
     Y(k) =  symulacja_obiektu1y_p3(U(k-5), U(k-6), Y(k-1), Y(k-2));
@@ -85,4 +86,4 @@ xlabel('k');
 ylabel('Y(k)');
 legend('Y','Y_{zad}', 'Location', 'northeast');
 
-% matlab2tikz('../rysunki_tikz/Zad4_6_test_normal_DMC.tex','showInfo', false)
+% matlab2tikz('../rysunki_tikz/v2_Zad4_6_test_normal_DMC.tex','showInfo', false)

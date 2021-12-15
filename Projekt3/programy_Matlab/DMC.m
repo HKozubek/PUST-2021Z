@@ -1,23 +1,25 @@
 function U = DMC(S, yzad, y, D, N, Nu, lambda, Umin, Umax)
-% DMC controller
-%   U = DMC(S, yzad, y, D, N, Nu, lambda, Umin, Umax) gives control signal for DMC controller.
+% DMC (Dynamic Matrix Control) controller
+%   U = DMC(S, yzad, y, D, N, Nu, lambda, Umin, Umax) 
+%           gives control signal for DMC controller.
 %   
 %   Arguments:
-%   S - step answer for DMC controller (matrix)
-%   yzad - set point value
-%   y - controlled variable
-%   D - dynamic horizon
-%   N - prediction horizon
-%   Nu - controll horizon
-%   lambda - penatly factor
+%   S - step answer for DMC controller (matrix);
+%   yzad - set point value;
+%   y - controlled variable;
+%   D - dynamic horizon;
+%   N - prediction horizon;
+%   Nu - control horizon;
+%   lambda - penatly factor;
 %   Umin - lower limit of U;
-%   Umax - upper limit of U;
+%   Umax - upper limit of U.
 %
 %   Warning!
-%   Upop is value of last iteration controll signal
-%   in init it should have value of current work point
+%   Upop is value of last iteration control signal.
+%   In init it should have value of current operating point.
 %   
 % See also DMC_fuzzy, PID, PID_fuzzy.
+
     persistent init
     persistent M
     persistent Mp
@@ -26,7 +28,7 @@ function U = DMC(S, yzad, y, D, N, Nu, lambda, Umin, Umax)
     persistent Upop
     
     if isempty(init)
-        % przedluzenie wektora S
+        % przedłużenie wektora S
         for i = D+1:D+N
             S(i) = S(D);
         end
