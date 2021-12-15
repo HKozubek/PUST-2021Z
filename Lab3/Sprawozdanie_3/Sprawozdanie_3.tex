@@ -158,9 +158,9 @@ W ramach laboratorium nale¿a³o wykonaæ 6 zadañ:
 \begin{enumerate}
 	\label{lista_zadan}
   \item Odczytaæ wartoœæ pomiaru temperatury dla termometru T1 dla mocy 26\% grza³ki G1 w~stanie ustalonym (wyznaczyæ punkt pracy).
-  \item Przeprowadziæ eksperyment maj¹cy na celu okreœlenie wzmocnienie w funkcji sterowania: dla kolejnych wartoœci sterowania: 20, 30, $\hdots$ , 80 pozyskaæ wartoœæ ustabilizowanego sygna³u wyjœciowego i na ich podstawie narysowaæ punkty tworz¹ce charakterystykê statyczn¹
-  \item Dla trajektorii zmian sygna³ów zadanych: $T_\mathrm{pp}$, $T_\mathrm{pp}$ + 5, $T_\mathrm{pp}$ + 15, $T_\mathrm{pp}$ przetestowaæ regulatory z laboratorium 1
-  \item Zaimplementowaæ rozmyty algorytm PID i dla tej samej trajektorii zmian sygna³u wartoœci zadanej spróbowaæ dobraæ parametry lokalnych algorytmów PID w taki sposób, aby osi¹gn¹æ lepsz¹ jakoœæ regulacji w porównaniu z regulatorem pojedynczym
+  \item Przeprowadziæ eksperyment maj¹cy na celu okreœlenie wzmocnienie w funkcji sterowania: dla kolejnych wartoœci sterowania: 20, 30, $\hdots$ , 80 pozyskaæ wartoœæ ustabilizowanego sygna³u wyjœciowego i na ich podstawie narysowaæ punkty tworz¹ce charakterystykê statyczn¹.
+  \item Dla trajektorii zmian sygna³ów zadanych: $T_\mathrm{pp}$, $T_\mathrm{pp}$ + 5, $T_\mathrm{pp}$ + 15, $T_\mathrm{pp}$ przetestowaæ regulatory z laboratorium 1.
+  \item Zaimplementowaæ rozmyty algorytm PID i dla tej samej trajektorii zmian sygna³u wartoœci zadanej spróbowaæ dobraæ parametry lokalnych algorytmów PID w taki sposób, aby osi¹gn¹æ lepsz¹ jakoœæ regulacji w porównaniu z regulatorem pojedynczym.
   \item Zaimplementowaæ rozmyty algorytm DMC w najprostszej
 	wersji analitycznej, o parametrach $N_\mathrm{u}$ = $N$ = $D$ i $\lambda$ = 1 i dla powy¿szej trajektorii
 	zmian sygna³u wartoœci zadanej wykonaæ eksperymenty dla 3 regulatorów lokalnych. 
@@ -215,9 +215,9 @@ Niemniej jednak widoczna jest nieliniowoœæ, w szczególnoœci porównuj¹c wartoœci 
 Dla przybli¿onej liniowo charakterystyki $K_\mathrm{stat} = $
 
 \section{Regulatory dla obiektu liniowego}
-Wykorzystuj¹c regulatory zaimplementowane na laboratorium 1 zosta³ przeprowadzony eksperyment, którego celem by³o sprawdziæ jak regulatory przeznaczone do regulacji obiektów liniowych poradz¹ sobie z obiektem nieliniowym.
+Wykorzystuj¹c regulatory zaimplementowane na laboratorium 1. zosta³ przeprowadzony eksperyment, którego celem by³o sprawdziæ jak regulatory przeznaczone do regulacji obiektów liniowych poradz¹ sobie z obiektem nieliniowym.
 W tym celu jako trajektoriê wartoœci zadanej przyjêto 3 skoki: z \num{31.06} do \num{36.06}, z \num{36.06} do \num{46.06} i z \num{46.06} do \num{31.06}. Nastêpnie dla danej trajektorii uruchomiono regulator PID, a nastêpnie powtórzono eksperyment dla regulatora DMC.
-Wyniki eksperymentu przedstawiono odpowiednio na rys. \ref{PID_lin} PID liniowy i rys. \ref{DMC_lin} DMC Liniowy.
+Wyniki eksperymentu przedstawiono odpowiednio na rys. \ref{PID_lin} - PID liniowy i rys. \ref{DMC_lin} - DMC liniowy.
 
 \begin{figure}[!ht]
 	\centering
@@ -234,10 +234,10 @@ Wyniki eksperymentu przedstawiono odpowiednio na rys. \ref{PID_lin} PID liniowy 
 \end{figure}
 
 \section{Rozmyty PID}
-W celu lepszej regulacji obiektu nieliniowego zosta³ zaimplementowany regulator rozmyty PID. W tym celu utworzono funkcje dzwonow¹, która decydowa³a który regulator i w jakim stopniu ma wp³yw na wyjœcie. %TODO: mo¿e, dzwon
-Odpalanie siê regulatorów PID zale¿a³o od aktualnej wartoœci wyjœcia obiektu. Regulator zosta³ podzielony na 3 regulatory lokalne, ka¿dy z nich zosta³ dostrojony metod¹ eksperymentaln¹, gdzie wartoœci startowe wziêto z regulatora PID z 1 laboratorium.
-Dziêki charakterystyce statycznej mo¿na by³o np. stwierdziæ ¿e regulator dla wy¿szych wartoœci wyjœcia powinien mieæ wiêkszy parametr proporcjonalny, ni¿ regulator lokalny dla mniejszych wartoœci wyjœcia, z racji ¿e wzmocnieni statyczne roœnie wolniej dla wy¿szych wartoœci wyjœcia, ni¿ dla ni¿szych.   
-Dzia³anie regulatora rozmytego przedstawiono na rys. \ref{PID_roz_lab}.
+W celu lepszej regulacji obiektu nieliniowego zosta³ zaimplementowany regulator rozmyty PID. W tym celu utworzono funkcje dzwonowe, które decydowa³y który regulator i w jakim stopniu ma wp³yw na wyjœcie.
+Odpalanie siê regulatorów PID zale¿a³o od aktualnej wartoœci wyjœcia obiektu. Regulator zosta³ podzielony na 3 regulatory lokalne, ka¿dy z nich zosta³ dostrojony metod¹ eksperymentaln¹, gdzie wartoœci startowe zaczerpniêto z regulatora PID z 1. laboratorium.
+Dziêki charakterystyce statycznej mo¿na by³o np. stwierdziæ ¿e regulator dla wy¿szych wartoœci wyjœcia powinien mieæ wiêkszy parametr proporcjonalny, ni¿ regulator lokalny dla mniejszych wartoœci wyjœcia, z racji ¿e wzmocnienie statyczne roœnie wolniej dla wy¿szych wartoœci wyjœcia, ni¿ dla ni¿szych.   
+Dzia³anie regulatora rozmytego przedstawiono na rys. \ref{PID_roz_lab}. Funkcje przynale¿noœci zastosowane w eksperymentach pokazano na rys. \ref{dzwon_lab}.
 
 \begin{figure}[!ht]
 	\centering
@@ -249,7 +249,7 @@ Dzia³anie regulatora rozmytego przedstawiono na rys. \ref{PID_roz_lab}.
 \section{Rozmyty DMC}
 Równie¿ dla regulatora DMC skorzystano z 3 regulatorów lokalnych, tak¿e sterowanych wartoœciami wyjœcia obiektu. Dla regulatorów lokalnych wybrano odpowiednio odpowiedŸ skokow¹ dla sterowañ z 20 do 30, z 40 do 50 i z 60 do 70.
 Dla tak przygotowanych regulatorów wybrano najprostsze parametry $D = N = N_\mathrm{u} = 320$ i $\lambda = 1$. Nastêpnie rozmyty regulator DMC zosta³ przetestowany dla tej samej trajektoria co w sekcji 5. 
-Wyniki eksperymentu przedstawiono na rys. \ref{DMC_roz_lab}.
+Wyniki eksperymentu przedstawiono na rys. \ref{DMC_roz_lab}. Funkcje przynale¿noœci zastosowane w eksperymentach pokazano na rys. \ref{dzwon_lab}.
 
 \begin{figure}[!ht]
 	\centering
@@ -258,13 +258,22 @@ Wyniki eksperymentu przedstawiono na rys. \ref{DMC_roz_lab}.
 	\label{DMC_roz_lab}
 \end{figure}
 
+\begin{figure}[!ht]
+	\centering
+	\input{../rysunki_tikz/funkcje_dzwonowe.tex}
+	\caption{Funkcje dzwonowe wzglêdem których odbywa³o siê rozmywanie regulatorów lokalnych}
+	\label{dzwon_lab}
+\end{figure}
+
 \section{Dobór parametrów $\lambda$}
 Parametry $\lambda$ regulatorów lokalnych zosta³y dobrane eksperymentalnie. Najlepszy nastaw zosta³ przedstawiony na rys. \ref{DMC_roz_lambda}.
+Jak widaæ z wykresów zarówno dla regulatora PID jak i DMC oddzielne strojenie ka¿dego z regulatorów lokalnych, pomimo ¿e czasoch³onne, pozwoli³o uzyskaæ lepsz¹ regulacje ni¿ w przypadku takich samych nastawów.
+Taki wynik eksperymentu jest intuicyjny, gdy¿ regulator z takimi samymi parametrami regulatorów lokalnych zachowuje siê tak samo jak pojedynczy regulator liniowy. Szczególnie znacz¹ce okaza³a siê zmiana wartoœci $\lambda$ dla regulatora DMC. Pozwoli³o to regulatorom lokalnym na swobodniejszy dobór sterowania, co skutkowa³o lepsz¹ regulacj¹.
 
 \begin{figure}[!ht]
 	\centering
 	\input{../rysunki_tikz/DMC_roz_zmianaL.tex}
-	\caption{Regulator rozmyty DMC, $\lambda = [1; \num{0.9}; \num{0.5}]$}
+	\caption{Regulator rozmyty DMC, $\lambda = [1; \num{0.9}; \num{0.6}]$}
 	\label{DMC_roz_lambda}
 \end{figure}
 
@@ -274,7 +283,7 @@ Parametry $\lambda$ regulatorów lokalnych zosta³y dobrane eksperymentalnie. Najl
 Zadanie projektowe wykorzystywa³o symulowany obiekt regulacji. Wyjœcie obiektu mo¿na wyznaczyæ przy pomocy polecenia:
 $$y(k)=symulacja\_obiektu\_1y\_p3(u(k-5),u(k-6),y(k-1),y(k-2))$$
 
-Wartoœci sygna³ów wejœcia, wyjœcia i zak³ócenia procesu w punkcie pracy wynosz¹ $u = y = z = 0$; okres próbkowania wynosi \num{0,5} sekundy.
+Wartoœci sygna³ów wejœcia i wyjœcia procesu w punkcie pracy wynosz¹ $u = y = 0$; okres próbkowania wynosi \num{0,5} sekundy.
 
 \section{Sprawdzenie poprawnoœci punktu pracy}
 
@@ -414,7 +423,7 @@ Ostateczny sposób dzia³ania regulatora DMC przedstawiono na rys. \ref{DMC_normal
 	\label{DMC_normalny}
 \end{figure}
 
-Pomimo ¿e obiekt jest nieliniowy regulatory z laboratorium 1 dobrze sobie radz¹ z zadaniem regulacji.
+Pomimo ¿e obiekt jest nieliniowy regulatory z laboratorium 1. dobrze sobie radz¹ z zadaniem regulacji.
 Wynika to z tego, ¿e znacz¹ca czêœæ charakterystyki statycznej jest liniowa. Jedynie dla wartoœci wyjœcia $Y \in (-\num{0.3}; 1)$ obiekt jest zdecydowanie nieliniowy.
 Z tego powodu regulacja dla wartoœci zadanych $Y_\mathrm{zad} \in (1 ;\num{11.84})$ przebiega bardzo dobrze. Ze wzglêdu na w¹ski przedzia³, który znacz¹co ró¿ni siê zachowaniem wzmocnieniem od reszty procesu, jego wp³yw na sumaryczny b³¹d kwadratowy (wskaŸnik jakoœci) jest niewielki.
 Na rys. \ref{PID_normalny} i rys. \ref{DMC_normalny} mo¿emy zauwa¿yæ, ¿e dla wartoœci zadanej $Y_\mathrm{zad} = -\num{0.31}$ oba regulatory bardzo s³abo sobie radz¹ z wysterowaniem obiektu do wartoœci zadanej.
@@ -440,10 +449,18 @@ Poniewa¿ dla zmiennej wyjœciowej nieliniowoœæ procesu jest silna dla wartoœci w 
 zaœ proces jest stosunkowo liniowy dla wartoœci w szerokim przedziale $(1 ;\num{11.84})$ to dobierano funkcje przynale¿noœci,
 tak aby zawiera³y one w przybli¿eniu liniowe fragmenty charakterystyki. Dziêki takiemu zabiegowi ju¿ dla
 niewielkiej iloœci regulatorów lokalnych mo¿na by³o uzyskaæ zadowalaj¹ce wyniki regulacji.
+Funkcje dzwonowe wzglêdem których dokonywane by³o rozmycie przedstawiono na rys \ref{dzwon_proj}.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad5_przyk_fun_przynal.pdf}
+	\caption{Przyk³ad funkcji dzwonowych dla 3 regulatorów lokalnych, na podstawie których dokonywano rozmycia}
+	\label{dzwon_proj}
+\end{figure}
 
 
 \section{Liczba regulatorów lokalnych}
-Nastawy regulatorów lokalnych lokalnych wybrano metod¹ eksperymentaln¹, w taki sposób aby uzyskaæ jak najlepsz¹ jakoœæ regulacji wokó³ punktu pracy danego regulatora. Na rys. \ref{PID_rozmyty_2} - rys. \ref{PID_rozmyty_5} pokazano jak dzia³a rozmyty regulator PID w zale¿noœci od liczby regulatorów lokalnych (od 2 do 5).
+Nastawy regulatorów lokalnych wybrano metod¹ eksperymentaln¹, w taki sposób aby uzyskaæ jak najlepsz¹ jakoœæ regulacji wokó³ punktu pracy danego regulatora. Na rys. \ref{PID_rozmyty_2} - rys. \ref{PID_rozmyty_5} pokazano jak dzia³a rozmyty regulator PID w zale¿noœci od liczby regulatorów lokalnych (od 2 do 5).
 Na rys. \ref{DMC_rozmyty_2} - rys. \ref{DMC_rozmyty_5}, pokazano natomiast dzia³anie rozmytego regulatora DMC w zale¿noœci od liczby lokalnych regulatorów (od 2 do 5). Z racji, ¿e $\lambda$ dla najlepszego nastawu regulatora liniowego DMC wynosi³a 50, to ka¿dy regulator lokalny domyœlnie startowa³ z tak¹ wartoœci¹ $\lambda$.
 
 \begin{figure}[!ht]
@@ -504,8 +521,8 @@ Na rys. \ref{DMC_rozmyty_2} - rys. \ref{DMC_rozmyty_5}, pokazano natomiast dzia³
 \end{figure}
 
 \section{Dobór parametrów $\lambda$ regulatorów lokalnych}
-Wykonuj¹c eksperymenty dla ró¿nych wartoœci $\lambda$ mo¿na by³o wywnioskowaæ, ¿e jakoœæ regulacji nie zmienia siê w znacz¹cy sposób.
-Z tego powodu ostateczne wartoœci nie ró¿ni³y siê w znacz¹cy sposób od siebie
+Wykonuj¹c eksperymenty dla ró¿nych wartoœci $\lambda$ mo¿na by³o wywnioskowaæ, ¿e jakoœæ regulacji nie zmienia siê w znacz¹cy sposób, 
+dlatego pozostano przy wartoœci wyznaczonej dla regulatora liniowego $\lambda = 50$.
 
 
 \end{document}
