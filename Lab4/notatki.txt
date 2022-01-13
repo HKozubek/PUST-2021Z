@@ -1,0 +1,9 @@
+Punkt pracy (W1 = 500; W2 = 500; G1 = 2600; G2 = 3100) czy w1 i w2 dobrze? chyba tak
+
+zastosować Tp = 4s
+T1 = 38,62 *C
+T2 = 20,18 *C
+
+Panel operatorski HMI
+-wyświetlanie wartości mierzonych (T1, T3), zadanych, sterowania (G1, G2)
+-reprezentacja graficzna (prosta)
