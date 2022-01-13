@@ -142,7 +142,7 @@ Wydzia³ Elektroniki i Technik Informacyjnych}}\\
 \section{Cel laboratorium}
 Celem niniejszego laboratorium by³a implementacja, weryfikacja poprawnoœci dzia³ania i~dobór parametrów algorytmów regulacji jednowymiarowego nieliniowego procesu laboratoryjnego dla stanowiska grzej¹co-ch³odz¹cego przedstawionego na rys. \ref{stanowisko_grzewcze}.
 
-\begin{figure}[H]
+\begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.7\textwidth]{ ./Rysunki/Stanowisko-grzewcze.png }
 	\caption {Stanowisko grzej¹co-ch³odz¹ce u¿ywane w trakcie laboratoriów.}
@@ -158,9 +158,9 @@ W ramach laboratorium nale¿a³o wykonaæ 6 zadañ:
 \begin{enumerate}
 	\label{lista_zadan}
   \item Odczytaæ wartoœæ pomiaru temperatury dla termometru T1 dla mocy 26\% grza³ki G1 w~stanie ustalonym (wyznaczyæ punkt pracy).
-  \item Przeprowadziæ eksperyment maj¹cy na celu okreœlenie wzmocnienie w funkcji sterowania: dla kolejnych wartoœci sterowania: 20, 30, $\hdots$ , 80 pozyskaæ wartoœæ ustabilizowanego sygna³u wyjœciowego i na ich podstawie narysowaæ punkty tworz¹ce charakterystykê statyczn¹
-  \item Dla trajektorii zmian sygna³ów zadanych: $T_\mathrm{pp}$, $T_\mathrm{pp}$ + 5, $T_\mathrm{pp}$ + 15, $T_\mathrm{pp}$ przetestowaæ regulatory z laboratorium 1
-  \item Zaimplementowaæ rozmyty algorytm PID i dla tej samej trajektorii zmian sygna³u wartoœci zadanej spróbowaæ dobraæ parametry lokalnych algorytmów PID w taki sposób, aby osi¹gn¹æ lepsz¹ jakoœæ regulacji w porównaniu z regulatorem pojedynczym
+  \item Przeprowadziæ eksperyment maj¹cy na celu okreœlenie wzmocnienie w funkcji sterowania: dla kolejnych wartoœci sterowania: 20, 30, $\hdots$ , 80 pozyskaæ wartoœæ ustabilizowanego sygna³u wyjœciowego i na ich podstawie narysowaæ punkty tworz¹ce charakterystykê statyczn¹.
+  \item Dla trajektorii zmian sygna³ów zadanych: $T_\mathrm{pp}$, $T_\mathrm{pp}$ + 5, $T_\mathrm{pp}$ + 15, $T_\mathrm{pp}$ przetestowaæ regulatory z laboratorium 1.
+  \item Zaimplementowaæ rozmyty algorytm PID i dla tej samej trajektorii zmian sygna³u wartoœci zadanej spróbowaæ dobraæ parametry lokalnych algorytmów PID w taki sposób, aby osi¹gn¹æ lepsz¹ jakoœæ regulacji w porównaniu z regulatorem pojedynczym.
   \item Zaimplementowaæ rozmyty algorytm DMC w najprostszej
 	wersji analitycznej, o parametrach $N_\mathrm{u}$ = $N$ = $D$ i $\lambda$ = 1 i dla powy¿szej trajektorii
 	zmian sygna³u wartoœci zadanej wykonaæ eksperymenty dla 3 regulatorów lokalnych. 
@@ -168,7 +168,7 @@ W ramach laboratorium nale¿a³o wykonaæ 6 zadañ:
 \end{enumerate}
 
 
-\begin{figure}[H]
+\begin{figure}[!ht]
 		\centering
 		\includegraphics[width=0.7\textwidth]{ ./Rysunki/Stanowisko-grzewcze-schemat.png }
 		\caption {Schemat stanowiska grzej¹co-ch³odz¹cego; zaznaczone elementy wykonawcze: wentylatory W1, W2, W3, W4, grza³ki G1, G2, czujniki temperatury T1, T2, T3, T4, T5 (temperatura
@@ -176,308 +176,360 @@ otoczenia), pomiar pr¹du P1, pomiar napiêcia P2.}
 		\label{stanowisko_grzewcze_schemat}
 \end{figure}
 
-% TODO:VV
-\iffalse
+
+
 \section{Punkt pracy stanowiska}
-W celu wyznaczenia punktu pracy stanowiska dla mocy grza³ki G1=26\% zadano tê wartoœæ dla sygna³u steruj¹cego grza³k¹. Nastêpnie poczekano, a¿ temperatura T1 ustali siê. Wynik eksperymentu przedstawiono na rys. \ref{punkt_pracy}. Odczytana wartoœæ temperatury dla termometru T1 wynios³a \num{28.12} °C.
+W celu wyznaczenia punktu pracy stanowiska dla mocy grza³ki G1=26\% zadano tê wartoœæ dla sygna³u steruj¹cego grza³k¹ za pomoc¹ polecenia sendNonlinearControls(u). Nastêpnie poczekano, a¿ temperatura T1 ustali siê. Wynik eksperymentu przedstawiono na rys. \ref{punkt_pracy}. Odczytana wartoœæ temperatury dla termometru T1 wynios³a \num{31.06} °C.
+
+\begin{figure}[!ht]
+	\centering
+	\scalebox{.85}{\input{../rysunki_tikz/punkt_pracy.tex}}
+	\caption{Ustalanie siê temperatury dla punktu pracy.}
+	\label{punkt_pracy}
+\end{figure}
 
 
 
-\section{Odpowiedzi skokowe toru zak³ócenie-wyjœcie}
-Dla stanowiska pracuj¹cego w ustalonym punkcie pracy (G1=26\%; T1=\num{28.12}°C) zadano 3~ró¿ne wartoœci skoku zak³ócenia. Eksperyment wykonano dla skoków sygna³u zawsze z wartoœci Z=0 do kolejno wartoœci: Z=10, Z=20 oraz Z=30. Wyniki przedstawiono na rys. \ref{skok_zak}. Ró¿nica w pocz¹tkowych wartoœciach temperatury T1 dla poszczególnych skoków wynika z zak³óceñ powodowanch przez zmianê temperatury w pracowni laboratoryjnej oraz nagrzewania siê stanowiska grzej¹co-ch³odz¹cego.
+\section{Wzmocnienie w funkcji sterowania}
+
+W celu wyznaczenia wzmocnienia w funkcji sterowania na stanowisku zadawano kolejne wartoœci sterowania, a nastêpnie czekano a¿ wyjœcie siê ustabilizuje. W taki sposób przeprowadzono 6 eksperymentów zadaj¹c kolejno wartoœci sterowania: 20, 30, $\cdot$, 80. Wyniki eksperymentów przedstawiono na rys. \ref{odp_skok}.
+\begin{figure}[!ht]
+	\centering
+	\scalebox{.85}{\input{../rysunki_tikz/v2_odpowiedzi_skokowe.tex}}
+	\caption{Odpowiedzi stanowiska dla kolejnych wartoœci sterowania}
+	\label{odp_skok}
+\end{figure}
+
+Na podstawie przeprowadzonych eksperymentów sporz¹dzono wykres punktowy pokazuj¹cy charakterystykê statyczn¹ procesu. Wykres ten jest przedstawiony na rys. \ref{char_stat}.
 
 
-Na podstawie wyznaczonej charakterystyki statycznej dla toru zak³ócenie-wyjœcie przedstawionej na rys. \ref{char_skok_zak} mo¿na stwierdziæ, ¿e w³aœciwoœci statyczne s¹ w~przybli¿eniu liniowe. Wzmocenienie statyczne dla tego toru procesu wyznaczono metod¹ najmniejszych kwadratów i otrzymano wartoœæ $K_{\mathrm{stat}}=0.1725$.
+\begin{figure}[!ht]
+	\centering
+	\scalebox{.85}{\input{../rysunki_tikz/charakterystyka_stat.tex}}
+	\caption{Charakterystyka statyczna procesu}
+	\label{char_stat}
+\end{figure}
 
+Jak widaæ z wykresu charakterystyka statyczna jest nieliniowa.
 
+\section{Regulatory dla obiektu liniowego}
+Wykorzystuj¹c regulatory zaimplementowane na laboratorium 1. zosta³ przeprowadzony eksperyment, którego celem by³o sprawdziæ jak regulatory przeznaczone do regulacji obiektów liniowych poradz¹ sobie z obiektem nieliniowym.
+W tym celu jako trajektoriê wartoœci zadanej przyjêto 3 skoki: z \num{31.06} do \num{36.06}, z \num{36.06} do \num{46.06} i z \num{46.06} do \num{31.06}. Nastêpnie dla danej trajektorii uruchomiono regulator PID, a nastêpnie powtórzono eksperyment dla regulatora DMC.
+Wyniki eksperymentu przedstawiono odpowiednio na rys. \ref{PID_lin} - PID liniowy i rys. \ref{DMC_lin} - DMC liniowy.
 
-\section{Odpowiedzi skokowe dla algorytmu DMC}
-W celu wyznaczenia odpowiedzi skokowej toru zak³ócenie-wyjœcie wybrano trzeci¹ odpowiedŸ skokow¹ przedstawion¹ na rys. \ref{skok_zak}, tj. skok zak³ócenia do wartoœci Z=30. Do przekszta³cenia zebranej odpowiedzi skokowej skorzystano z przekszta³cenia:
+\begin{figure}[!ht]
+	\centering
+	% \input{../rysunki_tikz/PID_lin.tex}
+	\includegraphics[scale=0.85]{../rysunki_tikz/PID_lin.pdf}
+	\caption{Regulator liniowy PID dla obiektu nieliniowego}
+	\label{PID_lin}
+\end{figure}
 
-\begin{equation}
-	S(i)= \frac{Y(i) - Y_{\mathrm{pp}}}{Z_{\mathrm{skok}} - Z_{\mathrm{pp}}}
-\end{equation}
-gdzie:
-\begin{itemize}
-  \item $S(i)$ - odpowiedŸ skokowa potrzebna do algorytmu DMC,
-	\item $Y(i)$ - odpowiedŸ skokowa przed przekszta³ceniem,
-	\item $Y_{\mathrm{pp}}$ - wartoœæ wyjœcia w chwili k=0 (tutaj $Y_{\mathrm{pp}}$  = \num{27.93}),
-	\item $Z_{\mathrm{skok}}$ - wartoœæ sterowanie w chwili k=0 i póŸniej (tutaj $Z_{\mathrm{skok}} = 30$),
-	\item $Z_{\mathrm{pp}}$ - wartoœæ sterowania przed chwil¹ k=0 (tutaj $Z_{\mathrm{pp}} = 0$)
-\end{itemize}
+\begin{figure}[!ht]
+	\centering
+	% \input{../rysunki_tikz/DMC_lin.tex}
+	\includegraphics[scale=0.85]{../rysunki_tikz/DMC_lin.pdf}
+	\caption{Regulator liniowy DMC dla obiektu nieliniowego}
+	\label{DMC_lin}
+\end{figure}
 
-Otrzymana odpowiedŸ skokowa dla toru zak³ócenie wyjœcie zosta³a przedsawiona na rys. \ref{skok_DMC_zak}. Nastêpnie dokonano aproksymacji odpowiedzi skokowej poprzez przybli¿enie u¿ywaj¹c w tym celu cz³onu inercyjnego drugiego stopnia z opóŸnieniem:
+\section{Rozmyty PID}
+W celu lepszej regulacji obiektu nieliniowego zosta³ zaimplementowany regulator rozmyty PID. W tym celu utworzono funkcje dzwonowe, które decydowa³y który regulator i w jakim stopniu ma wp³yw na wyjœcie.
+Odpalanie siê regulatorów PID zale¿a³o od aktualnej wartoœci wyjœcia obiektu. Regulator zosta³ podzielony na 3 regulatory lokalne, ka¿dy z nich zosta³ dostrojony metod¹ eksperymentaln¹, gdzie wartoœci startowe zaczerpniêto z regulatora PID z 1. laboratorium.
+Dziêki charakterystyce statycznej mo¿na by³o np. stwierdziæ ¿e regulator dla wy¿szych wartoœci wyjœcia powinien mieæ wiêkszy parametr proporcjonalny, ni¿ regulator lokalny dla mniejszych wartoœci wyjœcia, z racji ¿e wzmocnienie statyczne roœnie wolniej dla wy¿szych wartoœci wyjœcia, ni¿ dla ni¿szych.   
+Dzia³anie regulatora rozmytego przedstawiono na rys. \ref{PID_roz_lab}. Funkcje przynale¿noœci zastosowane w eksperymentach pokazano na rys. \ref{dzwon_lab}.
 
-\begin{equation}
-	G(s)= \frac{K}{(sT_1 + 1)(sT_2 + 1)}e^{-T_{\mathrm{d}}s}
-\end{equation}
+\begin{figure}[!ht]
+	\centering
+	% \input{../rysunki_tikz/PID_roz.tex}
+	\includegraphics[scale=0.85]{../rysunki_tikz/PID_roz.pdf}
+	\caption{Regulator rozmyty PID}
+	\label{PID_roz_lab}
+\end{figure}
 
-Po dyskretyzacji danej transmitancji otrzymujemy:
-\begin{equation}
-	G(z)= \frac{b_1z^{-1} + b_2z^{-2}}{1 + a_1z^{-1} + a_2z^{-2}}z^{-T_{\mathrm{d}}}
-\end{equation}
+\section{Rozmyty DMC}
+Równie¿ dla regulatora DMC skorzystano z 3 regulatorów lokalnych, tak¿e sterowanych wartoœciami wyjœcia obiektu. Dla regulatorów lokalnych wybrano odpowiednio odpowiedŸ skokow¹ dla sterowañ z 20 do 30, z 40 do 50 i z 60 do 70.
+Dla tak przygotowanych regulatorów wybrano najprostsze parametry $D = N = N_\mathrm{u} = 320$ i $\lambda = 1$. Nastêpnie rozmyty regulator DMC zosta³ przetestowany dla tej samej trajektoria co w sekcji 5. 
+Wyniki eksperymentu przedstawiono na rys. \ref{DMC_roz_lab}. Funkcje przynale¿noœci zastosowane w eksperymentach pokazano na rys. \ref{dzwon_lab}.
 
-gdzie:
-\begin{equation}
-\begin{split}
-	& a_1 = -\alpha_1 - \alpha_2 \\
-	& a_2 = \alpha_1\alpha_2 \\
-	& \alpha_1 = e^{-\frac{1}{T_1}} \\
-	& \alpha_2 = e^{-\frac{1}{T_2}} \\
-	& b_1 = \frac{K}{T_1 - T_2}[T_1(1-\alpha_1) - T_2(1-\alpha_2)] \\
-	& b_2 = \frac{K}{T_1 - T_2}[\alpha_1T_2(1-\alpha_2) - \alpha_2T_1(1-\alpha_1)]
-\end{split}
-\end{equation}
+\begin{figure}[!ht]
+	\centering
+	% \input{../rysunki_tikz/DMC_roz.tex}
+	\includegraphics[scale=0.85]{../rysunki_tikz/DMC_roz.pdf}
+	\caption{Regulator rozmyty DMC}
+	\label{DMC_roz_lab}
+\end{figure}
 
-Dla otrzymanej w~ten sposób transmitancji w~postaci dyskretnej napisano funkcjê , która przyjmowa³a parametry $T_{\mathrm{1}}$, $T_{\mathrm{2}}$ oraz $K$. Wartoœæ parametru \\$T_{\mathrm{d}}=12$ odczytano z odpowiedzi skokwej, poniewa¿ jest to opóŸnienie. Funkcja ta zwraca sumaryczny b³¹d kwadratowy pomiêdzy aproksymacj¹ otrzyman¹ dla zadanych parametrów a eksperymentalnie wyznaczon¹ odpowiedzi¹ skokow¹ dla toru zak³ócenie-wyjœcie. Implementacja funkcji:
+\begin{figure}[!ht]
+	\centering
+	\scalebox{.85}{\input{../rysunki_tikz/funkcje_dzwonowe.tex}}
+	\caption{Funkcje dzwonowe wzglêdem których odbywa³o siê rozmywanie regulatorów lokalnych}
+	\label{dzwon_lab}
+\end{figure}
 
+\section{Dobór parametrów $\lambda$}
+Parametry $\lambda$ regulatorów lokalnych zosta³y dobrane eksperymentalnie. Najlepszy nastaw zosta³ przedstawiony na rys. \ref{DMC_roz_lambda}.
+Jak widaæ z wykresów zarówno dla regulatora PID jak i DMC oddzielne strojenie ka¿dego z regulatorów lokalnych, pomimo ¿e czasoch³onne, pozwoli³o uzyskaæ lepsz¹ regulacje ni¿ w przypadku takich samych nastawów.
+Taki wynik eksperymentu jest intuicyjny, gdy¿ regulator z takimi samymi parametrami regulatorów lokalnych zachowuje siê tak samo jak pojedynczy regulator liniowy. Szczególnie znacz¹ce okaza³a siê zmiana wartoœci $\lambda$ dla regulatora DMC. Pozwoli³o to regulatorom lokalnym na swobodniejszy dobór sterowania, co skutkowa³o lepsz¹ regulacj¹.
 
-Do wyznaczenia wspó³czynników transmitancji u¿yto funkcji \verb+ga+ dostêpnej w programie MATLAB, która wykorzystuje algorytm generyczny do wyznaczenia minimum funkcji. Dla naszej funkcji jest to równowa¿ne ze znalezieniem najlepiej dopasowanej aproksymacji odpowiedzi skokowej toru zak³ócenie-wyjœcie.
-Paramerty zwi¹zane z algorytmem generycznym to kolejno:
-
-\begin{equation}
-	\begin{split}
-		& StallGenLimit = 200 \\
-		& PopulationSize = 400 \\
-		& FunctionTolerance = $1e^{-8}$ \\
-	\end{split}
-\end{equation}
-
-gdzie:
-
-\begin{itemize}
-	\item $StallGenLimit$ oznacza maksymaln¹ iloœæ iteracji algorytmu, dla których wartoœæ ró¿nicy miêdzy wartoœciami wyniku funkcji optymalizowanej jest mniejsza ni¿ $FunctionTolerance$.
-	\item $PopulationSize$ oznacza iloœæ ziaren dla algorytmu generytecznego w ka¿dej iteracji.
-	\item $FunctionTolerance$ oznacza wartoœæ wskaŸnika toleracji, który determinuje dla jakiej dok³adonoœci algorytm uznaje, ¿e otrzymany wynik jest ostateczy.
-\end{itemize}
-
-Wybrane wartoœci powy¿szych parametrów pozwalaj¹ na aproksymacjê z ma³ym b³êdem, co sprawdzono poprzez kilkukrotne wywo³anie algorytmu i dostrojenie eksperymentalne parametrów. Implementacja optymalizacji:
-
-
-Poniewa¿ do  minimalizacji funkcji u¿yto algorytmu generycznego to wyniki podczas kolejnych odtworzeñ mog¹ siê ró¿nic. Jednak po wykonaniu testów, dla których b³¹d aproksymacji by³ bardzo zbli¿ony przyjêto wartoœci parametrów:
-
-\begin{equation}
-	\begin{split}
-		& K = 0.1772938\\
-		& T_1 = 88.311400 \\
-		& T_2 = 0.010351 \\
-		& T_{\mathrm{d}} = 12 \\
-	\end{split}
-\end{equation}
-
-Otrzyman¹ aproksymowan¹ odpowiedŸ skokow¹ dla toru zak³ócenie-wyjœcie dla algorytmu regulacji DMC przedstawiono na rys. \ref{skok_DMC_zak_apro}. OdpowiedŸ skokowa toru wejœcie-wyjœcie dla algorytmu DMC zosta³a zaczerpniêta z laboratorium nr 1, przedstawiono j¹ na rys. \ref{skok_DMC}. Analogicznie jak dla odpowiedzi skokowej toru zak³ócenie-wyjœcie wykonano dla niej aproksymacje przedstawion¹ na rys. \ref{skok_DMC_apro}.
-
-
-
-
-\section{Algorytm DMC z pomiarem zak³óceñ}
-Do sterowania procesem zaimplementowano algorytm DMC z pomiarem zak³óceñ w jêzyku MATLAB.
+\section{Podsumowani}
 
 
 
-
-\section{Dobór parametrów dla algorytmu DMC}
-W celu doboru parametrów algorytmu DMC zadawano skokow¹ wartoœæ sygna³u temperatury zadanej z punktu pracy G1=26, T1=\num{28.12}°C do temperatury zadanej \num{35}°C. Eksperymenty dla wybranych parametrów przedstawiono na rys. \ref{dobor_param_DMC1} i \ref{dobor_param_DMC2}. Mo¿na zauwa¿yæ, ¿e parametry s¹ dobrane znacznie lepiej dla ekperymentu drugiego (rys. \ref{dobor_param_DMC2}). Iloœciowa jakoœæ regulacji jest znacz¹co lepsza, b³¹d jest prawie 2-krotnie mniejszy. Porównuj¹c jakoœciowo regulacjê zauwa¿alne jest znacznie mniejsze przesterowanie od wartoœci zadanej temperatury. W porównaniu do pierwszego eksperymentu dla drugiego praktycznie niezauwa¿alne s¹ oscylacjie sygna³u wyjœciowego. W dalszej czêœci laboratorium przyjêto w³aœnie te parametry algorytmu DMC: $D=300$, $N=50$, $N_{\mathrm{u}}=10$, $\lambda=1$. 
-
-
-
-\section{Regulacja procesu bez pomiaru zak³ócenia}
-Do regulacji przyjêto parametr $D_{\mathrm{z}}=500$, poniewa¿ dla tej iloœci iteracji ustala³a siê odpowiedŸ skokowa toru zak³ócenie-wyjœcie. Regulacjê z wykorzystaniem algorytmu DMC bez pomiaru zak³ócenia przedstawiono na rys. \ref{bez_kom_1}. Na wykresie wartoœci wyjœciowej procesu mo¿na zauwa¿yæ znacz¹ce odchylenia od wartoœci zadanej w momentach skoków zak³ócenia, tj. 300[s] oraz 700[s].
-
-
-
-\section{Regulacja procesu z pomiarem zak³ócenia}
-
-Regulacjê z wykorzystaniem algorytmu DMC z eksperymentalnie wyznaczon¹ odpowiedzi¹ skokow¹ toru zak³ócenie-wyjœcie z pomiarem zak³ócenia przedstawiono na rys. \ref{kom_s_eksp}. Mo¿na zauwa¿yæ znacz¹c¹ poprawê jakoœci regulacji wzglêdem regulacji bez pomiaru zak³ócenia. Widoczna jest poprawa wskaŸnika jakoœci regulacji oraz zauwa¿alnie mniejsze odchylenia od wartoœci zadanej podczas wystêpowania skoków zak³óceñ.
-
-
-
-W celu eksperymentalnym wykonano regulacjê z wykorzystaniem algorytmu DMC z aproksymowan¹ odpowiedzi¹ skokow¹ toru zak³ócenie-wyjœcie z pomiarem zak³ócenia. Wyniki przedstawione s¹ na rys. \ref{kom_s_apro}. Jakoœæ regulacji jest porównywalna do otrzymanej z wykorzystaniem eksperyentalnie uzyskanej odpowiedzi skokowej toru zak³ócenie-wyjœcie. Zarówno jakoœciowa jak i iloœciowa analiza tych regulacji nie pozwala jednoznacznie stwierdziæ, który wybór odpowiedzi skokowej jest lepszy. Niewielkie ró¿nice w jakoœci regulacji mog¹ wynikaæ z innych niemierzonych zak³óceñ, takich jak przep³yw powietrza w pracowni laboratoryjnej.
-
-
-
+\begin{figure}[!ht]
+	\centering
+	% \input{../rysunki_tikz/DMC_roz_zmianaL.tex}
+	\includegraphics[scale=0.85]{../rysunki_tikz/DMC_roz_zmianaL.pdf}
+	\caption{Regulator rozmyty DMC, $\lambda = [1; \num{0.9}; \num{0.6}]$}
+	\label{DMC_roz_lambda}
+\end{figure}
 
 \chapter{Projekt}
 \section{Informacje wstêpne}
 
 Zadanie projektowe wykorzystywa³o symulowany obiekt regulacji. Wyjœcie obiektu mo¿na wyznaczyæ przy pomocy polecenia:
+$$y(k)=symulacja\_obiektu\_1y\_p3(u(k-5),u(k-6),y(k-1),y(k-2))$$
 
-$y(k)=symulacja\_obiektu1y\_p2(u(k-6),u(k-7),z(k-2),z(k-3),y(k-1),y(k-2))$
-
-Wartoœci sygna³ów wejœcia, wyjœcia i zak³ócenia procesu w punkcie pracy wynosz¹ $u = y = z = 0$; okres próbkowania wynosi \num{0,5} sekundy.
-
+Wartoœci sygna³ów wejœcia i wyjœcia procesu w punkcie pracy wynosz¹ $u = y = 0$; okres próbkowania wynosi \num{0,5} sekundy.
 
 \section{Sprawdzenie poprawnoœci punktu pracy}
 
-W celu sprawdzenia poprawnoœci punktu pracy zosta³a przeprowadzona symulacja, gdzie na wejœcie podano sterowanie $u = 0$, jako poprzednie wartoœci wyjœcia podano $y = 0$, wartoœæ zak³ócenia podano $z = 0$ i sprawdzono wartoœæ wyjœcia procesu w nastêpnych chwilach. Wyniki symulacji przedstawstawiono na rys. \ref{punkt_pracy}. Wartoœæ sygna³u wyjœciowego pozosta³a bez zmian, co potwierdza poprawnoœæ podanego punktu pracy.
+W celu sprawdzenia poprawnoœci punktu pracy zosta³a przeprowadzona symulacja, gdzie na wejœcie podano sterowanie $u = 0$, jako poprzednie wartoœci wyjœcia podano $y = 0$ i sprawdzono wartoœæ wyjœcia procesu w nastêpnych chwilach. Wyniki symulacji przedstawiono na rys. \ref{punkt_pracy_projekt}. Wartoœæ sygna³u wyjœciowego pozosta³a bez zmian, co potwierdza poprawnoœæ podanego punktu pracy.
 
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad1_punkt_pracy.pdf}
+	\caption{Sprawdzanie poprawnoœci punktu pracy}
+	\label{punkt_pracy_projekt}
+\end{figure}
 
+\section{Odpowiedzi skokowe procesu}
 
-\section{Odpowiedzi skokowe toru wejœcie-wyjœcie}
 Wyznaczone zosta³y odpowiedzi skokowe dla kilku skoków wartoœci sygna³u steruj¹cego, gdzie wartoœæ pocz¹tkowa sterowania wynosi³a u=0. Wyniki symulacji przedstawiono na rys. \ref{odp_skok_wej}.
 
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad2_1_odpowiedzi_skokowe.pdf}
+	\caption{Odpowiedzi skokowe procesu}
+	\label{odp_skok_wej}
+\end{figure}
+
+Na podstawie odpowiedzi skokowych wyznaczono charakterystykê statyczn¹ procesu. Charakterystyka jest widoczna na rys. \ref{charakterystyka_stat}. Z wykresu mo¿emy ³atwo stwierdziæ, ¿e charakterystyka statyczna tego procesu nie jest liniowa.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad2_2_charakterystyka_statyczna.pdf}
+	\caption{Charakterystyka statyczna procesu}
+	\label{charakterystyka_stat}
+\end{figure}
+
+\section{Regulatory cyfrowe}
+W celu regulacji danego procesu zosta³y zaimplementowany prosty cyfrowy regulator PID oraz analityczny regulator DMC.
+
+Regulator PID:
+\lstinputlisting{../../Projekt3/programy_Matlab/PID.m}
+Dla podanego regulatora dobrano nastawy w sposób eksperymentalny. W pierwszej kolejnoœci skorzystano z metody Zieglera-Nicholsa, do wyznaczenia pocz¹tkowego wartoœci parametrów. Matoda Zieglera-Nicholsa zosta³a przedstawiona na rys. \ref{ZN}.
+Nastêpnie wartoœci parametrów w niewielkim stopniu modyfikowano i testowano dla tej samej trajektorii wartoœci zadanej.
+Eksperymenty wykonywane podczas dobierania parametrów regulatora PID przedstawiono na rys. \ref{PID_nastawy_1}, rys. \ref{PID_nastawy_2}, rys. \ref{PID_nastawy_3} i rys. \ref{PID_nastawy_4}.
+Przebieg regulatora PID z ostatecznymi nastawami zosta³ przedstawiony na rys. \ref{PID_normalny}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad4_1_PID_oscylacje_ZN.pdf}
+	\caption{Metoda Zieglera-Nicholsa, $K_\mathrm{kryt} = \num{0.24}, T_\mathrm{kryt} = \num{8.8}$ }
+	\label{ZN}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad4_2_dobor_nast_PID_test1.pdf}
+	\caption{Regulator PID,$K =\num{0.144} , T_\mathrm{i} = \num{4.4} , T_\mathrm{d} = \num{1.056}$  }
+	\label{PID_nastawy_1}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad4_2_dobor_nast_PID_test2.pdf}
+	\caption{Regulator PID, $K =\num{0.1} , T_\mathrm{i} = \num{4.4} , T_\mathrm{d} = \num{1.056}$ }
+	\label{PID_nastawy_2}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad4_2_dobor_nast_PID_test3.pdf}
+	\caption{Regulator PID, $K =\num{0.1} , T_\mathrm{i} = \num{3.4} , T_\mathrm{d} = \num{1.056}$ }
+	\label{PID_nastawy_3}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad4_2_dobor_nast_PID_test4.pdf}
+	\caption{Regulator PID, $K =\num{0.1} , T_\mathrm{i} = \num{3.4} , T_\mathrm{d} = \num{0.7}$ }
+	\label{PID_nastawy_4}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad4_3_test_PID_normal.pdf}
+	\caption{Trajektoria docelowa, regulator PID, $K =\num{0.1} , T_\mathrm{i} = \num{3.4} , T_\mathrm{d} = \num{0.7}$ }
+	\label{PID_normalny}
+\end{figure}
+
+Regulator DMC:
+\lstinputlisting{../../Projekt3/programy_Matlab/DMC.m}
+Równie¿ dla regulatora DMC wartoœci parametrów by³y dobierane w sposób eksperymentalny. Wartoœci parametrów by³y modyfikowane i porównywane w celu znalezienia najlepszego nastawu.
+Eksperymenty wykonywane podczas dobierania parametrów regulatora DMC przedstawiono na rys. \ref{DMC_nastawy_1} - rys. \ref{DMC_nastawy_6}.
+Ostateczny sposób dzia³ania regulatora DMC przedstawiono na rys. \ref{DMC_normalny}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad4_5_dobor_nast_test1.pdf}
+	\caption{Regulator DMC, $N = 7 , N_\mathrm{u} = 1, \lambda = 1$ }
+	\label{DMC_nastawy_1}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad4_5_dobor_nast_test2.pdf}
+	\caption{Regulator DMC, $N = 10 , N_\mathrm{u} = 1, \lambda = 1$ }
+	\label{DMC_nastawy_2}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad4_5_dobor_nast_test3.pdf}
+	\caption{Regulator DMC, $N = 20 , N_\mathrm{u} = 1, \lambda = 1$ }
+	\label{DMC_nastawy_3}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad4_5_dobor_nast_test4.pdf}
+	\caption{Regulator DMC, $N = 40 , N_\mathrm{u} = 1, \lambda = 1$ }
+	\label{DMC_nastawy_4}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad4_5_dobor_nast_test5.pdf}
+	\caption{Regulator DMC, $N = 20 , N_\mathrm{u} = 5, \lambda = 1$ }
+	\label{DMC_nastawy_5}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/Zad4_5_dobor_nast_test6.pdf}
+	\caption{Regulator DMC, $N = 20 , N_\mathrm{u} = 20, \lambda = 50$ }
+	\label{DMC_nastawy_6}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/v2_Zad4_6_test_normal_DMC.pdf}
+	\caption{Trajektoria docelowa, regulator DMC, $N = 20 , N_\mathrm{u} = 20, \lambda = 50$ }
+	\label{DMC_normalny}
+\end{figure}
+
+Pomimo ¿e obiekt jest nieliniowy regulatory z laboratorium 1. dobrze sobie radz¹ z zadaniem regulacji.
+Wynika to z tego, ¿e znacz¹ca czêœæ charakterystyki statycznej jest liniowa. Jedynie dla wartoœci wyjœcia $Y \in (-\num{0.3}; 1)$ obiekt jest zdecydowanie nieliniowy.
+Z tego powodu regulacja dla wartoœci zadanych $Y_\mathrm{zad} \in (1 ;\num{11.84})$ przebiega bardzo dobrze. Ze wzglêdu na w¹ski przedzia³, który znacz¹co ró¿ni siê zachowaniem wzmocnieniem od reszty procesu, jego wp³yw na sumaryczny b³¹d kwadratowy (wskaŸnik jakoœci) jest niewielki.
+Na rys. \ref{PID_normalny} i rys. \ref{DMC_normalny} mo¿emy zauwa¿yæ, ¿e dla wartoœci zadanej $Y_\mathrm{zad} = -\num{0.31}$ oba regulatory bardzo s³abo sobie radz¹ z wysterowaniem obiektu do wartoœci zadanej.
+
+\section{Regulatory rozmyte}
+
+Regulator rozmyty PID:
+\lstinputlisting{../../Projekt3/programy_Matlab/PID_fuzzy.m}
+
+Regulator rozmyty DMC:
+\lstinputlisting{../../Projekt3/programy_Matlab/DMC_fuzzy.m}
+
+Jako zmienn¹, na podstawie której dokonywane jest rozmywanie wybrano wyjœcie procesu "Y".
+Zmienna ta zosta³a wybrana na podstawie otrzymanej charakterystyki statycznej. Wynika to z tego, ¿e jest ona dobr¹ reprezentacj¹ w jakim stanie obecnie znajduje siê symulowany obiekt
+(w jakim punkcie pracuje). Zmienna sterowania w przeciwieñstwie do zmiennej wyjœciowej
+waha siê znacz¹co niezale¿nie od obecnego wyjœcia dla skoków wartoœci zadanej. 
+
+Jako rodzaj funkcji przynale¿noœci wybrano funkcje dzwonowe, poniewa¿ w ³atwy sposób
+mo¿na dostosowywaæ jej kszta³t do potrzeb rozmywania. Wa¿nym atutem funkcji dzwonowej jest fakt, ¿e kilka regulatorów mo¿e  dzia³aæ jednoczeœnie i wp³ywaæ w pewnym stopniu na wartoœæ sterowania.
+Jest to rozwi¹zanie lepsze od przyk³adu w którym ka¿dy regulator lokalny dzia³a niezale¿nie od innych, tylko dla swojego przedzia³u pracy. 
+Kszta³t funkcji przynale¿noœci jest uzale¿niony od otrzymanej charakterystyki statycznej.
+Poniewa¿ dla zmiennej wyjœciowej nieliniowoœæ procesu jest silna dla wartoœci w w¹skim przedziale $(-\num{0.31}; 1)$,
+zaœ proces jest stosunkowo liniowy dla wartoœci w szerokim przedziale $(1 ;\num{11.84})$ to dobierano funkcje przynale¿noœci,
+tak aby zawiera³y one w przybli¿eniu liniowe fragmenty charakterystyki. Dziêki takiemu zabiegowi ju¿ dla
+niewielkiej iloœci regulatorów lokalnych mo¿na by³o uzyskaæ zadowalaj¹ce wyniki regulacji. Przyk³adow¹ funkcje przynale¿noœci pokazano na rys.\ref{funkcja}.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/v2_Zad5_fun_przynal_num5.pdf}
+	\caption{Funkcja przynale¿noœci dla 5 regulatorów lokalnych.}
+	\label{funkcja}
+\end{figure}
 
 
+\section{Liczba regulatorów lokalnych}
+Nastawy regulatorów lokalnych wybrano metod¹ eksperymentaln¹, w taki sposób aby uzyskaæ jak najlepsz¹ jakoœæ regulacji wokó³ punktu pracy danego regulatora. Na rys. \ref{PID_rozmyty_2} - rys. \ref{PID_rozmyty_5} pokazano jak dzia³a rozmyty regulator PID w zale¿noœci od liczby regulatorów lokalnych (od 2 do 5).
+Na rys. \ref{DMC_rozmyty_2} - rys. \ref{DMC_rozmyty_5}, pokazano natomiast dzia³anie rozmytego regulatora DMC w zale¿noœci od liczby lokalnych regulatorów (od 2 do 5). Z racji, ¿e $\lambda$ dla najlepszego nastawu regulatora liniowego DMC wynosi³a 50, to ka¿dy regulator lokalny domyœlnie startowa³ z tak¹ wartoœci¹ $\lambda$.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/v2_Zad5_test_PID_num_2.pdf}
+	\caption{Rozmyty regulator PID z 2 regulatorami lokalnymi}
+	\label{PID_rozmyty_2}
+\end{figure}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/v2_Zad5_test_PID_num_3.pdf}
+	\caption{Rozmyty regulator PID z 3 regulatorami lokalnymi}
+	\label{PID_rozmyty_3}
+\end{figure}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/v2_Zad5_test_PID_num_4.pdf}
+	\caption{Rozmyty regulator PID z 4 regulatorami lokalnymi}
+	\label{PID_rozmyty_4}
+\end{figure}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/v2_Zad5_test_PID_num_5.pdf}
+	\caption{Rozmyty regulator PID z 5 regulatorami lokalnymi}
+	\label{PID_rozmyty_5}
+\end{figure}
 
 
-\section{Odpowiedzi skokowe toru zak³ócenie-wyjœcie}
-Wyznaczone zosta³y odpowiedzi skokowe dla kilku skoków zak³ócenia mierzonego, gdzie wartoœæ pocz¹tkowa zak³ócenia wynosi³a z=0. Wyniki symulacji przedstawiono na rys. \ref{odp_skok_zak}.
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/v2_Zad5_test_DMC_num_2_lambda50.pdf}
+	\caption{Rozmyty regulator DMC z 2 regulatorami lokalnymi}
+	\label{DMC_rozmyty_2}
+\end{figure}
 
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/v2_Zad5_test_DMC_num_3_lambda50.pdf}
+	\caption{Rozmyty regulator DMC z 3 regulatorami lokalnymi}
+	\label{DMC_rozmyty_3}
+\end{figure}
 
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/v2_Zad5_test_DMC_num_4_lambda50.pdf}
+	\caption{Rozmyty regulator DMC z 4 regulatorami lokalnymi}
+	\label{DMC_rozmyty_4}
+\end{figure}
 
-\section{Charakterystyki statyczne torów procesu}
-Na podstawie odpowiedzi skokowych wyznaczono charakterystyki statyczne dla toru\\ wejœcie-wyjœcie (rys. \ref{char_stat_wej}) oraz toru zak³ócenie-wyjœcie (rys. \ref{char_stat_zak}) korzystaj¹c z ustalonych wartoœci wyjœcia dla zadawanych sygna³ów, odpowiednio wejœcia i zak³ócenia. Z wykresów widaæ, ¿e w³aœciwoœci procesu s¹ w przybli¿eniu liniowe. Metod¹ najmniejszych kwadratów wyznaczono wzmocnienia statyczne tych procesów. Dla toru wejœcie-wyjœcie otrzymano $K_{\mathrm{stat}}=2.2957}$, zaœ dla toru zak³ócenie-wyjœcie otrzymano $K_{\mathrm{stat}}=1.4973}$.
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[scale=0.85]{../../Projekt3/rysunki_pdf/v2_Zad5_test_DMC_num_5_lambda50.pdf}
+	\caption{Rozmyty regulator DMC z 5 regulatorami lokalnymi}
+	\label{DMC_rozmyty_5}
+\end{figure}
 
+\section{Dobór parametrów $\lambda$ regulatorów lokalnych}
+Wykonuj¹c eksperymenty dla ró¿nych wartoœci $\lambda$ mo¿na by³o wywnioskowaæ, ¿e jakoœæ regulacji nie zmienia siê w znacz¹cy sposób, 
+dlatego pozostano przy wartoœci wyznaczonej dla regulatora liniowego $\lambda = 50$.
 
-
-
-
-
-
-\section{Wyznaczenie odpowiedzi skokowych wykorzystywanych w algorytmie DMC}
-
-W celu wyznaczenia odpowiedzi skokowej dla algorytmu DMC toru wejœcie-wyjœcie dla symulowanego procesu wykonano skok wartoœci sterowania od 0 do 1 w chwili k=0. OdpowiedŸ skokowa dla tego toru znajduje siê na rys. \ref{skok_DMC_ster}.
-
-W celu wyznaczenia odpowiedzi skokowej dla algorytmu DMC toru zak³ócenie-wyjœcie dla symulowanego procesu wykonano skok wartoœci zak³ócenia od 0 do 1 w chwili k=0. OdpowiedŸ skokowa dla tego toru znajduje siê na rys. \ref{skok_DMC_zak}.
-
-
-
-\section{Implementacja algorytmu regulacji DMC dla procesu symulowanego}
-
-\begin{lstlisting}[style=customlatex,frame=single,]
-% maierz S i Sz tworzone sa plikach skokDMCSterowanie.m i skokDMCZaklocenie.m
-load S
-load Sz
-
-% Punkt pracy
-Upp = 0;
-Ypp = 0;
-Zpp = 0;
-
-% Czas symulacji
-time = 400;
-
-Yzad(time,1) = 0;
-Yzad(1:50) = Ypp;
-Yzad(51:time) = 1;
-
-% Parametry
-N = 20; Nu = 20; lambda = 0.1;     
-
-U(1:time) = Upp;
-Y(1:time) = Ypp;
-Z(1:time) = Zpp; 
-
-Noise(1:time) = wgn(1,time,0.01)*0.05;
-
-e(1:time) = 0;
-
-% ----------------------------ALGORYTM DMC--------------------------
-% Obliczenia offline
-S = [S; zeros(N,1)];
-for i = D+1:D+N
-    S(i) = S(D);
-end
-        
-M = zeros(N, Nu);
-for i = 1:Nu
-    M(i:N,i)=S(1:N-i+1);
-end
-       
-Mp = zeros(N, D-1);
-for i = 1:(D-1)
-    Mp(1:N,i) = S(i+1:N+i) - S(i);
-end
-
-Sz = [Sz; zeros(N,1)];
-for i = Dz+1:Dz+N
-    Sz(i) = Sz(Dz);
-end
-
-Mpz = zeros(N, Dz);
-for i = 1:(Dz)
-    Mpz(1:N,i) = Sz(i+1:N+i) - Sz(i);
-end
-
-I = eye(Nu);
-K = ((M'*M + lambda*I)^(-1))*M';
-
-% inicjalizacja
-dUP = zeros(D-1,1);
-dZP = zeros(Dz, 1);
-Y0 = zeros(N,1);
-dU = zeros(Nu,1);
-Yzad_DMC = zeros(N,1);
-Y_DMC = zeros(N,1);
-
-u = U - Upp;
-yzad = Yzad - Ypp;
-
-y(1:time) = 0;
-u(1:time) = 0;
-
-% liczone online
-
-for k = 8:time
-    Y(k) =  symulacja_obiektu1y_p2(U(k-6),U(k-7),Z(k-2),Z(k-3),Y(k-1),Y(k-2));
-    y(k) = Y(k) - Ypp;
-    e(k) = (yzad(k) - y(k))^2;
-    
-    Yzad_DMC = yzad(k)*ones(N,1);
-    Y_DMC = y(k)*ones(N,1);
-    
-    dZP(2:Dz) = dZP(1:Dz-1);
-    dZP(1) = Z(k) - Z(k-1) + Noise(k);
-    Y0 = Y_DMC + Mp*dUP + Mpz*dZP;
-    dU = K*(Yzad_DMC - Y0);
-    du = dU(1);
-        
-    for n=D-1:-1:2
-      dUP(n,1) = dUP(n-1,1);
-    end
-    dUP(1) = du;
-   
-    u(k) = u(k-1) + du;
-    
-    U(k) = u(k) + Upp;
-end
-
-E = 0;
-for k = 8:time
-    E = E + e(k);
-end
-\end{lstlisting}
-
-\section{Dobór parametrów algorytmu DMC}
-Dobór parametrów dla regulatora DMC odbywa³ siê w nastêpuj¹cy sposób. W pierwszej kolejnoœci zosta³y wybrane du¿e wartoœci parametrów $N$ i $N_{\mathrm{u}}$, natomiast dla parametru $\lambda$ przyjêto standardowo wartoœæ 1. Nastêpnie parametry by³y najczêœciej zmniejszane, ale równie¿ modyfikowane wed³ug intuicji in¿ynierskiej. Patrz¹c na wyniki symulacji mo¿na by³o wybraæ najlepszy nastaw. Z przeprowadzonych eksperymentów wynika, ¿e dla parametrów: $N=20, N_{\mathrm{u}}=20, \lambda=0.1$ wyniki regulacji s¹ najlepsze. Dla mniejszych wartoœci horyzontu predykcji i sterowania wyniki znacz¹co siê pogarszaj¹, natomiast dla wiêkszych nie jest zauwa¿alna znacz¹ca zmiana. Wybrane eksperymenty zosta³y pokazane na rys. \ref{dobor_param6}, \ref{dobor_param5}, \ref{dobor_param4}, \ref{dobor_param3}, \ref{dobor_param2}, \ref{dobor_param1}.
-
-
-
-
-
-
-
-
-\section{Porównanie regulacji DMC z pomiarem zak³ócenia oraz bez pomiaru}
-
-Aby sprawdziæ poprawnoœæ kompensacji zak³óceñ zosta³ przeprowadzony eksperyment ze skokiem wartoœci zadanej, po której nastêpi³ skok wartoœci zak³ócenia (po uprzednim ustaleniu siê wartoœci zadanej). Eksperyment zosta³ przeprowadzony dla zwyk³ego DMC oraz dla DMC wraz z kompensacj¹ zak³óceñ. Z wykresów (\ref{pom_zak}, \ref{bez_pom_zak})  mo¿na ³atwo wyczytaæ, ¿e DMC z kompensacj¹ zak³óceñ radzi sobie lepiej dla takiego sygna³u zak³óceñ. Jest to g³ównie spowodowane szybkoœci¹ z jak¹ DMC reaguje na zmianê wartoœci zak³ócenia. Algorytm z kompensacj¹ reaguje w tej samej iteracji, w której nast¹pi³a zmiana zak³ócenia, przez co proces szybciej powraca do wartoœci zadanej. Z koleji algorytm DMC w najprostrzej wersji analitycznej musi poczekaæ, a¿ zak³ócenie to przepropaguje siê na wartoœæ wyjœciow¹ sygna³u, poniewa¿ dopiero wtedy jest w stanie "zauwa¿yæ" zmianê zak³ócenia i na ni¹ zareagowaæ. 
-
-
-
-
-
-
-
-\section{Dzia³anie algorytmu DMC przy zak³óceniach sinusoidalnych}
-Mo¿na zauwa¿yæ, ¿e stosowanie kompensacji zak³óceñ w przypadku zak³óceñ okresowych o du¿ej czêstotliwoœci pogarsza regulacjê w znacznym stopniu. Jest to spowodowane tym, ¿e regulator z kompensacj¹ nie potrafi reagowaæ wystarczaj¹co szybko, przez co regulator nadawa³ wy¿sze sterowanie, pomimo ¿e sygna³ zak³ócenia przesta³ ju¿ opadaæ i zaczyna³ siê podnosiæ. Dla zak³óceñ tego rodzaju, na obiektach z wiêksz¹ inercj¹ toru wejœcie-wyjœcie ni¿ zak³ócenie-wyjœcie, stosowanie regulatorów bez kompensacji zak³óceñ okazujê siê lepszym rozi¹zaniem. Uk³ad jest wtedy bardziej bezw³adny, dziêki czemu nie nastêpuje wzmocnienie zak³ócenia wywo³ane wyliczeniem sterowania z przed chwili. 
-
-
-
-\section{Badanie odpornoœci algorytmu DMC na szum pomiarowy sygna³u zak³ócenia}
-Eksperymenty przeprowadzone dla ró¿nych wartoœci b³êdu pomiaru zak³óceñ pokazuj¹ jasno, ¿e regulator jest odpory na szumy pomiarowe, o ile warotœci szumu s¹ w granicach rozs¹dku. Wartoœci szumów nie przekracza³y 10\% wartoœci $Y_{\mathrm{zad}}$, dziêki czemu wyjœcie procesu nie odbiega³o w znacz¹cym stopniu od wartoœci zadanej. Patrz¹c na eksperymenty nasuwa siê jeszcze dodatowy wniosek zwiazany z szybkoœci¹ zmian szumu. Na rys. \ref{szum3} widaæ, ¿e regulator nie jest w stanie nad¹¿yæ sterowaniem za sygna³em szumu, przez co mo¿na zauwa¿yæ, ¿ê wartoœæ b³êdu jest wy¿sza, ni¿ dla innych eksperymentów.
-
-
-\fi
 
 \end{document}
 

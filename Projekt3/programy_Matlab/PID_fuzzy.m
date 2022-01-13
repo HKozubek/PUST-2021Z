@@ -1,23 +1,24 @@
-function U = PID_fuzzy(e, num, u, K, Ti, Td, Tp, Umin, Umax)
-% PID controller in fuzzy version
-%   U = PID_fuzzy(e, num, K, Ti, Td, Tp, Umin, Umax) gives control signal
-%   for fuzzy PID controller. It uses process output (y) as selection
-%   variable. It uses bell function as membership function (gbellmf).
+function U = PID_fuzzy(e, num, y, K, Ti, Td, Tp, Umin, Umax)
+% PID (Proportional Integral Derivative) controller in fuzzy version
+%   U = PID_fuzzy(e, num, y, K, Ti, Td, Tp, Umin, Umax) 
+%               gives control signal for fuzzy PID controller.
+%               It uses process output(y) as selection variable.
+%               It uses bell function as membership function (gbellmf).
 %   
 %   Arguments:
 %   e - error value (e = y_zad - y);
-%   num - number of local linaer PID controllers (2, 3, 4,...)
-%   u - value of process input
+%   num - number of local linaer PID controllers (2, 3, 4,...);
+%   y - value of process output;
 %   K [num, 1] - gain factor;
 %   Ti [num, 1] - integration time constant (Ti ~= 0);
 %   Td [num, 1] - differentiation time constant;
 %   Tp - sampling period (Tp > 0);
 %   Umin - lower limit of U;
-%   Umax - upper limit of U;
+%   Umax - upper limit of U.
 %
 %   Warning!
-%   Upop is value of last iteration controll signal
-%   in init it should have value of current work point
+%   Upop is value of last iteration controll signal.
+%   In init it should have value of current operating point.
 %
 % See also PID, DMC_fuzzy, DMC, gbellmf.
 
@@ -47,33 +48,31 @@ function U = PID_fuzzy(e, num, u, K, Ti, Td, Tp, Umin, Umax)
             r0(i) = K(i)*(1+Tp/(2*Ti(i)) + Td(i)/Tp);
         end
         
-        % wyznaczenie funkcji przynależności (gbellmf)
-        
-        interval = (Umax - Umin)/(num - 1);
-        
-        % kształt funkcji dzwonowej
-        %dla num =2:
-%         a = 0.7;                                % przedział wartości maksymalnej
-%         b = 3;                                  % kształt zboczy funkcji
-        
-        %dla num = 3:
-%         a = 0.5;                                  % przedział wartości maksymalnej
-%         b = 1.5; 
-%         
-                
-        %dla num = 4:
-%         a = 0.3;                                  % przedział wartości maksymalnej
-%         b = 1.2;                                  % kształt zboczy funkcji
-%         
-        %dla num = 5:
-        a = 0.1;                                  % przedział wartości maksymalnej
-        b = 1.5;                                  % kształt zboczy funkcji
-        
-        center = zeros(num, 1);
-        
-        for i = 0:(num-1)
-            center(i+1) = Umin + interval*i;
+        % parametry funkcji przynaleznosci (wyznaczone manualnie)
+        if num == 2
+            a = [0.3; 2];                                 
+            b = [1.5; 1];                                 
+            center = [-0.3; 6];
         end
+        
+        if num == 3
+            a = [0.1; 0.3; 3];                                 
+            b = [1.5; 1.5; 4];                                 
+            center = [-0.3; 0.2; 6];
+        end
+     
+        if num == 4
+            a = [0.1; 0.2; 0.5; 3];                                 
+            b = [1.5; 1.5; 1.2; 4];                                 
+            center = [-0.3; 0; 1.5; 7];
+        end
+            
+        if num == 5
+            a = [0.1; 0.1; 0.5; 2; 2];                                 
+            b = [1.5; 2; 2; 3; 3];                                 
+            center = [-0.3; 0; 1.5; 5; 8];
+        end
+        
     end
     
     % przesuniecie uchybow
@@ -81,9 +80,9 @@ function U = PID_fuzzy(e, num, u, K, Ti, Td, Tp, Umin, Umax)
     e1 = e0;
     e0 = e;
     
-    % Kolejno dla każdego regulatora lokalnego:
-    %   wyznaczenie sterowań dla poszczególnych 'num' regulatorów
-    %   wyznaczenie współczynników przynależności
+    % Kolejno dla kazdego regulatora lokalnego:
+    %   wyznaczenie sterowan dla poszczegolnych 'num' regulatorow
+    %   wyznaczenie wspoczynnikow przynaleznosci
     %   wnioskowanie rozmyte
     
     w = zeros(num, 1);
@@ -91,7 +90,7 @@ function U = PID_fuzzy(e, num, u, K, Ti, Td, Tp, Umin, Umax)
    
     for i = 1:num
         u_fuzzy = Upop + r2(i)*e2 + r1(i)*e1 + r0(i)*e0;
-        w(i) = gbellmf(u, [a b center(i)]);
+        w(i) = gbellmf(y, [a(i) b(i) center(i)]);
         U = U + w(i)*u_fuzzy;
     end
     U = U/sum(w);

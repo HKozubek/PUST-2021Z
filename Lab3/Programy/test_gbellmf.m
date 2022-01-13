@@ -32,7 +32,15 @@ for i = 0:(num-1)
     y = gbellmf(x, [a b center(i+1)]);
     plot(x,y)
 end
+xlim([28 50])
+% ylim([28 48])
+title("Funkcje przynależności dla 3 regulatorów lokalnych")
+hold off
+xlabel('Y');
+ylabel('w(i)');
+% legend('Y','Y_{zad}', 'Location', 'northeast');
 
 
 
 % chyba to będzie działało
+% matlab2tikz('./rysunki_tikz/funkcje_dzwonowe.tex','showInfo', false)

@@ -33,13 +33,14 @@ y(1:time) = 0;
 
 data = load('S_fuzzy');
 S_fuzzy = data.S_fuzzy;
-% 
+
 % data = load('S');
 % S = data.S;
 
 %Dla jednego regulatora:
 %E = 2620.07
 
+%v1
 % Wczytanie i wybranie odpowiedzi skokowych dla DMC - tylko dla lambda = 50
 % num = 2;                        %E = 3018.75
 % S = {S_fuzzy{1}, S_fuzzy{40}};
@@ -53,9 +54,29 @@ S_fuzzy = data.S_fuzzy;
 % num = 5;                        %E = 2574.71
 % S = {S_fuzzy{1}, S_fuzzy{10}, S_fuzzy{20}, S_fuzzy{30},S_fuzzy{40}};
 
-
 % num = 40;                       
 % S = S_fuzzy;
+
+%v2
+% num = 2;                        
+% S = {S_fuzzy{5}, S_fuzzy{30}};
+% lam = 50;        %E = 2449.19
+% lam = 1;        %E = 12940.58
+
+% num = 3;                        
+% S = {S_fuzzy{10}, S_fuzzy{26}, S_fuzzy{27}};
+% % lam = 50;        %E = 2272.57
+% % lam = 1;        %E = 4607.39
+
+% num = 4;                        
+% S = {S_fuzzy{1}, S_fuzzy{8}, S_fuzzy{26}, S_fuzzy{27}};
+% % lam = 50;        %E = 2371.67
+% lam = 1;        %E = 8236.96
+
+num = 5;                        
+S = {S_fuzzy{15}, S_fuzzy{25}, S_fuzzy{26}, S_fuzzy{27}, S_fuzzy{28}};
+lam = 50;        %E = 2258.08
+% lam = 1;        %E = 5235.75
 
 % Nastawy dla DMC
 D = 82;
@@ -63,15 +84,15 @@ N = 20;
 Nu = 20;
 lambda = zeros(num,1);
 for i = 1:num
-  lambda(i) = 50;
+  lambda(i) = lam;
 end
-%lambda = 50
+% lambda = [50 100];
 
 for k = 7:time
     Y(k) = symulacja_obiektu1y_p3(U(k-5), U(k-6), Y(k-1), Y(k-2));
     e(k) = Yzad(k) - Y(k);
    
-    U(k) = DMC_fuzzy(S, U(k-1), num, Yzad(k), Y(k), D, N, Nu, lambda, Umin, Umax);
+    U(k) = DMC_fuzzy(S, num, Yzad(k), Y(k), D, N, Nu, lambda, Umin, Umax);
 end
 
 E = 0;
@@ -97,4 +118,4 @@ xlabel('k');
 ylabel('Y(k)');
 legend('Y','Y_z_a_d', 'Location', 'northeast');
 
-% matlab2tikz('../rysunki_tikz/Zad5_test_DMC_num_5_lambda50.tex','showInfo', false)
+% matlab2tikz('../rysunki_tikz/v2_Zad5_test_DMC_num_5_lambda1.tex','showInfo', false)

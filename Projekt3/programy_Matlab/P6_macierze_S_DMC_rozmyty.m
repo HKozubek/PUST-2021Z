@@ -4,8 +4,8 @@ clear all
 time = 300;
 
 D = 82;
-S_fuzzy = {};
-save('S_fuzzy', 'D')
+% S_fuzzy = {};
+% save('S_fuzzy', 'D')
 
 for i = -1:0.05:0.95
     % Wybrane skoki wartości wejścia
@@ -46,9 +46,10 @@ for i = -1:0.05:0.95
 %     hold on
 %     plot(S)
 %     hold off
+%     title("Ypp = " + Ypp)
 %     ylabel('S_k')
 %     xlabel('k')
 
-    S_fuzzy(end+1) = {S};
-    save('S_fuzzy', 'S_fuzzy', '-append') 
+%     S_fuzzy(end+1) = {S};
+%     save('S_fuzzy', 'S_fuzzy', '-append') 
 end
