@@ -1,3 +1,6 @@
+close all;
+clear;
+
 time = 1000;
 Stime = 110;
 
@@ -175,6 +178,6 @@ title("S^{34}")
 ylim([0,sl])
 
 
-save('Odpowiedzi_skokowe.mat','S11','S12','S13','S14','S21','S22','S23','S24','S31','S32','S33','S34')
-matlab2tikz('../rysunki_tikz/P2_Odpowiedzi_Skokowe.tex','showInfo', false)
+% save('Odpowiedzi_skokowe.mat','S11','S12','S13','S14','S21','S22','S23','S24','S31','S32','S33','S34')
+% matlab2tikz('../rysunki_tikz/P2_Odpowiedzi_Skokowe.tex','showInfo', false)
 
