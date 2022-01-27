@@ -1,0 +1,193 @@
+\documentclass[a4paper,titlepage,11pt,twosides,floatssmall]{mwrep}
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage[OT1]{fontenc}
+% \usepackage[utf8]{inputenc}
+\usepackage{polski}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{url}
+\usepackage{tikz}
+\usetikzlibrary{arrows,calc,decorations.markings,math,arrows.meta}
+\usepackage{rotating}
+\usepackage[percent]{overpic}
+\usepackage[cp1250]{inputenc}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{pgfplots}
+\usetikzlibrary{pgfplots.groupplots}
+\usepackage{listings}
+\usepackage{matlab-prettifier}
+\usepackage{enumitem,amssymb}
+\usepackage{verbatim}							%paczka do komentarza blokowego
+
+\definecolor{szary}{rgb}{0.95,0.95,0.95}
+\definecolor{niebieski}{rgb}{0,0.447,0.741}
+\definecolor{czerwony}{rgb}{0.85,0.325,0.098}
+
+\usepackage{siunitx}
+\sisetup{detect-weight,exponent-product=\cdot,output-decimal-marker={,},per-mode=symbol,binary-units=true,range-phrase={-},range-units=single}
+\SendSettingsToPgf
+
+%konfiguracje pakietu listings
+\lstset{
+	backgroundcolor=\color{szary},
+	frame=single,
+	breaklines=true,
+}
+\lstdefinestyle{customlatex}{
+	basicstyle=\footnotesize\ttfamily,
+	%basicstyle=\small\ttfamily,
+}
+\lstdefinestyle{customc}{
+	breaklines=true,
+	frame=tb,
+	language=C,
+	xleftmargin=0pt,
+	showstringspaces=false,
+	basicstyle=\small\ttfamily,
+	keywordstyle=\bfseries\color{green!40!black},
+	commentstyle=\itshape\color{purple!40!black},
+	identifierstyle=\color{blue},
+	stringstyle=\color{orange},
+}
+\lstdefinestyle{custommatlab}{
+	captionpos=t,
+	breaklines=true,
+	frame=tb,
+	xleftmargin=0pt,
+	language=matlab,
+	showstringspaces=false,
+	basicstyle=\footnotesize\ttfamily,
+	%basicstyle=\scriptsize\ttfamily,
+	keywordstyle=\bfseries\color{green!40!black},
+	commentstyle=\itshape\color{purple!40!black},
+	identifierstyle=\color{blue},
+	stringstyle=\color{orange},
+}
+
+%wymiar tekstu (bez ¿ywej paginy)
+\textwidth 160mm \textheight 247mm
+
+%ustawienia pakietu pgfplots
+\pgfplotsset{
+tick label style={font=\scriptsize},
+label style={font=\small},
+legend style={font=\small},
+title style={font=\small},
+compat=newest										%chyba dobry dodatek, dla subplota xlabel nie nachodzi na inne wykresy
+}
+
+\def\figurename{Rys.}
+\def\tablename{Tab.}
+
+%konfiguracja liczby p³ywaj¹cych elementów
+\setcounter{topnumber}{0}%2
+\setcounter{bottomnumber}{3}%1
+\setcounter{totalnumber}{5}%3
+\renewcommand{\textfraction}{0.01}%0.2
+\renewcommand{\topfraction}{0.95}%0.7
+\renewcommand{\bottomfraction}{0.95}%0.3
+\renewcommand{\floatpagefraction}{0.35}%0.5
+\renewcommand\thesection{\arabic{section}}
+
+\begin{document}
+\frenchspacing
+\pagestyle{uheadings}
+
+%strona tytu³owa
+\title{\bf Sprawozdanie z projektu i æwiczenia laboratoryjnego nr 4, zadanie nr 1\vskip 0.1cm}
+\author{Hubert Kozubek, Przemys³aw Michalczewski}
+\date{2021}
+
+\makeatletter
+\renewcommand{\maketitle}{\begin{titlepage}
+\begin{center}{\LARGE {\bf
+Wydzia³ Elektroniki i Technik Informacyjnych}}\\
+\vspace{0.4cm}
+{\LARGE {\bf Politechnika Warszawska}}\\
+\vspace{0.3cm}
+\end{center}
+\vspace{5cm}
+\begin{center}
+{\bf \LARGE Projektowanie uk³adów w sterowania\\ (projekt grupowy) \vskip 0.1cm}
+\end{center}
+\vspace{1cm}
+\begin{center}
+{\bf \LARGE \@title}
+\end{center}
+\vspace{2cm}
+\begin{center}
+{\bf \LARGE Zespó³ Z01
+\vskip 0.1cm}
+\end{center}
+\begin{center}
+{\bf \Large \@author \par}
+\end{center}
+\vspace*{\stretch{6}}
+\begin{center}
+\bf{\large{Warszawa, \@date\vskip 0.1cm}}
+\end{center}
+\end{titlepage}
+}
+\makeatother
+
+\maketitle
+
+\tableofcontents
+
+\chapter{Laboratorium}
+\section{Cel laboratorium}
+Celem niniejszego laboratorium by³a implementacja, weryfikacja poprawnoœci dzia³ania i~dobór parametrów algorytmów regulacji jednowymiarowego nieliniowego procesu laboratoryjnego dla stanowiska grzej¹co-ch³odz¹cego przedstawionego na rys. \ref{stanowisko_grzewcze}.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.7\textwidth]{ ./Rysunki/Stanowisko-grzewcze.png }
+	\caption {Stanowisko grzej¹co-ch³odz¹ce u¿ywane w trakcie laboratoriów.}
+	\label{stanowisko_grzewcze}
+\end{figure}
+
+
+\section{Przebieg laboratorium}
+Rozpoczynaj¹c pracê na stanowisku grzej¹co-ch³odz¹cym sprawdzono mo¿liwoœæ sterowania i~pomiaru w~komunikacji za stanowiskiem. W~szczególnoœci sygna³y steruj¹ce wykorzystywane podczas niniejszego laboratorium W1, G1, Z oraz pomiaru T1 (elementy wykonawcze przedstawiono na rys. \ref{stanowisko_grzewcze_schemat}). Przez ca³y czas trwania laboratorium moc wentylatora W1 by³a ustawiona na 50\%, a wentylator by³ traktowany jako cecha otoczenia. Dodatkowo sprawia³ on, ¿e temperatura grza³ki
+opada³a szybciej, co by³o szczególnie przydatne pomiêdzy doœwiadczeniami.
+
+W ramach laboratorium nale¿a³o wykonaæ 6 zadañ:
+\begin{enumerate}
+	\label{lista_zadan}
+  \item Odczytaæ wartoœæ pomiaru temperatury dla termometru T1 dla mocy 26\% grza³ki G1 w~stanie ustalonym (wyznaczyæ punkt pracy).
+  \item Przeprowadziæ eksperyment maj¹cy na celu okreœlenie wzmocnienie w funkcji sterowania: dla kolejnych wartoœci sterowania: 20, 30, $\hdots$ , 80 pozyskaæ wartoœæ ustabilizowanego sygna³u wyjœciowego i na ich podstawie narysowaæ punkty tworz¹ce charakterystykê statyczn¹.
+  \item Dla trajektorii zmian sygna³ów zadanych: $T_\mathrm{pp}$, $T_\mathrm{pp}$ + 5, $T_\mathrm{pp}$ + 15, $T_\mathrm{pp}$ przetestowaæ regulatory z laboratorium 1.
+  \item Zaimplementowaæ rozmyty algorytm PID i dla tej samej trajektorii zmian sygna³u wartoœci zadanej spróbowaæ dobraæ parametry lokalnych algorytmów PID w taki sposób, aby osi¹gn¹æ lepsz¹ jakoœæ regulacji w porównaniu z regulatorem pojedynczym.
+  \item Zaimplementowaæ rozmyty algorytm DMC w najprostszej
+	wersji analitycznej, o parametrach $N_\mathrm{u}$ = $N$ = $D$ i $\lambda$ = 1 i dla powy¿szej trajektorii
+	zmian sygna³u wartoœci zadanej wykonaæ eksperymenty dla 3 regulatorów lokalnych. 
+	\item Dobraæ parametry okreœlaj¹ce karê za przyrosty sterowania lokalnych algorytmów DMC metod¹ eksperymentaln¹.
+\end{enumerate}
+
+
+\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=0.7\textwidth]{ ./Rysunki/Stanowisko-grzewcze-schemat.png }
+		\caption {Schemat stanowiska grzej¹co-ch³odz¹cego; zaznaczone elementy wykonawcze: wentylatory W1, W2, W3, W4, grza³ki G1, G2, czujniki temperatury T1, T2, T3, T4, T5 (temperatura
+otoczenia), pomiar pr¹du P1, pomiar napiêcia P2.}
+		\label{stanowisko_grzewcze_schemat}
+\end{figure}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.7\textwidth]{ ./Rysunki/HMI.png }
+	\caption {Interfejs operatora dla stanowiska grzej¹co-ch³odz¹cego (GT Designer3)}
+	\label{hmi}
+\end{figure}
+
+
+
+\section{Punkt pracy stanowiska}
+W celu wyznaczenia punktu pracy stanowiska dla mocy grza³ki G1=26\% zadano tê wartoœæ dla sygna³u steruj¹cego grza³k¹ za pomoc¹ polecenia sendNonlinearControls(u). Nastêpnie poczekano, a¿ temperatura T1 ustali siê. Wynik eksperymentu przedstawiono na rys. \ref{punkt_pracy}. Odczytana wartoœæ temperatury dla termometru T1 wynios³a \num{31.06} °C.
+
+
+\end{document}
+
