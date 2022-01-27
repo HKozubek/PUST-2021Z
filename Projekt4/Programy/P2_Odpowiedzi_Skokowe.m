@@ -4,7 +4,7 @@ clear;
 time = 1000;
 Stime = 110;
 
-%% % U1 -> Y
+%% U1 -> Y
 u1 = zeros(time,1);
 u2 = zeros(time,1);
 u3 = zeros(time,1);
@@ -30,7 +30,7 @@ end
 S11 = y1(11:Stime);
 S21 = y2(11:Stime);
 S31 = y3(11:Stime);
-%% % U2 -> Y
+%% U2 -> Y
 
 u1 = zeros(time,1);
 u2 = zeros(time,1);
@@ -57,7 +57,7 @@ end
 S12 = y1(11:Stime);
 S22 = y2(11:Stime);
 S32 = y3(11:Stime);
-%% % U3 -> Y
+%% U3 -> Y
 
 u1 = zeros(time,1);
 u2 = zeros(time,1);
@@ -84,7 +84,7 @@ end
 S13 = y1(11:Stime);
 S23 = y2(11:Stime);
 S33 = y3(11:Stime);
-%% % U4 -> Y
+%% U4 -> Y
 
 u1 = zeros(time,1);
 u2 = zeros(time,1);
