@@ -60,3 +60,9 @@ octave-workspace
 *.tps
 *.fls
 *.fdb_latexmk
+
+
+# latex beamer
+*.tmp
+*.snm
+*.vrb
