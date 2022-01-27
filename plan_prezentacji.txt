@@ -1,1 +1,13 @@
-1. jd
+1. Wstęp niemeretoryczny (Przemo) 2 min
+Siema, z tej strony ja wasz ulubiony kolega z roku Przemek Michalczewski. Dzisiaj wraz z Hubertem Kozubkiem przedstawimy
+prezentację na temat różnic pomiędzy MATLABem a sterownikiem Programowalnym, w kontekscie implementacji algorytmów regulacji.
+
+2. Matlab
+Matlab jest wieloparagmatycznym i zwektoryzowanym językiem programowania oraz środowiskiem obliczeń
+numerycznych obliczeń opracowanym przez MathWorks. Matlab Posiada wiele dodatkowych pakietów, takich jak Optimization Toolbox,
+które znacząco ułatwiają prace w tym języku. Z tych powodów Matlab świetnie dobrze nadaje się do symulacji procesów i implementacji
+algorytmów regulacji. Szczególnie przydatne jest to w ramach regulacji predykcyjnej, ze względu na mnożenie macierzy wektorów oraz
+rozwiązywanie zadań optymalizacyjnych. Stanowi to niewiątpliwie ułatwienie.
+
+3.
+ 
