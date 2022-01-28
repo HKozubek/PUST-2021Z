@@ -66,3 +66,4 @@ octave-workspace
 *.tmp
 *.snm
 *.vrb
+*.nav
