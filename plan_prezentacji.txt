@@ -15,29 +15,53 @@ takimi jak linie produkcyjne, maszyny, urządzenia robotyczne lub po prostu dowo
 łatwego programowani i diagnostyką błędów procesowych.
  
 
-MATLAB (ang. MATrix LABoratory) - środowisko do obliczeń nukowych oraz tworzenia symulacji. Bogate w wiele bibiliotek (toolboxes),
-które rozszerzają jego możliwości.
-	-wieloparagmatyczny
+MATLAB (ang. MATrix LABoratory) - 
+To teraz opowiemy trochę o wadach i zaletach każdego z tych rozwiązań na początku o samym MATLABIE
+zalety:
 
-STEROWNIK PROGRAMOWALNY (ang. PLC - programmable logic controller) - uniwersalne urządzenie mikroprocesorowe dedykowane do sterowania
-pracą maszyn i obiektów.
-	-praca cykliczna programu
-		-autodiagnosytka
-		-odczytanie wejść
-		-wykonanie programu
-		-zadania komunikacyjne
-		-ustawienia wyjść
-	-dedykowane urządzenie do sterowania pracą maszyn
-	-uniwersalny dla różnego typu procesów ze względu na prorgramowalność
-	- 
+intuicyjny pod względami pisania kodu czy symulacji
+wszystko możliwe do zrobienia w jednym programie, wyliczyć sterowanie, wysłać je, zebrać wyniki i je zwizualizować
+wykorzystuje tylko komputer do programowania i działania
+nie ma potrzedy deklarować zmiennych, ani definiować ich typów,
+
+wady:
+Narzędzie bardzo rozbudowane, nie tylko do celów regulacji, przez co może być przytłaczające i wiele funkcji może być niepotrzebnych
+nieprzebadany pod względami niezawodności, gdyż nie jest to jego kluczowy piorytet
+
+Tyle o samym matlabie, teraz przejdziemy do starownikó programowalnych
+STEROWNIK PROGRAMOWALNY 
+zalety:
+Wyspecjalizowany, przeznaczony do tego celu, nieznajdziemy niepotrzebnych funkcjonalności oderwanych od naszego zadania tylko te dedykowane
+duża niezawodność, jest to jedna z najważniejszych rzeczy sterownika
+Brak niepotrzebnego zużycia pamięci, energii czy mocy obliczeniowej przez procesy współistniejące systemu operacyjnego
+Standard w przemyśle, dzięki czemu nie trzeba się uczyć wielu narzędzi
+
+wady:
+stroma krzywa uczenia się - wysoki poziom wejścia
+oddzielne sstemy do programowania, działania regulatora czy wizualizacji
+niskopoziomowe programowania, konieczność deklarowania wszystkich zmiennych przez co czasami można strzelić sobię w stopę
+
+Język programowania znacząco się różni, chociażby w kwestii poziomowości, matlab dzięki wektoryzacji umożliwia łatwe
+mnożenie macierzy przydatne do regulacji predykcyjnej
+
+Matlab operuje bezpośrednio na systemie operacyjnym komputera, sterownik natomiast jest od komputera niezależny
+
+Zarówno Matlab i sterownik programowalny jest wyposażony w dedykowane funkcje przeznaczone do wykorzystania algorytmów regulacji
+niemniej jednak kwestie implementacji własnej algorytmów różnią się znacząco. Matlab posiada dedykowany język, na sterowniku możnmy natomiast
+skorzystać z structured text, Function Block Diagram czy Ladder Diagram. Warto wspomnieć, że matlab umożliwia symulację i regulację ciągła
+dzięki pakietowi Simulink
+
+
+
+
 
 Różnice:
 -matlab na systemie operacyjnym (wada?), streownik programowalny niezależnie 
 	- zaleta stosowania SP w przemyśle - większa niezawodność, bardziej dedykowane rozwiązanie,
 	brak niepotrzebnego zużycia energi i pamieci przez procesy współistniejące systemu operacyjnego,
-	Simulink jako narzędzie do ciągłej symulacji i regulacji.
+	
 	- zaleta stosowania MATLABA - łatwa symulacja procesów, intuicyjne środowisko, brak wymaganego specjalnego oprogramowania
 	do pisania i wgrywania programu na SP
+	Simulink jako narzędzie do ciągłej symulacji i regulacji.
 -matlab dedykowany język, sterownik wybór języka (structure text, FBD(Function Block Diagram), LD (Ladder Diagram))
 -zarówno jedny i drugi jest wyposażony w dedykowane funkcje przeznaczone do wykorzystania algorytmów regulacji
--matlab dobry do wizualizacji
