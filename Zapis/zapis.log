@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.11.9)  28 JAN 2022 20:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.11.9)  28 JAN 2022 21:39
 entering extended mode
 **./zapis.tex
 (zapis.tex
@@ -828,69 +828,63 @@ Package pgfplots notification 'compat/show suggested version=true': document ha
 s been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
 
 \c@lstlisting=\count331
-(../Lab4/Programy_MATLAB/rysunki/odp_skok2.tex
-LaTeX Font Info:    Trying to load font information for OML+plm on input line 1
-324.
+(../Projekt4/rysunki_tikz/P4_4_Strojenie_DMC.tex
+LaTeX Font Info:    Trying to load font information for OML+plm on input line 2
+027.
 
 (C:\Users\przem\AppData\Local\Programs\MiKTeX\tex/latex/polski\omlplm.fd
 File: omlplm.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
 LaTeX Font Info:    Trying to load font information for OMS+plsy on input line 
-1324.
+2027.
 
 (C:\Users\przem\AppData\Local\Programs\MiKTeX\tex/latex/polski\omsplsy.fd
 File: omsplsy.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
 LaTeX Font Info:    Trying to load font information for OMX+plex on input line 
-1324.
+2027.
 
 (C:\Users\przem\AppData\Local\Programs\MiKTeX\tex/latex/polski\omxplex.fd
 File: omxplex.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <8> on input line 1324.
+(Font)              <8> on input line 2027.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <6> on input line 1324.
+(Font)              <6> on input line 2027.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <5> on input line 1324.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 132
-4.
+(Font)              <5> on input line 2027.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 202
+7.
 
 (C:\Users\przem\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 132
-4.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 202
+7.
 
 (C:\Users\przem\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <10> on input line 2642.
-LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <7> on input line 2642.
-)
+))
 [1
 
 {C:/Users/przem/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] (zapis.aux) ) 
 Here is how much of TeX's memory you used:
- 27326 strings out of 478907
- 689741 string characters out of 2851892
- 1342281 words of memory out of 3000000
- 44724 multiletter control sequences out of 15000+600000
- 411990 words of font info for 54 fonts, out of 8000000 for 9000
+ 27287 strings out of 478907
+ 689169 string characters out of 2851892
+ 1657880 words of memory out of 3000000
+ 44691 multiletter control sequences out of 15000+600000
+ 408836 words of font info for 44 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,18n,89p,740b,2143s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 84i,10n,89p,740b,1978s stack positions out of 5000i,500n,10000p,200000b,80000s
 {C
-:/Users/przem/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/pl/plms.enc}{C:/Use
-rs/przem/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/pl/plrm.enc}<C:/Users/pr
-zem/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plbx10.pfb><C:/Users/pr
+:/Users/przem/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/pl/plrm.enc}{C:/Use
+rs/przem/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/pl/plms.enc}<C:/Users/pr
 zem/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plr10.pfb><C:/Users/prz
 em/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plr8.pfb><C:/Users/przem
-/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plsy7.pfb>
-Output written on zapis.pdf (1 page, 41503 bytes).
+/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plsy8.pfb>
+Output written on zapis.pdf (1 page, 57071 bytes).
 PDF statistics:
- 31 PDF objects out of 1000 (max. 8388607)
+ 26 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

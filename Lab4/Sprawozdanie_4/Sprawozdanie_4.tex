@@ -247,6 +247,258 @@ CASE  Stan  OF
 	END_CASE;
 \end{lstlisting}
 
+\chapter{Projekt}
+\section{Informacje wstêpne}
+Zadanie projektowe wykorzystywa³o symulowany obiekt regulacji. Wyjœcie obiektu mo¿na wyznaczyæ przy pomocy polecenia: 
+
+\begin{lstlisting}
+[y1(k),y2(k),y3(k)] = symulacja_obiektu1_p4(u1(k-1),u1(k-2),...
+			u1(k-3),u1(k-4),u2(k-1),u2(k-2),...
+			u2(k-3),u2(k-4),u3(k-1),u3(k-2),...
+			u3(k-3),u3(k-4),u4(k-1),u4(k-2),...
+			u4(k-3),u4(k-4),y1(k-1),y1(k-2),...
+			y1(k-3),y1(k-4),y2(k-1),y2(k-2),...
+			y2(k-3),y2(k-4),y3(k-1),y3(k-2),...
+			y3(k-3),y3(k-4));
+											
+\end{lstlisting}
+
+\section{Sprawdzenie poprawnoœci punktu pracy}
+Wartoœci sygna³ów wejœcia i wyjœcia procesu w punkcie pracy wynosz¹ u1 = u2 = u3 = u4 = y1 = y2 = y3 = 0; okres
+próbkowania wynosi 0,5 sekundy.
+
+W celu sprawdzenia poprawnoœci punktu pracy zosta³a przeprowadzona symulacja, gdzie na
+wejœcie podano sterowanie u1 = u2 = u3 = u4 = 0, jako poprzednie wartoœci wyjœcia podano y1 = y2 = y3 = 0 i sprawdzono
+wartoœæ wyjœcia procesu w nastêpnych chwilach. Wyniki symulacji przedstawiono na rys. \ref{p1}
+Wartoœæ sygna³u wyjœciowego pozosta³a bez zmian, co potwierdza poprawnoœæ podanego punktu
+pracy.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.7\textwidth]{ ./Rysunki/P1_Punkt_Pracy.pdf }
+	\caption {Punkt pracy}
+	\label{p1}
+\end{figure}
+
+\section{Odpowiedzi skokowe procesu}
+Wyznaczone zosta³y odpowiedzi skokowe dla ka¿dej pary wejœcia i wyjœcie. Odpowiedzi skokowe przedstawiono na rys. \ref{p2}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{ ./Rysunki/P2_Odpowiedzi_Skokowe.pdf }
+	\caption {Odpowiedzi skokowe}
+	\label{p2}
+\end{figure}
+
+\section{Regulatory cyfrowe PID i  ich strojenie}
+
+Implementacja algorytmu PID dla obiektu wielowymiarowego:
+
+\begin{lstlisting}
+function[u1,u2,u3,u4] = PID_Multi_Dim(K,Ti,Td,yzad1,yzad2,yzad3,y1,y2,y3)
+
+%% Uchyby
+persistent e10;
+persistent e11;
+persistent e20;
+persistent e21;
+persistent e30;
+persistent e31;
+persistent upop1;
+% persistent upop2;
+persistent upop3;
+persistent upop4;
+
+if isempty(e10)
+    e10 = 0;
+    e11 = 0;
+    e20 = 0;
+    e21 = 0;
+    e30 = 0;
+    e31 = 0;
+    upop1 = 0;
+    upop3 = 0;
+    upop4 = 0;
+end
+
+
+e12 = e11;
+e11 = e10;
+e10 = yzad1 - y1;
+e22 = e21;
+e21 = e20;
+e20 = yzad2 - y2;
+e32 = e31;
+e31 = e30;
+e30 = yzad3 - y3;
+
+%% Parametry
+T = 0.5;
+K1 = K(1); %Kk1 = 2.6, Tk = 5.625 
+K2 = K(2); %Kk1 = 7.1, Tk = 5.7
+K3 = K(3); %Kk1 = 7.9, Tk = 5.6
+Ti1 = Ti(1);
+Ti2 = Ti(2);
+Ti3 = Ti(3);
+Td1 = Td(1);
+Td2 = Td(2);
+Td3 = Td(3);
+
+r10 = K1*(1 + T/(2*Ti1) + Td1/T);
+r11 = K1*(T/(2*Ti1) - 2*Td1/T - 1);
+r12 = K1*Td1/T;
+
+r20 = K2*(1 + T/(2*Ti2) + Td2/T);
+r21 = K2*(T/(2*Ti2) - 2*Td2/T - 1);
+r22 = K2*Td2/T;
+
+r30 = K3*(1 + T/(2*Ti3) + Td3/T);
+r31 = K3*(T/(2*Ti3) - 2*Td3/T - 1);
+r32 = K3*Td3/T;
+
+%% Wyliczanie sterowania
+
+
+u1 = r12*e12 + r11*e11 + r10*e10 + upop1;
+u2 = 0;
+u3 = r22*e22 + r21*e21 + r20*e20 + upop3;
+u4 = r32*e32 + r31*e31 + r30*e30 + upop4;
+
+upop1 = u1;
+upop3 = u3;
+upop4 = u4;
+
+end
+\end{lstlisting}
+
+Badaj¹c odpowiedzi skokowe torów wejœcie-wyjœcie zdecydowano siê zaimplementowaæ regulatory PID na torach u1-y1, u3-y2 i u4-y3.
+Nastêpnie strojono je metod¹ Zieglera-Nicholsa. Strojenie i wyznaczenie wzmocnienia krytyznego przedstawiono na rys.: \ref{p3}, \ref{p4}, \ref{p5}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{ ./Rysunki/P3_1_Strojenie_PID1.pdf }
+	\caption {PID wielowymiarowy, K = 2,6}
+	\label{p3}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{ ./Rysunki/P3_2_Strojenie_PID2.pdf }
+	\caption {PID wielowymiarowy, K = 7,1}
+	\label{p4}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{ ./Rysunki/P3_3_Strojenie_PID3.pdf }
+	\caption {PID wielowymiarowy, K = 7,9}
+	\label{p5}
+\end{figure}
+
+\section{Wielowymiarowy regulator DMC}
+Implementacja algorytmu regulacji DMC dla obiektu wielowymiarowego:
+
+\begin{lstlisting}
+function[u1,u2,u3,u4] = DMC_Multi_Dim(D,N,Nu,Psi,...
+			Lambda,yzad1,yzad2,yzad3,y1,y2,y3)
+%% Uchyby
+persistent Mp;
+persistent S;
+persistent DUp;
+persistent M;
+persistent K;
+persistent upop1;
+persistent upop2;
+persistent upop3;
+persistent upop4;
+persistent Upop;
+Yzad = repmat([yzad1; yzad2; yzad3], N,1);
+Y = repmat([y1; y2; y3], N,1);
+
+if isempty(S)
+    upop1 = 0;
+    upop2 = 0;
+    upop3 = 0;
+    upop4 = 0;
+    Upop = [0;0;0;0];
+    load('Odpowiedzi_skokowe.mat');
+    S = cell(D+N-1,1);
+    for j = 1:D+N-1
+        if(j>D)
+            S{j} = [S11(D) S21(D) S31(D); S12(D) S22(D) S32(D);...
+		S13(D) S23(D) S33(D); S14(D) S24(D) S34(D)];
+        else
+            S{j} = [S11(j) S21(j) S31(j); S12(j) S22(j) S32(j);...
+		S13(j) S23(j) S33(j); S14(j) S24(j) S34(j)];
+        end
+        
+    end
+    Mp = zeros(3*N, 4*(D-1));
+    for j = 1:D-1
+        a = [S{j+1:N+j}]';
+        b = repmat(S{j}',N,1);
+        Mp(:,(4*j-3):(4*j)) = a - b;
+    end
+    DUp = zeros(4*(D-1),1);
+    M = zeros(3*N, 4*Nu);
+    for j = 1:Nu
+       M((3*j - 2):end,(4*j-3):(4*j)) = [S{1:(N+1-j)}]';
+    end
+    K = pinv(M'*Psi*M+Lambda)*M'*Psi;
+end
+
+    DUp(5:end) = DUp(1:(end-4));
+    DUp(1:4) = [upop1; upop2; upop3; upop4] - Upop;
+    
+    Yo = Y + Mp*DUp;
+    Du = K*(Yzad - Yo);
+    u1 = Du(1) + upop1;
+    u2 = Du(2) + upop2;
+    u3 = Du(3) + upop3;
+    u4 = Du(4) + upop4;
+    Upop = [upop1; upop2; upop3; upop4];
+    upop1 = u1;
+    upop2 = u2;
+    upop3 = u3;
+    upop4 = u4;
+
+end
+\end{lstlisting}
+Nastêpnie zosta³ zaimplementowany wielowymiarowy regulator DMC. Jego wyniki przedstawiono na rys.: \ref{p6}, \ref{p7}, \ref{p8}, \ref{p9}. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{ ./Rysunki/P4_1_Strojenie_DMC.pdf }
+	\caption {Regulacja DMC}
+	\label{p6}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{ ./Rysunki/P4_2_Strojenie_DMC.pdf }
+	\caption {Regulacja DMC}
+	\label{p7}
+\end{figure}
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{ ./Rysunki/P4_3_Strojenie_DMC.pdf }
+	\caption {Regulacja DMC}
+	\label{p8}
+\end{figure}
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{ ./Rysunki/P4_4_Strojenie_DMC.pdf }
+	\caption {Regulacja DMC}
+	\label{p9}
+\end{figure}
+
+
+ 
+
 
 \end{document}
 
