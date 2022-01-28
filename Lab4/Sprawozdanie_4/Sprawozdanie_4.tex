@@ -140,7 +140,7 @@ Wydzia³ Elektroniki i Technik Informacyjnych}}\\
 
 \chapter{Laboratorium}
 \section{Cel laboratorium}
-Celem niniejszego laboratorium by³a implementacja, weryfikacja poprawnoœci dzia³ania i~dobór parametrów algorytmów regulacji jednowymiarowego nieliniowego procesu laboratoryjnego dla stanowiska grzej¹co-ch³odz¹cego przedstawionego na rys. \ref{stanowisko_grzewcze}.
+Celem niniejszego laboratorium by³a implementacja, weryfikacja poprawnoœci dzia³ania i~dobór parametrów algorytmów regulacji 2-wymiarowego liniowego procesu laboratoryjnego dla stanowiska grzej¹co-ch³odz¹cego przedstawionego na rys. \ref{stanowisko_grzewcze}. Nale¿a³o równie¿ wykonaæ wizualizacjê procesu.
 
 \begin{figure}[!ht]
 	\centering
@@ -151,21 +151,8 @@ Celem niniejszego laboratorium by³a implementacja, weryfikacja poprawnoœci dzia³
 
 
 \section{Przebieg laboratorium}
-Rozpoczynaj¹c pracê na stanowisku grzej¹co-ch³odz¹cym sprawdzono mo¿liwoœæ sterowania i~pomiaru w~komunikacji za stanowiskiem. W~szczególnoœci sygna³y steruj¹ce wykorzystywane podczas niniejszego laboratorium W1, G1, Z oraz pomiaru T1 (elementy wykonawcze przedstawiono na rys. \ref{stanowisko_grzewcze_schemat}). Przez ca³y czas trwania laboratorium moc wentylatora W1 by³a ustawiona na 50\%, a wentylator by³ traktowany jako cecha otoczenia. Dodatkowo sprawia³ on, ¿e temperatura grza³ki
+Rozpoczynaj¹c pracê na stanowisku grzej¹co-ch³odz¹cym z wykorzystaniem PLC sprawdzono mo¿liwoœæ sterowania i~pomiaru w~komunikacji ze stanowiskiem. W~szczególnoœci sygna³y steruj¹ce wykorzystywane podczas niniejszego laboratorium W1, G1, G2 oraz pomiaru T1, T3 (elementy wykonawcze przedstawiono na rys. \ref{stanowisko_grzewcze_schemat}). Przez ca³y czas trwania laboratorium moc wentylatora W1 by³a ustawiona na 50\%, a wentylator by³ traktowany jako cecha otoczenia. Dodatkowo sprawia³ on, ¿e temperatura grza³ki
 opada³a szybciej, co by³o szczególnie przydatne pomiêdzy doœwiadczeniami.
-
-W ramach laboratorium nale¿a³o wykonaæ 6 zadañ:
-\begin{enumerate}
-	\label{lista_zadan}
-  \item Odczytaæ wartoœæ pomiaru temperatury dla termometru T1 dla mocy 26\% grza³ki G1 w~stanie ustalonym (wyznaczyæ punkt pracy).
-  \item Przeprowadziæ eksperyment maj¹cy na celu okreœlenie wzmocnienie w funkcji sterowania: dla kolejnych wartoœci sterowania: 20, 30, $\hdots$ , 80 pozyskaæ wartoœæ ustabilizowanego sygna³u wyjœciowego i na ich podstawie narysowaæ punkty tworz¹ce charakterystykê statyczn¹.
-  \item Dla trajektorii zmian sygna³ów zadanych: $T_\mathrm{pp}$, $T_\mathrm{pp}$ + 5, $T_\mathrm{pp}$ + 15, $T_\mathrm{pp}$ przetestowaæ regulatory z laboratorium 1.
-  \item Zaimplementowaæ rozmyty algorytm PID i dla tej samej trajektorii zmian sygna³u wartoœci zadanej spróbowaæ dobraæ parametry lokalnych algorytmów PID w taki sposób, aby osi¹gn¹æ lepsz¹ jakoœæ regulacji w porównaniu z regulatorem pojedynczym.
-  \item Zaimplementowaæ rozmyty algorytm DMC w najprostszej
-	wersji analitycznej, o parametrach $N_\mathrm{u}$ = $N$ = $D$ i $\lambda$ = 1 i dla powy¿szej trajektorii
-	zmian sygna³u wartoœci zadanej wykonaæ eksperymenty dla 3 regulatorów lokalnych. 
-	\item Dobraæ parametry okreœlaj¹ce karê za przyrosty sterowania lokalnych algorytmów DMC metod¹ eksperymentaln¹.
-\end{enumerate}
 
 
 \begin{figure}[!ht]
@@ -176,6 +163,38 @@ otoczenia), pomiar pr¹du P1, pomiar napiêcia P2.}
 		\label{stanowisko_grzewcze_schemat}
 \end{figure}
 
+\section{Punkt pracy stanowiska}
+W celu wyznaczenia punktu pracy stanowiska dla mocy grza³ek G1=26\%, G2=31\% zadano te wartoœci dla sygna³u steruj¹cego grza³kami za pomoc¹ programu sterownika. Nastêpnie poczekano, a¿ temperatury T1, T3 ustal¹ siê. Wynik eksperymentu przedstawiono na rys. \ref{punkt_pracy}. Odczytana wartoœæ temperatur to T1=33,25  $^{\circ}$C oraz T3=34,68 $^{\circ}$C. Wyniki eksperymentu przedstawiono na rys. \ref{punkt_pracy}.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.7\textwidth]{ ./Rysunki/punkt_pracy.pdf }
+	\caption{Wyznaczenie punktu pracy.}
+	\label{punkt_pracy}
+\end{figure}
+
+
+\section{Odpowiedzi skokowe}
+
+W celu uzyskania odpowiedzi skokowej w konfguracjach ka¿de wejœcie, ka¿de wyjœcie dla 2-wymiarowego procesu zmieniono skokowo wartoœæ sterowania najpierw grza³ki G1 i pobrano odpowiedŸ skokow¹ dla obu wyjœæ (T1, T3). Nastêpnie analogicznie post¹piono dla skoku sterowania grza³ki G2. Wyniki uzyskane w ten sposób przedstawiono na rys.: \ref{odp_skok1}, \ref{odp_skok2}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{ ./Rysunki/odp_skok1.pdf }
+	\caption{OdpowiedŸ skokowa dla zmiany sterowania grza³ki G1}
+	\label{odp_skok1}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{ ./Rysunki/odp_skok2.pdf}
+	\caption{OdpowiedŸ skokowa dla zmiany sterowania grza³ki G2}
+	\label{odp_skok2}
+\end{figure}
+
+\section{Iterfej operatora}
+Do wizualizacji procesu stworzono interfejs operatora w programie GT Designer3. Wynik pracy przedstawiono na rys.\ref{hmi}. Przedstawia on graficznie wartoœci zadane i wyjœciowe (po lewej stronie ekranu jako wykresy s³upkowe, czerwne puste s³upoki to wartoœci zadane, wype³nione to wartoœci wyjœciowe dla procesu). Na górze wyœwietlacza w postaci wykresu s³upkowego pozionego przedstawiono moce grza³ek. W centralnej czêœci ekranu wypisano wartoœci dok³adne poszczególnych sygna³ów.
+
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.7\textwidth]{ ./Rysunki/HMI.png }
@@ -184,9 +203,49 @@ otoczenia), pomiar pr¹du P1, pomiar napiêcia P2.}
 \end{figure}
 
 
+\section{Kod sterownika}
 
-\section{Punkt pracy stanowiska}
-W celu wyznaczenia punktu pracy stanowiska dla mocy grza³ki G1=26\% zadano tê wartoœæ dla sygna³u steruj¹cego grza³k¹ za pomoc¹ polecenia sendNonlinearControls(u). Nastêpnie poczekano, a¿ temperatura T1 ustali siê. Wynik eksperymentu przedstawiono na rys. \ref{punkt_pracy}. Odczytana wartoœæ temperatury dla termometru T1 wynios³a \num{31.06} °C.
+Pierwsza czêœæ przedstawia zabezpieszenie przed nadmiernym przegrzaniem stanowiska, w momencie gdy temperatury T1 lub T3 przekrocz¹ ustalony limit grza³ki zostaj¹ wy³¹czone. Kod jest umijscowiony na koñcu programu, tak aby inne ustawione wartoœci sterowañ nie wp³ywa³y na waroœæ wyznaczon¹ przez zabezpieczenie.
+
+\begin{lstlisting}
+//Zabezpieczenie przed przegrzaniem
+IF temp1>=25000 THEN
+	grzalka1 := 0;
+END_IF;
+
+IF temp3>=25000 THEN
+	grzalka2 := 0;
+END_IF;
+\end{lstlisting}
+
+Fragment kodu przedstawia automat stanów, który zmienia poszczególne wartoœci zadane w momencie, gdy regulator osi¹gnie odpowiedni¹ wartoœæ w danym stanie.
+
+\begin{lstlisting}
+CASE  Stan  OF
+	0:
+	T1_zad := 3500;
+	T3_zad := 4500;
+	IF temp1 + eps >=T1_zad AND temp1-eps <=T1_zad AND temp3 
+		...  + eps >= T3_zad AND temp3 - eps <= T3_zad THEN
+		Stan := 1;
+	END_IF;
+	1:
+	T1_zad := 5500;
+	T3_zad := 4100;
+	IF temp1 + eps >=T1_zad AND temp1-eps <=T1_zad AND temp3 
+		...+ eps >= T3_zad AND temp3 - eps <= T3_zad THEN
+		Stan := 2;
+	END_IF;
+	2:
+	T1_zad := 3000;
+	T3_zad := 2700;
+	IF temp1 + eps >=T1_zad AND temp1-eps <=T1_zad AND temp3
+		... + eps >= T3_zad AND temp3 - eps <= T3_zad THEN
+		Stan := 0;
+	END_IF;
+		
+	END_CASE;
+\end{lstlisting}
 
 
 \end{document}
