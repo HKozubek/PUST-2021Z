@@ -1,4 +1,4 @@
-function[u1,u2,u3,u4] = PID_Multi_Dim(yzad1,yzad2,yzad3,y1,y2,y3)
+function[u1,u2,u3,u4] = PID_Multi_Dim(K,Ti,Td,yzad1,yzad2,yzad3,y1,y2,y3)
 
 %% Uchyby
 persistent e10;
@@ -37,26 +37,26 @@ e30 = yzad3 - y3;
 
 %% Parametry
 T = 0.5;
-K1 = 0; %Kk1 = 2.6, Tk = 5.625 
-K2 = 0; %Kk1 = 7.1, Tk = 5.7
-K3 = 0; %Kk1 = 7.9, Tk = 5.6
-Ti1 = 0;
-Ti2 = 0;
-Ti3 = 0;
-Td1 = 0;
-Td2 = 0;
-Td3 = 0;
+K1 = K(1); %Kk1 = 2.6, Tk = 5.625 
+K2 = K(2); %Kk1 = 7.1, Tk = 5.7
+K3 = K(3); %Kk1 = 7.9, Tk = 5.6
+Ti1 = Ti(1);
+Ti2 = Ti(2);
+Ti3 = Ti(3);
+Td1 = Td(1);
+Td2 = Td(2);
+Td3 = Td(3);
 
-r10 = K1*(1 + T/2*Ti1 + Td1/T);
-r11 = K1*(T/2*Ti1 - 2*Td1/T - 1);
+r10 = K1*(1 + T/(2*Ti1) + Td1/T);
+r11 = K1*(T/(2*Ti1) - 2*Td1/T - 1);
 r12 = K1*Td1/T;
 
-r20 = K2*(1 + T/2*Ti2 + Td2/T);
-r21 = K2*(T/2*Ti2 - 2*Td2/T - 1);
+r20 = K2*(1 + T/(2*Ti2) + Td2/T);
+r21 = K2*(T/(2*Ti2) - 2*Td2/T - 1);
 r22 = K2*Td2/T;
 
-r30 = K3*(1 + T/2*Ti3 + Td3/T);
-r31 = K3*(T/2*Ti3 - 2*Td3/T - 1);
+r30 = K3*(1 + T/(2*Ti3) + Td3/T);
+r31 = K3*(T/(2*Ti3) - 2*Td3/T - 1);
 r32 = K3*Td3/T;
 
 %% Wyliczanie sterowania
