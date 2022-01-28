@@ -12,10 +12,21 @@ rozwiązywanie zadań optymalizacyjnych. Stanowi to niewiątpliwie ułatwienie.
 3.
  
 
-MATLAB (ang. MATrix LABoratory) - 
+MATLAB (ang. MATrix LABoratory) - środowisko do obliczeń nukowych oraz tworzenia symulacji. Bogate w wiele bibiliotek (toolboxes),
+które rozszerzają jego możliwości.
+	-wieloparagmatyczny
 
-STEROWNIK PROGRAMOWALNY -
-
+STEROWNIK PROGRAMOWALNY (ang. PLC - programmable logic controller) - uniwersalne urządzenie mikroprocesorowe dedykowane do sterowania
+pracą maszyn i obiektów.
+	-praca cykliczna programu
+		-autodiagnosytka
+		-odczytanie wejść
+		-wykonanie programu
+		-zadania komunikacyjne
+		-ustawienia wyjść
+	-dedykowane urządzenie do sterowania pracą maszyn
+	-uniwersalny dla różnego typu procesów ze względu na prorgramowalność
+	- 
 
 Różnice:
 -matlab na systemie operacyjnym (wada?), streownik programowalny niezależnie 
@@ -25,3 +36,4 @@ Różnice:
 	do pisania i wgrywania programu na SP
 -matlab dedykowany język, sterownik wybór języka (structure text, FBD(Function Block Diagram), LD (Ladder Diagram)
 -zarówno jedny i drugi jest wyposażony w dedykowane funkcje przeznaczone do wykorzystania algorytmów regulacji
+-matlab dobry do wizualizacji

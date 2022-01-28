@@ -42,7 +42,6 @@ function U = DMC(yzad, y, D, N, Nu, lambda)
     % Ograniczenia sterowania
     Gmax = 100;
     Gmin = 0;
-    
     Y0 = zeros(N,1);
     dU = zeros(Nu,1);
     
@@ -53,7 +52,6 @@ function U = DMC(yzad, y, D, N, Nu, lambda)
     Y0 = Y + Mp*dUP;
     dU = K*(Yzad - Y0);
     du = dU(1);
-    
   
     for n=D-1:-1:2
       dUP(n) = dUP(n-1);
@@ -61,14 +59,11 @@ function U = DMC(yzad, y, D, N, Nu, lambda)
     dUP(1) = du;
    
     U = Upop + du;
-    
     if U > Gmax
         U = Gmax;
-    end
-    
+    end   
     if U < Gmin
         U = Gmin;
-    end
-    
+    end 
     Upop = U;
 end
