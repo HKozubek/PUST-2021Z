@@ -9,7 +9,10 @@ które znacząco ułatwiają prace w tym języku. Z tych powodów Matlab świetn
 algorytmów regulacji. Szczególnie przydatne jest to w ramach regulacji predykcyjnej, ze względu na mnożenie macierzy wektorów oraz
 rozwiązywanie zadań optymalizacyjnych. Stanowi to niewiątpliwie ułatwienie.
 
-3.
+3.Sterownik Programowalny (PLC - Programable Logic Controller)
+Sterownik programowalny to komputer przemysłowy zaprojektowany i zaadoptowany do rzetelnego operowania, i sterowania procesami przemysłowymi
+takimi jak linie produkcyjne, maszyny, urządzenia robotyczne lub po prostu dowolnymi aktywnościami wymagającymi wysokiej niezawodności,
+łatwego programowani i diagnostyką błędów procesowych.
  
 
 MATLAB (ang. MATrix LABoratory) - środowisko do obliczeń nukowych oraz tworzenia symulacji. Bogate w wiele bibiliotek (toolboxes),
@@ -31,9 +34,10 @@ pracą maszyn i obiektów.
 Różnice:
 -matlab na systemie operacyjnym (wada?), streownik programowalny niezależnie 
 	- zaleta stosowania SP w przemyśle - większa niezawodność, bardziej dedykowane rozwiązanie,
-	brak niepotrzebnego zużycia energi i pamieci przez procesy współistniejące systemu operacyjnego
+	brak niepotrzebnego zużycia energi i pamieci przez procesy współistniejące systemu operacyjnego,
+	Simulink jako narzędzie do ciągłej symulacji i regulacji.
 	- zaleta stosowania MATLABA - łatwa symulacja procesów, intuicyjne środowisko, brak wymaganego specjalnego oprogramowania
 	do pisania i wgrywania programu na SP
--matlab dedykowany język, sterownik wybór języka (structure text, FBD(Function Block Diagram), LD (Ladder Diagram)
+-matlab dedykowany język, sterownik wybór języka (structure text, FBD(Function Block Diagram), LD (Ladder Diagram))
 -zarówno jedny i drugi jest wyposażony w dedykowane funkcje przeznaczone do wykorzystania algorytmów regulacji
 -matlab dobry do wizualizacji
